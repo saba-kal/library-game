@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://78h1btx4mad8"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_base.gd" id="1_77wm7"]
+[ext_resource type="Script" path="res://scenes/enemies/state_machine.gd" id="2_j1e2k"]
+[ext_resource type="Script" path="res://scripts/states/EnemyFollow.gd" id="3_funnq"]
+[ext_resource type="Script" path="res://scripts/states/EnemyWanderIdle.gd" id="3_yihnw"]
+[ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="4_lxshi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnm8j"]
+albedo_color = Color(0.64428, 0.78, 0.3276, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7q0cw"]
+material = SubResource("StandardMaterial3D_mnm8j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enndw"]
+albedo_color = Color(0.40474, 0.49, 0.2058, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jefe7"]
+material = SubResource("StandardMaterial3D_enndw")
+radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypkii"]
+albedo_color = Color(1, 0.15, 0.3625, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c7pk6"]
+material = SubResource("StandardMaterial3D_ypkii")
+bottom_radius = 0.0
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p153a"]
+albedo_color = Color(1, 0.14902, 0.360784, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r5t4q"]
+material = SubResource("StandardMaterial3D_p153a")
+top_radius = 0.8
+bottom_radius = 0.6
+height = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
+
+[node name="EnemyBase" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_77wm7")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_7q0cw")
+
+[node name="ConeDetection" parent="Body" instance=ExtResource("4_lxshi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.373765, 0.623297)
+mesh = SubResource("CapsuleMesh_jefe7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.623714, -0.775)
+mesh = SubResource("CylinderMesh_c7pk6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.408711, -3.53903e-08)
+mesh = SubResource("CylinderMesh_r5t4q")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_a1eye")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "intial_state", "aggro_timeout", "detection_type")]
+script = ExtResource("2_j1e2k")
+enemy_body = NodePath("..")
+intial_state = NodePath("Idle")
+aggro_timeout = NodePath("../AggroTimeout")
+detection_type = NodePath("../Body/ConeDetection")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "mesh", "nav_agent")]
+script = ExtResource("3_yihnw")
+enemy = NodePath("../..")
+mesh = NodePath("../../Body")
+nav_agent = NodePath("../../NavigationAgent3D")
+rotation_speed = 2.0
+
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "mesh", "nav_agent")]
+script = ExtResource("3_funnq")
+enemy = NodePath("../..")
+mesh = NodePath("../../Body")
+nav_agent = NodePath("../../NavigationAgent3D")
+move_speed = 3.0
+rotation_speed = 15.0
+
+[node name="AggroTimeout" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[connection signal="timeout" from="AggroTimeout" to="." method="_on_aggro_timeout_timeout"]

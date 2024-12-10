@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var rotationSpeed:int = 40.0
+@export var rotationSpeed:float = 40.0
 
 @onready var springArm: SpringArm3D = $SpringArm3D
 
