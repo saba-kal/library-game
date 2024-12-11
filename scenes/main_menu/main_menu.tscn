@@ -64,6 +64,11 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "DEBUG AREA"
 
+[node name="Button_DEBUG_GENERATION" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DEBUG GENERATION"
+
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_PLAY" to="." method="play_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_EXIT" to="." method="exit_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_DEBUG" to="." method="debug_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_DEBUG_GENERATION" to="." method="debug_generation_pressed"]

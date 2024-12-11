@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgr87eq5sqdxr"]
+
+[ext_resource type="Script" path="res://scripts/zoning/deterministic_zone_generator.gd" id="1_txysj"]
+[ext_resource type="PackedScene" uid="uid://bvyba7ar7v6y7" path="res://scenes/rooms/startroom.tscn" id="1_wysce"]
+[ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="3_pnxei"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hfyl8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5sqsa"]
+sky_material = SubResource("ProceduralSkyMaterial_hfyl8")
+
+[sub_resource type="Environment" id="Environment_dobn6"]
+background_mode = 2
+sky = SubResource("Sky_5sqsa")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="ZoningTest" type="Node3D"]
+script = ExtResource("1_txysj")
+
+[node name="ThreeDoorRoom" parent="." instance=ExtResource("1_wysce")]
+
+[node name="Player" parent="." instance=ExtResource("3_pnxei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
+collision_layer = 1
+collision_mask = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dobn6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
