@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://dmtrnvihyrtdi"]
 
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_2f2x5"]
-[ext_resource type="Script" path="res://scenes/player/camera_controller.gd" id="2_23lc7"]
-[ext_resource type="Script" path="res://scenes/player/movement.gd" id="4_o2lce"]
-[ext_resource type="Script" path="res://scenes/player/dash.gd" id="5_0dcju"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f2x5"]
+[ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2_23lc7"]
+[ext_resource type="Script" path="res://scripts/player/movement.gd" id="4_o2lce"]
+[ext_resource type="Script" path="res://scripts/player/dash.gd" id="5_0dcju"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snnpj"]
 albedo_color = Color(0.78, 0.45578, 0.3276, 1)
