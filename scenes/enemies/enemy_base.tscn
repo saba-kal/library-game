@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://78h1btx4mad8"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemy_base.gd" id="1_77wm7"]
-[ext_resource type="Script" path="res://scenes/enemies/state_machine.gd" id="2_j1e2k"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_77wm7"]
+[ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="2_j1e2k"]
 [ext_resource type="Script" path="res://scripts/states/EnemyFollow.gd" id="3_funnq"]
 [ext_resource type="Script" path="res://scripts/states/EnemyWanderIdle.gd" id="3_yihnw"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="4_lxshi"]
