@@ -7,6 +7,7 @@ extends Node
 @export var aggro_timeout:Timer = null
 @export var aggro_timeout_duration:float = 3
 @export var detection_type:Area3D = null
+@export var melee_attack_range:Area3D = null
 @export_flags_3d_physics var layers_searched
 
 var player_target:CharacterBody3D
@@ -23,6 +24,10 @@ func _ready() -> void:
 	if detection_type:
 		detection_type.body_entered.connect(player_entered_range)
 		detection_type.body_exited.connect(player_exited_range)
+	
+	if melee_attack_range:
+		melee_attack_range.body_entered.connect(player_entered_range)
+		melee_attack_range.body_exited.connect(player_exited_range)
 	
 	## Loads children attached under state machine, and connects their transitioned signal.
 	for child in get_children():
@@ -72,6 +77,8 @@ func player_entered_range(body: Node3D):
 	if body.is_in_group("player"):
 		player_target = body
 		print("Player in range.")
+		if !aggro_timeout.is_stopped():
+			aggro_timeout.stop()
 		line_of_sight_check()
 
 ## When player leaves range, starts a timer, if it times out, stops aggroing player.
@@ -86,7 +93,7 @@ func line_of_sight_check():
 	var origin = Vector3(enemy_body.global_position.x, enemy_body.global_position.y+1,enemy_body.global_position.z)
 	var end = Vector3(player_target.global_position.x, player_target.global_position.y+1,player_target.global_position.z)
 	while (player_target != null) or (engaged == true):
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.05).timeout
 		var query = PhysicsRayQueryParameters3D.create(origin, end)
 		var result = space_state.intersect_ray(query)
 		if result:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://78h1btx4mad8"]
+[gd_scene load_steps=17 format=3 uid="uid://78h1btx4mad8"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_77wm7"]
 [ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="2_j1e2k"]
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyFollow.gd" id="3_funnq"]
+[ext_resource type="PackedScene" uid="uid://ck8r7tqyegby4" path="res://scenes/enemies/attack_range_types/attack_area_01.tscn" id="3_jr2rb"]
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="3_yihnw"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="4_lxshi"]
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyMeleeAttack.gd" id="6_3nl6f"]
@@ -88,8 +89,9 @@ script = ExtResource("3_funnq")
 move_speed = 1.5
 rotation_speed = 15.0
 
-[node name="EnemyMeleeAttack" type="Node" parent="StateMachine"]
+[node name="MeleeAttack" type="Node" parent="StateMachine"]
 script = ExtResource("6_3nl6f")
+attack_size = ExtResource("3_jr2rb")
 
 [node name="AggroTimeout" type="Timer" parent="."]
 unique_name_in_owner = true

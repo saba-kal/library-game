@@ -6,6 +6,7 @@ class_name EnemyFollow
 @export var rotation_speed:float = 10.0
 
 func Enter():
+	print("Entering: Follow State")
 	pass
 
 func Exit():
@@ -25,10 +26,12 @@ func Physics_Update(_delta: float):
 		var target_rotation = atan2(move_direction.x, move_direction.z) - enemy.rotation.y
 		
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, rotation_speed * _delta)
-		enemy.velocity = move_direction * move_speed
+		enemy.velocity.x = move_direction.x * move_speed
+		enemy.velocity.z = move_direction.z * move_speed
 		
 		if player_target != null:
 			if enemy.global_position.distance_to(player_target.global_position) < engage_range:
-				print("ATTACK")
+				Transitioned.emit(self,"meleeattack")
 	else:
+		nav_agent.target_position = Vector3.ZERO
 		Transitioned.emit(self,"idle")

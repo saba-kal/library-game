@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck8r7tqyegby4"]
+
+[ext_resource type="Script" path="res://scripts/enemies/attack_range_types/attack_area_01.gd" id="1_26urj"]
+
+[node name="AttackArea01" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_26urj")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0.5, 0)
+polygon = PackedVector2Array(1, -1, 1, 1, 0, 0)
