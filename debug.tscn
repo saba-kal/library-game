@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://dw66oocgjowpb"]
+[gd_scene load_steps=14 format=3 uid="uid://dw66oocgjowpb"]
 
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="1_nsyf2"]
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="2_oeq88"]
 [ext_resource type="PackedScene" uid="uid://78h1btx4mad8" path="res://scenes/enemies/enemy_base.tscn" id="2_rxej5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oep0q"]
@@ -121,6 +120,5 @@ shape = SubResource("ConcavePolygonShape3D_saw2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46881, 0, 11.6761)
 collision_layer = 1
 collision_mask = 1
-script = ExtResource("2_oeq88")
 
 [node name="EnemyBase" parent="." instance=ExtResource("2_rxej5")]
