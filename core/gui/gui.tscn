@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1pi1kgma618d"]
+
+[ext_resource type="Script" path="res://core/gui/gui.gd" id="1_ds54n"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t76s2"]
+shader = ExtResource("1_iooxw")
+shader_parameter/lod = 0.9
+
+[node name="GUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ds54n")
+
+[node name="Pause" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+material = SubResource("ShaderMaterial_t76s2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="Panel" parent="Pause"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.388889
+anchor_top = 0.296296
+anchor_right = 0.611111
+anchor_bottom = 0.691358
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Button_RESUME" type="Button" parent="Pause/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "RESUME"
+
+[node name="Button_QUIT" type="Button" parent="Pause/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "QUIT TO MAIN MENU"
+
+[connection signal="pressed" from="Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME" to="." method="resume_pressed"]
+[connection signal="pressed" from="Pause/Panel/MarginContainer/VBoxContainer/Button_QUIT" to="." method="quit_pressed"]
