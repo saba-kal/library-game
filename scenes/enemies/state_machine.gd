@@ -14,6 +14,9 @@ var current_state:State
 var states:Dictionary = {}
 
 func _ready() -> void:
+	if aggro_timeout:
+		aggro_timeout.timeout.connect(_on_aggro_timeout_timeout)
+	
 	if detection_type:
 		detection_type.body_entered.connect(player_entered_range)
 		detection_type.body_exited.connect(player_exited_range)
@@ -50,6 +53,7 @@ func on_child_transitioned(state, new_state_name):
 		new_state.Enter()
 		current_state = new_state
 	else:
+		current_state.SetTarget(player_target)
 		new_state.Enter()
 		current_state = new_state
 		current_state.SetTarget(player_target)
@@ -62,6 +66,7 @@ func player_entered_range(body: Node3D):
 
 func player_exited_range(body:Node3D):
 	if body.is_in_group("player"):
+		print("Left Range")
 		aggro_timeout.start(aggro_timeout_duration)
 
 func line_of_sight_check():
@@ -78,6 +83,7 @@ func line_of_sight_check():
 				aggro_timeout.stop()
 
 func _on_aggro_timeout_timeout() -> void:
+	print("Aggro Timed Out")
 	engaged = false
 	player_target = null
-	current_state.SetTarget(player_target)
+	current_state.SetTarget(null)

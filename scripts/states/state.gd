@@ -8,6 +8,8 @@ func SetTarget(target):
 	if target:
 		player_target = target
 		print(player_target)
+	else:
+		player_target = null
 
 func Enter():
 	pass

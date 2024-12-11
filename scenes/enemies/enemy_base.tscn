@@ -50,6 +50,8 @@ mesh = SubResource("CapsuleMesh_7q0cw")
 
 [node name="ConeDetection" parent="Body" instance=ExtResource("4_lxshi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+cone_width = 4.0
+cone_length = 7.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.373765, 0.623297)
@@ -86,14 +88,13 @@ script = ExtResource("3_funnq")
 enemy = NodePath("../..")
 mesh = NodePath("../../Body")
 nav_agent = NodePath("../../NavigationAgent3D")
-move_speed = 3.0
+move_speed = 1.5
 rotation_speed = 15.0
 
 [node name="AggroTimeout" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
-
-[connection signal="timeout" from="AggroTimeout" to="." method="_on_aggro_timeout_timeout"]

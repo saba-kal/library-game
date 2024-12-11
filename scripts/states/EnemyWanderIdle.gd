@@ -7,13 +7,16 @@ class_name EnemyWanderIdle
 @export var move_speed:float = 2.0
 @export var rotation_speed:float = 10.0
 
-var starting_position:Vector3
+var starting_position:Vector3 = Vector3.ZERO
 
 func random_new_spot():
 	nav_agent.target_position = Vector3(starting_position.x + randf_range(-5,5), 0,starting_position.z + randf_range(-5,5))
 	
 func Enter():
-	starting_position = enemy.global_position
+	if starting_position == Vector3.ZERO:
+		starting_position = enemy.global_position
+	else:
+		nav_agent.target_position = starting_position
 	nav_agent.navigation_finished.connect(random_new_spot)
 	if !nav_agent.target_position:
 		random_new_spot()
@@ -30,7 +33,6 @@ func Physics_Update(_delta:float):
 		nav_agent.navigation_finished.disconnect(random_new_spot)
 		Transitioned.emit(self,"Follow")
 		player_target = null
-		Exit()
 	if enemy:
 		await get_tree().physics_frame
 		var destination = nav_agent.get_next_path_position()

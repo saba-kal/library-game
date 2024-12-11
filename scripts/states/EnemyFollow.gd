@@ -16,16 +16,23 @@ func Exit():
 
 func Update(_delta: float):
 	if nav_agent:
-		nav_agent.target_position = player_target.global_position
+		if player_target:
+			nav_agent.target_position = player_target.global_position
 
 func Physics_Update(_delta: float):
-	if player_target:
+	if player_target != null:
 		await get_tree().physics_frame
+		
 		var destination = nav_agent.get_next_path_position()
 		var local_destination = destination - enemy.global_position
 		var move_direction = local_destination.normalized()
 		var target_rotation = atan2(move_direction.x, move_direction.z) - enemy.rotation.y
+		
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, rotation_speed * _delta)
 		enemy.velocity = move_direction * move_speed
-	if enemy.global_position.distance_to(player_target.global_position) < engage_range:
-		print("ATTACK")
+		
+		if player_target != null:
+			if enemy.global_position.distance_to(player_target.global_position) < engage_range:
+				print("ATTACK")
+	else:
+		Transitioned.emit(self,"idle")
