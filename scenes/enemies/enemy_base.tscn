@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://78h1btx4mad8"]
+[gd_scene load_steps=16 format=3 uid="uid://78h1btx4mad8"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_77wm7"]
 [ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="2_j1e2k"]
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyFollow.gd" id="3_funnq"]
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="3_yihnw"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="4_lxshi"]
+[ext_resource type="Script" path="res://scripts/enemies/states/EnemyMeleeAttack.gd" id="6_3nl6f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnm8j"]
 albedo_color = Color(0.64428, 0.78, 0.3276, 1)
@@ -69,27 +70,26 @@ mesh = SubResource("CylinderMesh_r5t4q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_a1eye")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "intial_state", "aggro_timeout", "detection_type")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "mesh", "nav_agent", "intial_state", "aggro_timeout", "detection_type")]
 script = ExtResource("2_j1e2k")
 enemy_body = NodePath("..")
+mesh = NodePath("../Body")
+nav_agent = NodePath("../NavigationAgent3D")
 intial_state = NodePath("Idle")
 aggro_timeout = NodePath("../AggroTimeout")
 detection_type = NodePath("../Body/ConeDetection")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "mesh", "nav_agent")]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_yihnw")
-enemy = NodePath("../..")
-mesh = NodePath("../../Body")
-nav_agent = NodePath("../../NavigationAgent3D")
 rotation_speed = 2.0
 
-[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "mesh", "nav_agent")]
+[node name="Follow" type="Node" parent="StateMachine"]
 script = ExtResource("3_funnq")
-enemy = NodePath("../..")
-mesh = NodePath("../../Body")
-nav_agent = NodePath("../../NavigationAgent3D")
 move_speed = 1.5
 rotation_speed = 15.0
+
+[node name="EnemyMeleeAttack" type="Node" parent="StateMachine"]
+script = ExtResource("6_3nl6f")
 
 [node name="AggroTimeout" type="Timer" parent="."]
 unique_name_in_owner = true

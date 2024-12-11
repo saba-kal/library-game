@@ -59,7 +59,7 @@ mesh = SubResource("CylinderMesh_28m43")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.408711, -3.53903e-08)
 mesh = SubResource("CylinderMesh_7lfk7")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_o8gvb")
 

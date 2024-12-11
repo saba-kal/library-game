@@ -1,6 +1,8 @@
 extends Node
 
 @export var enemy_body:CharacterBody3D
+@export var mesh:MeshInstance3D = null
+@export var nav_agent:NavigationAgent3D = null
 @export var intial_state:State = null
 @export var aggro_timeout:Timer = null
 @export var aggro_timeout_duration:float = 3
@@ -22,15 +24,17 @@ func _ready() -> void:
 		detection_type.body_entered.connect(player_entered_range)
 		detection_type.body_exited.connect(player_exited_range)
 	
-	if intial_state:
-		intial_state.Enter()
-		current_state = intial_state
-	
 	## Loads children attached under state machine, and connects their transitioned signal.
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transitioned)
+			child.SetVariables(enemy_body, mesh, nav_agent)
+	
+	if intial_state:
+		intial_state.Enter()
+		current_state = intial_state
+
 
 ## Runs the process function of the current state.
 func _process(delta: float) -> void:

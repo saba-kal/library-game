@@ -1,16 +1,13 @@
 extends State
 class_name EnemyFollow
 
-@export var enemy:CharacterBody3D = null
-@export var mesh:MeshInstance3D = null
-@export var nav_agent:NavigationAgent3D = null
 @export var move_speed:float = 2.0
 @export var engage_range:float = 2.0
 @export var rotation_speed:float = 10.0
 
 func Enter():
 	pass
-	
+
 func Exit():
 	pass
 
@@ -22,7 +19,6 @@ func Update(_delta: float):
 func Physics_Update(_delta: float):
 	if player_target != null:
 		await get_tree().physics_frame
-		
 		var destination = nav_agent.get_next_path_position()
 		var local_destination = destination - enemy.global_position
 		var move_direction = local_destination.normalized()
