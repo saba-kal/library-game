@@ -10,12 +10,13 @@ func random_new_spot():
 	nav_agent.target_position = Vector3(starting_position.x + randf_range(-5,5), 0,starting_position.z + randf_range(-5,5))
 
 func Enter():
+	print("Entering: Idle Wander State")
 	if starting_position == Vector3.ZERO:
 		starting_position = enemy.global_position
 	else:
 		nav_agent.target_position = starting_position
 		nav_agent.navigation_finished.connect(random_new_spot)
-	if !nav_agent.target_position:
+	if nav_agent.target_position == Vector3.ZERO:
 		random_new_spot()
 		nav_agent.navigation_finished.connect(random_new_spot)
 
@@ -40,5 +41,5 @@ func Physics_Update(_delta:float):
 		var move_direction = local_destination.normalized()
 		var target_rotation = atan2(move_direction.x, move_direction.z) - enemy.rotation.y
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, rotation_speed * _delta)
-		enemy.velocity = move_direction * move_speed
-	
+		enemy.velocity.x = move_direction.x * move_speed
+		enemy.velocity.z = move_direction.z * move_speed
