@@ -8,6 +8,7 @@ signal changed(health:int, delta:int)
 
 func _ready() -> void:
 	current = maximum
+	owner.set_meta("damageable", true)
 
 func take_damage(damage_amount:int) -> void:
 	var overkill = maxi(damage_amount - current, 0)

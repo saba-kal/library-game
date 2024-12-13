@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmtrnvihyrtdi"]
+[gd_scene load_steps=17 format=3 uid="uid://dmtrnvihyrtdi"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f2x5"]
 [ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2_23lc7"]
 [ext_resource type="Script" path="res://scripts/player/movement.gd" id="4_o2lce"]
 [ext_resource type="Script" path="res://scripts/player/dash.gd" id="5_0dcju"]
+[ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="5_i7e0h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snnpj"]
 albedo_color = Color(0.78, 0.45578, 0.3276, 1)
@@ -37,6 +38,10 @@ bottom_radius = 0.6
 height = 0.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8gvb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_blfke"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2sj73"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -76,10 +81,72 @@ spring_length = 10.0
 
 [node name="StateMachine" type="Node" parent="."]
 
-[node name="Movement" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_state")]
+[node name="Movement" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_state", "attack_state")]
 script = ExtResource("4_o2lce")
 dash_state = NodePath("../Dash")
+attack_state = NodePath("../AttackOne")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state")]
 script = ExtResource("5_0dcju")
 movement_state = NodePath("../Movement")
+
+[node name="AttackOne" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state", "next_attack", "placeholder_fx")]
+script = ExtResource("5_i7e0h")
+movement_state = NodePath("../Movement")
+next_attack = NodePath("../AttackTwo")
+distance = 0.5
+wind_up_period = 0.2
+swing_duration = 0.3
+wind_down_period = 0.5
+placeholder_fx = NodePath("HitArea/Placeholder")
+
+[node name="HitArea" type="Area3D" parent="StateMachine/AttackOne"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04778, 1.02113)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StateMachine/AttackOne/HitArea"]
+shape = SubResource("BoxShape3D_blfke")
+
+[node name="Placeholder" type="MeshInstance3D" parent="StateMachine/AttackOne/HitArea"]
+visible = false
+mesh = SubResource("BoxMesh_2sj73")
+skeleton = NodePath("../..")
+
+[node name="AttackTwo" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state", "next_attack", "placeholder_fx")]
+script = ExtResource("5_i7e0h")
+movement_state = NodePath("../Movement")
+next_attack = NodePath("../BigAttack")
+distance = 0.5
+wind_up_period = 0.2
+swing_duration = 0.3
+wind_down_period = 0.5
+placeholder_fx = NodePath("HitArea/Placeholder")
+
+[node name="HitArea" type="Area3D" parent="StateMachine/AttackTwo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04778, 1.02113)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StateMachine/AttackTwo/HitArea"]
+shape = SubResource("BoxShape3D_blfke")
+
+[node name="Placeholder" type="MeshInstance3D" parent="StateMachine/AttackTwo/HitArea"]
+visible = false
+mesh = SubResource("BoxMesh_2sj73")
+skeleton = NodePath("../..")
+
+[node name="BigAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state", "placeholder_fx")]
+script = ExtResource("5_i7e0h")
+movement_state = NodePath("../Movement")
+distance = 2.0
+wind_up_period = 0.5
+wind_down_period = 0.6
+placeholder_fx = NodePath("HitArea/Placeholder")
+
+[node name="HitArea" type="Area3D" parent="StateMachine/BigAttack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04778, 1.02113)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StateMachine/BigAttack/HitArea"]
+shape = SubResource("BoxShape3D_blfke")
+
+[node name="Placeholder" type="MeshInstance3D" parent="StateMachine/BigAttack/HitArea"]
+visible = false
+mesh = SubResource("BoxMesh_2sj73")
+skeleton = NodePath("../..")
