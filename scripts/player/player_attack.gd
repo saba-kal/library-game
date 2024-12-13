@@ -8,17 +8,17 @@ signal started
 
 @export_group("Attack Details")
 @export var damage:int = 1
-@export var distance:float = .2
+@export var distance:float = .4
 @export var wind_up_period:float = 0.3
 @export var swing_duration:float = .4
 @export var wind_down_period:float = .3
 @export var placeholder_fx:Node3D
 
-@onready var hit_area: Area3D = $HitArea
+@onready var transform: Node3D = $Transform
+@onready var hit_area: Area3D = $Transform/HitArea
 
 var step_dir:Vector2
 var last_dir:Vector2
-var input_dir:Vector2
 var swing_timer:Timer
 var wind_up_timer:Timer
 var wind_down_timer:Timer
@@ -44,7 +44,7 @@ func _ready() -> void:
 	placeholder_fx.visible = false
 
 func handle_input(_event: InputEvent) -> void:
-	input_dir = Input.get_vector("left", "right", "up", "down")
+	var input_dir := Input.get_vector("left", "right", "up", "down")
 	last_dir = input_dir if input_dir else last_dir
 	if _event.is_action_pressed("attack"):
 		if next_attack and wind_up_timer.time_left + swing_timer.time_left == 0 and wind_down_timer.time_left > 0:
@@ -53,6 +53,7 @@ func handle_input(_event: InputEvent) -> void:
 			queued_attack = true
 
 func physics_update(_delta: float) -> void:
+	transform.global_position = character.global_position
 	if swing_timer.time_left > 0:
 		character.constant_velocity(_delta, distance / swing_duration)
 		for body in hit_area.get_overlapping_bodies():
@@ -62,12 +63,14 @@ func physics_update(_delta: float) -> void:
 		character.constant_velocity(_delta, 0)
 
 func enter(previous_state_path: String, data := {}) -> void:
-	print("entered attack \"" + name + "\"")
+	print("entered attack \"" + name + "\" with data: " + str(data))
 	queued_attack = false
-	if data.has("direction"):
+	if data.has('direction'):
 		step_dir = data.direction
 		last_dir = step_dir
 		character.set_orientation_from_top_down_vector(step_dir)
+		transform.global_position = character.global_position
+		transform.global_basis = Basis.looking_at(character.direction, Vector3.UP, true)
 	wind_up_timer.start(wind_up_period)
 	
 func exit() -> void:
