@@ -60,7 +60,7 @@ func adjust_body_velocity(delta:float, move_speed:float, acceleration:float) -> 
 		velocity.x = lerp(velocity.x, direction.x * move_speed, acceleration * delta)
 		velocity.z = lerp(velocity.z, direction.z * move_speed, acceleration * delta)
 	
-func constant_velocity(delta:float, speed:float) -> void:
+func constant_velocity(speed:float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed

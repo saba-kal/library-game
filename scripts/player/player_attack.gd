@@ -55,13 +55,8 @@ func handle_input(_event: InputEvent) -> void:
 func physics_update(_delta: float) -> void:
 	transform.global_position = character.global_position
 	if swing_timer.time_left > 0:
-		character.constant_velocity(_delta, distance / swing_duration)
-		for body in hit_area.get_overlapping_bodies():
-			if body.has_meta("damageable"):
-				hit_bodies.get_or_add(body)
-	else:
-		character.constant_velocity(_delta, 0)
-
+		add_hit_bodies()
+	
 func enter(previous_state_path: String, data := {}) -> void:
 	print("entered attack \"" + name + "\" with data: " + str(data))
 	queued_attack = false
@@ -75,9 +70,14 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 func exit() -> void:
 	placeholder_fx.visible = false
+	swing_timer.stop()
+	wind_down_timer.stop()
+	wind_up_timer.stop()
 
 func swing_complete() -> void:
+	add_hit_bodies()
 	print("hitting " + str(hit_bodies.size()) + " bodies")
+	character.constant_velocity(0)
 	for body:Node3D in hit_bodies:
 		for component in body.get_children():
 			if not component.has_method("take_damage"):
@@ -90,8 +90,15 @@ func swing_complete() -> void:
 		finished.emit(next_attack.get_path(), {'direction': last_dir})
 
 func swing_start() -> void:
+	character.constant_velocity(distance / swing_duration)
 	swing_timer.start(swing_duration)
 	placeholder_fx.visible = true
+	add_hit_bodies()
 
 func done() -> void:
 	finished.emit(movement_state.get_path())
+
+func add_hit_bodies() -> void:
+	for body in hit_area.get_overlapping_bodies():
+		if body.has_meta("damageable"):
+			hit_bodies.get_or_add(body)

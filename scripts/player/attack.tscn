@@ -14,6 +14,8 @@ placeholder_fx = NodePath("Transform/HitArea/Placeholder")
 
 [node name="HitArea" type="Area3D" parent="Transform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04778, 1.02113)
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Transform/HitArea"]
 shape = SubResource("BoxShape3D_blfke")
