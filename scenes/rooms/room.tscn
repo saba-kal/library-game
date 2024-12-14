@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbkhcq0qbd8rr"]
+[gd_scene load_steps=5 format=3 uid="uid://dbkhcq0qbd8rr"]
+
+[ext_resource type="Script" path="res://scripts/zoning/room.gd" id="1_6qdtf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvxas"]
 albedo_color = Color(0.078, 0.0858, 0.13, 1)
@@ -11,6 +13,7 @@ size = Vector2(25, 25)
 data = PackedVector3Array(12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, -12.5, 0, -12.5, 12.5, 0, -12.5)
 
 [node name="Room" type="Node3D"]
+script = ExtResource("1_6qdtf")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_df0gu")

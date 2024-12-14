@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwx0askag2hb7"]
 
 [ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/rooms/room.tscn" id="1_ay1g3"]
-[ext_resource type="Script" path="res://scenes/rooms/room_connector.gd" id="2_n42ru"]
+[ext_resource type="Script" path="res://scripts/zoning/room_connector.gd" id="2_n42ru"]
 
 [node name="TunnelCurved" instance=ExtResource("1_ay1g3")]
 

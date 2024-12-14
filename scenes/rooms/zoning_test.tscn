@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dgr87eq5sqdxr"]
 
-[ext_resource type="Script" path="res://scripts/zoning/deterministic_zone_generator.gd" id="1_txysj"]
+[ext_resource type="Script" path="res://scripts/zoning/zone_generator.gd" id="1_txysj"]
 [ext_resource type="PackedScene" uid="uid://bvyba7ar7v6y7" path="res://scenes/rooms/startroom.tscn" id="1_wysce"]
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="3_pnxei"]
 

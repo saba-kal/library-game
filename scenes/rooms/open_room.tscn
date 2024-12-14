@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqvnkqggf43k2"]
+[gd_scene load_steps=4 format=3 uid="uid://bqvnkqggf43k2"]
 
 [ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/rooms/room.tscn" id="1_mvksm"]
+[ext_resource type="Script" path="res://scripts/zoning/room_connector.gd" id="2_pbcq8"]
+[ext_resource type="Script" path="res://scripts/zoning/open_room.gd" id="2_t3pm1"]
 
 [node name="OpenRoom" instance=ExtResource("1_mvksm")]
+script = ExtResource("2_t3pm1")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.5, 7)
@@ -43,3 +46,22 @@ size = Vector3(1, 4, 11)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 1.5, 12)
 use_collision = true
 size = Vector3(1, 4, 11)
+
+[node name="RoomConnector" type="Marker3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+script = ExtResource("2_pbcq8")
+direction = 3
+
+[node name="RoomConnector2" type="Marker3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+script = ExtResource("2_pbcq8")
+direction = 1
+
+[node name="RoomConnector3" type="Marker3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+script = ExtResource("2_pbcq8")
+direction = 2
+
+[node name="RoomConnector4" type="Marker3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+script = ExtResource("2_pbcq8")
