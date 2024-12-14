@@ -15,7 +15,7 @@ func random_connector() -> RoomConnector:
     return connectors[randi() % connectors.size()]
 
 func rotate_room(direction):
-    direction += random_connector().direction
+    direction += (6 - random_connector().direction) % 4
     rotate_y(direction * PI / 2)
     for connector in get_connectors():
         connector.direction += direction

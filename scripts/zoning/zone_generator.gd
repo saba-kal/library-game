@@ -1,25 +1,34 @@
 extends Node3D
 
-var room_length: int = 24
+var room_length: int = 25
 
 
-var room_chooser: RoomChooser
+@onready var room_chooser = $RoomChooser
 var explorecount: int = 0
 var explored: Array[Point] = []
 var head: QueuedPoint
 var tail: QueuedPoint
+var zone: int = 0
 
 func _ready() -> void:
     randomize()
-    room_chooser = RoomChooser.new()
     explored.append(Point.new(0, 0))
-    head = QueuedPoint.new(Point.new(-1, 0), null)
-    tail = head
+    enqueue(Point.new(-1, 0, 0, RoomConnector.DIRECTION.LEFT))
+    while not is_empty_queue():
+        room_cycle(dequeue())
+    enqueue(Point.new(0, -1, 0, RoomConnector.DIRECTION.UP))
+    zone += 1
+    while not is_empty_queue():
+        room_cycle(dequeue())
+    enqueue(Point.new(1, 0, 0, RoomConnector.DIRECTION.RIGHT))
+    zone += 1
     while not is_empty_queue():
         room_cycle(dequeue())
 
 func room_cycle(point: Point) -> void:
-    var room: Room = room_chooser.choose_room(point.depth)
+    if(is_explored(point)):
+        return
+    var room: Room = room_chooser.choose_room(point.depth, zone)
     if(not room):
         return
     add_room(room, point.x, point.y, point.direction)
@@ -39,8 +48,7 @@ func room_cycle(point: Point) -> void:
                 x += 1
 
         newPoint = Point.new(x, y, point.depth + 1, connector.direction)
-        if(not is_explored(newPoint)):
-            enqueue(newPoint)
+        enqueue(newPoint)
     explored.append(point)
 
 func add_room(scene: Room, x: int = 0, z: int = 0, angle: int = 0) -> void:

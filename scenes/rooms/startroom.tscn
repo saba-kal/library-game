@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvyba7ar7v6y7"]
+[gd_scene load_steps=4 format=3 uid="uid://bvyba7ar7v6y7"]
 
 [ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/rooms/room.tscn" id="1_cjsj8"]
+[ext_resource type="Script" path="res://scripts/zoning/room_connector.gd" id="2_hk3a1"]
+
+[sub_resource type="GDScript" id="GDScript_su01n"]
+script/source = "extends Room
+
+func generation_chance(depth: int) -> float:
+    return max(1 - (depth as float / 4), 0)
+"
 
 [node name="ThreeDoorRoom" instance=ExtResource("1_cjsj8")]
+script = SubResource("GDScript_su01n")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.5, 7)
@@ -12,7 +21,7 @@ size = Vector3(1, 4, 11)
 [node name="CSGBox3D2" type="CSGBox3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.5, -7)
 use_collision = true
-size = Vector3(1, 4, 10)
+size = Vector3(1, 4, 11)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.5, -12)
@@ -38,3 +47,17 @@ size = Vector3(1, 4, 11)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, 12)
 use_collision = true
 size = Vector3(1, 4, 25)
+
+[node name="RoomConnector" type="Marker3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+script = ExtResource("2_hk3a1")
+direction = 1
+
+[node name="RoomConnector2" type="Marker3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+script = ExtResource("2_hk3a1")
+
+[node name="RoomConnector3" type="Marker3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+script = ExtResource("2_hk3a1")
+direction = 3

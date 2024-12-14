@@ -8,4 +8,3 @@ enum DIRECTION{
     }
 
 @export var direction: DIRECTION
-var connect_to: RoomConnector

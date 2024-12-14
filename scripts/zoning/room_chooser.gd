@@ -9,12 +9,25 @@ var tunnel_curved: Resource = preload("res://scenes/rooms/tunnel_curved.tscn")
 var dead_end: Resource = preload("res://scenes/rooms/dead_end.tscn")
 var dead_end_room: Node = dead_end.instantiate()
 
-var rooms = [open, dead_end]
+@export var zone_1: Array[PackedScene]
+@export var zone_2: Array[PackedScene]
+@export var zone_3: Array[PackedScene]
+@onready var zones = [zone_1, zone_2, zone_3]
+var zone_1_rooms
+var zone_2_rooms
+var zone_3_rooms
+var zones_rooms
 
-func choose_room(depth: int) -> Room:
-    var chances = PackedFloat32Array()
-    chances.append(open_room.generation_chance(depth))
-    chances.append(dead_end_room.generation_chance(depth))
+func _ready() -> void:
+    zone_1_rooms = zone_1.map(func(scene: PackedScene): return scene.instantiate())
+    zone_2_rooms = zone_2.map(func(scene): return scene.instantiate())
+    zone_3_rooms = zone_3.map(func(scene): return scene.instantiate())
+    zones_rooms = [zone_1_rooms, zone_2_rooms, zone_3_rooms]
+
+func choose_room(depth: int, zone_index: int) -> Room:
+    var zone = zones[zone_index]
+    var zone_rooms = zones_rooms[zone_index]
+    var chances = zone_rooms.map(func (room): return room.generation_chance(depth))
     var chance_count: float = 0
     for c in chances:
         chance_count += c
@@ -27,4 +40,4 @@ func choose_room(depth: int) -> Room:
         wheightedchances.append(chance_float)
     var randomfloat = randf()
     var roomindex: int = wheightedchances.bsearch(randomfloat)
-    return rooms[roomindex].instantiate()
+    return zone[roomindex].instantiate()
