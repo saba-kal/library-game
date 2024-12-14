@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://78h1btx4mad8"]
+[gd_scene load_steps=18 format=3 uid="uid://78h1btx4mad8"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_77wm7"]
 [ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="2_j1e2k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="3_yihnw"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="4_lxshi"]
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyMeleeAttack.gd" id="6_3nl6f"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="8_may7e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnm8j"]
 albedo_color = Color(0.64428, 0.78, 0.3276, 1)
@@ -100,3 +101,6 @@ one_shot = true
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("8_may7e")

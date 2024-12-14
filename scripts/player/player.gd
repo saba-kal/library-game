@@ -40,6 +40,8 @@ func _physics_process(delta: float) -> void:
 	
 	state.physics_update(delta)
 	
+	if direction:
+		body.rotation.y = lerp_angle(body.rotation.y, target_rotation, rotation_speed * delta)
 	if not direction:
 		velocity.x = lerp(velocity.x, 0.0, decceleration * delta)
 		velocity.z = lerp(velocity.z, 0.0, decceleration * delta)
@@ -55,6 +57,10 @@ func set_orientation_from_top_down_vector(vector:Vector2) -> void:
 
 func adjust_body_velocity(delta:float, move_speed:float, acceleration:float) -> void:
 	if direction:
-		body.rotation.y = lerp_angle(body.rotation.y, target_rotation, rotation_speed * delta)
 		velocity.x = lerp(velocity.x, direction.x * move_speed, acceleration * delta)
 		velocity.z = lerp(velocity.z, direction.z * move_speed, acceleration * delta)
+	
+func constant_velocity(speed:float) -> void:
+	if direction:
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
