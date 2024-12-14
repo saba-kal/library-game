@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://f8vm0nsm4vkq"]
+
+[ext_resource type="PackedScene" uid="uid://cd7ku1ntwth6u" path="res://scenes/gui/health_progress_bar.tscn" id="1_mqgnx"]
+[ext_resource type="Script" path="res://scripts/gui/progress_health_bar.gd" id="1_vj1pq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_03n7v"]
+viewport_path = NodePath("SubViewport")
+
+[node name="HeathBar3D" type="Node3D"]
+script = ExtResource("1_vj1pq")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture = SubResource("ViewportTexture_03n7v")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="HealthProgressBar" parent="SubViewport" instance=ExtResource("1_mqgnx")]

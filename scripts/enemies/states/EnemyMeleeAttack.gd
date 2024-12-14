@@ -1,10 +1,12 @@
 extends State
 class_name EnemyMeleeAttack
 
+@export var damage:int = 1
 @export var attack_size:PackedScene = null
 var attack_instance:Area3D
 var time_before_attack_hits:float = 1
 var player_in_range:bool = false
+var player:Player
 
 func Enter():
 	print("Entering: Melee Attack State")
@@ -23,14 +25,16 @@ func spawn_area_attack():
 func player_in_area_range(body:Node3D):
 	if body.is_in_group("player"):
 		player_in_range = true
+		player = body
 
 func player_outside_range(body:Node3D):
 	if body.is_in_group("player"):
 		player_in_range = false
+		player = null
 
 func perform_attack():
 	if player_in_range:
-		print("PLAYER DAMAGED.")
+		player.take_damage(damage)
 	else:
 		print("Player wasn't in range of attack area.")
 	attack_instance.queue_free()

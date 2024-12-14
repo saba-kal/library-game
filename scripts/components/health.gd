@@ -1,4 +1,4 @@
-extends Node
+class_name Health extends Node
 
 @export var maximum:int = 3
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgr87eq5sqdxr"]
+[gd_scene load_steps=8 format=3 uid="uid://dgr87eq5sqdxr"]
 
 [ext_resource type="Script" path="res://scripts/zoning/zone_generator.gd" id="1_txysj"]
 [ext_resource type="PackedScene" uid="uid://bvyba7ar7v6y7" path="res://scenes/rooms/startroom.tscn" id="1_wysce"]
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="3_pnxei"]
+[ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="4_t52vg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hfyl8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -33,3 +34,5 @@ environment = SubResource("Environment_dobn6")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
+
+[node name="GUI" parent="." instance=ExtResource("4_t52vg")]

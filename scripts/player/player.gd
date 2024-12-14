@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 @export_group("Movement Settings")
 @export var move_speed:float = 5
@@ -10,6 +10,7 @@ extends CharacterBody3D
 @export var initial_state:CharacterState
 
 @onready var body: MeshInstance3D = $Body
+@onready var health: Health = $Health
 @onready var state_machine: Node = $StateMachine
 @onready var state:CharacterState = (func get_initial_state() -> CharacterState:
 	return initial_state if initial_state else state_machine.get_child(0)
@@ -64,3 +65,6 @@ func constant_velocity(speed:float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
+
+func take_damage(damage: int) -> void:
+	self.health.take_damage(damage)
