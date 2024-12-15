@@ -1,6 +1,7 @@
 extends State
 class_name EnemyWanderIdle
 
+@export var idle_anim_name:String = ""
 @export var move_speed:float = 2.0
 @export var rotation_speed:float = 10.0
 
@@ -11,6 +12,7 @@ func random_new_spot():
 
 func Enter():
 	print("Entering: Idle Wander State")
+	anim_player.play(idle_anim_name)
 	if starting_position == Vector3.ZERO:
 		starting_position = enemy.global_position
 	else:

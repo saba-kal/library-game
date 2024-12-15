@@ -1,7 +1,8 @@
 extends Node
 
-@export var enemy_body:CharacterBody3D
-@export var mesh:MeshInstance3D = null
+@export var enemy_body:CharacterBody3D = null
+@export var mesh:Node3D = null
+@export var anim_player:AnimationPlayer = null
 @export var nav_agent:NavigationAgent3D = null
 @export var intial_state:State = null
 @export var aggro_timeout:Timer = null
@@ -34,7 +35,7 @@ func _ready() -> void:
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transitioned)
-			child.SetVariables(enemy_body, mesh, nav_agent)
+			child.SetVariables(enemy_body, mesh, nav_agent,anim_player)
 	
 	if intial_state:
 		intial_state.Enter()

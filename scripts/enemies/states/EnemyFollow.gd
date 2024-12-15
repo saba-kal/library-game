@@ -1,12 +1,14 @@
 extends State
 class_name EnemyFollow
 
+@export var run_anim_name:String = ""
 @export var move_speed:float = 2.0
 @export var engage_range:float = 2.0
 @export var rotation_speed:float = 10.0
 
 func Enter():
 	print("Entering: Follow State")
+	anim_player.play(run_anim_name, 0.2)
 	pass
 
 func Exit():
