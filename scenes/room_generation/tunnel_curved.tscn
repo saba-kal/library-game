@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwx0askag2hb7"]
 
-[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/rooms/room.tscn" id="1_ay1g3"]
-[ext_resource type="Script" path="res://scripts/zoning/room_connector.gd" id="2_n42ru"]
+[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/room_generation/room.tscn" id="1_ay1g3"]
+[ext_resource type="Script" path="res://scripts/room_generation/room_connector.gd" id="2_n42ru"]
 
 [sub_resource type="GDScript" id="GDScript_nftig"]
 script/source = "extends Room
 
 func generation_chance(depth: int) -> float:
-    return 1 + (2 * depth) - (depth * depth)
+	return 1 + (2 * depth) - (depth * depth)
 "
 
 [node name="TunnelCurved" instance=ExtResource("1_ay1g3")]

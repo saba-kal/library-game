@@ -1,9 +1,10 @@
 extends Node
 
-@export var scene_change_duration:float = 3
-@export var main_menu:PackedScene
-@export var debug_area:PackedScene
+@export var scene_change_duration: float = 3
+@export var main_menu: PackedScene
+@export var debug_area: PackedScene
 @export var debug_generation_area: PackedScene
+@export var generation_area_two: PackedScene
 @onready var timer: Timer = %Timer
 @onready var load_cover: Control = %LoadCover
 
@@ -23,6 +24,11 @@ func to_debug_area() -> void:
 func to_debug_generation_area() -> void:
 	next_scene = debug_generation_area
 	current_scene = debug_generation_area
+	scene_change()
+
+func to_generation_area_two() -> void:
+	next_scene = generation_area_two
+	current_scene = generation_area_two
 	scene_change()
 
 

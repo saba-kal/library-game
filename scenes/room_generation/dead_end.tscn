@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4kwo11i2r5mc"]
 
-[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/rooms/room.tscn" id="1_kgcbq"]
-[ext_resource type="Script" path="res://scripts/zoning/room_connector.gd" id="2_7hx21"]
-[ext_resource type="Script" path="res://scripts/zoning/dead_end.gd" id="2_qxjav"]
+[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/room_generation/room.tscn" id="1_kgcbq"]
+[ext_resource type="Script" path="res://scripts/room_generation/room_connector.gd" id="2_7hx21"]
+[ext_resource type="Script" path="res://scripts/room_generation/dead_end.gd" id="2_qxjav"]
 
 [node name="DeadEnd" instance=ExtResource("1_kgcbq")]
 script = ExtResource("2_qxjav")

@@ -12,7 +12,10 @@ func debug_pressed() -> void:
 	print("Pressed Debug Button")
 	ChangeScene.to_debug_area()
 
-
 func debug_generation_pressed():
 	print("Pressed Debug Generation Button")
 	ChangeScene.to_debug_generation_area()
+
+func generation_area_two_pressed():
+	print("Pressed Debug Generation Button")
+	ChangeScene.to_generation_area_two()

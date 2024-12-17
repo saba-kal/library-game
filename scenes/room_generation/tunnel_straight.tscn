@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://byx5aq0e5vjbh"]
 
-[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/rooms/room.tscn" id="1_e7gh7"]
-[ext_resource type="Script" path="res://scripts/zoning/room_connector.gd" id="2_1riat"]
+[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/room_generation/room.tscn" id="1_e7gh7"]
+[ext_resource type="Script" path="res://scripts/room_generation/room_connector.gd" id="2_1riat"]
 
 [sub_resource type="GDScript" id="GDScript_64olk"]
 script/source = "extends Room

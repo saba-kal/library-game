@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqvnkqggf43k2"]
 
-[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/rooms/room.tscn" id="1_mvksm"]
-[ext_resource type="Script" path="res://scripts/zoning/room_connector.gd" id="2_pbcq8"]
-[ext_resource type="Script" path="res://scripts/zoning/open_room.gd" id="2_t3pm1"]
+[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/room_generation/room.tscn" id="1_mvksm"]
+[ext_resource type="Script" path="res://scripts/room_generation/room_connector.gd" id="2_pbcq8"]
+[ext_resource type="Script" path="res://scripts/room_generation/open_room.gd" id="2_t3pm1"]
 
 [node name="OpenRoom" instance=ExtResource("1_mvksm")]
 script = ExtResource("2_t3pm1")

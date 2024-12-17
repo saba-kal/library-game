@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvyba7ar7v6y7"]
 
-[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/rooms/room.tscn" id="1_cjsj8"]
-[ext_resource type="Script" path="res://scripts/zoning/room_connector.gd" id="2_hk3a1"]
+[ext_resource type="PackedScene" uid="uid://dbkhcq0qbd8rr" path="res://scenes/room_generation/room.tscn" id="1_cjsj8"]
+[ext_resource type="Script" path="res://scripts/room_generation/room_connector.gd" id="2_hk3a1"]
 
 [sub_resource type="GDScript" id="GDScript_su01n"]
 script/source = "extends Room
 
 func generation_chance(depth: int) -> float:
-    return max(1 - (depth as float / 4), 0)
+	return max(1 - (depth as float / 4), 0)
 "
 
 [node name="ThreeDoorRoom" instance=ExtResource("1_cjsj8")]
