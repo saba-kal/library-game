@@ -123,3 +123,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46881, 0, 11.6761)
 [node name="EnemyBase" parent="." instance=ExtResource("2_rxej5")]
 
 [node name="GUI" parent="." instance=ExtResource("3_g6erc")]
+
+[connection signal="died" from="Player" to="GUI" method="show_death"]

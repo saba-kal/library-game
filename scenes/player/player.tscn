@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmtrnvihyrtdi"]
+[gd_scene load_steps=17 format=3 uid="uid://dmtrnvihyrtdi"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f2x5"]
 [ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2_23lc7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player/dash.gd" id="5_0dcju"]
 [ext_resource type="PackedScene" uid="uid://md3wow2f5ycb" path="res://scripts/player/attack.tscn" id="5_n2afl"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="6_gp4iy"]
+[ext_resource type="Script" path="res://scenes/player/death.gd" id="6_wjwua"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snnpj"]
 albedo_color = Color(0.78, 0.45578, 0.3276, 1)
@@ -100,6 +101,9 @@ movement_state = NodePath("../Movement")
 distance = 2.0
 wind_up_period = 0.5
 wind_down_period = 0.6
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("6_wjwua")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("6_gp4iy")

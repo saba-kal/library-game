@@ -1,6 +1,7 @@
 extends Control
 
 @onready var pause: Control = %Pause
+@onready var death_message: Control = %DeathMessage
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -21,3 +22,6 @@ func resume_pressed() -> void:
 func quit_pressed() -> void:
 	toggle_pause()
 	ChangeScene.to_main_menu()
+
+func show_death() -> void:
+	death_message.visible = true

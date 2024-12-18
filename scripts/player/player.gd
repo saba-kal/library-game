@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody3D
 
+signal died
+
 @export_group("Movement Settings")
 @export var move_speed:float = 5
 @export var acceleration:float = 4
@@ -15,6 +17,7 @@ class_name Player extends CharacterBody3D
 @onready var state:CharacterState = (func get_initial_state() -> CharacterState:
 	return initial_state if initial_state else state_machine.get_child(0)
 ).call()
+@onready var death = $StateMachine/Death
 
 var direction:Vector3
 var target_rotation:float
@@ -68,3 +71,6 @@ func constant_velocity(speed:float) -> void:
 
 func take_damage(damage: int) -> void:
 	self.health.take_damage(damage)
+	if self.health.current <= 0:
+		_transition_to_next_state(death.get_path())
+		died.emit()
