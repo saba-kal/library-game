@@ -9,6 +9,7 @@ extends Node
 @export var aggro_timeout_duration:float = 3
 @export var detection_type:Area3D = null
 @export var melee_attack_range:Area3D = null
+@export var health: Health
 @export_flags_3d_physics var layers_searched
 
 var player_target:CharacterBody3D
@@ -40,6 +41,9 @@ func _ready() -> void:
 	if intial_state:
 		intial_state.Enter()
 		current_state = intial_state
+
+
+	self.health.changed.connect(self.on_health_changed)
 
 
 ## Runs the process function of the current state.
@@ -110,3 +114,7 @@ func _on_aggro_timeout_timeout() -> void:
 	engaged = false
 	player_target = null
 	current_state.SetTarget(null)
+
+func on_health_changed(health: int, _delta: int) -> void:
+	if(health <= 0):
+		on_child_transitioned(current_state, "Death")
