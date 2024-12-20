@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvyx4xpooiytr"
+path="res://.godot/imported/low_poly_key.obj-4d324e4d5dbf8ef4c8c3c10dbdd2329c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/low_poly_key.obj-4d324e4d5dbf8ef4c8c3c10dbdd2329c.mesh"]
+
+source_file="res://assets/models/collectibles/low_poly_key.obj"
+dest_files=["res://.godot/imported/low_poly_key.obj-4d324e4d5dbf8ef4c8c3c10dbdd2329c.mesh", "res://.godot/imported/low_poly_key.obj-4d324e4d5dbf8ef4c8c3c10dbdd2329c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

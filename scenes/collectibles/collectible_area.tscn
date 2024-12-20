@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmeimln03low1"]
+
+[ext_resource type="Script" path="res://scripts/collectibles/collectible.gd" id="1_kimuk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6r6y0"]
+
+[node name="CollectibleArea" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_kimuk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604838, 0)
+shape = SubResource("SphereShape3D_6r6y0")

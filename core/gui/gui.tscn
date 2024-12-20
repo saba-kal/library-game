@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1pi1kgma618d"]
+[gd_scene load_steps=8 format=3 uid="uid://d1pi1kgma618d"]
 
 [ext_resource type="Script" path="res://core/gui/gui.gd" id="1_ds54n"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
 [ext_resource type="Script" path="res://scripts/gui/player_health_bar.gd" id="3_6a04i"]
 [ext_resource type="Texture2D" uid="uid://b33kcp1b57awf" path="res://assets/textures/GUI/player_icon_placeholder.png" id="3_eyey0"]
 [ext_resource type="PackedScene" uid="uid://cy6ic2npxa53k" path="res://scenes/gui/heart_icon.tscn" id="5_5kxef"]
+[ext_resource type="PackedScene" uid="uid://c2eyb87rkl1af" path="res://scenes/gui/inventory/inventory.tscn" id="5_mwy2m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t76s2"]
 shader = ExtResource("1_iooxw")
@@ -62,6 +63,10 @@ offset_right = 121.0
 offset_bottom = 121.0
 texture = ExtResource("3_eyey0")
 expand_mode = 1
+
+[node name="Inventory" parent="." instance=ExtResource("5_mwy2m")]
+visible = false
+layout_mode = 1
 
 [node name="DeathMessage" type="Control" parent="."]
 unique_name_in_owner = true

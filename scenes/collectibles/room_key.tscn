@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmrjg48d24row"]
+
+[ext_resource type="Script" path="res://scripts/collectibles/room_key.gd" id="1_kmpux"]
+[ext_resource type="PackedScene" uid="uid://dj8eus3jbld5a" path="res://scenes/collectibles/animated_key.tscn" id="2_sqcav"]
+[ext_resource type="PackedScene" uid="uid://dmeimln03low1" path="res://scenes/collectibles/collectible_area.tscn" id="3_k4no1"]
+
+[node name="RoomKey" type="Node3D"]
+script = ExtResource("1_kmpux")
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("2_sqcav")]
+transform = Transform3D(0.0476314, 0.0275, 0, -0.0275, 0.0476314, 0, 0, 0, 0.055, 0, 0.400268, 0)
+
+[node name="CollectibleArea" parent="." instance=ExtResource("3_k4no1")]

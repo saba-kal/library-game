@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj8eus3jbld5a"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvyx4xpooiytr" path="res://assets/models/collectibles/low_poly_key.obj" id="1_7qp3l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pipj1"]
+albedo_color = Color(0.92, 0.92, 0, 1)
+metallic = 1.0
+roughness = 0.64
+disable_receive_shadows = true
+
+[sub_resource type="Animation" id="Animation_c51jt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.523599)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.400268, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cogs4"]
+resource_name = "key_spin_anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.523599), Vector3(0, 6.28319, -0.523599)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.400268, 0), Vector3(0, 0.6, 0), Vector3(0, 0.400268, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3kmh"]
+_data = {
+"RESET": SubResource("Animation_c51jt"),
+"key_spin_anim": SubResource("Animation_cogs4")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(-0.0425836, -0.0245857, -0.0246411, -0.0275, 0.0476314, 0, 0.0213398, 0.0123206, -0.0491713, 0, 0.58819, 0)
+mesh = ExtResource("1_7qp3l")
+surface_material_override/0 = SubResource("StandardMaterial3D_pipj1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_i3kmh")
+}
+autoplay = "key_spin_anim"
