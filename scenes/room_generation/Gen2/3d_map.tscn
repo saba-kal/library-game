@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://38u6omsb5o8u"]
+
+[ext_resource type="Script" path="res://scripts/room_generation/Gen3/room_generation.gd" id="1_r147h"]
+[ext_resource type="PackedScene" uid="uid://b7xo88hoefhrx" path="res://scenes/room_generation/Gen2/2d_map.tscn" id="1_wxqy7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q06if"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ifj2v"]
+sky_material = SubResource("ProceduralSkyMaterial_q06if")
+
+[sub_resource type="Environment" id="Environment_f3mm0"]
+background_mode = 2
+sky = SubResource("Sky_ifj2v")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="3d_map" type="Node3D"]
+script = ExtResource("1_r147h")
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2D_Map" parent="Overlay/SubViewportContainer" instance=ExtResource("1_wxqy7")]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="CheckButton" type="CheckButton" parent="Overlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.888889
+anchor_right = 0.214965
+anchor_bottom = 1.0
+offset_right = 0.359985
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Toggle Map"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f3mm0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 8.1321, 4, 8.17219)
+
+[node name="Rooms" type="Node3D" parent="."]
+
+[connection signal="toggled" from="Overlay/CheckButton" to="." method="_on_check_button_toggled"]

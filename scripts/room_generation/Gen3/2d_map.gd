@@ -1,4 +1,8 @@
-extends Node2D
+extends SubViewport
+class_name _2DGeneration
+
+signal generation_complete
+signal generation_cleared
 
 @export var max_width_allowed:int = 10
 @export var max_height_allowed:int = 10
@@ -9,6 +13,8 @@ extends Node2D
 var currently_generating:bool = false
 var failsafe_activated:bool = true
 var valid_cell_count:int = 0
+
+var generation_array_info:Array[Array]
 
 func generate_rooms():
 	currently_generating = true
@@ -56,7 +62,13 @@ func tie_up_rooms():
 	print("Tidying rooms.")
 	tile_map_layer.set_cells_terrain_connect(tile_map_layer.get_used_cells(), 0, 0, false)
 	currently_generating = false
+	generation_complete.emit()
 
+func generation_info():
+	for x in tile_map_layer.get_used_cells():
+		generation_array_info.append([x,tile_map_layer.get_cell_atlas_coords(x)])
+	
+	return generation_array_info
 
 func _on_failsafe_timer_timeout() -> void:
 	failsafe_activated = true
@@ -71,6 +83,7 @@ func _on_button_generate_pressed() -> void:
 func _on_button_clear_pressed() -> void:
 	if !currently_generating:
 		tile_map_layer.clear()
+		generation_cleared.emit()
 
 func _on_line_edit_text_changed(new_text: String) -> void:
 	minimum_room_amount = int(float(new_text))

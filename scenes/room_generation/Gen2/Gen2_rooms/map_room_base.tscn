@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://eq1r6t2d1w4h"]
+
+[ext_resource type="Script" path="res://scripts/room_generation/Gen3/map_room_base.gd" id="1_82rmt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a52y5"]
+albedo_color = Color(0.3082, 0.58558, 0.67, 1)
+
+[node name="MapRoomBase" type="Node3D"]
+script = ExtResource("1_82rmt")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_a52y5")

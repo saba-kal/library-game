@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1fql55l4vhf8"]
+
+[ext_resource type="PackedScene" uid="uid://eq1r6t2d1w4h" path="res://scenes/room_generation/Gen2/Gen2_rooms/map_room_base.tscn" id="1_14m1k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh4ln"]
+albedo_color = Color(0.046, 0.0469, 0.1, 1)
+
+[node name="MapRoomBase" instance=ExtResource("1_14m1k")]
+
+[node name="Walls" type="CSGCombiner3D" parent="." index="1"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+size = Vector3(10, 4, 1)
+material = SubResource("StandardMaterial3D_wh4ln")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+size = Vector3(10, 4, 1)
+material = SubResource("StandardMaterial3D_wh4ln")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 3)
+size = Vector3(1, 4, 4)
+material = SubResource("StandardMaterial3D_wh4ln")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Walls" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -3)
+size = Vector3(1, 4, 4)
+material = SubResource("StandardMaterial3D_wh4ln")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Walls" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 3)
+size = Vector3(1, 4, 4)
+material = SubResource("StandardMaterial3D_wh4ln")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Walls" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -3)
+size = Vector3(1, 4, 4)
+material = SubResource("StandardMaterial3D_wh4ln")

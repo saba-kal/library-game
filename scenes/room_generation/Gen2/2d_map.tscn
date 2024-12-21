@@ -93,7 +93,7 @@ terrain_set_0/terrain_0/name = "Map"
 terrain_set_0/terrain_0/color = Color(0.1176, 0.42, 0.15792, 1)
 sources/0 = SubResource("TileSetAtlasSource_8x124")
 
-[node name="2D_Map" type="Node2D"]
+[node name="2D_Map" type="SubViewport"]
 script = ExtResource("1_q4he5")
 metadata/_edit_horizontal_guides_ = [248.0]
 

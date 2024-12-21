@@ -26,6 +26,12 @@ SignalBus="*res://core/signal_bus.gd"
 
 gdscript/warnings/unused_signal=0
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+
 [dotnet]
 
 project/assembly_name="Library Game"
