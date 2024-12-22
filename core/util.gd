@@ -21,3 +21,15 @@ func remove_elem(array: Array, elem: Variant) -> bool:
 	if index >= 0:
 		array.remove_at(index)
 	return index >= 0
+
+
+func rotate_y_to_face_direction(node: Node3D, direction: Vector3, delta: float) -> void:
+	var target_rotation = atan2(direction.x, direction.z)
+	node.rotation.y = lerp_angle(node.rotation.y, target_rotation, delta)
+
+
+func get_random_point_on_circle(radius: float) -> Vector2:
+	var angle: float =  randf_range(0, 2 * PI)
+	var x: float = radius * cos(angle)
+	var y: float = radius * sin(angle)
+	return Vector2(x, y)

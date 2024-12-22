@@ -4,6 +4,7 @@ class_name EnemyWanderIdle
 @export var idle_anim_name:String = ""
 @export var move_speed:float = 2.0
 @export var rotation_speed:float = 10.0
+@export var state_transition_upon_player_detection:String = "Follow"
 
 var starting_position:Vector3 = Vector3.ZERO
 
@@ -29,11 +30,11 @@ func Update(_delta:float):
 	pass
 
 func Physics_Update(_delta:float):
-	
+
 	if player_target:
 		nav_agent.target_position = Vector3.ZERO
 		nav_agent.navigation_finished.disconnect(random_new_spot)
-		Transitioned.emit(self,"Follow")
+		Transitioned.emit(self,self.state_transition_upon_player_detection)
 		player_target = null
 	
 	if enemy:
@@ -41,7 +42,6 @@ func Physics_Update(_delta:float):
 		var destination = nav_agent.get_next_path_position()
 		var local_destination = destination - enemy.global_position
 		var move_direction = local_destination.normalized()
-		var target_rotation = atan2(move_direction.x, move_direction.z) - enemy.rotation.y
-		mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, rotation_speed * _delta)
+		Util.rotate_y_to_face_direction(enemy, move_direction, rotation_speed * _delta)
 		enemy.velocity.x = move_direction.x * move_speed
 		enemy.velocity.z = move_direction.z * move_speed

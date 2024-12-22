@@ -15,8 +15,9 @@ func _ready() -> void:
 	if self.player_health == null:
 		printerr("Player character is missing health component")
 		return
-	self.init_health(self.player_health.current, self.player_health.maximum)
 	self.player_health.changed.connect(self.update_health)
+	await get_tree().process_frame
+	self.init_health(self.player_health.current, self.player_health.maximum)
 
 
 func init_health(current_hp: int, max_hp: int) -> void:

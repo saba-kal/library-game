@@ -25,9 +25,7 @@ func Physics_Update(_delta: float):
 		var destination = nav_agent.get_next_path_position()
 		var local_destination = destination - enemy.global_position
 		var move_direction = local_destination.normalized()
-		var target_rotation = atan2(move_direction.x, move_direction.z) - enemy.rotation.y
-		
-		mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, rotation_speed * _delta)
+		Util.rotate_y_to_face_direction(enemy, move_direction, rotation_speed * _delta)
 		enemy.velocity.x = move_direction.x * move_speed
 		enemy.velocity.z = move_direction.z * move_speed
 		

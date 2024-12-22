@@ -1,6 +1,6 @@
-extends Node
+class_name StateMachine extends Node
 
-@export var enemy_body:CharacterBody3D = null
+@export var enemy_body:EnemyBase = null
 @export var mesh:Node3D = null
 @export var anim_player:AnimationPlayer = null
 @export var nav_agent:NavigationAgent3D = null
@@ -10,6 +10,7 @@ extends Node
 @export var detection_type:Area3D = null
 @export var melee_attack_range:Area3D = null
 @export var health: Health
+@export var collision_shape: CollisionShape3D = null
 @export_flags_3d_physics var layers_searched
 
 var player_target:CharacterBody3D
@@ -21,7 +22,7 @@ var states:Dictionary = {}
 ## Sets up export variables for use if they're assigned.
 func _ready() -> void:
 	if aggro_timeout:
-		aggro_timeout.timeout.connect(_on_aggro_timeout_timeout)
+		aggro_timeout.timeout.connect(disengage)
 	
 	if detection_type:
 		detection_type.body_entered.connect(player_entered_range)
@@ -36,7 +37,7 @@ func _ready() -> void:
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transitioned)
-			child.SetVariables(enemy_body, mesh, nav_agent,anim_player)
+			child.SetVariables(enemy_body, mesh, nav_agent, anim_player, collision_shape)
 	
 	if intial_state:
 		intial_state.Enter()
@@ -108,9 +109,8 @@ func line_of_sight_check():
 				if !aggro_timeout.is_stopped():
 					aggro_timeout.stop()
 
-## When timer runs out sets target back to null on itself, and for the current state. 
-func _on_aggro_timeout_timeout() -> void:
-	print("Aggro Timed Out")
+## Causes the enemy to disengage the player. Exact behavior of of what happens depends on the enemy's current state.
+func disengage() -> void:
 	engaged = false
 	player_target = null
 	current_state.SetTarget(null)

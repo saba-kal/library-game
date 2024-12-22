@@ -78,7 +78,9 @@ func swing_complete() -> void:
 	add_hit_bodies()
 	print("hitting " + str(hit_bodies.size()) + " bodies")
 	character.constant_velocity(0)
-	for body:Node3D in hit_bodies:
+	for body in hit_bodies:
+		if !is_instance_valid(body):
+			continue
 		for component in body.get_children():
 			if not component.has_method("take_damage"):
 				continue
