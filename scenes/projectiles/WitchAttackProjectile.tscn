@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtpbu0o2ok0el"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/projectile.gd" id="1_riddi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3kitc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8743"]
+transparency = 1
+albedo_color = Color(0.470588, 1, 0.262745, 0.0745098)
+emission_enabled = true
+emission = Color(0, 0.839216, 0, 1)
+emission_energy_multiplier = 1.95
+
+[sub_resource type="SphereMesh" id="SphereMesh_wiahd"]
+material = SubResource("StandardMaterial3D_b8743")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d0xbp"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_min = 5.0
+damping_max = 10.0
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evrk1"]
+transparency = 1
+emission_enabled = true
+emission = Color(2.88785e-06, 0.787485, 0.873115, 1)
+emission_energy_multiplier = 8.71
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_rslms"]
+material = SubResource("StandardMaterial3D_evrk1")
+shape = 0
+size = 0.02
+
+[node name="WitchAttackProjectile" type="Area3D"]
+collision_mask = 3
+script = ExtResource("1_riddi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3kitc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_wiahd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, 0, 0, 0)
+mesh = SubResource("SphereMesh_wiahd")
+skeleton = NodePath("../..")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 20
+lifetime = 0.5
+transform_align = 3
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_d0xbp")
+draw_pass_1 = SubResource("RibbonTrailMesh_rslms")

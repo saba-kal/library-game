@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://dw66oocgjowpb"]
+[gd_scene load_steps=18 format=3 uid="uid://dw66oocgjowpb"]
 
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="1_nsyf2"]
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="3_g6erc"]
 [ext_resource type="PackedScene" uid="uid://cfc78am47py6r" path="res://scenes/enemies/enemy_types/ghost_enemy.tscn" id="3_mfbtj"]
 [ext_resource type="PackedScene" uid="uid://cmrjg48d24row" path="res://scenes/collectibles/room_key.tscn" id="4_gs0oy"]
 [ext_resource type="PackedScene" uid="uid://ciklhn74hbvm0" path="res://scenes/level_components/door.tscn" id="5_a20y1"]
+[ext_resource type="PackedScene" uid="uid://7yehwqmtemgc" path="res://scenes/enemies/enemy_types/witch_enemy.tscn" id="6_o5aj5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oep0q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -132,5 +133,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7321, -9.53674e-07, 14.636
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7442, 4.76837e-07, 10.9712)
 
 [node name="GUI" parent="." instance=ExtResource("3_g6erc")]
+
+[node name="WitchEnemy" parent="." instance=ExtResource("6_o5aj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07152, -9.53674e-07, 13.2781)
 
 [connection signal="died" from="Player" to="GUI" method="show_death"]
