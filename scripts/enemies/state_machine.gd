@@ -15,6 +15,7 @@ class_name StateMachine extends Node
 
 var player_target:CharacterBody3D
 var engaged:bool = false
+var player_inside_detection_area:bool = false
 
 var current_state:State
 var states:Dictionary = {}
@@ -82,6 +83,7 @@ func on_child_transitioned(state, new_state_name):
 func player_entered_range(body: Node3D):
 	if body.is_in_group("player"):
 		player_target = body
+		self.player_inside_detection_area = true
 		print("Player in range.")
 		if !aggro_timeout.is_stopped():
 			aggro_timeout.stop()
@@ -91,6 +93,7 @@ func player_entered_range(body: Node3D):
 func player_exited_range(body:Node3D):
 	if body.is_in_group("player"):
 		print("Left Range")
+		self.player_inside_detection_area = false
 		aggro_timeout.start(aggro_timeout_duration)
 
 ## Raycasts for players while they are in the cone every 0.1 seconds.
@@ -99,18 +102,19 @@ func line_of_sight_check():
 	var origin = Vector3(enemy_body.global_position.x, enemy_body.global_position.y+1,enemy_body.global_position.z)
 	var end = Vector3(player_target.global_position.x, player_target.global_position.y+1,player_target.global_position.z)
 	while (player_target != null) or (engaged == true):
-		await get_tree().create_timer(0.05).timeout
 		var query = PhysicsRayQueryParameters3D.create(origin, end)
 		var result = space_state.intersect_ray(query)
 		if result:
 			if result.collider.is_in_group("player"):
 				engaged = true
 				current_state.SetTarget(player_target)
-				if !aggro_timeout.is_stopped():
+				if self.player_inside_detection_area && !aggro_timeout.is_stopped():
 					aggro_timeout.stop()
+		await get_tree().create_timer(0.05).timeout
 
 ## Causes the enemy to disengage the player. Exact behavior of of what happens depends on the enemy's current state.
 func disengage() -> void:
+	print("Disengaging!")
 	engaged = false
 	player_target = null
 	current_state.SetTarget(null)
