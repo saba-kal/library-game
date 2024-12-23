@@ -45,7 +45,7 @@ map_tile=""
 [importer_defaults]
 
 animation_library={
-"gltf/embedded_image_handling": 2
+"gltf/embedded_image_handling": 3
 }
 
 [input]

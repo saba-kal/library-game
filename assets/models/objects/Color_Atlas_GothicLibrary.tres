@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dvby0nk1ellgt"]
-
-[ext_resource type="Texture2D" uid="uid://c0gnmasqh66ee" path="res://assets/models/objects/ColorAtlas_GothicLibrary.jpg" id="1_cr6ni"]
-
-[resource]
-resource_name = "Color_Atlas_GothicLibrary"
-cull_mode = 2
-albedo_texture = ExtResource("1_cr6ni")
-roughness = 0.5
