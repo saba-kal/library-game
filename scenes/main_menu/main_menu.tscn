@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://yai8j2d80cps"]
+[gd_scene load_steps=3 format=3 uid="uid://yai8j2d80cps"]
 
 [ext_resource type="Script" path="res://scripts/main_menu/main_menu.gd" id="1_t260w"]
+[ext_resource type="PackedScene" uid="uid://bd7dpdh8afywi" path="res://scenes/gui/common/menu_nav_button.tscn" id="2_jy3ca"]
 
 [node name="MainMenu" type="Node" node_paths=PackedStringArray("initial_button")]
 script = ExtResource("1_t260w")
@@ -28,12 +29,13 @@ size_flags_vertical = 3
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.388889
+anchor_left = 0.354688
 anchor_top = 0.296296
-anchor_right = 0.611111
-anchor_bottom = 0.691358
+anchor_right = 0.645312
+anchor_bottom = 0.691667
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
 layout_mode = 1
@@ -50,43 +52,28 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Button_PLAY" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Button_PLAY" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Button_EXIT")
 text = "PLAY"
 
-[node name="Button_EXIT" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Button_EXIT" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
-focus_neighbor_left = NodePath("../Button_PLAY")
-focus_neighbor_top = NodePath("../Button_PLAY")
-focus_neighbor_bottom = NodePath("../Button_DEBUG")
 text = "EXIT"
 
-[node name="Button_DEBUG" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Button_DEBUG" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
-focus_neighbor_left = NodePath("../Button_PLAY")
-focus_neighbor_top = NodePath("../Button_EXIT")
-focus_neighbor_bottom = NodePath("../Button_DEBUG_GENERATION")
 text = "DEBUG AREA"
 
-[node name="Button_DEBUG_GENERATION" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
+[node name="Button_DEBUG_GENERATION" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
-focus_neighbor_left = NodePath("../Button_PLAY")
-focus_neighbor_top = NodePath("../Button_DEBUG")
-focus_neighbor_bottom = NodePath("../Button_GENERATION_AREA_TWO")
 text = "DEBUG GENERATION"
 
-[node name="Button_GENERATION_AREA_TWO" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
+[node name="Button_GENERATION_AREA_TWO" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
-focus_neighbor_left = NodePath("../Button_PLAY")
-focus_neighbor_top = NodePath("../Button_DEBUG_GENERATION")
 text = "2D GENERATION TEST"
 
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_PLAY" to="." method="play_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_EXIT" to="." method="exit_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_DEBUG" to="." method="debug_pressed"]
-[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_DEBUG_GENERATION" to="." method="debug_generation_pressed"]
+[connection signal="button_down" from="Control/Panel/MarginContainer/VBoxContainer/Button_DEBUG_GENERATION" to="." method="debug_generation_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_GENERATION_AREA_TWO" to="." method="generation_area_two_pressed"]
