@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://na3o86bibtqu"]
+
+[ext_resource type="Script" path="res://scripts/collectibles/health_collectible.gd" id="1_1t30f"]
+[ext_resource type="PackedScene" uid="uid://dmeimln03low1" path="res://scenes/collectibles/collectible_area.tscn" id="2_5gs58"]
+[ext_resource type="ArrayMesh" uid="uid://cprpomckx7t3q" path="res://assets/models/collectibles/low_poly_heart.obj" id="3_yekt7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4l7i"]
+albedo_color = Color(1, 0.335514, 0.269596, 1)
+emission_enabled = true
+emission = Color(0.947406, 3.77826e-06, 1.73271e-06, 1)
+emission_energy_multiplier = 2.64
+
+[sub_resource type="Animation" id="Animation_to0ey"]
+resource_name = "spin"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.424589, 0), Vector3(0, 0.5, 0), Vector3(0, 0.425, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eb3ok"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.424589, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsfhh"]
+_data = {
+"RESET": SubResource("Animation_eb3ok"),
+"spin": SubResource("Animation_to0ey")
+}
+
+[node name="HealthCollectible" type="Node3D"]
+script = ExtResource("1_1t30f")
+
+[node name="CollectibleArea" parent="." instance=ExtResource("2_5gs58")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0.424589, 0)
+mesh = ExtResource("3_yekt7")
+surface_material_override/0 = SubResource("StandardMaterial3D_r4l7i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tsfhh")
+}
+autoplay = "spin"
