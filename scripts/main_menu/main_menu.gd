@@ -1,5 +1,9 @@
 extends Node
 
+@export var initial_button: Button
+
+func _ready() -> void:
+	initial_button.grab_focus()
 
 func play_pressed() -> void:
 	print("Pressed Play Button")
