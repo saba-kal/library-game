@@ -21,6 +21,7 @@ ChangeScene="*res://core/scene_change/scene_change_handler.tscn"
 Util="*res://core/util.gd"
 Game="*res://core/game.gd"
 SignalBus="*res://core/signal_bus.gd"
+AudioManager="*res://core/audio/scenes/audio_manager.tscn"
 
 [debug]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmtrnvihyrtdi"]
+[gd_scene load_steps=19 format=3 uid="uid://dmtrnvihyrtdi"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f2x5"]
 [ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2_23lc7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="6_gp4iy"]
 [ext_resource type="Script" path="res://scripts/player/death.gd" id="6_wjwua"]
 [ext_resource type="Script" path="res://scripts/player/interact.gd" id="8_ve6hn"]
+[ext_resource type="PackedScene" uid="uid://x7inf5bnoarf" path="res://core/audio/scenes/footstep_sounds.tscn" id="9_rb7uo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snnpj"]
 albedo_color = Color(0.78, 0.45578, 0.3276, 1)
@@ -80,10 +81,11 @@ spring_length = 10.0
 
 [node name="StateMachine" type="Node" parent="."]
 
-[node name="Movement" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_state", "attack_state")]
+[node name="Movement" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_state", "attack_state", "footstep_sounds")]
 script = ExtResource("4_o2lce")
 dash_state = NodePath("../Dash")
 attack_state = NodePath("../Attack")
+footstep_sounds = NodePath("../../FootstepSounds")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state")]
 script = ExtResource("5_0dcju")
@@ -111,3 +113,8 @@ script = ExtResource("6_gp4iy")
 
 [node name="Interact" type="Node" parent="."]
 script = ExtResource("8_ve6hn")
+
+[node name="FootstepSounds" parent="." instance=ExtResource("9_rb7uo")]
+sound_name = "player_footstep"
+interval = 0.35
+pitch_randomness = 0.2

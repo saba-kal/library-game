@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clfici1k2trp0"]
+
+[ext_resource type="Script" path="res://core/audio/scripts/set_music.gd" id="1_je67q"]
+
+[node name="SetMusic" type="Node"]
+script = ExtResource("1_je67q")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd7dpdh8afywi"]
+
+[ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="1_2svlu"]
+[ext_resource type="PackedScene" uid="uid://bj7u7eqxiljq3" path="res://core/audio/scenes/button_sounds.tscn" id="1_4r6g6"]
+
+[node name="MenuNavButton" type="Button"]
+custom_minimum_size = Vector2(400, 70)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("1_2svlu")
+theme_override_font_sizes/font_size = 36
+text = "BUTTON TEXT"
+
+[node name="ButtonSounds" parent="." node_paths=PackedStringArray("button") instance=ExtResource("1_4r6g6")]
+button = NodePath("..")

@@ -2,6 +2,8 @@ extends Node
 class_name State
 signal Transitioned
 
+@export var attached_sound: String
+
 var enemy:EnemyBase = null
 var mesh:Node3D = null
 var nav_agent:NavigationAgent3D = null

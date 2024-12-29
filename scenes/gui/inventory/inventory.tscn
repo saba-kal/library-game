@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2eyb87rkl1af"]
+[gd_scene load_steps=11 format=3 uid="uid://c2eyb87rkl1af"]
 
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="1_7vmtq"]
 [ext_resource type="Script" path="res://scripts/gui/inventory/inventory.gd" id="1_p4hqu"]
 [ext_resource type="PackedScene" uid="uid://ddf26l5qky7kq" path="res://scenes/gui/inventory/inventory_slot.tscn" id="2_t5uua"]
+[ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="3_006ll"]
 [ext_resource type="Texture2D" uid="uid://byy0xv7ddsam7" path="res://assets/textures/GUI/skull_key_icon.png" id="4_7ytl4"]
 [ext_resource type="Texture2D" uid="uid://eyfb4mrc4311" path="res://assets/textures/GUI/book_icon_1.png" id="4_ykyje"]
 [ext_resource type="Texture2D" uid="uid://dob3nhlu7hllw" path="res://assets/textures/GUI/book_icon_2.png" id="5_4jote"]
@@ -34,15 +35,17 @@ color = Color(0, 0, 0, 1)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.299479
-anchor_top = 0.277778
-anchor_right = 0.700521
-anchor_bottom = 0.709877
-offset_top = -1.52588e-05
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -163.0
+offset_right = 243.0
+offset_bottom = 163.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -60,21 +63,29 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/Control"]
-layout_mode = 2
-offset_right = 422.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 23.0
+grow_horizontal = 2
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_006ll")
+theme_override_font_sizes/font_size = 36
 text = "INVENTORY"
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 40.0
+offset_left = -215.0
+offset_top = -210.0
+offset_right = 215.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 4
@@ -91,19 +102,16 @@ color = Color(0.643439, 0.0522603, 1.44392e-07, 1)
 
 [node name="BossKeySlot2" parent="Panel/MarginContainer/Control/GridContainer" instance=ExtResource("2_t5uua")]
 layout_mode = 2
-is_disabled = null
 texture = ExtResource("4_7ytl4")
 color = Color(0.225317, 0.392101, 0.117829, 1)
 
 [node name="BossKeySlot3" parent="Panel/MarginContainer/Control/GridContainer" instance=ExtResource("2_t5uua")]
 layout_mode = 2
-is_disabled = null
 texture = ExtResource("4_7ytl4")
 color = Color(0.152941, 0.341176, 0.584314, 1)
 
 [node name="BookSlot1" parent="Panel/MarginContainer/Control/GridContainer" instance=ExtResource("2_t5uua")]
 layout_mode = 2
-is_disabled = null
 texture = ExtResource("4_ykyje")
 
 [node name="BookSlot2" parent="Panel/MarginContainer/Control/GridContainer" instance=ExtResource("2_t5uua")]
@@ -112,10 +120,8 @@ texture = ExtResource("5_4jote")
 
 [node name="BookSlot3" parent="Panel/MarginContainer/Control/GridContainer" instance=ExtResource("2_t5uua")]
 layout_mode = 2
-is_disabled = null
 texture = ExtResource("6_iw2io")
 
 [node name="BookSlot4" parent="Panel/MarginContainer/Control/GridContainer" instance=ExtResource("2_t5uua")]
 layout_mode = 2
-is_disabled = null
 texture = ExtResource("7_15ur8")

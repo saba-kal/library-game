@@ -95,6 +95,7 @@ func swing_start() -> void:
 	character.constant_velocity(distance / swing_duration)
 	swing_timer.start(swing_duration)
 	placeholder_fx.visible = true
+	AudioManager.play_3d("player_attack", character.global_position)
 	add_hit_bodies()
 
 func done() -> void:
