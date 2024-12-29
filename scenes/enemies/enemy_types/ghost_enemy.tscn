@@ -3178,7 +3178,7 @@ bones/26/rotation = Quaternion(-0.103382, 0.699507, -0.103381, 0.69951)
 bones/26/scale = Vector3(1, 1, 1)
 
 [node name="Hat" type="BoneAttachment3D" parent="Ghost/GhostArmature/Skeleton3D"]
-transform = Transform3D(0.129271, 5.59552e-14, 2.27374e-13, 9.23706e-14, 0.0791397, -0.151594, -1.38556e-13, 0.102215, 0.117372, 0.0536792, 0.824417, 0.335225)
+transform = Transform3D(0.129271, 9.63674e-14, 2.84217e-13, 9.59233e-14, 0.0791397, -0.151594, -1.88294e-13, 0.102215, 0.117372, 0.0536792, 0.824417, 0.335225)
 bone_name = "Hat"
 bone_idx = 7
 
@@ -3210,6 +3210,7 @@ aggro_timeout = NodePath("../AggroTimeout")
 detection_type = NodePath("../Ghost/ConeDetection")
 health = NodePath("../Health")
 collision_shape = NodePath("../Collision")
+attached_sound_name = "ghost_crying"
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_d4t4b")

@@ -30,6 +30,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	character.set_orientation_from_top_down_vector(dash_dir)
 	character.collision_layer = dash_layer
 	character.collision_mask = dash_mask
+	AudioManager.play_3d("player_dash", self.character.global_position)
 	
 func exit() -> void:
 	character.collision_layer = default_layer
