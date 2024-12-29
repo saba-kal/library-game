@@ -9,7 +9,6 @@ func _ready() -> void:
 		delete_timer.timeout.connect(_on_delete_timer_timeout)
 
 func _on_delete_timer_timeout() -> void:
-	print("it's deleting time")
 	get_parent().get_parent().queue_free()
 
 func Enter():
