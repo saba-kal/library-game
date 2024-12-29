@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dw66oocgjowpb"]
+[gd_scene load_steps=20 format=3 uid="uid://dw66oocgjowpb"]
 
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="1_nsyf2"]
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="3_g6erc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ciklhn74hbvm0" path="res://scenes/level_components/door.tscn" id="5_a20y1"]
 [ext_resource type="PackedScene" uid="uid://7yehwqmtemgc" path="res://scenes/enemies/enemy_types/witch_enemy.tscn" id="6_o5aj5"]
 [ext_resource type="PackedScene" uid="uid://clfici1k2trp0" path="res://core/audio/scenes/set_music.tscn" id="7_56uto"]
+[ext_resource type="PackedScene" uid="uid://na3o86bibtqu" path="res://scenes/collectibles/health_collectible.tscn" id="8_jbhse"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oep0q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -140,5 +141,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07152, -9.53674e-07, 13.27
 
 [node name="SetMusic" parent="." instance=ExtResource("7_56uto")]
 music_name = "haunted_section"
+
+[node name="HealthCollectible" parent="." instance=ExtResource("8_jbhse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2086, 1.90735e-06, 18.1541)
 
 [connection signal="died" from="Player" to="GUI" method="show_death"]
