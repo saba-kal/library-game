@@ -16,5 +16,4 @@ func on_button_pressed() -> void:
 
 
 func on_button_hover() -> void:
-	print("hover")
 	AudioManager.play(self.hover_sound)

@@ -37,6 +37,7 @@ func scene_change() -> void:
 		load_cover.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		timer.start(scene_change_duration)
+		SignalBus.scene_change_initiated.emit()
 	else:
 		return
 
