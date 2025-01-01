@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://yai8j2d80cps"]
+[gd_scene load_steps=5 format=3 uid="uid://yai8j2d80cps"]
 
 [ext_resource type="Script" path="res://scripts/main_menu/main_menu.gd" id="1_t260w"]
+[ext_resource type="PackedScene" uid="uid://bd7dpdh8afywi" path="res://scenes/gui/common/menu_nav_button.tscn" id="2_jy3ca"]
+[ext_resource type="PackedScene" uid="uid://bgdg5y0ec727w" path="res://scenes/gui/settings_menu/settings_menu.tscn" id="3_g5var"]
+[ext_resource type="PackedScene" uid="uid://clfici1k2trp0" path="res://core/audio/scenes/set_music.tscn" id="3_ungf3"]
 
-[node name="MainMenu" type="Node"]
+[node name="MainMenu" type="Node" node_paths=PackedStringArray("initial_button", "nav_menu", "settings_menu")]
 script = ExtResource("1_t260w")
+initial_button = NodePath("Control/Panel/MarginContainer/VBoxContainer/Button_PLAY")
+nav_menu = NodePath("Control/Panel")
+settings_menu = NodePath("Control/SettingsMenu")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -25,12 +31,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.388889
-anchor_top = 0.296296
-anchor_right = 0.611111
-anchor_bottom = 0.691358
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.0
+offset_top = -240.0
+offset_right = 309.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -49,31 +60,42 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Button_PLAY" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Button_PLAY" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
 text = "PLAY"
 
-[node name="Button_EXIT" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Button_SETTINGS" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
+layout_mode = 2
+text = "SETTINGS
+"
+
+[node name="Button_EXIT" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
 text = "EXIT"
 
-[node name="Button_DEBUG" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Button_DEBUG" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
 text = "DEBUG AREA"
 
-[node name="Button_DEBUG_GENERATION" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
+[node name="Button_DEBUG_GENERATION" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
 text = "DEBUG GENERATION"
 
-[node name="Button_GENERATION_AREA_TWO" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer"]
+[node name="Button_GENERATION_AREA_TWO" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
 layout_mode = 2
 text = "2D GENERATION TEST"
 
+[node name="SettingsMenu" parent="Control" instance=ExtResource("3_g5var")]
+visible = false
+layout_mode = 1
+
+[node name="SetMusic" parent="." instance=ExtResource("3_ungf3")]
+music_name = "main_menu"
+
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_PLAY" to="." method="play_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_SETTINGS" to="." method="on_button_settings_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_EXIT" to="." method="exit_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_DEBUG" to="." method="debug_pressed"]
-[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_DEBUG_GENERATION" to="." method="debug_generation_pressed"]
+[connection signal="button_down" from="Control/Panel/MarginContainer/VBoxContainer/Button_DEBUG_GENERATION" to="." method="debug_generation_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Button_GENERATION_AREA_TWO" to="." method="generation_area_two_pressed"]
+[connection signal="ok_pressed" from="Control/SettingsMenu" to="." method="on_settings_menu_ok_pressed"]

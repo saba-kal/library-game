@@ -2,7 +2,9 @@ extends Control
 
 @onready var pause: Control = %Pause
 @onready var inventory: Control = $Inventory
+@onready var settings_menu: Control = $SettingsMenu
 @onready var death_message: Control = %DeathMessage
+@onready var button_resume: Button = $Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -13,6 +15,7 @@ func _input(event: InputEvent) -> void:
 func toggle_pause():
 	if !pause.visible && !inventory.visible:
 		pause.visible = true
+		button_resume.grab_focus()
 		get_tree().paused = true
 	elif inventory.visible:
 		toggle_inventory()
@@ -36,3 +39,11 @@ func quit_pressed() -> void:
 
 func show_death() -> void:
 	death_message.visible = true
+
+func on_settings_menu_ok_pressed() -> void:
+	self.settings_menu.visible = false
+	self.pause.visible = true
+
+func on_button_settings_pressed() -> void:
+	self.settings_menu.visible = true
+	self.pause.visible = false

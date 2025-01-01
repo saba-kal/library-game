@@ -74,3 +74,6 @@ func take_damage(damage: int) -> void:
 	if self.health.current <= 0:
 		_transition_to_next_state(death.get_path())
 		died.emit()
+
+func heal(heal_amount: int) -> void:
+	self.health.heal(heal_amount)
