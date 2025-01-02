@@ -5,6 +5,7 @@ class_name EnemyWanderIdle
 @export var move_speed:float = 2.0
 @export var rotation_speed:float = 10.0
 @export var state_transition_upon_player_detection:String = "Follow"
+@export var attached_sound:AttachedSound3D
 
 var starting_position:Vector3 = Vector3.ZERO
 
@@ -22,9 +23,12 @@ func Enter():
 	if nav_agent.target_position == Vector3.ZERO:
 		random_new_spot()
 		nav_agent.navigation_finished.connect(random_new_spot)
+	if self.attached_sound:
+		self.attached_sound.play()
 
 func Exit():
-	pass
+	if self.attached_sound:
+		self.attached_sound.stop()
 
 func Update(_delta:float):
 	pass

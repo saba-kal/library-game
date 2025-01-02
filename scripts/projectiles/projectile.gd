@@ -3,6 +3,7 @@ class_name Projectile extends Area3D
 signal collided(body: Node3D)
 
 @export var on_destroy_effect: PackedScene
+@export var spawn_sound_name: String
 
 # These are set by the nodes that spawn projectiles. They should not be exposed via export.
 var damage: int = 1
@@ -15,6 +16,7 @@ var velocity: Vector3
 
 func _ready() -> void:
 	self.velocity = self.direction * self.speed
+	AudioManager.play_3d(self.spawn_sound_name, self.global_position)
 	self.body_entered.connect(self.on_body_entered)
 
 

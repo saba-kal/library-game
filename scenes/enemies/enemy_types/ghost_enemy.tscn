@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cfc78am47py6r"]
+[gd_scene load_steps=29 format=4 uid="uid://cfc78am47py6r"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_tw3fx"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="2_uux3s"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_sjyp7"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="9_g6cmd"]
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemySelfProjectile.gd" id="9_nih03"]
+[ext_resource type="PackedScene" uid="uid://wv5gttcsiscx" path="res://core/audio/scenes/attached_sound_3d.tscn" id="10_u0ilw"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="10_vrihc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx4au"]
@@ -3210,7 +3211,6 @@ aggro_timeout = NodePath("../AggroTimeout")
 detection_type = NodePath("../Ghost/ConeDetection")
 health = NodePath("../Health")
 collision_shape = NodePath("../Collision")
-attached_sound_name = "ghost_crying"
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_d4t4b")
@@ -3226,8 +3226,10 @@ death_anim_name = "Die"
 death_anim_length = 1.75
 delete_timer = NodePath("../../DeathTimeout")
 
-[node name="SelfProjectile" type="Node" parent="StateMachine" node_paths=PackedStringArray("projectile_area", "fade_anim_player")]
+[node name="SelfProjectile" type="Node" parent="StateMachine" node_paths=PackedStringArray("attached_sound_to_stop", "projectile_area", "fade_anim_player")]
 script = ExtResource("9_nih03")
+sound_name = "ghost_scream"
+attached_sound_to_stop = NodePath("../../CryingSound")
 projectile_area = NodePath("../../ProjectileArea")
 fade_anim_player = NodePath("../../FadeAnimPlayer")
 
@@ -3264,3 +3266,7 @@ libraries = {
 "": SubResource("AnimationLibrary_h01g1")
 }
 autoplay = "RESET"
+
+[node name="CryingSound" parent="." instance=ExtResource("10_u0ilw")]
+sound_name = "ghost_crying"
+play_on_ready = true

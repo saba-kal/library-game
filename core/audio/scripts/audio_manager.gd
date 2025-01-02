@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func play(sound_name: String) -> void:
 	if !self.sound_dictionary.has(sound_name):
-		printerr("Could not find sound." % sound_name)
+		printerr("Could not find sound %s." % sound_name)
 		return
 	var sound_effect: SoundEffect = self.sound_dictionary[sound_name]
 	var audio_stream_player := AudioStreamPlayer.new()
@@ -33,7 +33,7 @@ func play(sound_name: String) -> void:
 
 func play_3d(sound_name: String, position: Vector3) -> void:
 	if !self.sound_dictionary.has(sound_name):
-		printerr("Could not find sound." % sound_name)
+		printerr("Could not find sound %s." % sound_name)
 		return
 	var sound_effect: SoundEffect3D = self.sound_dictionary[sound_name]
 	var audio_stream_player := create_audio_stream_player_3d(sound_effect)
@@ -45,7 +45,7 @@ func play_3d(sound_name: String, position: Vector3) -> void:
 
 func attach_sound_3d(node: Node3D, sound_name: String) -> AudioStreamPlayer3D:
 	if !self.sound_dictionary.has(sound_name):
-		printerr("Could not find sound." % sound_name)
+		printerr("Could not find sound %s." % sound_name)
 		return null
 	var sound_effect: SoundEffect3D = self.sound_dictionary[sound_name]
 	var audio_stream_player := create_audio_stream_player_3d(sound_effect)

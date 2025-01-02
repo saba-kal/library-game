@@ -11,7 +11,6 @@ class_name StateMachine extends Node
 @export var melee_attack_range:Area3D = null
 @export var health: Health
 @export var collision_shape: CollisionShape3D = null
-@export var attached_sound_name:String
 @export_flags_3d_physics var layers_searched
 
 var player_target:CharacterBody3D
@@ -46,14 +45,7 @@ func _ready() -> void:
 		intial_state.Enter()
 		current_state = intial_state
 
-	call_deferred("setup_sound")
 	self.health.changed.connect(self.on_health_changed)
-
-
-func setup_sound() -> void:
-	if self.attached_sound_name != null && self.attached_sound_name != "":
-		self.sound_effect = AudioManager.attach_sound_3d(self.enemy_body, self.attached_sound_name)
-		self.sound_effect.play()
 
 ## Runs the process function of the current state.
 func _process(delta: float) -> void:

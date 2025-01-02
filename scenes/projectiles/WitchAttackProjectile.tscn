@@ -41,6 +41,7 @@ size = 0.02
 [node name="WitchAttackProjectile" type="Area3D"]
 collision_mask = 3
 script = ExtResource("1_riddi")
+spawn_sound_name = "witch_projectile_attack"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_3kitc")

@@ -9,6 +9,8 @@ extends State
 @export var attack_anim_name:String = "Run"
 @export var fade_anim_name:String = "FadeOut"
 @export var state_transition_upon_target_missed: String = "Idle"
+@export var sound_name: String
+@export var attached_sound_to_stop: AttachedSound3D
 @export var projectile_area:Area3D
 @export var fade_anim_player:AnimationPlayer
 
@@ -27,6 +29,8 @@ func Enter() -> void:
 	self.projectile_area.body_entered.connect(self.on_nody_entered)
 	# First attack delay is shorter because there is no fade in anim
 	self.start_projectile_attack(self.time_until_attack_start / 2.0)
+	if self.attached_sound_to_stop:
+		self.attached_sound_to_stop.stop()
 
 
 func Update(_delta:float) -> void:
@@ -57,11 +61,14 @@ func Exit() -> void:
 	self.enemy.is_disabled = false
 	self.projectile_area.body_entered.disconnect(self.on_nody_entered)
 	self.enable_collision()
+	if self.attached_sound_to_stop:
+		self.attached_sound_to_stop.play()
 
 
 func start_projectile_attack(delay: float) -> void:
 	self.attack_started = false
 	self.calculate_end_position()
+	AudioManager.play_3d(self.sound_name, self.enemy.global_position)
 	await get_tree().create_timer(delay).timeout
 	self.attack_started = true
 

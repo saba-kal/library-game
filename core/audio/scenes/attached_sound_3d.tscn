@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wv5gttcsiscx"]
+
+[ext_resource type="Script" path="res://core/audio/scripts/attached_sound_3d.gd" id="1_0vf25"]
+
+[node name="AttachedSound3D" type="Node3D"]
+script = ExtResource("1_0vf25")

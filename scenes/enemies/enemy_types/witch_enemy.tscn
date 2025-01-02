@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://7yehwqmtemgc"]
+[gd_scene load_steps=24 format=3 uid="uid://7yehwqmtemgc"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_cerqe"]
 [ext_resource type="PackedScene" uid="uid://b1k280sk13w1h" path="res://assets/models/enemies/witch/Witch.glb" id="2_hanny"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemyRunAway.gd" id="9_nsdnq"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="10_7sgkp"]
 [ext_resource type="PackedScene" uid="uid://3symoni7x23e" path="res://scenes/effects/WitchGroundSpellEffect.tscn" id="10_xqd0x"]
+[ext_resource type="PackedScene" uid="uid://x7inf5bnoarf" path="res://core/audio/scenes/footstep_sounds.tscn" id="14_rdgpp"]
+[ext_resource type="PackedScene" uid="uid://hghcty7xxqww" path="res://core/audio/scenes/random_interval_sounds.tscn" id="15_if0gs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
 height = 2.5
@@ -1827,34 +1829,30 @@ shape = SubResource("CapsuleShape3D_a1eye")
 
 [node name="Witch" parent="." instance=ExtResource("2_hanny")]
 
-[node name="ConeDetection" parent="Witch" instance=ExtResource("2_jbiju")]
-cone_width = 10.0
-cone_length = 10.0
-
 [node name="Skeleton3D" parent="Witch/Armature" index="0"]
 bones/0/rotation = Quaternion(-0.0880713, 1.18746e-07, -1.04989e-08, 0.996114)
-bones/1/rotation = Quaternion(0.218477, 1.11022e-15, 5.20889e-08, 0.975842)
-bones/2/rotation = Quaternion(0.0152002, 1.42675e-14, 3.62402e-09, 0.999884)
-bones/3/rotation = Quaternion(0.11762, -0.00424037, 0.0631954, 0.991037)
-bones/4/rotation = Quaternion(0.0534649, -2.36325e-09, 1.27039e-08, 0.99857)
-bones/5/rotation = Quaternion(-0.179906, -1.60294e-10, -4.09158e-08, 0.983684)
-bones/7/rotation = Quaternion(0.544644, -1.97082e-07, -7.16998e-10, 0.838667)
+bones/1/rotation = Quaternion(0.218477, 1.55431e-15, 5.20889e-08, 0.975842)
+bones/2/rotation = Quaternion(0.0155462, -9.29383e-11, 9.8209e-09, 0.999879)
+bones/3/rotation = Quaternion(0.117828, -0.00425364, 0.0631945, 0.991012)
+bones/4/rotation = Quaternion(0.0535282, -7.60542e-06, 8.11353e-07, 0.998566)
+bones/5/rotation = Quaternion(-0.179593, -4.08984e-05, -9.74621e-07, 0.983741)
+bones/7/rotation = Quaternion(0.544909, -3.05673e-05, 2.74024e-05, 0.838495)
 bones/8/rotation = Quaternion(-0.0580038, 0.0211823, -0.845618, 0.530204)
-bones/9/rotation = Quaternion(0.0410186, 0.00997458, -0.425322, 0.904057)
-bones/10/rotation = Quaternion(0.336705, -0.00769072, -0.0575636, 0.939818)
-bones/11/rotation = Quaternion(-0.195596, -0.00612202, -0.102782, 0.975264)
+bones/9/rotation = Quaternion(0.0418604, 0.00982837, -0.425317, 0.904023)
+bones/10/rotation = Quaternion(0.336717, -0.00750148, -0.057496, 0.939819)
+bones/11/rotation = Quaternion(-0.19522, -0.0064054, -0.102583, 0.975359)
 bones/12/rotation = Quaternion(-0.0263765, 0.990853, -0.0946929, -0.0924594)
-bones/13/rotation = Quaternion(-0.00556008, 0.9108, -0.395101, -0.119618)
+bones/13/rotation = Quaternion(-0.00556009, 0.9108, -0.395101, -0.119618)
 bones/14/rotation = Quaternion(0.0252996, 0.997938, 0.0507631, -0.0300533)
 bones/15/rotation = Quaternion(0.0208671, 0.0145919, 0.668352, 0.743409)
-bones/16/rotation = Quaternion(0.128176, 0.205705, 0.485946, 0.83971)
-bones/17/rotation = Quaternion(0.537451, 0.203965, 0.125728, 0.80854)
-bones/18/rotation = Quaternion(0.100669, 0.0296172, 0.131929, 0.985689)
+bones/16/rotation = Quaternion(0.128951, 0.205415, 0.485951, 0.83966)
+bones/17/rotation = Quaternion(0.537447, 0.2041, 0.125332, 0.80857)
+bones/18/rotation = Quaternion(0.100479, 0.0296274, 0.131702, 0.985739)
 bones/24/position = Vector3(0.114075, -0.639591, -0.226971)
 bones/24/rotation = Quaternion(0.184101, -0.0812011, 0.979463, 0.0128316)
-bones/25/rotation = Quaternion(0.966206, -0.0888373, -0.10607, -0.217491)
+bones/25/rotation = Quaternion(0.966206, -0.0888372, -0.10607, -0.217491)
 bones/26/position = Vector3(0.161561, 0.00248589, -0.0478177)
-bones/26/rotation = Quaternion(-0.015793, -0.0866439, 0.979968, -0.178622)
+bones/26/rotation = Quaternion(-0.015793, -0.086644, 0.979968, -0.178622)
 bones/27/rotation = Quaternion(0.00509374, -0.000402048, -0.0413117, 0.999133)
 bones/28/position = Vector3(0.0386178, -0.0625133, 0.125614)
 bones/28/rotation = Quaternion(0.991332, 0.130023, -0.00127283, -0.0187811)
@@ -1865,6 +1863,7 @@ bones/31/rotation = Quaternion(-0.0879286, -0.0238406, 0.0256399, 0.995511)
 bones/32/position = Vector3(-0.114075, -0.639591, -0.226971)
 bones/32/rotation = Quaternion(-0.177083, -0.0815211, 0.980721, -0.0134901)
 bones/33/position = Vector3(-0.161561, 0.0024859, -0.0478177)
+bones/33/rotation = Quaternion(0.0157928, -0.086644, 0.979968, 0.178622)
 bones/34/rotation = Quaternion(0.00509376, 0.000402014, 0.0413117, 0.999133)
 bones/35/position = Vector3(-0.0386179, -0.0625133, 0.125614)
 bones/35/rotation = Quaternion(0.991332, -0.130023, 0.00127306, -0.0187811)
@@ -1874,17 +1873,20 @@ bones/37/rotation = Quaternion(0.967339, -0.124678, -0.0310166, -0.218516)
 bones/38/rotation = Quaternion(-0.0879286, 0.0238406, -0.02564, 0.995511)
 
 [node name="Staff" parent="Witch/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.0317133, -0.00586737, 0.0184892, 0.00202808, 0.344539, -0.0022455, -0.0183882, 0.0278809, 0.0316398, -0.423573, -0.819009, 0.558076)
+transform = Transform3D(0.0317051, -0.00582406, 0.0185033, 0.00204504, 0.34451, -0.00228116, -0.0184004, 0.028254, 0.031629, -0.423207, -0.819556, 0.55717)
 
-[node name="AnimationPlayer" parent="Witch" index="2"]
+[node name="AnimationPlayer" parent="Witch" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_uqasu")
 }
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "mesh", "anim_player", "nav_agent", "intial_state", "aggro_timeout", "detection_type", "health")]
+[node name="ConeDetection" parent="Witch" instance=ExtResource("2_jbiju")]
+cone_width = 10.0
+cone_length = 10.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "anim_player", "nav_agent", "intial_state", "aggro_timeout", "detection_type", "health")]
 script = ExtResource("3_3cfia")
 enemy_body = NodePath("..")
-mesh = NodePath("")
 anim_player = NodePath("../Witch/AnimationPlayer")
 nav_agent = NodePath("../NavigationAgent3D")
 intial_state = NodePath("Wander")
@@ -1892,11 +1894,13 @@ aggro_timeout = NodePath("../AggroTimeout")
 detection_type = NodePath("../Witch/ConeDetection")
 health = NodePath("../Health")
 
-[node name="Wander" type="Node" parent="StateMachine"]
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("attached_sound")]
 script = ExtResource("4_mdmcg")
 idle_anim_name = "Walk"
+move_speed = 3.0
 rotation_speed = 2.0
 state_transition_upon_player_detection = "RunAway"
+attached_sound = NodePath("../../FootstepSounds")
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("delete_timer")]
 script = ExtResource("8_ierxw")
@@ -1904,10 +1908,12 @@ death_anim_name = "Death"
 death_anim_length = 1.75
 delete_timer = NodePath("../../DeathTimeout")
 
-[node name="RunAway" type="Node" parent="StateMachine"]
+[node name="RunAway" type="Node" parent="StateMachine" node_paths=PackedStringArray("attached_sound")]
 script = ExtResource("9_nsdnq")
 run_anim_name = "Walk"
+move_speed = 4.0
 states_transition_upon_distance_reached = Array[String](["ProjectileAttack", "SpawnAttack"])
+attached_sound = NodePath("../../FootstepSounds")
 
 [node name="ProjectileAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("projectile_spawn_point")]
 script = ExtResource("7_34df8")
@@ -1917,7 +1923,10 @@ projectile_spawn_point = NodePath("../../Marker3D")
 
 [node name="SpawnAttack" type="Node" parent="StateMachine"]
 script = ExtResource("9_jk8ff")
+pre_attack_delay = 3.0
+post_attack_delay = 1.35
 object_to_spawn = ExtResource("10_xqd0x")
+spawn_immediately = true
 anim_name = "Attack2"
 
 [node name="AggroTimeout" type="Timer" parent="."]
@@ -1941,5 +1950,15 @@ health = NodePath("../Health")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(0.99848, 0, 0.055107, 0, 1, 0, -0.055107, 0, 0.99848, 0, 1.34875, 1.1627)
+
+[node name="FootstepSounds" parent="." instance=ExtResource("14_rdgpp")]
+pitch_randomness = 0.1
+sound_name = "witch_footstep"
+
+[node name="RandomIntervalSounds" parent="." instance=ExtResource("15_if0gs")]
+interval_min = 5.0
+interval_max = 8.0
+sound_name = "witch_whisper"
+play_on_ready = true
 
 [editable path="Witch"]

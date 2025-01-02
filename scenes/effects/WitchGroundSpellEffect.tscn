@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://3symoni7x23e"]
+[gd_scene load_steps=18 format=3 uid="uid://3symoni7x23e"]
 
-[ext_resource type="Texture2D" uid="uid://wkeax548w6q2" path="res://assets/textures/effects/magic_circle.png" id="1_4csel"]
+[ext_resource type="Texture2D" uid="uid://dhmlqbk65sf3c" path="res://assets/textures/effects/Library_Bookstore_2D_Assets_Rune_2.png" id="1_yidgg"]
+[ext_resource type="Texture2D" uid="uid://r7ike0o3twuf" path="res://assets/textures/effects/Library_Bookstore_2D_Assets_Rune_2_emission.png" id="2_d3x8r"]
 [ext_resource type="Script" path="res://scripts/components/damage_in_area.gd" id="2_vicgi"]
+[ext_resource type="PackedScene" uid="uid://wv5gttcsiscx" path="res://core/audio/scenes/attached_sound_3d.tscn" id="4_uk0bs"]
 
 [sub_resource type="Animation" id="Animation_jnoji"]
 length = 0.001
@@ -28,10 +30,22 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_jr4qs"]
 resource_name = "play_effect"
-length = 3.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -39,10 +53,10 @@ tracks/0/path = NodePath("Decal:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.76667, 2.33333),
+"times": PackedFloat32Array(0, 0.3, 4.23333, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.176471, 0.576471, 0.196078, 0), Color(0.176471, 0.576471, 0.196078, 1), Color(0.176471, 0.576471, 0.196078, 1), Color(0.176471, 0.576471, 0.196078, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -51,9 +65,9 @@ tracks/1/path = NodePath("Decal:emission_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.142061, 0.5, 0.0912727, -0.5, 3.5, -0.1, -4, 0.1, 5, 7.5, -0.108727, 1, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.7, 1.13333, 1.3, 2.03333)
+"handle_modes": PackedInt32Array(0, 0, 2, 2, 0),
+"points": PackedFloat32Array(0.00386113, -0.142061, 0.5, 0.138117, -0.0347489, 0.235521, -0.266667, -0.34749, 0.0666668, 2.16216, 6.83784, 0, -7.64479, 0, 0.850114, 5.83398, -0.0491887, 1.11213, 0.169061, -3.82239, -0.0733589, -0.9, 0.46332, 0.25, 0),
+"times": PackedFloat32Array(0, 1.96667, 3.6, 3.9, 4.96667)
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -62,11 +76,37 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.33333),
+"times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpellChargeHit")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
 }]
 }
 
@@ -79,12 +119,66 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u3ehe"]
 radius = 2.5
 
+[sub_resource type="Curve" id="Curve_ww8uo"]
+_data = [Vector2(0, 0.00106728), 0.0, 0.0, 0, 0, Vector2(0.100592, 0.951441), 0.0, 0.0, 0, 0, Vector2(0.347633, 0.0184098), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_6y87m"]
+curve = SubResource("Curve_ww8uo")
+
+[sub_resource type="Curve" id="Curve_7jpgn"]
+max_value = 25.0
+_data = [Vector2(0, 10.3455), 0.0, 0.0, 0, 0, Vector2(0.594675, 0.184098), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nssf1"]
+curve = SubResource("Curve_7jpgn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jupms"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 15.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+damping_min = 25.0
+damping_max = 50.0
+color = Color(1, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_6y87m")
+emission_curve = SubResource("CurveTexture_nssf1")
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtynb"]
+transparency = 1
+vertex_color_use_as_albedo = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 4.39
+disable_receive_shadows = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7j5o8"]
+material = SubResource("StandardMaterial3D_gtynb")
+shape = 0
+size = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_7kau1"]
+size = Vector3(13.54, 1, 10.11)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx1wi"]
+albedo_color = Color(0.219501, 0.219501, 0.219501, 1)
+
 [node name="WitchGroundSpellEffect" type="Node3D"]
 
 [node name="Decal" type="Decal" parent="."]
 size = Vector3(5, 2, 5)
-texture_albedo = ExtResource("1_4csel")
-texture_emission = ExtResource("1_4csel")
+texture_albedo = ExtResource("1_yidgg")
+texture_emission = ExtResource("2_d3x8r")
 emission_energy = 0.0
 modulate = Color(0.176471, 0.576471, 0.196078, 1)
 
@@ -97,7 +191,29 @@ autoplay = "play_effect"
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 2
 script = ExtResource("2_vicgi")
-delay = 1.2
+delay = 3.6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_u3ehe")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 0.5
+transform_align = 1
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_jupms")
+draw_pass_1 = SubResource("RibbonTrailMesh_7j5o8")
+
+[node name="TestSurface" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_7kau1")
+surface_material_override/0 = SubResource("StandardMaterial3D_rx1wi")
+
+[node name="SpellChargeSound" parent="." instance=ExtResource("4_uk0bs")]
+sound_name = "witch_magic_circle_charge"
+play_on_ready = true
+
+[node name="SpellChargeHit" parent="." instance=ExtResource("4_uk0bs")]
+sound_name = "witch_magic_circle_hit"
