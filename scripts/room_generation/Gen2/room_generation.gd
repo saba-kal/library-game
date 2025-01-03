@@ -20,14 +20,17 @@ var final_room_array : Array[RoomVariation]
 var default_space : int = 10
 var door_id_pairings : Array[Array]
 
+var player_instance : Player
 const PLAYER = preload("res://scenes/player/player.tscn")
 
+
+## Connects the 2D Generation to transfer the coordinates for 3D Placement.
 func _ready() -> void:
 	_2d_map.generation_complete.connect(spawn_rooms)
 	_2d_map.generation_cleared.connect(clear_rooms)
-	pass
 
-
+## Instantiates some base created rooms that have a single parent called "map_room_base".
+## Appends each of them to an array. "room_array"
 func spawn_rooms():
 	populate_information = _2d_map.generation_info()
 	var room_instance:RoomBase
@@ -123,16 +126,19 @@ func spawn_rooms():
 	cycle_timer.start()
 
 
+## Cycles through the array of rooms, and calls a function to randomly pull a scene that's stored on the base room.
+## Also stores the new rooms into an array for future use.
+## Lastly spawns player.
 func spawn_variations():
 	for room in room_array:
 		final_room_array.append(room.setup_random_room(room_space))
 		room.queue_free()
 	
 	spawn_player()
-	
 
+## Spawns player.
 func spawn_player():
-	var player_instance : Player = PLAYER.instantiate()
+	player_instance = PLAYER.instantiate()
 	add_child(player_instance)
 	player_instance.global_position = final_room_array.front().global_position
 
@@ -141,6 +147,11 @@ func clear_rooms():
 	populate_information.clear()
 	for room in rooms.get_children():
 		room.queue_free()
+	for more_rooms in final_room_array:
+		more_rooms.queue_free()
+	final_room_array.clear()
+	room_array.clear()
+	player_instance.queue_free()
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
