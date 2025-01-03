@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://3wr52s0shc0s" path="res://assets/audio/sfx/glaneur-de-sons__sword-swing-b-strong-04.wav" id="4_rvdrn"]
 [ext_resource type="AudioStream" uid="uid://c3bgaf2mwmpml" path="res://assets/audio/sfx/vilkas_sound__vs-button-click-02.mp3" id="5_fjhui"]
 [ext_resource type="AudioStream" uid="uid://bxhj0p7ch5uus" path="res://assets/audio/sfx/eqylizer__button-hover-click.mp3" id="6_jour0"]
-[ext_resource type="AudioStream" uid="uid://bjqodtoy37krc" path="res://assets/audio/music/Del Rio Bravo.mp3" id="7_mwjvg"]
 [ext_resource type="AudioStream" uid="uid://b5jtidiqw46ae" path="res://assets/audio/sfx/carrigsound__step-1.wav" id="7_vx35s"]
 [ext_resource type="AudioStream" uid="uid://dkn8gfkmjsbrr" path="res://assets/audio/sfx/sadiquecat__woosh-metal-tea-strainer-1.wav" id="8_2sbcy"]
 [ext_resource type="AudioStream" uid="uid://c7ennhxxid3tv" path="res://assets/audio/music/haunted_section.mp3" id="8_j655i"]
@@ -16,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://bb3xpg1xg1k3g" path="res://assets/audio/sfx/alonsotm__firespell3.wav" id="12_e314u"]
 [ext_resource type="AudioStream" uid="uid://duj1x64osi8nl" path="res://assets/audio/sfx/witch_magic_circle_charge.wav" id="13_xppkc"]
 [ext_resource type="AudioStream" uid="uid://bh5chahm7qw2y" path="res://assets/audio/sfx/insintesi__witchs-whisper.wav" id="14_ahix1"]
+[ext_resource type="AudioStream" uid="uid://7jakfw5hj72m" path="res://assets/audio/music/horror section.mp3" id="15_u05ys"]
 
 [sub_resource type="Resource" id="Resource_v2sca"]
 script = ExtResource("3_gdhnl")
@@ -144,7 +144,7 @@ pitch_scale = 1.0
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_veow1"]
 clip_count = 2
 clip_0/name = &"main_menu"
-clip_0/stream = ExtResource("7_mwjvg")
+clip_0/stream = ExtResource("15_u05ys")
 clip_0/auto_advance = 0
 clip_1/name = &"haunted_section"
 clip_1/stream = ExtResource("8_j655i")

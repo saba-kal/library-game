@@ -64,9 +64,4 @@ shadow_enabled = true
 
 [node name="Rooms" type="Node3D" parent="."]
 
-[node name="CycleTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [connection signal="toggled" from="Overlay/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="timeout" from="CycleTimer" to="." method="spawn_variations"]
