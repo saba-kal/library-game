@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvgbbactdrqq3"]
+[gd_scene load_steps=5 format=3 uid="uid://dvgbbactdrqq3"]
 
 [ext_resource type="PackedScene" uid="uid://eq1r6t2d1w4h" path="res://scenes/room_generation/Gen2/Gen2_rooms/map_room_base.tscn" id="1_4ul5t"]
+[ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_4ljm8"]
+[ext_resource type="PackedScene" uid="uid://bprs5jbwgxchp" path="res://scenes/rooms/gothic_rooms/Dead_End_1.tscn" id="2_eyrje"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh4ln"]
 albedo_color = Color(0.046, 0.0469, 0.1, 1)
 
 [node name="MapRoomBase" instance=ExtResource("1_4ul5t")]
+room_variations = Array[PackedScene]([ExtResource("2_eyrje")])
 
 [node name="Walls" type="CSGCombiner3D" parent="." index="1"]
 
@@ -33,3 +36,6 @@ material = SubResource("StandardMaterial3D_wh4ln")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 0)
 size = Vector3(1, 4, 10)
 material = SubResource("StandardMaterial3D_wh4ln")
+
+[node name="DoorBot" parent="DoorDetection" index="0" instance=ExtResource("2_4ljm8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 5)

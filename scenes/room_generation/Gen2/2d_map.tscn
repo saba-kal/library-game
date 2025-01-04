@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7xo88hoefhrx"]
 
-[ext_resource type="Script" path="res://scripts/room_generation/Gen3/2d_map.gd" id="1_q4he5"]
+[ext_resource type="Script" path="res://scripts/room_generation/Gen2/2d_map.gd" id="1_q4he5"]
 [ext_resource type="Texture2D" uid="uid://dlx2eao110muy" path="res://assets/map/rooms/map_piece_sheet.png" id="2_ygdkr"]
-[ext_resource type="Script" path="res://scripts/room_generation/Gen3/click_drag.gd" id="3_ngqoj"]
+[ext_resource type="Script" path="res://scripts/room_generation/Gen2/click_drag.gd" id="3_ngqoj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8x124"]
 texture = ExtResource("2_ygdkr")

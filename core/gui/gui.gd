@@ -43,7 +43,9 @@ func show_death() -> void:
 func on_settings_menu_ok_pressed() -> void:
 	self.settings_menu.visible = false
 	self.pause.visible = true
+	button_resume.grab_focus()
 
 func on_button_settings_pressed() -> void:
 	self.settings_menu.visible = true
 	self.pause.visible = false
+	settings_menu.ok_button.grab_focus()

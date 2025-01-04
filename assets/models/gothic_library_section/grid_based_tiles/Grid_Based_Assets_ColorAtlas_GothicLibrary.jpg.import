@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbxdxtd67binm"
-path.s3tc="res://.godot/imported/Grid_Based_Assets_ColorAtlas_GothicLibrary.jpg-ffae40874768f17c7708893e27546b24.s3tc.ctex"
+path="res://.godot/imported/Grid_Based_Assets_ColorAtlas_GothicLibrary.jpg-ffae40874768f17c7708893e27546b24.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "7c4375ea8e6c5b90531e4d72bf480d17"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/gothic_library_section/grid_based_tiles/Grid_Based_Assets_ColorAtlas_GothicLibrary.jpg"
-dest_files=["res://.godot/imported/Grid_Based_Assets_ColorAtlas_GothicLibrary.jpg-ffae40874768f17c7708893e27546b24.s3tc.ctex"]
+dest_files=["res://.godot/imported/Grid_Based_Assets_ColorAtlas_GothicLibrary.jpg-ffae40874768f17c7708893e27546b24.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

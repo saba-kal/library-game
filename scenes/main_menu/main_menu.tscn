@@ -65,6 +65,7 @@ layout_mode = 2
 text = "PLAY"
 
 [node name="Button_SETTINGS" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("2_jy3ca")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "SETTINGS
 "
