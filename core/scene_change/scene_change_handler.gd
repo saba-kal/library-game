@@ -2,6 +2,7 @@ extends Node
 
 @export var scene_change_duration: float = 3
 @export var main_menu: PackedScene
+@export var game_start_area: PackedScene
 @export var debug_area: PackedScene
 @export var debug_generation_area: PackedScene
 @export var generation_area_two: PackedScene
@@ -14,6 +15,11 @@ var current_scene:PackedScene
 func to_main_menu() -> void:
 	next_scene = main_menu
 	current_scene = main_menu
+	scene_change()
+
+func to_game_start() -> void:
+	next_scene = game_start_area
+	current_scene = game_start_area
 	scene_change()
 
 func to_debug_area() -> void:

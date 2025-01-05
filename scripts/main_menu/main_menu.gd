@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func play_pressed() -> void:
 	print("Pressed Play Button")
+	ChangeScene.to_game_start()
 
 func exit_pressed() -> void:
 	print("Pressed Exit Button")

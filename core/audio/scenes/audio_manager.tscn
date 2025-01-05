@@ -8,13 +8,13 @@
 [ext_resource type="AudioStream" uid="uid://bxhj0p7ch5uus" path="res://assets/audio/sfx/eqylizer__button-hover-click.mp3" id="6_jour0"]
 [ext_resource type="AudioStream" uid="uid://b5jtidiqw46ae" path="res://assets/audio/sfx/carrigsound__step-1.wav" id="7_vx35s"]
 [ext_resource type="AudioStream" uid="uid://dkn8gfkmjsbrr" path="res://assets/audio/sfx/sadiquecat__woosh-metal-tea-strainer-1.wav" id="8_2sbcy"]
-[ext_resource type="AudioStream" uid="uid://c7ennhxxid3tv" path="res://assets/audio/music/haunted_section.mp3" id="8_j655i"]
 [ext_resource type="AudioStream" uid="uid://bjw6t0rabd55k" path="res://assets/audio/sfx/qubodup__creepy-chanting-of-muffled-wailing-women-singing.ogg" id="9_b3ek6"]
 [ext_resource type="AudioStream" uid="uid://jgpq2rjphgcl" path="res://assets/audio/sfx/bertsz__wet-spell-shoot.wav" id="10_5s756"]
 [ext_resource type="AudioStream" uid="uid://dkpys1fxdvtfq" path="res://assets/audio/sfx/longer-scream-no-effects.wav" id="11_7jll0"]
 [ext_resource type="AudioStream" uid="uid://bb3xpg1xg1k3g" path="res://assets/audio/sfx/alonsotm__firespell3.wav" id="12_e314u"]
 [ext_resource type="AudioStream" uid="uid://duj1x64osi8nl" path="res://assets/audio/sfx/witch_magic_circle_charge.wav" id="13_xppkc"]
 [ext_resource type="AudioStream" uid="uid://bh5chahm7qw2y" path="res://assets/audio/sfx/insintesi__witchs-whisper.wav" id="14_ahix1"]
+[ext_resource type="AudioStream" uid="uid://bjqodtoy37krc" path="res://assets/audio/music/Del Rio Bravo.mp3" id="15_oudq3"]
 [ext_resource type="AudioStream" uid="uid://7jakfw5hj72m" path="res://assets/audio/music/horror section.mp3" id="15_u05ys"]
 
 [sub_resource type="Resource" id="Resource_v2sca"]
@@ -144,10 +144,10 @@ pitch_scale = 1.0
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_veow1"]
 clip_count = 2
 clip_0/name = &"main_menu"
-clip_0/stream = ExtResource("15_u05ys")
+clip_0/stream = ExtResource("15_oudq3")
 clip_0/auto_advance = 0
 clip_1/name = &"haunted_section"
-clip_1/stream = ExtResource("8_j655i")
+clip_1/stream = ExtResource("15_u05ys")
 clip_1/auto_advance = 0
 _transitions = {
 Vector2i(-1, 0): {
