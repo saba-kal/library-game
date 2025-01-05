@@ -76,9 +76,10 @@ script = ExtResource("2_23lc7")
 [node name="SpringArm3D" type="SpringArm3D" parent="CamRoot"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
 collision_mask = 0
-spring_length = 10.0
+spring_length = 25.0
 
 [node name="Camera3D" type="Camera3D" parent="CamRoot/SpringArm3D"]
+fov = 35.0
 
 [node name="StateMachine" type="Node" parent="."]
 
