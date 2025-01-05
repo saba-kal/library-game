@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmtrnvihyrtdi"]
+[gd_scene load_steps=20 format=3 uid="uid://dmtrnvihyrtdi"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f2x5"]
 [ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2_23lc7"]
 [ext_resource type="Script" path="res://scripts/player/movement.gd" id="4_o2lce"]
 [ext_resource type="Script" path="res://scripts/player/dash.gd" id="5_0dcju"]
-[ext_resource type="PackedScene" uid="uid://md3wow2f5ycb" path="res://scripts/player/attack.tscn" id="5_n2afl"]
+[ext_resource type="PackedScene" uid="uid://md3wow2f5ycb" path="res://scenes/player/attack.tscn" id="5_n2afl"]
+[ext_resource type="PackedScene" uid="uid://dsbefxw1ljuu1" path="res://scenes/player/parry.tscn" id="6_br42e"]
 [ext_resource type="Script" path="res://scripts/components/health.gd" id="6_gp4iy"]
 [ext_resource type="Script" path="res://scripts/player/death.gd" id="6_wjwua"]
 [ext_resource type="Script" path="res://scripts/player/interact.gd" id="8_ve6hn"]
@@ -81,10 +82,11 @@ spring_length = 10.0
 
 [node name="StateMachine" type="Node" parent="."]
 
-[node name="Movement" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_state", "attack_state", "footstep_sounds")]
+[node name="Movement" type="Node" parent="StateMachine" node_paths=PackedStringArray("dash_state", "attack_state", "parry_state", "footstep_sounds")]
 script = ExtResource("4_o2lce")
 dash_state = NodePath("../Dash")
 attack_state = NodePath("../Attack")
+parry_state = NodePath("../Parry")
 footstep_sounds = NodePath("../../FootstepSounds")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state")]
@@ -105,6 +107,9 @@ distance = 2.0
 wind_up_period = 0.5
 wind_down_period = 0.6
 
+[node name="Parry" parent="StateMachine" node_paths=PackedStringArray("movement_state") instance=ExtResource("6_br42e")]
+movement_state = NodePath("../Movement")
+
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("6_wjwua")
 
@@ -115,6 +120,6 @@ script = ExtResource("6_gp4iy")
 script = ExtResource("8_ve6hn")
 
 [node name="FootstepSounds" parent="." instance=ExtResource("9_rb7uo")]
-sound_name = "player_footstep"
 interval = 0.35
 pitch_randomness = 0.2
+sound_name = "player_footstep"
