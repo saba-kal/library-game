@@ -1169,7 +1169,7 @@ mesh = SubResource("ArrayMesh_klekd")
 skeleton = NodePath("")
 
 [node name="Edging_2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54105, 0, -3.44943)
 mesh = SubResource("ArrayMesh_6xoc8")
 skeleton = NodePath("")
 
