@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://cg78jlusnpup3"]
+
+[ext_resource type="PackedScene" uid="uid://xsquffoqqj8h" path="res://assets/models/gothic_library_section/decorative_assets/Bookshelf.tscn" id="1_vjkij"]
+[ext_resource type="PackedScene" uid="uid://dyqcrv4i4axss" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_1.tscn" id="2_lommy"]
+[ext_resource type="PackedScene" uid="uid://cdykij1kwwxue" path="res://assets/models/gothic_library_section/decorative_assets/Candle_1.tscn" id="3_bhxfh"]
+[ext_resource type="PackedScene" uid="uid://bvfrd0h6e4ovd" path="res://assets/models/gothic_library_section/decorative_assets/Candle_2.tscn" id="4_v6v0w"]
+[ext_resource type="PackedScene" uid="uid://d034t5npsvheu" path="res://assets/models/gothic_library_section/decorative_assets/Book_2.tscn" id="5_y6d38"]
+[ext_resource type="PackedScene" uid="uid://c6pf126f185cf" path="res://assets/models/gothic_library_section/decorative_assets/Book_3.tscn" id="6_vhynb"]
+[ext_resource type="PackedScene" uid="uid://dk1v0q4x3xtb8" path="res://assets/models/gothic_library_section/decorative_assets/Book_1.tscn" id="7_7kbqy"]
+[ext_resource type="PackedScene" uid="uid://b7acvdsrwwv78" path="res://assets/models/gothic_library_section/decorative_assets/Bottle.tscn" id="8_mc7yh"]
+[ext_resource type="PackedScene" uid="uid://bxvymvi2qhybu" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_4.tscn" id="9_grb4r"]
+
+[node name="Bookshelf_2" type="Node3D"]
+
+[node name="Bookshelf2" parent="." instance=ExtResource("1_vjkij")]
+transform = Transform3D(-0.708344, 0, 0.00728206, 0, 0.708381, 0, -0.00728206, 0, -0.708344, 0.00522518, 0.182395, 0.016255)
+
+[node name="EmptyCandle_11" parent="Bookshelf2" instance=ExtResource("2_lommy")]
+transform = Transform3D(0.631541, -0.00799023, 1.2625, 0.00670423, 1.41164, 0.00558049, -1.26251, 0.00349939, 0.631568, -0.0672436, 1.85954, 0.160375)
+
+[node name="Candle_12" parent="Bookshelf2" instance=ExtResource("3_bhxfh")]
+transform = Transform3D(-1.08341, 0.00818051, 0.904968, 0.0069435, 1.41165, -0.00444782, -0.904978, 0.00103768, -1.08343, 0.0805779, 1.86206, 0.0379391)
+
+[node name="Candle_13" parent="Bookshelf2" instance=ExtResource("4_v6v0w")]
+transform = Transform3D(0.7571, 0.00955022, -1.19143, -0.00619675, 1.41164, 0.00737757, 1.19146, 0.00127329, 0.757124, 0.186527, 1.99827, 0.181949)
+
+[node name="Book_16" parent="Bookshelf2" instance=ExtResource("5_y6d38")]
+transform = Transform3D(0.863255, 0, -0.0776054, 0, 0.866737, 0, 0.0776054, 0, 0.863255, -0.957119, 2.89702, 0.0313969)
+
+[node name="Book_17" parent="Bookshelf2" instance=ExtResource("5_y6d38")]
+transform = Transform3D(0.861345, 0.0576502, -0.0774139, -0.0573657, 0.864817, 0.00575215, 0.0776251, -0.000592667, 0.863253, -0.815536, 2.89702, 0.0299416)
+
+[node name="Book_18" parent="Bookshelf2" instance=ExtResource("5_y6d38")]
+transform = Transform3D(0.863188, -0.010785, -0.0775986, 0.0107318, 0.866669, -0.00107609, 0.0776061, 0.000110874, 0.863254, -0.671978, 2.89702, 0.0284662)
+
+[node name="Book_40" parent="Bookshelf2" instance=ExtResource("5_y6d38")]
+transform = Transform3D(-0.0320456, -0.606982, 0.617882, 0.865978, -0.0103355, 0.0347597, -0.0169744, 0.618626, 0.606833, -0.793798, 3.43499, -0.0799875)
+
+[node name="Book_41" parent="Bookshelf2" instance=ExtResource("5_y6d38")]
+transform = Transform3D(-0.0361529, -0.181178, 0.846818, 0.865978, -0.0103355, 0.0347597, 0.00283194, 0.847525, 0.181451, -0.793798, 3.55833, -0.0799875)
+
+[node name="Book_35" parent="Bookshelf2" instance=ExtResource("5_y6d38")]
+transform = Transform3D(0.841112, 0.19514, -0.0753851, -0.194177, 0.844482, 0.0194705, 0.0778331, -0.00200612, 0.863232, -0.671978, 2.08384, 0.0284662)
+
+[node name="Book_19" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(0.872472, -0.244389, 0.00209649, 0.244394, 0.872471, -0.00202188, -0.00147343, 0.00251242, 0.906051, -0.468288, 2.89232, -0.0563984)
+
+[node name="Book_37" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(0.894193, -0.100458, -0.10613, 0.103084, 0.90002, 0.0166175, 0.10358, -0.0284745, 0.899666, 0.112734, 2.89232, -0.0613413)
+
+[node name="Book_38" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(0.90185, -0.00682087, -0.0869357, 0.00684698, 0.906031, -5.66448e-05, 0.0869337, -0.000600588, 0.901876, -0.0446701, 2.89232, -0.0607538)
+
+[node name="Book_20" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.877197, 0, -0.0215913, 0, 0.877463, 0, 0.0215913, 0, 0.877197, 1.00156, 3.69286, 0.0337505)
+
+[node name="Book_30" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.877197, 0, -0.0215913, 0, 0.877463, 0, 0.0215913, 0, 0.877197, 1.06451, 2.08559, 0.033103)
+
+[node name="Book_31" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.877197, 0, -0.0215913, 0, 0.877463, 0, 0.0215913, 0, 0.877197, 0.901899, 2.08559, 0.0347748)
+
+[node name="Book_32" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.848108, -0.224117, -0.0205761, 0.223992, 0.848356, -0.0078181, 0.0218904, 0.00230402, 0.877187, 0.688606, 2.08559, 0.0369673)
+
+[node name="Book_39" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.55582, -0.677782, -0.0401668, 0.674492, 0.55714, -0.0677974, 0.0778729, 0.01207, 0.873917, 0.421873, 2.8368, -0.0233097)
+
+[node name="Book_36" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.712091, -0.474663, -0.193813, 0.483409, 0.7321, -0.0168726, 0.170833, -0.0930821, 0.855624, -1.01646, 2.08312, 0.0544968)
+
+[node name="Book_33" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.877032, 0.0170432, -0.0215856, -0.0170338, 0.877298, 0.000594533, 0.021593, -0.00017521, 0.877197, 0.501429, 2.08559, 0.0388918)
+
+[node name="Book_21" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.843858, 0.239639, -0.0204278, -0.239507, 0.844102, 0.00835957, 0.0219341, -0.00246359, 0.877185, 0.800406, 3.69286, 0.0358181)
+
+[node name="Book_22" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(-0.0135504, -0.756624, -0.444158, 0.877322, -0.0157119, 0, -0.00795314, -0.444087, 0.756746, 0.122902, 3.43851, 0.00768757)
+
+[node name="Book_23" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(-0.0131389, 0.760833, -0.491831, 0.905941, 0.0143797, -0.00195704, 0.0061623, -0.491796, -0.760945, 0.185186, 3.56751, 0.051446)
+
+[node name="Book_42" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(-0.0131389, 0.760833, -0.491831, 0.905941, 0.0143797, -0.00195704, 0.0061623, -0.491796, -0.760945, -0.786013, 3.67917, -0.0778799)
+
+[node name="Bottle5" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-1.1222, 0, -0.0115366, 0, 1.12226, 0, 0.0115366, 0, -1.1222, 0.053751, 3.75786, 0.229732)
+
+[node name="Bottle6" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-0.950875, 0, 0.596066, 0, 1.12226, 0, -0.596066, 0, -0.950875, 0.136471, 1.1367, 0.228881)
+
+[node name="Bottle8" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-0.950875, 0, 0.596066, 0, 1.12226, 0, -0.596066, 0, -0.950875, -0.837332, 1.1367, 0.313136)
+
+[node name="Bottle7" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-0.522001, 0, 0.993465, 0, 1.12226, 0, -0.993465, 0, -0.522001, 0.308462, 1.1367, 0.0957069)
+
+[node name="Bottle12" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-0.950875, 0, 0.596066, 0, 1.12226, 0, -0.596066, 0, -0.950875, 0.851019, 2.71564, 0.221535)
+
+[node name="Bottle13" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-0.522001, 0, 0.993465, 0, 1.12226, 0, -0.993465, 0, -0.522001, 1.02301, 2.71564, 0.0883617)
+
+[node name="Bottle14" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(0.219709, 0, 1.10054, 0, 1.12226, 0, -1.10054, 0, 0.219709, 0.815939, 2.71564, -0.0598879)
+
+[node name="Bottle9" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-0.925709, -0.254537, 0.581147, -0.441425, 0.996767, -0.26657, -0.455704, -0.448471, -0.922316, -0.88751, 2.13016, 0.087533)
+
+[node name="Bottle11" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-0.986152, -0.0598429, 0.532335, 0.439556, 0.547053, 0.875776, -0.306191, 0.978064, -0.457269, -0.827829, 1.95809, 0.152636)
+
+[node name="Bottle10" parent="Bookshelf2" instance=ExtResource("8_mc7yh")]
+transform = Transform3D(-0.429951, 0.642109, 0.813815, 0.292824, 0.920388, -0.571491, -0.994411, -0.00660114, -0.520154, -0.818844, 2.13877, -0.0445776)
+
+[node name="Book_24" parent="Bookshelf2" instance=ExtResource("5_y6d38")]
+transform = Transform3D(0.816627, 0, 0.290435, 0, 0.866737, 0, -0.290435, 0, 0.816627, -0.973251, 1.28814, -0.0545387)
+
+[node name="Book_28" parent="Bookshelf2" instance=ExtResource("5_y6d38")]
+transform = Transform3D(0.80333, 0, -0.325414, 0, 0.866737, 0, 0.325414, 0, 0.80333, 0.6961, 1.28814, -0.0717001)
+
+[node name="Book_25" parent="Bookshelf2" instance=ExtResource("7_7kbqy")]
+transform = Transform3D(0.841825, -0.245188, 0.0339354, 0.245094, 0.842507, 0.00725282, -0.0346102, 0.00252063, 0.876776, -0.724352, 1.29646, 0.0287504)
+
+[node name="Book_26" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(0.90602, 0, 0.0079542, 0, 0.906056, 0, -0.0079542, 0, 0.90602, 1.07984, 1.29783, 0.0542631)
+
+[node name="Book_34" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(0.90602, 0, 0.0079542, 0, 0.906056, 0, -0.0079542, 0, 0.90602, -0.501007, 2.07948, 0.0705147)
+
+[node name="Book_27" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(0.893934, 0.147502, 0.00786658, -0.147508, 0.893968, 0.000106495, -0.0077443, -0.00138576, 0.906021, 0.887861, 1.29783, 0.0562372)
+
+[node name="Book_29" parent="Bookshelf2" instance=ExtResource("6_vhynb")]
+transform = Transform3D(0.00810014, -0.828565, -0.366541, 0.906006, 0.00949731, -0.00144692, 0.00516524, -0.366507, 0.828603, -0.180115, 1.05562, -0.162545)
+
+[node name="TornCloth_4" parent="Bookshelf2" instance=ExtResource("9_grb4r")]
+transform = Transform3D(1.41165, 0, -0.00790859, 0, 1.41167, 0, 0.00790859, 0, 1.41165, 0.37178, 4.91541, -0.254335)

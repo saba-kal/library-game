@@ -1873,7 +1873,7 @@ bones/37/rotation = Quaternion(0.967339, -0.124678, -0.0310166, -0.218516)
 bones/38/rotation = Quaternion(-0.0879286, 0.0238406, -0.02564, 0.995511)
 
 [node name="Staff" parent="Witch/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.0317051, -0.00582406, 0.0185033, 0.00204504, 0.34451, -0.00228116, -0.0184004, 0.028254, 0.031629, -0.423207, -0.819556, 0.55717)
+transform = Transform3D(0.0317051, -0.00582397, 0.0185033, 0.00204503, 0.34451, -0.00228115, -0.0184004, 0.0282539, 0.031629, -0.423208, -0.819556, 0.55717)
 
 [node name="AnimationPlayer" parent="Witch" index="1"]
 libraries = {

@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=4 uid="uid://bvfrd0h6e4ovd"]
+
+[ext_resource type="Texture2D" uid="uid://d2gy1y7b81jwa" path="res://assets/models/gothic_library_section/decorative_assets/Decorative_Props_ColorAtlas_GothicLibrary.jpg" id="1_0mrmc"]
+[ext_resource type="PackedScene" uid="uid://t3rh2l4jxp8r" path="res://assets/VFX/Candle_Flame_1.tscn" id="2_pylfe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6t15"]
+resource_name = "Color_Atlas_GothicLibrary"
+cull_mode = 2
+albedo_texture = ExtResource("1_0mrmc")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hwuh5"]
+_surfaces = [{
+"aabb": AABB(-0.0383429, -0.148585, -0.038343, 0.0765799, 0.268922, 0.0766846),
+"format": 34896613377,
+"index_count": 186,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAFAAMAAgAEAAUABAAHAAUABAAGAAcABgAJAAcABgAIAAkACAALAAkACAAKAAsACgANAAsACgAMAA0ADAAPAA0ADAAOAA8ABQASAAMABQATABIADgABAA8ADgAAAAEADgACAAAAAgAGAAQABgAKAAgACgAOAAwADgAGAAIABgAOAAoACQAUAAcACQAVABQACwAVAAkACwAWABUAAwARAAEAAwASABEADwAXAA0ADwAYABcABwATAAUABwAUABMADQAWAAsADQAXABYAAQAYAA8AAQARABgAGQASABoAGQARABIAGgATABsAGgASABMAGwAUABwAGwATABQAHAAVAB0AHAAUABUAHQAWAB4AHQAVABYAHgAXAB8AHgAWABcAHwAYACAAHwAXABgAIAARABkAIAAYABEAEAAZABoAEAAaABsAEAAbABwAEAAcAB0AEAAdAB4AEAAeAB8AEAAfACAAEAAgABkA"),
+"name": "Color_Atlas_GothicLibrary",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 33,
+"vertex_data": PackedByteArray("LIAAAAAAAAAsgNXUXRkAALXbAADBJgAAgMnV1HE4AAD//wAAxoEAAPPm1dQAgAAAz9oAAILaAADZyNXUk8gAABB+AAD//wAAan7V1KLmAACKJQAAgtoAAIA31dSTyAAAAAAAAACAAABmGdXUAIAAAHUmAABBJAAAKzjV1HA2AAAOgCXpIoAAACyALvs7BgAADdey+RgrAAB/+RT5r4EAADbWsvka1gAAJn4u+8T5AAAjKqr8GtYAAH8GR/0AgAAA/iqq/LkoAAAsgET+FBMAAM3NC/0KNAAAneyK/IGBAAAWzQv9Cc0AAFN+RP7r7AAAQzN9/wnNAABhE///AIAAAP4zff/rMQAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fu1yx"]
+resource_name = "Decorative_Props_Cylinder_536"
+_surfaces = [{
+"aabb": AABB(-0.0383429, -0.148585, -0.038343, 0.0765799, 0.268922, 0.0766846),
+"attribute_data": PackedByteArray("5pN2DA6jLhw/k3oczJWWDMCZmwzjoW4apZSHHA6aoxzQm5sM0p8FGqWUkBy1m6Mc/ZSMDJCdmwwTnjAb1pWOHBydoxwMl3oMqp1AHVKMVBx1l3wcfZeAHC+NVwzMmGsM1Z4AH3yNXhzlmHQcP49WDOWgaR8kj14cJpFmDNaRZAyloj4ei5BfHJeRbBxfnuQRap7eEq2eqhfqnnQWXZ+xGJKg7xgmoQIWmKE/GDqTXh+3n8sU45RQH9OZaR+uoRoVxKEuFVOUSR/Jm14fyqLZFt6i4Ra1lVcfZqLPGOGLNh+dl1sftaD/Gceg/RlBjV4fxp6IGTiPaR+bne0Xqp3eF+KQXx9EkWkf+Z3nFQee0RWqncUSwp8QFdSddRODoVsVg6FqFaqdwhGBoucWkKLtFiiiqRimoLUZt6C4GeueThnend8X7J3RF9SdgRQ3ng8WRZ4PFg=="),
+"format": 34896613399,
+"index_count": 186,
+"index_data": PackedByteArray("AAAGAAIAAAADAAYABAALAAcABAAIAAsACAAQAAsACAANABAADAAUAA8ADAARABQAEQAaABUAEQAXABoAFgAdABkAFgAbAB0AGwAhAB0AGwAeACEACwAuAAcACwAyAC4AHwACACIAHwAAAAIAIAAFAAEABQAOAAkADgAYABIAGAAgABwAIAAOAAUADgAgABgAFAA1AA8AFAA4ADUAGQA3ABMAGQA7ADcABgArAAIABgAtACsAIQA9AB0AIQBAAD0ADwAxAAoADwA1ADEAHQA7ABkAHQA9ADsAAgBBACIAAgArAEEARQAvAEcARQAsAC8ASAAzAEoASAAwADMASwA2AEwASwA0ADYATAA6AE4ATAA2ADoATQA8AE8ATQA5ADwATwA+AFAATwA8AD4AUQBCAFMAUQA/AEIAVAAsAEUAVABDACwAKQBFAEcAIwBGAEkAKgBLAEwAKABMAE4AJwBNAE8AJQBPAFAAJgBRAFMAJABSAEQA"),
+"material": SubResource("StandardMaterial3D_n6t15"),
+"name": "Color_Atlas_GothicLibrary",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 85,
+"vertex_data": PackedByteArray("LIAAAAAA5OQsgAAAAAB58CyA1dRdGcX9tdsAAMEmBuS12wAAwSY167XbAADBJv/cgMnV1HE4Cv6AydXUcThA/v//AADGgRbt//8AAMaBzMXz5tXUAIDx/vPm1dQAgB/+z9oAAILa+P3P2gAAgtrZ7M/aAACC2lq42cjV1JPIQf7ZyNXUk8gy/hB+AAD//xn3EH4AAP//Ic1qftXUouYG/mp+1dSi5jb9an7V1KLmrv+KJQAAgtrj7IolAACC2mX/iiUAAILajueAN9XUk8if/oA31dSTyN3+AAAAAACAtuwAAAAAAIBn8GYZ1dQAgIL+dSYAAEEkp+p1JgAAQST34nUmAABBJMfzKzjV1HA2T/4rONXUcDYh/Q6AJekigL7/DoAl6SKArNQOgCXpIoAvwA6AJekigCvEDoAl6SKAIMAOgCXpIoA3yg6AJekigAPADoAl6SKAT8QsgC77Owag8iyALvs7BsLyDdey+Rgr/PEN17L5GCtv9g3XsvkYK5LuDdey+RgrIOh/+RT5r4Hc+n/5FPmvgf3zf/kU+a+BptJ/+RT5r4Gn0TbWsvka1kz8Ntay+RrWkLImfi77xPlL+yZ+LvvE+bv8Jn4u+8T5t40mfi77xPnXmiMqqvwa1ov6Iyqq/BrW9qV/Bkf9AICV9X8GR/0AgHnJfwZH/QCAJsr+Kqr8uSgH9f4qqvy5KCDx/iqq/Lko3uT+Kqr8uSiZ6SyARP4UE2bZLIBE/hQTr8jNzQv9CjS++M3NC/0KNK/Gzc0L/Qo0Ycad7Ir8gYGa+p3sivyBgc7BneyK/IGBvcMWzQv9Cc0vv1N+RP7r7BC4U35E/uvsHbxDM33/Cc1KumET//8AgAPAYRP//wCAhsD+M33/6zFp1/4zff/rMYzG/jN9/+sxzsVXApmDUlQ2QSUCnILBA9ulRhTPtl9kBTF5AdCmDwI9pwATrsmDatkzbAJWwYwB38AwHD/ltBVZ3hxtqEgiAlfbGwJV2/V7MGAyauVkRX+ffJT8d/+Z/F3/G15MapZlPWPLW3ts3Vr2fcD8R9snSWdt3UtoartAbH6KNY1stSHNf11EKl6bJjx+cyakgZKCsL4HrayozfR1g4TOT5fK9a5vQr1CoHn7Wn3uzZ2Xb/yHfffzHom92b5+0NFaikTUR3U9yu5jJLksjIC9k4WotdFfLrV8Xr6hB431qN5e5+2dACuB+JG++Y9iE6pOi6Tx/yCfy2XUPvWrOt/Ticwt1RnM2/OnUTb+pVpg3Cy4P+urrxKxIqpt64OIgULZA3ft5H4g7RZ8TTvrCBfnIH1B3TqGo9S6i4f3PoBIz5OTQfLBizbuHJGU3KuYg6qgr5rdUJYw9l6K")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hwuh5")
+
+[node name="Candle_2" type="MeshInstance3D"]
+transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 0, 0.145512, -0.000651948)
+mesh = SubResource("ArrayMesh_fu1yx")
+skeleton = NodePath("")
+
+[node name="CandleFlame" parent="." instance=ExtResource("2_pylfe")]
+transform = Transform3D(0.976803, -0.00438966, -0.214095, 0.00316891, 0.999977, -0.00604479, 0.214117, 0.00522613, 0.976794, 0.0029428, 0.158244, 0.0187836)
