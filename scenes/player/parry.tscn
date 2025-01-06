@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsbefxw1ljuu1"]
+
+[ext_resource type="Script" path="res://scripts/player/parry.gd" id="1_6tamx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gq7ef"]
+size = Vector3(0.3, 1.5, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rihiv"]
+size = Vector3(0.3, 1.5, 0.3)
+
+[node name="Parry" type="Node" node_paths=PackedStringArray("placeholder_fx")]
+script = ExtResource("1_6tamx")
+placeholder_fx = NodePath("Transform/HitArea/Placeholder")
+
+[node name="Transform" type="Node3D" parent="."]
+
+[node name="HitArea" type="Area3D" parent="Transform"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.04778, 1.02113)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Transform/HitArea"]
+shape = SubResource("BoxShape3D_gq7ef")
+
+[node name="Placeholder" type="MeshInstance3D" parent="Transform/HitArea"]
+visible = false
+mesh = SubResource("BoxMesh_rihiv")
+skeleton = NodePath("../../..")

@@ -2,6 +2,7 @@ extends CharacterState
 
 @export var dash_state: CharacterState
 @export var attack_state: CharacterState
+@export var parry_state: CharacterState
 
 @export var move_speed:float = 5
 @export var acceleration:float = 4
@@ -16,6 +17,9 @@ func handle_input(_event: InputEvent) -> void:
 		self.footstep_sounds.enabled = false
 	if _event.is_action_pressed("attack"):
 		finished.emit(attack_state.get_path(), {'direction': last_dir})
+		self.footstep_sounds.enabled = false
+	if _event.is_action_pressed("parry"):
+		finished.emit(parry_state.get_path(), {'direction': last_dir})
 		self.footstep_sounds.enabled = false
 
 func physics_update(_delta: float) -> void:

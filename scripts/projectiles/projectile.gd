@@ -35,3 +35,7 @@ func on_body_entered(body: Node3D):
 		health.take_damage(self.damage)
 	self.collided.emit(body)
 	self.queue_free()
+
+func get_parried(body: Node3D):
+	self.collided.emit(body)
+	queue_free()

@@ -23,6 +23,7 @@ func Enter() -> void:
 
 	await get_tree().create_timer(pre_attack_delay).timeout
 	var projectile: Projectile = self.projectile_scene.instantiate()
+	projectile.set_meta("parryable", true)
 	var direction: Vector3 = (self.player.global_position - self.enemy.global_position).normalized()
 	projectile.direction = direction
 	projectile.speed = self.projectile_speed
