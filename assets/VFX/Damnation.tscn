@@ -1,0 +1,56 @@
+[gd_scene load_steps=12 format=3 uid="uid://dua1vc386umy5"]
+
+[ext_resource type="Shader" uid="uid://cmw6cv5q414wr" path="res://assets/shaders/Damnation.tres" id="1_6omkd"]
+[ext_resource type="Texture2D" uid="uid://v0lfoqro72c2" path="res://assets/textures/effects/Dissolve_Texture_2.png" id="2_n8oqf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_571bs"]
+render_priority = 0
+shader = ExtResource("1_6omkd")
+shader_parameter/Dissolve_Tiling = Vector2(1, 0.1)
+shader_parameter/Dissolve_Speed = Vector2(0, 2)
+shader_parameter/Dissolve_Amount = 1.0
+shader_parameter/Base_Texture = ExtResource("2_n8oqf")
+shader_parameter/Dissolve_Texture = ExtResource("2_n8oqf")
+
+[sub_resource type="Gradient" id="Gradient_mbgyr"]
+offsets = PackedFloat32Array(0.266667, 0.491228, 0.912281)
+colors = PackedColorArray(0.0110215, 0.001962, 0.0168873, 1, 0.697751, 0.466089, 0.78951, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ceb8d"]
+gradient = SubResource("Gradient_mbgyr")
+
+[sub_resource type="Curve" id="Curve_vr7o3"]
+max_value = 15.0
+_data = [Vector2(0.453674, 10.5287), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_7w0kv"]
+curve = SubResource("Curve_vr7o3")
+
+[sub_resource type="Curve" id="Curve_udout"]
+_data = [Vector2(0.0159744, 0.958599), 0.0, 0.0, 0, 0, Vector2(0.210863, 0.942038), 0.630418, 0.630418, 0, 0, Vector2(0.942492, 0.826115), -1.19618, -1.19618, 0, 0, Vector2(1, 0), -8.1739, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_hhvog"]
+curve = SubResource("Curve_udout")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_736lv"]
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+gravity = Vector3(0, 5, 0)
+scale_min = 1.2
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_hhvog")
+color_ramp = SubResource("GradientTexture1D_ceb8d")
+emission_curve = SubResource("CurveTexture_7w0kv")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="QuadMesh" id="QuadMesh_w8b4r"]
+
+[node name="Damnation" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_571bs")
+process_material = SubResource("ParticleProcessMaterial_736lv")
+draw_pass_1 = SubResource("QuadMesh_w8b4r")
