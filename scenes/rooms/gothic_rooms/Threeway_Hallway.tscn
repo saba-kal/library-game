@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_ahq4x"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_c4xtw"]
 
-[node name="RoomVariation" instance=ExtResource("1_ahq4x")]
+[node name="RoomVariation" node_paths=PackedStringArray("north_door", "east_door", "west_door") instance=ExtResource("1_ahq4x")]
+north_door = NodePath("Doors/DoorTop")
+east_door = NodePath("Doors/DoorRight")
+west_door = NodePath("Doors/DoorLeft")
 
 [node name="Walls" parent="." index="0"]
 data = {
@@ -19,7 +22,7 @@ data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 9)
 
 [node name="DoorRight" parent="Doors" index="1" instance=ExtResource("2_c4xtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 9)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13, 0, 9)
 
 [node name="DoorTop" parent="Doors" index="2" instance=ExtResource("2_c4xtw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -7)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1, 0, -7)

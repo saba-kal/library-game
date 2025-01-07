@@ -1,14 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx618d4m8qqp5"]
 
 [ext_resource type="PackedScene" uid="uid://eq1r6t2d1w4h" path="res://scenes/room_generation/Gen2/Gen2_rooms/map_room_base.tscn" id="1_7cck2"]
-[ext_resource type="PackedScene" uid="uid://bwiilqv7awr5r" path="res://scenes/rooms/gothic_rooms/Threeway_Hallway.tscn" id="2_0xall"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_km8cd"]
+[ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_variation.gd" id="2_p7pyv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh4ln"]
 albedo_color = Color(0.046, 0.0469, 0.1, 1)
 
-[node name="MapRoomBase" instance=ExtResource("1_7cck2")]
-room_variations = Array[PackedScene]([ExtResource("2_0xall")])
+[node name="MapRoomBase" node_paths=PackedStringArray("north_door", "east_door", "west_door") instance=ExtResource("1_7cck2")]
+script = ExtResource("2_p7pyv")
+north_door = NodePath("DoorDetection/DoorTop")
+east_door = NodePath("DoorDetection/DoorRight")
+west_door = NodePath("DoorDetection/DoorLeft")
 
 [node name="Walls" type="CSGCombiner3D" parent="." index="1"]
 
@@ -51,7 +54,7 @@ material = SubResource("StandardMaterial3D_wh4ln")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 
 [node name="DoorRight" parent="DoorDetection" index="1" instance=ExtResource("2_km8cd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, 0)
 
 [node name="DoorTop" parent="DoorDetection" index="2" instance=ExtResource("2_km8cd")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -5)

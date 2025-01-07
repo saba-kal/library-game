@@ -29,7 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://c0nv7jysskn3g" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_3.tscn" id="27_7bk8x"]
 [ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_5.tscn" id="28_wyqdo"]
 
-[node name="RoomVariation" instance=ExtResource("1_baceq")]
+[node name="RoomVariation" node_paths=PackedStringArray("north_door", "west_door") instance=ExtResource("1_baceq")]
+north_door = NodePath("Doors/DoorTop")
+west_door = NodePath("Doors/DoorLeft")
 
 [node name="Walls" parent="." index="0"]
 data = {

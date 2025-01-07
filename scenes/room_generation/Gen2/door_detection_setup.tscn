@@ -1,19 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnhe8th4xlj6v"]
 
-[ext_resource type="Script" path="res://scripts/room_generation/Gen2/door_detection_setup.gd" id="1_j5pq2"]
+[ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_door.gd" id="1_qfi1u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7oyu"]
 size = Vector3(1, 4, 3)
 
 [node name="DoorDetectionSetup" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-collision_mask = 3
-script = ExtResource("1_j5pq2")
+collision_mask = 2
+script = ExtResource("1_qfi1u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_x7oyu")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="PlayerSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99778, 0, 0)
