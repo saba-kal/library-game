@@ -9,9 +9,16 @@ var player: Player
 
 func _ready() -> void:
 	self.collectible.collected.connect(self.on_collected)
-	self.player = self.get_tree().get_first_node_in_group("player")
+	SignalBus.player_spawned.connect(self.on_player_spawned)
+
+
+func on_player_spawned(plr: Player):
+	self.player = plr
 
 
 func on_collected() -> void:
-	self.player.heal(heal_amount)
-	self.queue_free()
+	if self.player:
+		self.player.heal(heal_amount)
+		self.queue_free()
+	else:
+		printerr("unexpected null value for player object. Unable to collect health.")

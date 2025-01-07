@@ -10,7 +10,10 @@ var player_health: Health
 
 
 func _ready() -> void:
-	var player: Player = self.get_tree().get_first_node_in_group("player")
+	SignalBus.player_spawned.connect(self.on_player_spawned)
+
+
+func on_player_spawned(player: Player) -> void:
 	self.player_health = Util.get_child_node_of_type(player, Health)
 	if self.player_health == null:
 		printerr("Player character is missing health component")

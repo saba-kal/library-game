@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvmgrfgll870w"]
+
+[ext_resource type="Script" path="res://scripts/level_components/scene_transition_area.gd" id="1_ha1lk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ii2bj"]
+size = Vector3(4, 0.1604, 4)
+
+[node name="SceneTransitionArea" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_ha1lk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ii2bj")

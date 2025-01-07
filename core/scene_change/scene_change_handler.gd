@@ -37,6 +37,10 @@ func to_generation_area_two() -> void:
 	current_scene = generation_area_two
 	scene_change()
 
+func to_scene(packed_scene: PackedScene) -> void:
+	next_scene = packed_scene
+	current_scene = packed_scene
+	scene_change()
 
 func scene_change() -> void:
 	if timer.is_stopped():

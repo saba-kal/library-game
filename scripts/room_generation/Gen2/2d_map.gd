@@ -1,4 +1,4 @@
-extends SubViewport
+extends Node
 class_name _2DGeneration
 
 signal generation_complete
