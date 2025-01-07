@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7xo88hoefhrx"]
+[gd_scene load_steps=7 format=3 uid="uid://b7xo88hoefhrx"]
 
 [ext_resource type="Script" path="res://scripts/room_generation/Gen2/2d_map.gd" id="1_q4he5"]
 [ext_resource type="Texture2D" uid="uid://dlx2eao110muy" path="res://assets/map/rooms/map_piece_sheet.png" id="2_ygdkr"]
-[ext_resource type="Script" path="res://scripts/room_generation/Gen2/click_drag.gd" id="3_ngqoj"]
+[ext_resource type="Script" path="res://scripts/gui/minimap/minimap_camera.gd" id="3_v8njo"]
+[ext_resource type="Texture2D" uid="uid://hh3mmimh03fa" path="res://assets/textures/common/circle_64x64_white.png" id="4_iyalh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8x124"]
 texture = ExtResource("2_ygdkr")
@@ -93,7 +94,7 @@ terrain_set_0/terrain_0/name = "Map"
 terrain_set_0/terrain_0/color = Color(0.1176, 0.42, 0.15792, 1)
 sources/0 = SubResource("TileSetAtlasSource_8x124")
 
-[node name="2D_Map" type="SubViewport"]
+[node name="2D_Map" type="Node2D"]
 script = ExtResource("1_q4he5")
 metadata/_edit_horizontal_guides_ = [248.0]
 
@@ -101,60 +102,16 @@ metadata/_edit_horizontal_guides_ = [248.0]
 unique_name_in_owner = true
 tile_set = SubResource("TileSet_gsrnq")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(256, 192)
-script = ExtResource("3_ngqoj")
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map_generation", "tile_map")]
+script = ExtResource("3_v8njo")
+map_generation = NodePath("..")
+tile_map = NodePath("../TileMapLayer")
+
+[node name="PlayerLocationSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("4_iyalh")
 
 [node name="FailsafeTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -404.0
-offset_bottom = 167.0
-grow_horizontal = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Minimum Rooms:"
-
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "10"
-alignment = 1
-
-[node name="BUTTON_Generate" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Generate"
-
-[node name="BUTTON_Clear" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Clear"
-
 [connection signal="timeout" from="FailsafeTimer" to="." method="_on_failsafe_timer_timeout"]
-[connection signal="focus_entered" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_focus_entered"]
-[connection signal="text_changed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/BUTTON_Generate" to="." method="_on_button_generate_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/BUTTON_Clear" to="." method="_on_button_clear_pressed"]

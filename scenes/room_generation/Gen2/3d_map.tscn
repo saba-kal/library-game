@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://38u6omsb5o8u"]
+[gd_scene load_steps=13 format=3 uid="uid://38u6omsb5o8u"]
 
 [ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_generation.gd" id="1_r147h"]
 [ext_resource type="PackedScene" uid="uid://b7xo88hoefhrx" path="res://scenes/room_generation/Gen2/2d_map.tscn" id="1_wxqy7"]
-[ext_resource type="Material" uid="uid://hd4jmtjafjx1" path="res://assets/materials/prototyping/prototype_grid.tres" id="3_jswek"]
+[ext_resource type="PackedScene" uid="uid://f4kgfmiqn3gp" path="res://scenes/room_generation/Gen2/Gen2_rooms/corner.tscn" id="2_8out0"]
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="3_phssx"]
+[ext_resource type="PackedScene" uid="uid://dvgbbactdrqq3" path="res://scenes/room_generation/Gen2/Gen2_rooms/deadend.tscn" id="3_xt2jr"]
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="4_e1prp"]
+[ext_resource type="PackedScene" uid="uid://dsw42s1j4j2tm" path="res://scenes/room_generation/Gen2/Gen2_rooms/fourway.tscn" id="4_qpruf"]
+[ext_resource type="PackedScene" uid="uid://b1fql55l4vhf8" path="res://scenes/room_generation/Gen2/Gen2_rooms/hallway.tscn" id="5_bvleo"]
+[ext_resource type="PackedScene" uid="uid://cx618d4m8qqp5" path="res://scenes/room_generation/Gen2/Gen2_rooms/threeway.tscn" id="6_i5xnt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q06if"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,46 +23,21 @@ sky = SubResource("Sky_ifj2v")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="3d_map" type="Node3D"]
+[node name="3d_map" type="Node3D" node_paths=PackedStringArray("map")]
 script = ExtResource("1_r147h")
+corner_room_variations = Array[PackedScene]([ExtResource("2_8out0")])
+deadend_room_variations = Array[PackedScene]([ExtResource("3_xt2jr")])
+fourway_room_variations = Array[PackedScene]([ExtResource("4_qpruf")])
+hallway_room_variations = Array[PackedScene]([ExtResource("5_bvleo")])
+threeway_room_variations = Array[PackedScene]([ExtResource("6_i5xnt")])
+player_scene = ExtResource("4_e1prp")
+map = NodePath("2D_Map")
 
-[node name="GUI" parent="." instance=ExtResource("3_phssx")]
+[node name="GUI" parent="." node_paths=PackedStringArray("map_2D") instance=ExtResource("3_phssx")]
+map_2D = NodePath("../2D_Map")
 
-[node name="Overlay" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Overlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="2D_Map" parent="Overlay/SubViewportContainer" instance=ExtResource("1_wxqy7")]
+[node name="2D_Map" parent="." instance=ExtResource("1_wxqy7")]
 unique_name_in_owner = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1152, 648)
-render_target_update_mode = 4
-
-[node name="CheckButton" type="CheckButton" parent="Overlay"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.888889
-anchor_right = 0.214965
-anchor_bottom = 1.0
-offset_right = 0.359985
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Toggle Map"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f3mm0")
@@ -66,21 +45,3 @@ environment = SubResource("Environment_f3mm0")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
-
-[node name="Rooms" type="Node3D" parent="."]
-
-[node name="CycleTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="PlayerStartingPlatform" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-use_collision = true
-size = Vector3(16, 1, 16)
-material = ExtResource("3_jswek")
-
-[node name="Player" parent="." instance=ExtResource("4_e1prp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0762987, 0, -0.175118)
-
-[connection signal="toggled" from="Overlay/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="timeout" from="CycleTimer" to="." method="spawn_variations"]

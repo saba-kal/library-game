@@ -1,4 +1,4 @@
-extends SubViewport
+extends Node
 class_name _2DGeneration
 
 signal generation_complete
@@ -9,12 +9,16 @@ signal generation_cleared
 @export var minimum_room_amount:int = 10
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
 @onready var failsafe_timer: Timer = $FailsafeTimer
+@onready var player_location_sprite: Node2D = $PlayerLocationSprite
 
 var currently_generating:bool = false
 var failsafe_activated:bool = true
 var valid_cell_count:int = 0
 
 var generation_array_info:Array[Array]
+
+func _ready() -> void:
+	SignalBus.player_moved_to_room.connect(on_player_moved_to_room)
 
 func generate_rooms():
 	currently_generating = true
@@ -69,6 +73,12 @@ func generation_info():
 		generation_array_info.append([x,tile_map_layer.get_cell_atlas_coords(x)])
 	
 	return generation_array_info
+
+func set_player_position(tile_map_pos: Vector2i):
+	player_location_sprite.position = tile_map_layer.map_to_local(tile_map_pos)
+
+func on_player_moved_to_room(room: RoomVariation):
+	set_player_position(room.tile_position)
 
 func _on_failsafe_timer_timeout() -> void:
 	failsafe_activated = true
