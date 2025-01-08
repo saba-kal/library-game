@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var transition_to: PackedScene
+@export_enum("hub", "haunted_floor") var transition_to: String = "hub"
 
 
 func _ready() -> void:

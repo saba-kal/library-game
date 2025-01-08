@@ -1,20 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4x3u3bnvboi7"]
+[gd_scene load_steps=2 format=3 uid="uid://b4x3u3bnvboi7"]
 
 [ext_resource type="Script" path="res://core/scene_change/scene_change_handler.gd" id="1_recr0"]
-[ext_resource type="PackedScene" uid="uid://yai8j2d80cps" path="res://scenes/main_menu/main_menu.tscn" id="2_73t5w"]
-[ext_resource type="PackedScene" uid="uid://dw66oocgjowpb" path="res://debug.tscn" id="3_g2a06"]
-[ext_resource type="PackedScene" uid="uid://djb7g4l275c1j" path="res://scenes/levels/hub.tscn" id="3_n847n"]
-[ext_resource type="PackedScene" uid="uid://dgr87eq5sqdxr" path="res://scenes/room_generation/zoning_test.tscn" id="4_eb26u"]
-[ext_resource type="PackedScene" uid="uid://b7xo88hoefhrx" path="res://scenes/room_generation/Gen2/2d_map.tscn" id="5_d45fb"]
 
 [node name="SceneChangeHandler" type="Node"]
 script = ExtResource("1_recr0")
 scene_change_duration = 0.1
-main_menu = ExtResource("2_73t5w")
-game_start_area = ExtResource("3_n847n")
-debug_area = ExtResource("3_g2a06")
-debug_generation_area = ExtResource("4_eb26u")
-generation_area_two = ExtResource("5_d45fb")
 
 [node name="LoadCover" type="Control" parent="."]
 unique_name_in_owner = true

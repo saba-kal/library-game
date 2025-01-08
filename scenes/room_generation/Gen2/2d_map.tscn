@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7xo88hoefhrx"]
+[gd_scene load_steps=8 format=3 uid="uid://b7xo88hoefhrx"]
 
 [ext_resource type="Script" path="res://scripts/room_generation/Gen2/2d_map.gd" id="1_q4he5"]
 [ext_resource type="Texture2D" uid="uid://dlx2eao110muy" path="res://assets/map/rooms/map_piece_sheet.png" id="2_ygdkr"]
 [ext_resource type="Script" path="res://scripts/gui/minimap/minimap_camera.gd" id="3_v8njo"]
 [ext_resource type="Texture2D" uid="uid://hh3mmimh03fa" path="res://assets/textures/common/circle_64x64_white.png" id="4_iyalh"]
+[ext_resource type="Texture2D" uid="uid://b26mq80nysnge" path="res://assets/textures/GUI/simple_skull_icon.png" id="5_45fh6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8x124"]
 texture = ExtResource("2_ygdkr")
@@ -92,6 +93,8 @@ tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Map"
 terrain_set_0/terrain_0/color = Color(0.1176, 0.42, 0.15792, 1)
+custom_data_layer_0/name = "is_boss_room"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_8x124")
 
 [node name="2D_Map" type="Node2D"]
@@ -107,6 +110,11 @@ script = ExtResource("3_v8njo")
 map_generation = NodePath("..")
 tile_map = NodePath("../TileMapLayer")
 
+[node name="BossLocationSprite" type="Sprite2D" parent="."]
+modulate = Color(0.585847, 1.8049e-06, 4.33177e-07, 1)
+scale = Vector2(0.0777778, 0.0777778)
+texture = ExtResource("5_45fh6")
+
 [node name="PlayerLocationSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.1875, 0.1875)
 texture = ExtResource("4_iyalh")
@@ -114,4 +122,21 @@ texture = ExtResource("4_iyalh")
 [node name="FailsafeTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DebuggingOverlay" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="DebuggingOverlay"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.5
+offset_top = -59.0
+offset_right = 44.5
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "GENERATE"
+
 [connection signal="timeout" from="FailsafeTimer" to="." method="_on_failsafe_timer_timeout"]
+[connection signal="pressed" from="DebuggingOverlay/Button" to="." method="_on_button_generate_pressed"]

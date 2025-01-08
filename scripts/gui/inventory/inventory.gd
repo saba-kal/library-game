@@ -16,6 +16,7 @@ extends Node
 func _ready() -> void:
 	self.update_inventory()
 	SignalBus.room_key_collected.connect(self.update_inventory)
+	SignalBus.boss_key_collected.connect(self.update_inventory)
 	SignalBus.room_key_used.connect(self.update_inventory)
 
 

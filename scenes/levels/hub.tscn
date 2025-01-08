@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://djb7g4l275c1j"]
+[gd_scene load_steps=10 format=3 uid="uid://djb7g4l275c1j"]
 
 [ext_resource type="Material" uid="uid://hd4jmtjafjx1" path="res://assets/materials/prototyping/prototype_grid.tres" id="1_sulja"]
 [ext_resource type="PackedScene" uid="uid://bvmgrfgll870w" path="res://scenes/level_components/scene_transition_area.tscn" id="2_udhgn"]
-[ext_resource type="PackedScene" uid="uid://c51xioq25wr6d" path="res://scenes/levels/haunted_floor.tscn" id="3_1abnh"]
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="3_8u0oq"]
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="4_8u0id"]
 [ext_resource type="PackedScene" uid="uid://clfici1k2trp0" path="res://core/audio/scenes/set_music.tscn" id="5_rtfqu"]
@@ -94,7 +93,7 @@ material = SubResource("StandardMaterial3D_1vpcg")
 
 [node name="SceneTransitionArea" parent="HubPrototype" instance=ExtResource("2_udhgn")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.4986, 0.508068, 0.00463303)
-transition_to = ExtResource("3_1abnh")
+transition_to = "haunted_floor"
 
 [node name="Player" parent="." instance=ExtResource("3_8u0oq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97653, 0, -0.824761)
