@@ -11,7 +11,7 @@ signal died
 @export_group("StateMachine")
 @export var initial_state:CharacterState
 
-@onready var body: MeshInstance3D = $Body
+@onready var body: Node3D = $LibrarianPlayer
 @onready var health: Health = $Health
 @onready var state_machine: Node = $StateMachine
 @onready var state:CharacterState = (func get_initial_state() -> CharacterState:

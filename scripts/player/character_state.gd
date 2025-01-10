@@ -2,6 +2,7 @@ class_name CharacterState extends Node
 
 @onready var character: CharacterBody3D = $"../.."
 @onready var state_machine: Node = $".."
+@onready var animation_tree = $"../../AnimationTree"
 
 ## Emitted when the state finishes and wants to transition to another state.
 signal finished(next_state_path: String, data: Dictionary)

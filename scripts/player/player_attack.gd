@@ -14,8 +14,11 @@ signal started
 @export var wind_down_period:float = .3
 @export var placeholder_fx:Node3D
 
+@export var animation_node_name: String
+
 @onready var transform: Node3D = $Transform
 @onready var hit_area: Area3D = $Transform/HitArea
+@onready var movement_payback = animation_tree.get("parameters/Attack/playback")
 
 var step_dir:Vector2
 var last_dir:Vector2
@@ -67,7 +70,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 		transform.global_position = character.global_position
 		transform.global_basis = Basis.looking_at(character.direction, Vector3.UP, true)
 	wind_up_timer.start(wind_up_period)
-	
+	animation_tree.set("parameters/Actions/transition_request", "Attack")
+	movement_payback.travel(animation_node_name)
+
 func exit() -> void:
 	placeholder_fx.visible = false
 	swing_timer.stop()

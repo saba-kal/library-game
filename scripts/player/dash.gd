@@ -31,7 +31,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	character.collision_layer = dash_layer
 	character.collision_mask = dash_mask
 	AudioManager.play_3d("player_dash", self.character.global_position)
-	
+	animation_tree.set("parameters/Actions/transition_request", "Dash")
+
 func exit() -> void:
 	character.collision_layer = default_layer
 	character.collision_mask = default_mask

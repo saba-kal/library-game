@@ -51,6 +51,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	parry_timer.start(parry_duration)
 	placeholder_fx.visible = true
 	AudioManager.play_3d("player_attack", character.global_position)
+	animation_tree.set("parameters/Actions/transition_request", "Block")
 	detect_parry()
 
 func exit() -> void:

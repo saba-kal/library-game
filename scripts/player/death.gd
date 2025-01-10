@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func enter(_previous_state_path: String, _data := {}) -> void:
 	timer.start()
+	animation_tree.set("parameters/Transition/transition_request", "Death")
 
 func done() -> void:
 	ChangeScene.scene_change()

@@ -15,7 +15,7 @@ placeholder_fx = NodePath("Transform/HitArea/Placeholder")
 [node name="Transform" type="Node3D" parent="."]
 
 [node name="HitArea" type="Area3D" parent="Transform"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.04778, 1.02113)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.943, 1.021)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Transform/HitArea"]
