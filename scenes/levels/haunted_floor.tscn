@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c51xioq25wr6d"]
+[gd_scene load_steps=13 format=3 uid="uid://c51xioq25wr6d"]
 
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="1_a0ej8"]
 [ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_generation.gd" id="1_ygjm3"]
@@ -12,17 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b7xo88hoefhrx" path="res://scenes/room_generation/Gen2/2d_map.tscn" id="9_1lfxk"]
 [ext_resource type="PackedScene" uid="uid://clfici1k2trp0" path="res://core/audio/scenes/set_music.tscn" id="10_tkx7q"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eup2j"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_8fm5e"]
-sky_material = SubResource("ProceduralSkyMaterial_eup2j")
-
-[sub_resource type="Environment" id="Environment_shrfd"]
-background_mode = 2
-sky = SubResource("Sky_8fm5e")
-tonemap_mode = 2
+[sub_resource type="Environment" id="Environment_tdot3"]
 glow_enabled = true
 
 [node name="HauntedFloor" type="Node3D" node_paths=PackedStringArray("map")]
@@ -36,12 +26,12 @@ boss_room_variations = Array[PackedScene]([ExtResource("7_eif7t")])
 player_scene = ExtResource("7_8acj1")
 map = NodePath("2D_Map")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_shrfd")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tdot3")
 
 [node name="GUI" parent="." node_paths=PackedStringArray("map_2D") instance=ExtResource("1_a0ej8")]
 map_2D = NodePath("../2D_Map")

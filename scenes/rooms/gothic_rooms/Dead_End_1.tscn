@@ -1,36 +1,34 @@
-[gd_scene load_steps=28 format=3 uid="uid://bprs5jbwgxchp"]
+[gd_scene load_steps=27 format=3 uid="uid://bprs5jbwgxchp"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_vxhtl"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_cobap"]
-[ext_resource type="PackedScene" uid="uid://bmeofo6g0t1jk" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_2.tscn" id="3_70qda"]
-[ext_resource type="PackedScene" uid="uid://0d1ctubyayeg" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_1.tscn" id="4_cdij7"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_2.tscn" id="3_70qda"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_1.tscn" id="4_cdij7"]
 [ext_resource type="PackedScene" uid="uid://d0t1y1g5qnje0" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_1.tscn" id="5_vow3t"]
 [ext_resource type="PackedScene" uid="uid://cg78jlusnpup3" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_2.tscn" id="6_7ckxe"]
 [ext_resource type="PackedScene" uid="uid://c0nv7jysskn3g" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_3.tscn" id="7_s76q4"]
-[ext_resource type="PackedScene" uid="uid://xsquffoqqj8h" path="res://assets/models/gothic_library_section/decorative_assets/Bookshelf.tscn" id="8_vwjn3"]
-[ext_resource type="PackedScene" uid="uid://dk1v0q4x3xtb8" path="res://assets/models/gothic_library_section/decorative_assets/Book_1.tscn" id="9_8udp1"]
-[ext_resource type="PackedScene" uid="uid://c6pf126f185cf" path="res://assets/models/gothic_library_section/decorative_assets/Book_3.tscn" id="10_dpbom"]
-[ext_resource type="PackedScene" uid="uid://d034t5npsvheu" path="res://assets/models/gothic_library_section/decorative_assets/Book_2.tscn" id="11_1qkhu"]
-[ext_resource type="PackedScene" uid="uid://cdykij1kwwxue" path="res://assets/models/gothic_library_section/decorative_assets/Candle_1.tscn" id="12_lur1w"]
-[ext_resource type="PackedScene" uid="uid://bvfrd0h6e4ovd" path="res://assets/models/gothic_library_section/decorative_assets/Candle_2.tscn" id="13_v2bcv"]
-[ext_resource type="PackedScene" uid="uid://b7acvdsrwwv78" path="res://assets/models/gothic_library_section/decorative_assets/Bottle.tscn" id="14_0w0ic"]
-[ext_resource type="PackedScene" uid="uid://cg5du1rf5xld2" path="res://assets/models/gothic_library_section/decorative_assets/Lantern.tscn" id="16_if12g"]
-[ext_resource type="PackedScene" uid="uid://bape2wmcw7ua1" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_5.tscn" id="16_jnri2"]
-[ext_resource type="PackedScene" uid="uid://bxvymvi2qhybu" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_4.tscn" id="17_8i38d"]
-[ext_resource type="PackedScene" uid="uid://c6ys7vwl5c0hk" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_3.tscn" id="17_wvw42"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Bookshelf.tscn" id="8_vwjn3"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Book_1.tscn" id="9_8udp1"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Book_3.tscn" id="10_dpbom"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Book_2.tscn" id="11_1qkhu"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_1.tscn" id="12_lur1w"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_2.tscn" id="13_v2bcv"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Bottle.tscn" id="14_0w0ic"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Lantern.tscn" id="16_if12g"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_5.tscn" id="16_jnri2"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_4.tscn" id="17_8i38d"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_3.tscn" id="17_wvw42"]
 [ext_resource type="PackedScene" uid="uid://chfeyuim863ic" path="res://assets/models/gothic_library_section/decorative_assets/Chair.tscn" id="18_wy8fy"]
-[ext_resource type="PackedScene" uid="uid://cypspfh4m45n0" path="res://assets/models/gothic_library_section/decorative_assets/Table.tscn" id="19_iyqlw"]
-[ext_resource type="PackedScene" uid="uid://c57v8yvyy7i3h" path="res://assets/models/gothic_library_section/decorative_assets/Cup.tscn" id="21_meh7l"]
-[ext_resource type="PackedScene" uid="uid://btcvm3c6i3tek" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Holder.tscn" id="22_kwwbn"]
-[ext_resource type="PackedScene" uid="uid://dyqcrv4i4axss" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_1.tscn" id="23_ivmcd"]
-[ext_resource type="PackedScene" uid="uid://6af3eshhiklr" path="res://assets/models/gothic_library_section/decorative_assets/Vase_1.tscn" id="24_273ht"]
-[ext_resource type="PackedScene" uid="uid://wq6fty4dae5g" path="res://assets/models/gothic_library_section/decorative_assets/Vase_2.tscn" id="25_6645g"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Table.tscn" id="19_iyqlw"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Cup.tscn" id="21_meh7l"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Holder.tscn" id="22_kwwbn"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_1.tscn" id="23_ivmcd"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Vase_1.tscn" id="24_273ht"]
+[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Vase_2.tscn" id="25_6645g"]
 [ext_resource type="PackedScene" uid="uid://cmepbn2gyxqt1" path="res://assets/VFX/Candle_Flame_2.tscn" id="26_4re4k"]
 
-[sub_resource type="Environment" id="Environment_268cu"]
-glow_enabled = true
-
-[node name="RoomVariation" instance=ExtResource("1_vxhtl")]
+[node name="RoomVariation" node_paths=PackedStringArray("south_door") instance=ExtResource("1_vxhtl")]
+south_door = NodePath("Doors/DoorBot")
 
 [node name="Walls" parent="." index="0"]
 data = {
@@ -325,10 +323,7 @@ transform = Transform3D(0.886398, 0, 0.462925, 0, 1, 0, -0.462925, 0, 0.886398, 
 light_color = Color(0.775427, 0.906043, 0.887143, 1)
 light_energy = 0.2
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" index="6"]
-environment = SubResource("Environment_268cu")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Lighting" index="7"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting" index="6"]
 transform = Transform3D(0.898591, 0.0697942, -0.4332, 0.34579, -0.720401, 0.601209, -0.270117, -0.690037, -0.67148, -1.82819, 5.54758, -2.45399)
 light_color = Color(0.8955, 1, 0.81, 1)
 light_energy = 3.0
