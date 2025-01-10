@@ -1,42 +1,51 @@
 extends Node
 
 @export var scene_change_duration: float = 3
-@export var main_menu: PackedScene
-@export var game_start_area: PackedScene
-@export var debug_area: PackedScene
-@export var debug_generation_area: PackedScene
-@export var generation_area_two: PackedScene
 @onready var timer: Timer = %Timer
 @onready var load_cover: Control = %LoadCover
 
 var next_scene:PackedScene
 var current_scene:PackedScene
+# Unable to export these as packed scenes due to cyclical reference errors.
+# See https://github.com/godotengine/godot/issues/93258
+var known_scenes: Dictionary = {
+	"main_menu": preload("res://scenes/main_menu/main_menu.tscn"),
+	"hub": preload("res://scenes/levels/hub.tscn"),
+	"haunted_floor": preload("res://scenes/levels/haunted_floor.tscn"),
+	"debug_area": preload("res://debug.tscn"),
+	"debug_generation": preload("res://scenes/room_generation/zoning_test.tscn"),
+	"debug_generation_2": preload("res://scenes/room_generation/Gen2/2d_map.tscn")
+}
 
 func to_main_menu() -> void:
-	next_scene = main_menu
-	current_scene = main_menu
+	next_scene = known_scenes["main_menu"]
+	current_scene = known_scenes["main_menu"]
 	scene_change()
 
 func to_game_start() -> void:
-	next_scene = game_start_area
-	current_scene = game_start_area
+	next_scene = known_scenes["hub"]
+	current_scene = known_scenes["hub"]
 	scene_change()
 
 func to_debug_area() -> void:
-	next_scene = debug_area
-	current_scene = debug_area
+	next_scene = known_scenes["debug_area"]
+	current_scene = known_scenes["debug_area"]
 	scene_change()
 
 func to_debug_generation_area() -> void:
-	next_scene = debug_generation_area
-	current_scene = debug_generation_area
+	next_scene = known_scenes["debug_generation"]
+	current_scene = known_scenes["debug_generation"]
 	scene_change()
 
 func to_generation_area_two() -> void:
-	next_scene = generation_area_two
-	current_scene = generation_area_two
+	next_scene = known_scenes["debug_generation_2"]
+	current_scene = known_scenes["debug_generation_2"]
 	scene_change()
 
+func to_scene(scene_name: String) -> void:
+	next_scene = known_scenes[scene_name]
+	current_scene = known_scenes[scene_name]
+	scene_change()
 
 func scene_change() -> void:
 	if timer.is_stopped():

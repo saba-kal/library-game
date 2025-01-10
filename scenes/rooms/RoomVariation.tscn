@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://donm244c8a5wk"]
 
-[ext_resource type="Script" path="res://scenes/rooms/room_variation.gd" id="1_c6f0w"]
+[ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_variation.gd" id="1_c6f0w"]
 [ext_resource type="MeshLibrary" uid="uid://bm7j5i61hqx4s" path="res://assets/models/gothic_library_section/grid_based_tiles/grid_based_mesh_library.tres" id="1_ncpn8"]
 
 [node name="RoomVariation" type="Node3D"]

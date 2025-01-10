@@ -25,9 +25,9 @@ var target_rotation:float
 func _ready() -> void:
 	for state_node:CharacterState in state_machine.find_children("*", "CharacterState"):
 		state_node.finished.connect(_transition_to_next_state)
-	
 	state.enter("")
-	
+	SignalBus.player_spawned.emit(self)
+
 func _transition_to_next_state(target_state_path:String, data:Dictionary = {}) -> void:
 	if not state_machine.has_node(target_state_path):
 		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it did not exist")

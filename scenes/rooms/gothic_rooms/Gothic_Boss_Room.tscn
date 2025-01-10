@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://df6iitan5aahn"]
+
+[ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_syfi0"]
+[ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_5qutj"]
+[ext_resource type="Material" uid="uid://hd4jmtjafjx1" path="res://assets/materials/prototyping/prototype_grid.tres" id="3_xwymw"]
+[ext_resource type="PackedScene" uid="uid://dojokgkhtxgpj" path="res://scenes/enemies/enemy_types/placeholder_boss.tscn" id="4_0e0g4"]
+[ext_resource type="PackedScene" uid="uid://bvmgrfgll870w" path="res://scenes/level_components/scene_transition_area.tscn" id="4_3jmiw"]
+[ext_resource type="PackedScene" uid="uid://ciklhn74hbvm0" path="res://scenes/level_components/door.tscn" id="5_n0l8u"]
+[ext_resource type="PackedScene" uid="uid://b6vvohmvqgluo" path="res://scenes/collectibles/boss_key.tscn" id="5_ui6w5"]
+
+[node name="GothicBossRoom" node_paths=PackedStringArray("south_door") instance=ExtResource("1_syfi0")]
+south_door = NodePath("Doors/DoorBot")
+
+[node name="DoorBot" parent="Doors" index="0" instance=ExtResource("2_5qutj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.558773, 15.2889)
+
+[node name="PlaceholderLevel" type="CSGBox3D" parent="." index="5"]
+material_override = ExtResource("3_xwymw")
+use_collision = true
+size = Vector3(32, 1, 32)
+
+[node name="Wall1" type="CSGBox3D" parent="PlaceholderLevel" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, 0)
+material_override = ExtResource("3_xwymw")
+size = Vector3(1, 4, 32)
+
+[node name="Wall2" type="CSGBox3D" parent="PlaceholderLevel" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 2.5, 0)
+material_override = ExtResource("3_xwymw")
+size = Vector3(1, 4, 32)
+
+[node name="Wall3" type="CSGBox3D" parent="PlaceholderLevel" index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 2.5, 15.5)
+material_override = ExtResource("3_xwymw")
+size = Vector3(1, 4, 14)
+
+[node name="Wall4" type="CSGBox3D" parent="PlaceholderLevel" index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 2.5, 15.5)
+material_override = ExtResource("3_xwymw")
+size = Vector3(1, 4, 14)
+
+[node name="Wall5" type="CSGBox3D" parent="PlaceholderLevel" index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 2.5, -15.5)
+material_override = ExtResource("3_xwymw")
+size = Vector3(1, 4, 12)
+
+[node name="Wall6" type="CSGBox3D" parent="PlaceholderLevel" index="5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.5, 2.5, -15.5)
+material_override = ExtResource("3_xwymw")
+size = Vector3(1, 4, 13)
+
+[node name="Wall7" type="CSGBox3D" parent="PlaceholderLevel" index="6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 2.5, -20.5)
+material_override = ExtResource("3_xwymw")
+size = Vector3(9, 4, 1)
+
+[node name="Wall8" type="CSGBox3D" parent="PlaceholderLevel" index="7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5, 2.5, -20.5)
+material_override = ExtResource("3_xwymw")
+size = Vector3(9, 4, 1)
+
+[node name="ExitFloor" type="CSGBox3D" parent="PlaceholderLevel" index="8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, -20.5)
+material_override = ExtResource("3_xwymw")
+size = Vector3(9, 1, 7)
+
+[node name="PlaceholderBoss" parent="." index="6" instance=ExtResource("4_0e0g4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519127, 0.499998, 0.105098)
+reward_on_death = ExtResource("5_ui6w5")
+
+[node name="LockedExitDoor" parent="." index="7" instance=ExtResource("5_n0l8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.469661, 0.500001, -15.2377)
+
+[node name="SceneTransitionArea" parent="." index="8" instance=ExtResource("4_3jmiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.328717, 0.530447, -20.6399)
+
+[connection signal="death" from="PlaceholderBoss" to="LockedExitDoor" method="open_door_ignore_keys"]

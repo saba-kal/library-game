@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://djb7g4l275c1j"]
+
+[ext_resource type="Material" uid="uid://hd4jmtjafjx1" path="res://assets/materials/prototyping/prototype_grid.tres" id="1_sulja"]
+[ext_resource type="PackedScene" uid="uid://bvmgrfgll870w" path="res://scenes/level_components/scene_transition_area.tscn" id="2_udhgn"]
+[ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="3_8u0oq"]
+[ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="4_8u0id"]
+[ext_resource type="PackedScene" uid="uid://clfici1k2trp0" path="res://core/audio/scenes/set_music.tscn" id="5_rtfqu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7npj5"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_swf16"]
+sky_material = SubResource("ProceduralSkyMaterial_7npj5")
+
+[sub_resource type="Environment" id="Environment_p453a"]
+background_mode = 2
+sky = SubResource("Sky_swf16")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vpcg"]
+albedo_color = Color(0.599057, 1.43189e-06, 4.33177e-07, 1)
+
+[node name="Hub" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p453a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="HubPrototype" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.5, 0)
+use_collision = true
+size = Vector3(32, 1, 32)
+material = ExtResource("1_sulja")
+
+[node name="Wall1" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, -9)
+use_collision = true
+size = Vector3(1, 4, 14)
+material = ExtResource("1_sulja")
+
+[node name="Wall2" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 2.5, 9)
+use_collision = true
+size = Vector3(1, 4, 14)
+material = ExtResource("1_sulja")
+
+[node name="Wall3" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 2.5, -9)
+use_collision = true
+size = Vector3(1, 4, 14)
+material = ExtResource("1_sulja")
+
+[node name="Wall4" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 2.5, 9)
+use_collision = true
+size = Vector3(1, 4, 14)
+material = ExtResource("1_sulja")
+
+[node name="Wall5" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.5, 2.5, 15.5)
+use_collision = true
+size = Vector3(1, 4, 13)
+material = ExtResource("1_sulja")
+
+[node name="Wall6" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 2.5, 15.5)
+use_collision = true
+size = Vector3(1, 4, 13)
+material = ExtResource("1_sulja")
+
+[node name="Wall7" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, -15.5)
+use_collision = true
+size = Vector3(1, 4, 30)
+material = ExtResource("1_sulja")
+
+[node name="Door1" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 2.5, 2.76148e-07)
+use_collision = true
+size = Vector3(1, 4, 4)
+material = SubResource("StandardMaterial3D_1vpcg")
+
+[node name="Door2" type="CSGBox3D" parent="HubPrototype"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, 15.5)
+use_collision = true
+size = Vector3(1, 4, 4)
+material = SubResource("StandardMaterial3D_1vpcg")
+
+[node name="SceneTransitionArea" parent="HubPrototype" instance=ExtResource("2_udhgn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.4986, 0.508068, 0.00463303)
+transition_to = "haunted_floor"
+
+[node name="Player" parent="." instance=ExtResource("3_8u0oq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97653, 0, -0.824761)
+
+[node name="GUI" parent="." instance=ExtResource("4_8u0id")]
+
+[node name="SetMusic" parent="." instance=ExtResource("5_rtfqu")]
+music_name = "haunted_section"

@@ -1,16 +1,29 @@
 extends Control
 
+@export var map_2D: _2DGeneration
+
 @onready var pause: Control = %Pause
 @onready var inventory: Control = $Inventory
 @onready var settings_menu: Control = $SettingsMenu
 @onready var death_message: Control = %DeathMessage
 @onready var button_resume: Button = $Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME
+@onready var minimap_container: Control = $Minimap
+@onready var minimap_viewport: SubViewport = $Minimap/SubViewportContainer/SubViewport
+
+func _ready() -> void:
+	minimap_container.visible = false
+	if map_2D != null:
+		map_2D.generation_complete.connect(setup_minimap)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		toggle_pause()
 	if event.is_action_pressed("inventory"):
 		toggle_inventory()
+
+func setup_minimap():
+	map_2D.reparent(minimap_viewport)
+	minimap_container.visible = true
 
 func toggle_pause():
 	if !pause.visible && !inventory.visible:
