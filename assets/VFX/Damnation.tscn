@@ -46,8 +46,8 @@ curve = SubResource("Curve_udout")
 angle_min = -5.99999
 angle_max = 6.00001
 gravity = Vector3(0, 5, 0)
-scale_min = 0.8
-scale_max = 1.2
+scale_min = 3.2
+scale_max = 4.8
 scale_curve = SubResource("CurveTexture_hhvog")
 color_ramp = SubResource("GradientTexture1D_wwnoi")
 alpha_curve = SubResource("CurveTexture_fy722")
@@ -68,7 +68,8 @@ gradient = SubResource("Gradient_vjvf1")
 angle_min = -5.99999
 angle_max = 6.00001
 gravity = Vector3(0, 5, 0)
-scale_max = 1.4
+scale_min = 4.0
+scale_max = 5.6
 scale_curve = SubResource("CurveTexture_hhvog")
 color_ramp = SubResource("GradientTexture1D_xp47x")
 alpha_curve = SubResource("CurveTexture_fy722")
@@ -93,20 +94,20 @@ point_count = 2
 curve = SubResource("Curve_cvua1")
 
 [sub_resource type="Gradient" id="Gradient_pap37"]
-offsets = PackedFloat32Array(0, 0.235088, 0.435088)
-colors = PackedColorArray(0.74474, 0.771873, 0.97883, 1, 0.389771, 0.386017, 0.889079, 1, 0.130733, 0.0682515, 0.170729, 1)
+offsets = PackedFloat32Array(0, 0.136842, 0.336842)
+colors = PackedColorArray(0.74474, 0.771873, 0.97883, 1, 0.475814, 0.36236, 0.607588, 1, 0.130733, 0.0682515, 0.170729, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1x270"]
 gradient = SubResource("Gradient_pap37")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u8843"]
 emission_shape = 1
-emission_sphere_radius = 1.0
+emission_sphere_radius = 4.0
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
 gravity = Vector3(0, 5, 0)
-scale_min = 0.1
-scale_max = 0.4
+scale_min = 0.4
+scale_max = 1.6
 scale_curve = SubResource("CurveTexture_hhvog")
 color = Color(0.76662, 0.76662, 0.76662, 1)
 color_ramp = SubResource("GradientTexture1D_1x270")
@@ -135,8 +136,8 @@ emission_shape_scale = Vector3(2, 2, 2)
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
 gravity = Vector3(0, 5, 0)
-scale_min = 1.4
-scale_max = 1.7
+scale_min = 5.6
+scale_max = 6.8
 scale_curve = SubResource("CurveTexture_hhvog")
 color_ramp = SubResource("GradientTexture1D_hdfsl")
 alpha_curve = SubResource("CurveTexture_frl6h")
@@ -147,10 +148,10 @@ hue_variation_max = -2.23517e-08
 [node name="Damnation" type="Node3D"]
 
 [node name="Flame Pillar Center Glow" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.267902, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24799, 0)
 material_override = SubResource("ShaderMaterial_571bs")
 amount = 20
-lifetime = 2.0
+lifetime = 4.0
 speed_scale = 3.0
 process_material = SubResource("ParticleProcessMaterial_ff6lg")
 draw_pass_1 = SubResource("QuadMesh_w8b4r")
@@ -160,7 +161,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.267902, 0)
 sorting_offset = -1.0
 material_override = SubResource("ShaderMaterial_571bs")
 amount = 20
-lifetime = 2.0
+lifetime = 4.0
 speed_scale = 3.0
 process_material = SubResource("ParticleProcessMaterial_tr1ju")
 draw_pass_1 = SubResource("QuadMesh_w8b4r")
@@ -170,7 +171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148577, -0.0139748)
 sorting_offset = 1.0
 material_override = SubResource("ShaderMaterial_ovygw")
 amount = 60
-lifetime = 1.4
+lifetime = 3.0
 speed_scale = 4.0
 process_material = SubResource("ParticleProcessMaterial_u8843")
 draw_pass_1 = SubResource("QuadMesh_w8b4r")
@@ -179,6 +180,6 @@ draw_pass_1 = SubResource("QuadMesh_w8b4r")
 sorting_offset = -2.0
 material_override = SubResource("ShaderMaterial_571bs")
 amount = 20
-lifetime = 2.0
+lifetime = 4.0
 process_material = SubResource("ParticleProcessMaterial_b3yvk")
 draw_pass_1 = SubResource("QuadMesh_w8b4r")

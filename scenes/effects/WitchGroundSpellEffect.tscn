@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://3symoni7x23e"]
+[gd_scene load_steps=19 format=3 uid="uid://3symoni7x23e"]
 
 [ext_resource type="Texture2D" uid="uid://dhmlqbk65sf3c" path="res://assets/textures/effects/Library_Bookstore_2D_Assets_Rune_2.png" id="1_yidgg"]
 [ext_resource type="Texture2D" uid="uid://r7ike0o3twuf" path="res://assets/textures/effects/Library_Bookstore_2D_Assets_Rune_2_emission.png" id="2_d3x8r"]
 [ext_resource type="Script" path="res://scripts/components/damage_in_area.gd" id="2_vicgi"]
 [ext_resource type="PackedScene" uid="uid://wv5gttcsiscx" path="res://core/audio/scenes/attached_sound_3d.tscn" id="4_uk0bs"]
+[ext_resource type="PackedScene" uid="uid://dua1vc386umy5" path="res://assets/VFX/Damnation.tscn" id="5_uxk8r"]
 
 [sub_resource type="Animation" id="Animation_jnoji"]
 length = 0.001
@@ -205,6 +206,10 @@ transform_align = 1
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_jupms")
 draw_pass_1 = SubResource("RibbonTrailMesh_7j5o8")
+
+[node name="Damnation" parent="." instance=ExtResource("5_uxk8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0450387, 3.36106, -0.216613)
+visible = false
 
 [node name="TestSurface" type="MeshInstance3D" parent="."]
 visible = false
