@@ -91,8 +91,8 @@ use_collision = true
 size = Vector3(1, 4, 4)
 material = SubResource("StandardMaterial3D_1vpcg")
 
-[node name="SceneTransitionArea" parent="HubPrototype" instance=ExtResource("2_udhgn")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.4986, 0.508068, 0.00463303)
+[node name="SceneTransitionArea" parent="." instance=ExtResource("2_udhgn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00463235, 0.00806803, -15.4986)
 transition_to = "haunted_floor"
 
 [node name="Player" parent="." instance=ExtResource("3_8u0oq")]

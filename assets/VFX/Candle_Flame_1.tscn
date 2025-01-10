@@ -14,8 +14,8 @@ shader_parameter/Flame_Texture = ExtResource("2_metm3")
 shader_parameter/Dissolve_Texture = ExtResource("2_fltdb")
 
 [sub_resource type="Curve" id="Curve_j0s74"]
-max_value = 15.0
-_data = [Vector2(0.775424, 15), 0.0, 0.0, 0, 0]
+max_value = 10.0
+_data = [Vector2(0.517572, 1.63694), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="CurveTexture" id="CurveTexture_f0swr"]
@@ -46,9 +46,7 @@ emission_curve = SubResource("CurveTexture_f0swr")
 [sub_resource type="QuadMesh" id="QuadMesh_b1fly"]
 
 [sub_resource type="Curve" id="Curve_pxkga"]
-max_value = 15.0
-_data = [Vector2(0.510593, 9.4374), 0.0, 0.0, 0, 0]
-point_count = 1
+max_value = 10.0
 
 [sub_resource type="CurveTexture" id="CurveTexture_qe78p"]
 curve = SubResource("Curve_pxkga")
@@ -90,6 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00934291, 0, -0.0210853)
 
 [node name="Dissipating_Flames_1" type="GPUParticles3D" parent="vfx_candleFlame_2"]
 material_override = SubResource("ShaderMaterial_qepup")
+cast_shadow = 0
 amount = 40
 process_material = SubResource("ParticleProcessMaterial_k5ar6")
 draw_pass_1 = SubResource("QuadMesh_b1fly")
@@ -97,6 +96,7 @@ draw_pass_1 = SubResource("QuadMesh_b1fly")
 [node name="Dissipating_Flames_2" type="GPUParticles3D" parent="vfx_candleFlame_2"]
 sorting_offset = -1.0
 material_override = SubResource("ShaderMaterial_qepup")
+cast_shadow = 0
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_6ptgd")
 draw_pass_1 = SubResource("QuadMesh_b1fly")
@@ -105,6 +105,7 @@ draw_pass_1 = SubResource("QuadMesh_b1fly")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0160542, 0)
 sorting_offset = 1.0
 material_override = SubResource("ShaderMaterial_qepup")
+cast_shadow = 0
 amount = 20
 lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_od0q7")

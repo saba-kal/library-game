@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Vase_1.tscn" id="22_iji68"]
 [ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Vase_2.tscn" id="23_6elh3"]
 [ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Holder.tscn" id="24_uhhpj"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Ladder_2.tscn" id="25_p4p2j"]
+[ext_resource type="PackedScene" uid="uid://dntvbfs61y0lq" path="res://assets/models/gothic_library_section/decorative_assets/Ladder_2.tscn" id="25_p4p2j"]
 [ext_resource type="PackedScene" uid="uid://cmepbn2gyxqt1" path="res://assets/VFX/Candle_Flame_2.tscn" id="26_mxgw0"]
 [ext_resource type="PackedScene" uid="uid://t3rh2l4jxp8r" path="res://assets/VFX/Candle_Flame_1.tscn" id="27_76rij"]
 

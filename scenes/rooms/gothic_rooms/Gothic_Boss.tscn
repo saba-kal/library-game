@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://8f776b70y3i7"]
-
-[ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_variation.gd" id="1_g8v16"]
-
-[node name="GothicBoss" type="Node3D"]
-script = ExtResource("1_g8v16")
