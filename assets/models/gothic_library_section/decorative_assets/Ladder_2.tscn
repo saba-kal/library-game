@@ -44,7 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_m4jht")
 size = Vector3(0.834563, 2.78383, 0.599026)
 
 [node name="Ladder_2" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38376, -0.0117435)
+transform = Transform3D(0.89097, 0, 0, 0, 0.89097, 0, 0, 0, 0.89097, 0, 1.17063, -0.0117435)
 mesh = SubResource("ArrayMesh_yell1")
 skeleton = NodePath("")
 

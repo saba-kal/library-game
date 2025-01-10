@@ -14,8 +14,8 @@ shader_parameter/Flame_Texture = ExtResource("3_sgjb4")
 shader_parameter/Dissolve_Texture = ExtResource("2_6ykgg")
 
 [sub_resource type="Curve" id="Curve_j0s74"]
-max_value = 15.0
-_data = [Vector2(0.775424, 15), 0.0, 0.0, 0, 0]
+max_value = 10.0
+_data = [Vector2(0.642173, 1.47134), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="CurveTexture" id="CurveTexture_f0swr"]
@@ -40,15 +40,13 @@ damping_max = 1.0
 scale_min = 0.07
 scale_max = 0.16
 scale_curve = SubResource("CurveTexture_pakyr")
-color = Color(0.333, 0.9, 0.4464, 1)
+color = Color(0.28237, 0.80554, 0.337586, 1)
 emission_curve = SubResource("CurveTexture_f0swr")
 
 [sub_resource type="QuadMesh" id="QuadMesh_b1fly"]
 
 [sub_resource type="Curve" id="Curve_pxkga"]
-max_value = 15.0
-_data = [Vector2(0.510593, 9.4374), 0.0, 0.0, 0, 0]
-point_count = 1
+max_value = 10.0
 
 [sub_resource type="CurveTexture" id="CurveTexture_qe78p"]
 curve = SubResource("Curve_pxkga")
@@ -65,7 +63,7 @@ damping_max = 1.0
 scale_min = 0.07
 scale_max = 0.16
 scale_curve = SubResource("CurveTexture_pakyr")
-color = Color(0.258, 0.43, 0.260867, 1)
+color = Color(0.108045, 0.412491, 0.377397, 1)
 emission_curve = SubResource("CurveTexture_qe78p")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_od0q7"]
