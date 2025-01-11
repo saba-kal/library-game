@@ -15,7 +15,7 @@ shader_parameter/Dissolve_Texture = ExtResource("2_fltdb")
 
 [sub_resource type="Curve" id="Curve_j0s74"]
 max_value = 10.0
-_data = [Vector2(0.517572, 1.63694), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.514377, 1.88535), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="CurveTexture" id="CurveTexture_f0swr"]

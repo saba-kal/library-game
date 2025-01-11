@@ -72,7 +72,7 @@ keep_scale = true
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
 
 uniform sampler2D Flame_Texture;
 uniform vec2 Dissolve_Tiling = vec2(0.000000, 0.000000);
@@ -167,12 +167,13 @@ void fragment() {
 
 
 // Output:0
+	ALBEDO = vec3(n_out6p0.xyz);
 	ALPHA = n_out4p3;
-	EMISSION = vec3(n_out6p0.xyz);
 
 
 }
 "
+flags/unshaded = true
 nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_jt62g")
 nodes/vertex/2/position = Vector2(-40, 400)
 nodes/vertex/connections = PackedInt32Array(2, 0, 0, 10)
@@ -211,4 +212,4 @@ nodes/fragment/20/node = SubResource("VisualShaderNodeInput_dai33")
 nodes/fragment/20/position = Vector2(-2100, -80)
 nodes/fragment/21/node = SubResource("VisualShaderNodeVectorOp_um7b8")
 nodes/fragment/21/position = Vector2(-1740, 20)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 3, 0, 1, 5, 0, 6, 0, 6, 0, 4, 0, 10, 0, 11, 2, 11, 0, 12, 1, 3, 0, 12, 0, 3, 0, 13, 0, 12, 0, 13, 1, 13, 0, 6, 1, 14, 0, 13, 2, 15, 0, 11, 0, 17, 0, 18, 0, 16, 0, 18, 1, 18, 0, 15, 2, 20, 0, 21, 0, 19, 0, 21, 1, 21, 0, 15, 0, 6, 0, 0, 5)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 3, 0, 1, 5, 0, 6, 0, 6, 0, 4, 0, 10, 0, 11, 2, 11, 0, 12, 1, 3, 0, 12, 0, 3, 0, 13, 0, 12, 0, 13, 1, 13, 0, 6, 1, 14, 0, 13, 2, 15, 0, 11, 0, 17, 0, 18, 0, 16, 0, 18, 1, 18, 0, 15, 2, 20, 0, 21, 0, 19, 0, 21, 1, 21, 0, 15, 0, 6, 0, 0, 0)
