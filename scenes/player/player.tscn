@@ -5621,11 +5621,11 @@ script = ExtResource("1_2f2x5")
 
 [node name="Skeleton3D" parent="LibrarianPlayer/LibrarianArmature" index="0"]
 bones/0/position = Vector3(0, 1.3118, 0)
-bones/1/rotation = Quaternion(-0.0211256, 0, 0, 0.999777)
-bones/2/rotation = Quaternion(-0.0435198, 1.15777e-07, -2.83989e-08, 0.999053)
-bones/3/rotation = Quaternion(0.0849292, -1.78627e-09, 3.3008e-08, 0.996387)
+bones/1/rotation = Quaternion(-0.00938878, 0, 0, 0.999956)
+bones/2/rotation = Quaternion(-0.0982055, 1.1716e-07, -2.20114e-08, 0.995166)
+bones/3/rotation = Quaternion(0.11483, -7.93662e-10, 3.30467e-08, 0.993385)
 bones/4/rotation = Quaternion(0.0887045, 1.69927e-14, 2.11488e-08, 0.996058)
-bones/5/rotation = Quaternion(0.00705381, 0.2129, -0.0561106, 0.975436)
+bones/5/rotation = Quaternion(0.00723128, -0.00019293, 5.08601e-05, 0.999974)
 bones/8/rotation = Quaternion(-0.0973171, 0.0594902, -0.841368, 0.528289)
 bones/9/rotation = Quaternion(0.627858, 0.413615, -0.137216, 0.644894)
 bones/10/rotation = Quaternion(0.770748, -0.038544, -0.138734, 0.620657)
@@ -5685,10 +5685,10 @@ bones/62/rotation = Quaternion(0.0254161, -0.00224021, 0.0877239, 0.995818)
 bones/63/rotation = Quaternion(-0.000120807, -1.89625e-07, 0.671773, 0.740757)
 
 [node name="Cylinder_001" parent="LibrarianPlayer/LibrarianArmature/Skeleton3D" index="0"]
-transform = Transform3D(0.0276068, -0.0020075, 0.001239, 9.85898e-06, 0.00015742, 0.0366399, -0.0241646, -0.0022934, 0.00143044, 0.117013, 2.29713, 0.120313)
+transform = Transform3D(0.0353084, -0.000829285, -1.15312e-06, 0.000205893, 6.03077e-05, 0.036681, -0.009967, -0.00293652, 0.000753651, 0.0551358, 2.30055, 0.135129)
 
 [node name="Hair" parent="LibrarianPlayer/LibrarianArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.156758, 0.00784918, 0.0995257, -0.00239145, 0.232116, -0.0115532, -0.0745234, 0.00906198, 0.209721, 0.0127345, 2.37327, 0.0270953)
+transform = Transform3D(0.173588, -7.29484e-06, -9.24614e-05, 4.02849e-06, 0.232377, -0.00477446, 6.91523e-05, 0.00477447, 0.232377, -1.18262e-05, 2.37214, 0.00400124)
 
 [node name="AnimationPlayer" parent="LibrarianPlayer" index="1"]
 libraries = {
@@ -5726,6 +5726,7 @@ script = ExtResource("5_0dcju")
 movement_state = NodePath("../Movement")
 distance = 10.0
 duration = 0.683
+dash_layer = 8
 
 [node name="Attack" parent="StateMachine" node_paths=PackedStringArray("movement_state", "next_attack") instance=ExtResource("5_n2afl")]
 movement_state = NodePath("../Movement")

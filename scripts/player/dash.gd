@@ -4,8 +4,8 @@ extends CharacterState
 
 @export var distance:float = 5.0
 @export var duration:float = 0.2
-@export_flags_2d_physics var dash_layer:int
-@export_flags_2d_physics var dash_mask:int = 0x1
+@export_flags_3d_physics var dash_layer:int
+@export_flags_3d_physics var dash_mask:int = 0x1
 
 var default_layer:int
 var default_mask:int
