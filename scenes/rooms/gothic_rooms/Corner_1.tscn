@@ -2,32 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_baceq"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_u2l1s"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Vase_1.tscn" id="3_fl6vy"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Vase_2.tscn" id="4_vxt8i"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_1.tscn" id="5_pqb3v"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_2.tscn" id="6_5j23f"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_1.tscn" id="7_fb2bo"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_2.tscn" id="8_k8mfn"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_1.tscn" id="9_51svi"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Lantern.tscn" id="10_5uky4"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_2.tscn" id="11_yk0le"]
+[ext_resource type="PackedScene" uid="uid://6af3eshhiklr" path="res://assets/models/gothic_library_section/decorative_assets/Vase_1.tscn" id="3_fl6vy"]
+[ext_resource type="PackedScene" uid="uid://wq6fty4dae5g" path="res://assets/models/gothic_library_section/decorative_assets/Vase_2.tscn" id="4_vxt8i"]
+[ext_resource type="PackedScene" uid="uid://0d1ctubyayeg" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_1.tscn" id="5_pqb3v"]
+[ext_resource type="PackedScene" uid="uid://bmeofo6g0t1jk" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_2.tscn" id="6_5j23f"]
+[ext_resource type="PackedScene" uid="uid://cdykij1kwwxue" path="res://assets/models/gothic_library_section/decorative_assets/Candle_1.tscn" id="7_fb2bo"]
+[ext_resource type="PackedScene" uid="uid://bvfrd0h6e4ovd" path="res://assets/models/gothic_library_section/decorative_assets/Candle_2.tscn" id="8_k8mfn"]
+[ext_resource type="PackedScene" uid="uid://dyqcrv4i4axss" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_1.tscn" id="9_51svi"]
+[ext_resource type="PackedScene" uid="uid://cg5du1rf5xld2" path="res://assets/models/gothic_library_section/decorative_assets/Lantern.tscn" id="10_5uky4"]
+[ext_resource type="PackedScene" uid="uid://vxorah386tra" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_2.tscn" id="11_yk0le"]
 [ext_resource type="PackedScene" uid="uid://cmepbn2gyxqt1" path="res://assets/VFX/Candle_Flame_2.tscn" id="12_45a3a"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Gothic_Window.tscn" id="13_ly6fc"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Bookshelf.tscn" id="14_irtmk"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Ladder_1.tscn" id="15_dsv4i"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Skull.tscn" id="16_aqaj7"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Book_1.tscn" id="17_bref8"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Book_3.tscn" id="17_ruydy"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Book_2.tscn" id="18_rr4qp"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Bottle.tscn" id="20_eipgn"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Holder.tscn" id="21_dy87l"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_4.tscn" id="22_pvrgc"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_2.tscn" id="23_1f7hc"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_1.tscn" id="24_am3nh"]
+[ext_resource type="PackedScene" uid="uid://gqj7wvbsopuq" path="res://assets/models/gothic_library_section/decorative_assets/Gothic_Window.tscn" id="13_ly6fc"]
+[ext_resource type="PackedScene" uid="uid://xsquffoqqj8h" path="res://assets/models/gothic_library_section/decorative_assets/Bookshelf.tscn" id="14_irtmk"]
+[ext_resource type="PackedScene" uid="uid://pvjaktfqnata" path="res://assets/models/gothic_library_section/decorative_assets/Ladder_1.tscn" id="15_dsv4i"]
+[ext_resource type="PackedScene" uid="uid://fmfilgo2p8yg" path="res://assets/models/gothic_library_section/decorative_assets/Skull.tscn" id="16_aqaj7"]
+[ext_resource type="PackedScene" uid="uid://dk1v0q4x3xtb8" path="res://assets/models/gothic_library_section/decorative_assets/Book_1.tscn" id="17_bref8"]
+[ext_resource type="PackedScene" uid="uid://c6pf126f185cf" path="res://assets/models/gothic_library_section/decorative_assets/Book_3.tscn" id="17_ruydy"]
+[ext_resource type="PackedScene" uid="uid://d034t5npsvheu" path="res://assets/models/gothic_library_section/decorative_assets/Book_2.tscn" id="18_rr4qp"]
+[ext_resource type="PackedScene" uid="uid://b7acvdsrwwv78" path="res://assets/models/gothic_library_section/decorative_assets/Bottle.tscn" id="20_eipgn"]
+[ext_resource type="PackedScene" uid="uid://btcvm3c6i3tek" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Holder.tscn" id="21_dy87l"]
+[ext_resource type="PackedScene" uid="uid://bxvymvi2qhybu" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_4.tscn" id="22_pvrgc"]
+[ext_resource type="PackedScene" uid="uid://c55mpbfrb86gs" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_2.tscn" id="23_1f7hc"]
+[ext_resource type="PackedScene" uid="uid://bq0xdu18joqss" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_1.tscn" id="24_am3nh"]
 [ext_resource type="PackedScene" uid="uid://cg78jlusnpup3" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_2.tscn" id="25_w74bs"]
 [ext_resource type="PackedScene" uid="uid://dntvbfs61y0lq" path="res://assets/models/gothic_library_section/decorative_assets/Ladder_2.tscn" id="26_hlgms"]
 [ext_resource type="PackedScene" uid="uid://c0nv7jysskn3g" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_3.tscn" id="27_7bk8x"]
-[ext_resource type="PackedScene" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_5.tscn" id="28_wyqdo"]
+[ext_resource type="PackedScene" uid="uid://bape2wmcw7ua1" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_5.tscn" id="28_wyqdo"]
 
 [node name="RoomVariation" node_paths=PackedStringArray("north_door", "west_door") instance=ExtResource("1_baceq")]
 north_door = NodePath("Doors/DoorTop")
@@ -676,3 +676,121 @@ transform = Transform3D(1, 0.000321228, -2.15868e-06, 0.000321222, -0.999977, 0.
 
 [node name="Lantern10" parent="Decorative Assets" index="81" instance=ExtResource("10_5uky4")]
 transform = Transform3D(0.446212, -0.00488252, -0.894913, -0.000194254, -0.999985, 0.00535891, -0.894927, -0.00221737, -0.446207, -13.6635, 0.404755, 2.48315)
+
+[node name="Candle_7" parent="Decorative Assets" index="82" instance=ExtResource("7_fb2bo")]
+transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 3.4688, 0.111145, 1.83309)
+
+[node name="Candle_8" parent="Decorative Assets" index="83" instance=ExtResource("8_k8mfn")]
+transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 3.59105, 0.200321, 2.02461)
+
+[node name="Candle_9" parent="Decorative Assets" index="84" instance=ExtResource("8_k8mfn")]
+transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 3.38523, 0.200321, 2.05619)
+
+[node name="Lighting" type="Node3D" parent="." index="6"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16609, 0.625881, -7.1642)
+light_color = Color(0.74016, 0.81673, 0.643074, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lighting" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80368, 1.79065, -2.98411)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lighting" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54718, 1.42855, 3.51929)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lighting" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.57036, 2.61104, 2.94186)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lighting" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.57036, 2.61104, 7.25185)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lighting" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21697, 2.57785, 6.41272)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lighting" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9142, 2.15919, 6.48)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lighting" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0173, 2.61367, 3.36699)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Lighting" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2194, 2.57075, 2.78059)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Lighting" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.431, 1.70814, 3.44691)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="Lighting" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1197, 2.17242, 5.95641)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="Lighting" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1779, 0.765294, 5.95641)
+light_color = Color(0.668574, 0.843315, 0.60315, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lighting" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96249, 2.58725, 5.95089)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="Lighting" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12157, 0.668632, 1.85864)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lighting" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05955, 2.31729, -1.61175)
+light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_energy = 0.6
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting" index="15"]
+transform = Transform3D(1, 0, 0, 0, 0.468932, 0.883234, 0, -0.883234, 0.468932, -0.182989, 4.71878, 7.33425)
+light_color = Color(0.731295, 0.898654, 0.858452, 1)
+light_energy = 8.0
+spot_range = 6.484
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lighting" index="16"]
+transform = Transform3D(1, 0, 0, 0, 0.468932, 0.883234, 0, -0.883234, 0.468932, -6.8886, 4.71878, 7.33425)
+light_color = Color(0.731295, 0.898654, 0.858452, 1)
+light_energy = 8.0
+spot_range = 6.484
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lighting" index="17"]
+transform = Transform3D(1, 0, 0, 0, 0.468932, 0.883234, 0, -0.883234, 0.468932, -12.447, 4.71878, 7.33425)
+light_color = Color(0.731295, 0.898654, 0.858452, 1)
+light_energy = 8.0
+spot_range = 6.484
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lighting" index="18"]
+transform = Transform3D(1, 0, 0, 0, 0.468932, 0.883234, 0, -0.883234, 0.468932, -18.559, 4.71878, 7.33425)
+light_color = Color(0.731295, 0.898654, 0.858452, 1)
+light_energy = 8.0
+spot_range = 6.484
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lighting" index="19"]
+transform = Transform3D(1, 0, 0, 0, -0.647402, 0.762149, 0, -0.762149, -0.647402, 0.693866, 5.03107, -7.92345)
+light_color = Color(0.775745, 0.899134, 0.741444, 1)
+light_energy = 2.0
+spot_range = 14.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lighting" index="20"]
+transform = Transform3D(-0.110064, -0.757518, -0.643469, 0, -0.647402, 0.762149, -0.993925, 0.0838851, 0.0712556, -23.6687, 5.03107, 5.01736)
+light_color = Color(0.775745, 0.899134, 0.741444, 1)
+light_energy = 2.0
+spot_range = 14.0
