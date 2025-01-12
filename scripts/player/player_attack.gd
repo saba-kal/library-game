@@ -12,12 +12,11 @@ signal started
 @export var wind_up_period:float = 0.3
 @export var swing_duration:float = .4
 @export var wind_down_period:float = .3
-@export var placeholder_fx:Node3D
 
 @export var animation_node_name: String
 
-@onready var transform: Node3D = $Transform
-@onready var hit_area: Area3D = $Transform/HitArea
+
+@onready var hit_area = $"../../LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D/Umbrella/Area"
 @onready var movement_payback = animation_tree.get("parameters/Attack/playback")
 
 var step_dir:Vector2
@@ -44,7 +43,6 @@ func _ready() -> void:
 	wind_down_timer.name = "wind_down_timer"
 	wind_down_timer.timeout.connect(done)
 	add_child(wind_down_timer)
-	placeholder_fx.visible = false
 
 func handle_input(_event: InputEvent) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
@@ -56,10 +54,9 @@ func handle_input(_event: InputEvent) -> void:
 			queued_attack = true
 
 func physics_update(_delta: float) -> void:
-	transform.global_position = character.global_position
 	if swing_timer.time_left > 0:
 		add_hit_bodies()
-	
+
 func enter(previous_state_path: String, data := {}) -> void:
 	print("entered attack \"" + name + "\" with data: " + str(data))
 	queued_attack = false
@@ -67,14 +64,11 @@ func enter(previous_state_path: String, data := {}) -> void:
 		step_dir = data.direction
 		last_dir = step_dir
 		character.set_orientation_from_top_down_vector(step_dir)
-		transform.global_position = character.global_position
-		transform.global_basis = Basis.looking_at(character.direction, Vector3.UP, true)
 	wind_up_timer.start(wind_up_period)
 	animation_tree.set("parameters/Actions/transition_request", "Attack")
 	movement_payback.travel(animation_node_name)
 
 func exit() -> void:
-	placeholder_fx.visible = false
 	swing_timer.stop()
 	wind_down_timer.stop()
 	wind_up_timer.stop()
@@ -92,14 +86,12 @@ func swing_complete() -> void:
 			print("damaging " + body.name)
 			component.take_damage(damage)
 	wind_down_timer.start(wind_down_period)
-	placeholder_fx.visible = false
 	if queued_attack and next_attack:
 		finished.emit(next_attack.get_path(), {'direction': last_dir})
 
 func swing_start() -> void:
 	character.constant_velocity(distance / swing_duration)
 	swing_timer.start(swing_duration)
-	placeholder_fx.visible = true
 	AudioManager.play_3d("player_attack", character.global_position)
 	add_hit_bodies()
 

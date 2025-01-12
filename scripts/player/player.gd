@@ -2,6 +2,10 @@ class_name Player extends CharacterBody3D
 
 signal died
 
+
+@export var hand_bone: BoneAttachment3D
+@export var umbrella: Node3D
+
 @export_group("Movement Settings")
 @export var move_speed:float = 5
 @export var acceleration:float = 4
@@ -10,6 +14,8 @@ signal died
 
 @export_group("StateMachine")
 @export var initial_state:CharacterState
+@export var death_state: CharacterState
+@export var hurt_state: CharacterState
 
 @onready var body: Node3D = $LibrarianPlayer
 @onready var health: Health = $Health
@@ -17,7 +23,6 @@ signal died
 @onready var state:CharacterState = (func get_initial_state() -> CharacterState:
 	return initial_state if initial_state else state_machine.get_child(0)
 ).call()
-@onready var death = $StateMachine/Death
 
 var direction:Vector3
 var target_rotation:float
@@ -27,12 +32,14 @@ func _ready() -> void:
 		state_node.finished.connect(_transition_to_next_state)
 	state.enter("")
 	SignalBus.player_spawned.emit(self)
+	health.changed.connect(health_changed)
+	equip(umbrella)
 
 func _transition_to_next_state(target_state_path:String, data:Dictionary = {}) -> void:
 	if not state_machine.has_node(target_state_path):
 		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it did not exist")
 		return
-	
+
 	var previous_state_path := state.name
 	state.exit()
 	state = state_machine.get_node(target_state_path)
@@ -41,15 +48,15 @@ func _transition_to_next_state(target_state_path:String, data:Dictionary = {}) -
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
+
 	state.physics_update(delta)
-	
+
 	if direction:
 		body.rotation.y = lerp_angle(body.rotation.y, target_rotation, rotation_speed * delta)
 	if not direction:
 		velocity.x = lerp(velocity.x, 0.0, decceleration * delta)
 		velocity.z = lerp(velocity.z, 0.0, decceleration * delta)
-	
+
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -63,7 +70,7 @@ func adjust_body_velocity(delta:float, move_speed:float, acceleration:float) -> 
 	if direction:
 		velocity.x = lerp(velocity.x, direction.x * move_speed, acceleration * delta)
 		velocity.z = lerp(velocity.z, direction.z * move_speed, acceleration * delta)
-	
+
 func constant_velocity(speed:float) -> void:
 	if direction:
 		velocity.x = direction.x * speed
@@ -71,9 +78,20 @@ func constant_velocity(speed:float) -> void:
 
 func take_damage(damage: int) -> void:
 	self.health.take_damage(damage)
-	if self.health.current <= 0:
-		_transition_to_next_state(death.get_path())
-		died.emit()
 
 func heal(heal_amount: int) -> void:
 	self.health.heal(heal_amount)
+
+func health_changed(new_health:int, delta:int) -> void:
+	if(delta < 0):
+		if new_health <= 0:
+			_transition_to_next_state(death_state.get_path())
+			died.emit()
+		else:
+			_transition_to_next_state(hurt_state.get_path())
+
+func equip(weapon: RigidBody3D):
+	weapon.collision_layer = 0
+	weapon.collision_mask = 0
+	weapon.freeze = true
+	weapon.reparent(hand_bone)
