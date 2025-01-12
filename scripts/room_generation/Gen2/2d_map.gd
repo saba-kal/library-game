@@ -36,6 +36,7 @@ class RoomData:
 var currently_generating:bool = false
 var failsafe_activated:bool = true
 var valid_cell_count:int = 0
+var boss_cell:Vector2i
 
 func _ready() -> void:
 	player_location_sprite.visible = false
@@ -68,7 +69,6 @@ func generate_rooms():
 			tile_map_layer.set_cell(spot_check,0,Vector2(5,0))
 		current_position = spot_check
 	print("Done Generatoring")
-	
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -105,20 +105,17 @@ func add_boss_room() -> void:
 			max_distance_sqr = distance_sqr
 			furthest_cell = cell_coord
 
-	var boss_cell: Vector2i = add_deadend_room_to_tile_pos(furthest_cell)
+	boss_cell = add_deadend_room_to_tile_pos(furthest_cell)
 	boss_location_sprite.position = tile_map_layer.map_to_local(boss_cell)
 	boss_location_sprite.visible = true
-	var tile_data: TileData = tile_map_layer.get_cell_tile_data(boss_cell)
-	tile_data.set_custom_data("is_boss_room", true)
 
 func generation_info() -> Array[RoomData]:
 	var generation_array_info:Array[RoomData] = []
 	for x: Vector2i in tile_map_layer.get_used_cells():
-		var tile_data: TileData = tile_map_layer.get_cell_tile_data(x)
 		var room_data: RoomData = RoomData.new()
 		room_data.room_type = tile_map_layer.get_cell_atlas_coords(x)
 		room_data.tile_map_position = x
-		room_data.is_boss_room = tile_data.get_custom_data("is_boss_room")
+		room_data.is_boss_room = x == boss_cell
 		generation_array_info.append(room_data)
 	return generation_array_info
 

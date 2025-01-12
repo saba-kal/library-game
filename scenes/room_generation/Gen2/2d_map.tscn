@@ -93,8 +93,6 @@ tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Map"
 terrain_set_0/terrain_0/color = Color(0.1176, 0.42, 0.15792, 1)
-custom_data_layer_0/name = "is_boss_room"
-custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_8x124")
 
 [node name="2D_Map" type="Node2D"]
