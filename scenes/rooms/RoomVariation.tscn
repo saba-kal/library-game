@@ -8,6 +8,7 @@ script = ExtResource("1_c6f0w")
 
 [node name="Walls" type="GridMap" parent="."]
 mesh_library = ExtResource("1_ncpn8")
+cell_size = Vector3(2, 0.9, 2)
 cell_center_y = false
 
 [node name="Edging" type="GridMap" parent="."]

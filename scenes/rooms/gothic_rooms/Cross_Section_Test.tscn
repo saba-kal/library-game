@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddtc3s8h8acf6"]
+
+[ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_hf2ar"]
+[ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_bnwqg"]
+
+[node name="RoomVariation" node_paths=PackedStringArray("north_door", "east_door", "south_door", "west_door") instance=ExtResource("1_hf2ar")]
+north_door = NodePath("Doors/DoorTop")
+east_door = NodePath("Doors/DoorRight")
+south_door = NodePath("Doors/DoorBot")
+west_door = NodePath("Doors/DoorLeft")
+
+[node name="Walls" parent="." index="0"]
+data = {
+"cells": PackedInt32Array(65535, 1, 655381, 65535, 65533, 21, 65533, 65535, 1048597, 1, 65535, 1441813)
+}
+
+[node name="Floor" parent="." index="3"]
+data = {
+"cells": PackedInt32Array(65533, 65535, 1441792, 65534, 65535, 1441792, 65535, 65535, 1441792, 0, 65535, 1441792, 1, 65535, 1441792, 65535, 65534, 1441792, 65535, 65533, 1441792, 65535, 0, 1441792, 65535, 1, 1441792)
+}
+
+[node name="DoorLeft" parent="Doors" index="0" instance=ExtResource("2_bnwqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.60735, 0, -1.00026)
+
+[node name="DoorRight" parent="Doors" index="1" instance=ExtResource("2_bnwqg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.86381, 0, -1.00026)
+
+[node name="DoorBot" parent="Doors" index="2" instance=ExtResource("2_bnwqg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.00822, 0, 3.92495)
+
+[node name="DoorTop" parent="Doors" index="3" instance=ExtResource("2_bnwqg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.00822, 0, -6.01485)
