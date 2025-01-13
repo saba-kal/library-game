@@ -11,6 +11,26 @@ mesh_library = ExtResource("1_ncpn8")
 cell_size = Vector3(2, 0.9, 2)
 cell_center_y = false
 
+[node name="Wall_North" type="GridMap" parent="."]
+mesh_library = ExtResource("1_ncpn8")
+cell_size = Vector3(2, 0.9, 2)
+cell_center_y = false
+
+[node name="Wall_South" type="GridMap" parent="."]
+mesh_library = ExtResource("1_ncpn8")
+cell_size = Vector3(2, 0.9, 2)
+cell_center_y = false
+
+[node name="Wall_East" type="GridMap" parent="."]
+mesh_library = ExtResource("1_ncpn8")
+cell_size = Vector3(2, 0.9, 2)
+cell_center_y = false
+
+[node name="Wall_West" type="GridMap" parent="."]
+mesh_library = ExtResource("1_ncpn8")
+cell_size = Vector3(2, 0.9, 2)
+cell_center_y = false
+
 [node name="Edging" type="GridMap" parent="."]
 mesh_library = ExtResource("1_ncpn8")
 cell_octant_size = 4
