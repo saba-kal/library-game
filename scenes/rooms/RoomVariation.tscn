@@ -7,14 +7,17 @@
 script = ExtResource("1_c6f0w")
 
 [node name="WallChecker" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="Wall_North" type="GridMap" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 mesh_library = ExtResource("1_ncpn8")
 cell_size = Vector3(2, 0.9, 2)
 cell_center_y = false
 
 [node name="Wall_South" type="GridMap" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 mesh_library = ExtResource("1_ncpn8")
 cell_size = Vector3(2, 0.9, 2)
@@ -26,12 +29,14 @@ cell_size = Vector3(2, 0.9, 2)
 cell_center_y = false
 
 [node name="Wall_East" type="GridMap" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 mesh_library = ExtResource("1_ncpn8")
 cell_size = Vector3(2, 0.9, 2)
 cell_center_y = false
 
 [node name="Wall_West" type="GridMap" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 mesh_library = ExtResource("1_ncpn8")
 cell_size = Vector3(2, 0.9, 2)
