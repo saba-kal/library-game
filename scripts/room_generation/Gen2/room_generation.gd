@@ -33,6 +33,7 @@ func _ready() -> void:
 func on_map_generation_complete() -> void:
 	spawn_rooms()
 	connect_room_doors()
+	remove_walls()
 	spawn_player()
 
 ## Instantiates some base created rooms that have a single parent called "map_room_base".
@@ -136,3 +137,11 @@ func spawn_player():
 	player_instance.global_position = first_room.global_position
 	map.set_player_position(first_room.tile_position)
 	print("Spawned player at " + str(first_room.tile_position))
+
+## Instantiates a node3D in center of room, and checks x/z positions to determine which walls to hide regardless of how it's rotated.
+func remove_walls():
+	var wall_check_instance:Node3D = Node3D.new()
+	add_child(wall_check_instance)
+	for room in rooms.get_children():
+		wall_check_instance.global_position = room.global_position
+		print(wall_check_instance.global_position)

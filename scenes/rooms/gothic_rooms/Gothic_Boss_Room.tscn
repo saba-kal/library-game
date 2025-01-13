@@ -11,9 +11,6 @@
 [node name="GothicBossRoom" node_paths=PackedStringArray("south_door") instance=ExtResource("1_syfi0")]
 south_door = NodePath("Doors/DoorBot")
 
-[node name="DoorBot" parent="Doors" index="0" instance=ExtResource("2_5qutj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.558773, 15.2889)
-
 [node name="PlaceholderLevel" type="CSGBox3D" parent="." index="5"]
 material_override = ExtResource("3_xwymw")
 use_collision = true
@@ -73,5 +70,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.469661, 0.500001, -15.2377)
 
 [node name="SceneTransitionArea" parent="." index="8" instance=ExtResource("4_3jmiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.328717, 0.530447, -20.6399)
+
+[node name="DoorBot" parent="Doors" index="0" instance=ExtResource("2_5qutj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.558773, 15.2889)
 
 [connection signal="death" from="PlaceholderBoss" to="LockedExitDoor" method="open_door_ignore_keys"]

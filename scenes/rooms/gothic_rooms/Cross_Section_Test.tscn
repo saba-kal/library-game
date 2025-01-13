@@ -9,12 +9,7 @@ east_door = NodePath("Doors/DoorRight")
 south_door = NodePath("Doors/DoorBot")
 west_door = NodePath("Doors/DoorLeft")
 
-[node name="Walls" parent="." index="0"]
-data = {
-"cells": PackedInt32Array(65535, 1, 655381, 65535, 65533, 21, 65533, 65535, 1048597, 1, 65535, 1441813)
-}
-
-[node name="Floor" parent="." index="3"]
+[node name="Floor" parent="." index="6"]
 data = {
 "cells": PackedInt32Array(65533, 65535, 1441792, 65534, 65535, 1441792, 65535, 65535, 1441792, 0, 65535, 1441792, 1, 65535, 1441792, 65535, 65534, 1441792, 65535, 65533, 1441792, 65535, 0, 1441792, 65535, 1, 1441792)
 }

@@ -6,17 +6,17 @@
 [node name="RoomVariation" type="Node3D"]
 script = ExtResource("1_c6f0w")
 
-[node name="Walls" type="GridMap" parent="."]
-mesh_library = ExtResource("1_ncpn8")
-cell_size = Vector3(2, 0.9, 2)
-cell_center_y = false
-
 [node name="Wall_North" type="GridMap" parent="."]
 mesh_library = ExtResource("1_ncpn8")
 cell_size = Vector3(2, 0.9, 2)
 cell_center_y = false
 
 [node name="Wall_South" type="GridMap" parent="."]
+mesh_library = ExtResource("1_ncpn8")
+cell_size = Vector3(2, 0.9, 2)
+cell_center_y = false
+
+[node name="Doorways" type="GridMap" parent="."]
 mesh_library = ExtResource("1_ncpn8")
 cell_size = Vector3(2, 0.9, 2)
 cell_center_y = false

@@ -10,7 +10,7 @@ east_door = NodePath("Doors/Doors2/DoorRight")
 south_door = NodePath("Doors/Doors2/DoorBot")
 west_door = NodePath("Doors/Doors2/DoorLeft")
 
-[node name="Walls2" type="GridMap" parent="Walls" index="0"]
+[node name="Walls#Walls2" type="GridMap" parent="." index="0"]
 mesh_library = ExtResource("2_jt5sh")
 cell_size = Vector3(2, 0.9, 2)
 cell_center_y = false
