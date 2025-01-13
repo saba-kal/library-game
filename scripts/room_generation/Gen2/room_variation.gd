@@ -13,6 +13,13 @@ enum ROOM_DIRECTION{
 @export var south_door: RoomDoor
 @export var west_door: RoomDoor
 
+@onready var wall_checker: Node3D = %WallChecker
+@onready var wall_north: GridMap = %Wall_North
+@onready var wall_south: GridMap = %Wall_South
+@onready var wall_east: GridMap = %Wall_East
+@onready var wall_west: GridMap = %Wall_West
+
+
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
 ## Basically, they are put in a clockwise position in the array.

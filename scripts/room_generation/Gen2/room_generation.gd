@@ -140,8 +140,13 @@ func spawn_player():
 
 ## Instantiates a node3D in center of room, and checks x/z positions to determine which walls to hide regardless of how it's rotated.
 func remove_walls():
-	var wall_check_instance:Node3D = Node3D.new()
-	add_child(wall_check_instance)
 	for room in rooms.get_children():
-		wall_check_instance.global_position = room.global_position
-		print(wall_check_instance.global_position)
+		if room is RoomVariation:
+			if (room.wall_north.global_position.x > room.wall_checker.global_position.x) or (room.wall_north.global_position.z > room.wall_checker.global_position.z):
+				room.wall_north.queue_free()
+			if (room.wall_south.global_position.x > room.wall_checker.global_position.x) or (room.wall_south.global_position.z > room.wall_checker.global_position.z):
+				room.wall_south.queue_free()
+			if (room.wall_east.global_position.x > room.wall_checker.global_position.x) or (room.wall_east.global_position.z > room.wall_checker.global_position.z):
+				room.wall_east.queue_free()
+			if (room.wall_west.global_position.x > room.wall_checker.global_position.x) or (room.wall_west.global_position.z > room.wall_checker.global_position.z):
+				room.wall_west.queue_free()
