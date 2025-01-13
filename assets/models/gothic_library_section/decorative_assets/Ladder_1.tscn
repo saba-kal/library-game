@@ -69,7 +69,7 @@ shadow_mesh = SubResource("ArrayMesh_0a1k3")
 [sub_resource type="BoxShape3D" id="BoxShape3D_rrijs"]
 size = Vector3(0.612028, 0.776199, 0.98251)
 
-[node name="Ladder_1" type="MeshInstance3D"]
+[node name="Ladder_1" type="MeshInstance3D" groups=["nav_mesh_group"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377535, -0.0145974)
 mesh = SubResource("ArrayMesh_vfevh")
 skeleton = NodePath("")

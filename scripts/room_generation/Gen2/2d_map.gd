@@ -193,6 +193,7 @@ func add_deadend_room_to_tile_pos(tile_map_pos: Vector2i) -> Vector2i:
 
 func on_player_moved_to_room(room: RoomVariation):
 	set_player_position(room.tile_position)
+	room.activate_spawners()
 
 func _on_failsafe_timer_timeout() -> void:
 	failsafe_activated = true

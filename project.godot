@@ -42,6 +42,7 @@ project/assembly_name="Library Game"
 player=""
 enemy=""
 map_tile=""
+nav_mesh_group=""
 
 [importer_defaults]
 

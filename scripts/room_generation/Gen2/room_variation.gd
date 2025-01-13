@@ -19,6 +19,7 @@ enum ROOM_DIRECTION{
 @onready var wall_east: GridMap = %Wall_East
 @onready var wall_west: GridMap = %Wall_West
 
+@onready var spawners: Node = $Spawners
 
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
@@ -57,8 +58,13 @@ func connect_door(direction: ROOM_DIRECTION, room: RoomVariation):
 	else:
 		printerr(self.name + " is missing a door for direction " + str(direction))
 
-
 func update_door_directions():
 	for i in range(0, 4):
 		if doors[i] != null:
 			doors[i].direction = i
+
+func activate_spawners():
+	print("called spawner")
+	for child in spawners.get_children():
+		if child is EnemySpawner:
+			child.initialize_probabilities()
