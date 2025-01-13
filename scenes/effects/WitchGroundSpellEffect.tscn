@@ -125,9 +125,12 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(10.0333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(6.63333, 10.0333),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"queue_free"
+}, {
 "args": [],
 "method": &"queue_free"
 }]
@@ -349,6 +352,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_7j5o8")
 
 [node name="Damnation" parent="." instance=ExtResource("5_uxk8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0450387, 3.36106, -0.216613)
+visible = false
 
 [node name="Flame Pillar Center Glow" parent="Damnation" index="0"]
 emitting = true
