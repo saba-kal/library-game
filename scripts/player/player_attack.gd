@@ -75,8 +75,9 @@ func exit() -> void:
 
 func swing_complete() -> void:
 	add_hit_bodies()
+	character.velocity *= 0.2
 	print("hitting " + str(hit_bodies.size()) + " bodies")
-	character.constant_velocity(0)
+	#character.constant_velocity(0)
 	for body in hit_bodies:
 		if !is_instance_valid(body):
 			continue
