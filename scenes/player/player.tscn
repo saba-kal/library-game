@@ -6178,7 +6178,6 @@ bones/9/rotation = Quaternion(-0.062417, 0.0270858, -0.424722, 0.902763)
 bones/10/rotation = Quaternion(0.343186, -0.03552, -0.0132562, 0.938502)
 bones/11/rotation = Quaternion(0.267546, 0.0131094, -0.183836, 0.945755)
 bones/12/rotation = Quaternion(-0.239275, -0.0673316, -0.178418, 0.95204)
-bones/13/rotation = Quaternion(0.00352417, 0.00144437, -0.0475896, 0.99886)
 bones/14/rotation = Quaternion(-0.116849, 0.00666005, -0.0611429, 0.991243)
 bones/15/rotation = Quaternion(-0.0210619, -1.39002e-09, -0.00107681, 0.999778)
 bones/16/rotation = Quaternion(-0.00767369, 1.16476e-09, -0.000392324, 0.99997)
@@ -6190,7 +6189,6 @@ bones/21/rotation = Quaternion(-0.154067, 0.00730073, -0.0602808, 0.986193)
 bones/22/rotation = Quaternion(-0.00836887, 0.000426923, -0.0471939, 0.998851)
 bones/23/rotation = Quaternion(0.016505, -9.30085e-10, 0.000243171, 0.999864)
 bones/24/rotation = Quaternion(-0.0216968, 6.69773e-10, -0.000319661, 0.999765)
-bones/25/rotation = Quaternion(-0.246312, 0.0104377, -0.0640596, 0.967015)
 bones/26/rotation = Quaternion(0.103012, -0.00438216, -0.0427663, 0.993751)
 bones/27/rotation = Quaternion(-0.0259556, -3.27528e-10, 0.000148955, 0.999663)
 bones/28/rotation = Quaternion(0.0100018, 2.54558e-10, -5.73972e-05, 0.99995)
@@ -6204,7 +6202,6 @@ bones/35/rotation = Quaternion(-0.116849, -0.00666005, 0.0611429, 0.991243)
 bones/36/rotation = Quaternion(-0.0210619, 1.39002e-09, 0.00107681, 0.999778)
 bones/37/rotation = Quaternion(-0.00767369, -1.16476e-09, 0.000392324, 0.99997)
 bones/38/position = Vector3(-0.0281093, 0.0704612, -0.0303321)
-bones/38/rotation = Quaternion(0.359806, -0.587509, -0.307623, 0.656308)
 bones/38/scale = Vector3(1, 1, 1)
 bones/39/rotation = Quaternion(-0.0694086, -0.00341139, 0.0580925, 0.99589)
 bones/40/rotation = Quaternion(-0.0868209, -0.00423225, 0.0504895, 0.994935)
@@ -6239,16 +6236,6 @@ transform = Transform3D(0.173588, -3.55271e-15, -7.10543e-15, 5.32907e-15, 0.232
 
 [node name="BoneAttachment3D" parent="LibrarianPlayer/LibrarianArmature/Skeleton3D" index="3"]
 transform = Transform3D(-2.98023e-08, 0, 1, 1, 2.38419e-07, -1.60187e-07, -8.9407e-08, 1, 3.35276e-08, -0.337973, 1.23616, 0.108773)
-
-[node name="Skeleton3D" parent="LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D/Umbrella/Model/UmbrellaArmature" index="0"]
-bones/1/rotation = Quaternion(0.999019, 7.65056e-17, -1.00639e-16, 0.0442849)
-bones/2/rotation = Quaternion(-0.998876, 5.65053e-09, -1.19075e-07, 0.0474001)
-bones/3/rotation = Quaternion(8.86401e-06, 0.000166429, -0.999015, 0.0443689)
-bones/4/rotation = Quaternion(0, 0, 0.999131, 0.0416904)
-bones/5/rotation = Quaternion(0.382397, -0.0148048, -0.923188, 0.0357419)
-bones/6/rotation = Quaternion(-0.70644, -1.49012e-08, -0.70644, 0.0434218)
-bones/7/rotation = Quaternion(0.70678, -0.00352848, 0.706473, 0.0366694)
-bones/8/rotation = Quaternion(-0.70643, -0.00246954, 0.706656, 0.0398476)
 
 [node name="AnimationPlayer" parent="LibrarianPlayer" index="1"]
 libraries = {

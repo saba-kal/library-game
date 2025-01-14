@@ -13,9 +13,10 @@ func _process(delta: float) -> void:
 	pass
 
 func play() -> void:
-	audio_stream_player_3d.pitch_scale += randf_range(-pitch_randomness, pitch_randomness) * .1
-	super.play()
-	audio_stream_player_3d.pitch_scale = original_pitch_scale
+	if is_instance_valid(audio_stream_player_3d):
+		audio_stream_player_3d.pitch_scale += randf_range(-pitch_randomness, pitch_randomness) * .1
+		super.play()
+		audio_stream_player_3d.pitch_scale = original_pitch_scale
 
 func stop():
 	pass

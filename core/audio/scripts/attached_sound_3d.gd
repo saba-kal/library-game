@@ -13,8 +13,6 @@ func _ready() -> void:
 
 func play() -> void:
 	self.audio_stream_player_3d.play()
-	print(audio_stream_player_3d.pitch_scale)
-
 
 func stop():
 	self.audio_stream_player_3d.stop()
