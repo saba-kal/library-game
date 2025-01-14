@@ -13,6 +13,8 @@ func _on_delete_timer_timeout() -> void:
 
 func Enter():
 	anim_player.play(death_anim_name)
+	nav_agent.target_position = enemy.global_position
+	enemy.velocity = Vector3.ZERO
 	delete_timer.start()
 
 func Exit():

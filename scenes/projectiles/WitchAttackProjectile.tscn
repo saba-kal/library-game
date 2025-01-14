@@ -1,19 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtpbu0o2ok0el"]
+[gd_scene load_steps=10 format=3 uid="uid://dtpbu0o2ok0el"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/projectile.gd" id="1_riddi"]
-[ext_resource type="PackedScene" uid="uid://fdhrn0wfh0rn" path="res://assets/VFX/Fireball.tscn" id="2_6tt38"]
+[ext_resource type="Shader" path="res://scenes/projectiles/WitchAttackProjectile2.gdshader" id="2_v2cyn"]
+[ext_resource type="Texture2D" uid="uid://rcyjavt0fq83" path="res://assets/textures/effects/Flame_1.png" id="4_a715m"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3kitc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8743"]
-transparency = 1
-albedo_color = Color(0.470588, 1, 0.262745, 0.0745098)
-emission_enabled = true
-emission = Color(0, 0.839216, 0, 1)
-emission_energy_multiplier = 1.95
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8hkg"]
+render_priority = 0
+shader = ExtResource("2_v2cyn")
+shader_parameter/time_speed = 1.0
+shader_parameter/spin = 0.0
+shader_parameter/flame_brightness = 0.6
+shader_parameter/color_intensity = 0.0
+shader_parameter/horizontal_frequency = 4.0
+shader_parameter/vertical_frequency = 4.0
+shader_parameter/size = -0.3
+shader_parameter/core_size = 0.935
+shader_parameter/color1 = Color(0.333, 0.9, 0.64485, 1)
+shader_parameter/color2 = Color(0.588, 0.98, 0.829733, 1)
+shader_parameter/color3 = Color(0, 0, 0, 1)
+shader_parameter/color4 = Color(1, 0, 0, 1)
+shader_parameter/noise_texture = ExtResource("4_a715m")
 
 [sub_resource type="SphereMesh" id="SphereMesh_wiahd"]
-material = SubResource("StandardMaterial3D_b8743")
+material = SubResource("ShaderMaterial_b8hkg")
+radius = 0.4
+height = 0.8
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d0xbp"]
 particle_flag_align_y = true
@@ -48,17 +61,9 @@ spawn_sound_name = "witch_projectile_attack"
 shape = SubResource("SphereShape3D_3kitc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("SphereMesh_wiahd")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, 0, 0, 0)
-visible = false
-mesh = SubResource("SphereMesh_wiahd")
-skeleton = NodePath("../..")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-visible = false
 amount = 20
 lifetime = 0.5
 transform_align = 3
@@ -66,6 +71,3 @@ trail_enabled = true
 trail_lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_d0xbp")
 draw_pass_1 = SubResource("RibbonTrailMesh_rslms")
-
-[node name="CandleFlame" parent="." instance=ExtResource("2_6tt38")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00190139, 0, -0.00595703)
