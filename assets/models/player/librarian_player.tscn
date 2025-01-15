@@ -5645,16 +5645,16 @@ bones/62/rotation = Quaternion(-0.0810693, 0.00761103, 0.313829, 0.945982)
 bones/63/rotation = Quaternion(-0.0196132, 0.0298094, 0.729697, 0.682839)
 
 [node name="Cylinder_001" parent="LibrarianArmature/Skeleton3D" index="0"]
-transform = Transform3D(0.0341519, -0.000773654, -0.00965495, 0.0117085, 0.00279188, 0.00908619, 0.00652887, -0.000959884, 0.0342095, -0.0865314, 1.56358, 0.498105)
+transform = Transform3D(0.0341519, -0.000773654, -0.00965494, 0.0117085, 0.00279188, 0.00908625, 0.00652884, -0.00095989, 0.0342095, -0.0865313, 1.56358, 0.498105)
 
 [node name="Hair" parent="LibrarianArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.167461, -0.0611647, -0.00217569, 0.0100981, 0.0575616, -0.224779, 0.0445805, 0.216719, 0.0590882, -0.156667, 1.70562, 0.514458)
+transform = Transform3D(0.167461, -0.0611647, -0.00217569, 0.0100982, 0.057562, -0.224779, 0.0445805, 0.216719, 0.0590886, -0.156667, 1.70562, 0.514457)
 
 [node name="Body" parent="LibrarianArmature/Skeleton3D" index="2"]
 mesh = SubResource("ArrayMesh_141aq")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="LibrarianArmature/Skeleton3D" index="3"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.981326, 0.0777819, 0.638945)
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.981323, 0.0777823, 0.638949)
 bone_name = "HeldObject"
 bone_idx = 38
 

@@ -6155,7 +6155,6 @@ node_connections = [&"Actions", 0, &"Movement", &"Actions", 1, &"Block", &"Actio
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hand_bone", "umbrella", "initial_state", "death_state", "hurt_state") groups=["player"]]
 collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_2f2x5")
 hand_bone = NodePath("LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D")
 umbrella = NodePath("LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D/Umbrella")

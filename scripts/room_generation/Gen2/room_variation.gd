@@ -21,6 +21,8 @@ enum ROOM_DIRECTION{
 
 @onready var spawners: Node = $Spawners
 
+var nav_region : NavigationRegion3D
+
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
 ## Basically, they are put in a clockwise position in the array.
@@ -68,3 +70,13 @@ func activate_spawners():
 	for child in spawners.get_children():
 		if child is EnemySpawner:
 			child.initialize_probabilities()
+
+func bake_nav_mesh():
+	print("baking mesh")
+	nav_region = NavigationRegion3D.new()
+	add_child(nav_region)
+	nav_region.navigation_mesh = NavigationMesh.new()
+	nav_region.navigation_mesh.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_MESH_INSTANCES
+	nav_region.navigation_mesh.geometry_source_geometry_mode = NavigationMesh.SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN
+	nav_region.navigation_mesh.geometry_source_group_name = "nav_mesh_group"
+	nav_region.bake_navigation_mesh()

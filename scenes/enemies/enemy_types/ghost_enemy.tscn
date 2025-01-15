@@ -3222,11 +3222,12 @@ script = ExtResource("4_6xrt1")
 idle_anim_name = "Idle"
 state_transition_upon_player_detection = "SelfProjectile"
 
-[node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("delete_timer")]
+[node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("delete_timer", "body")]
 script = ExtResource("8_sjyp7")
 death_anim_name = "Die"
 death_anim_length = 1.75
 delete_timer = NodePath("../../DeathTimeout")
+body = NodePath("../..")
 
 [node name="SelfProjectile" type="Node" parent="StateMachine" node_paths=PackedStringArray("attached_sound_to_stop", "projectile_area", "fade_anim_player")]
 script = ExtResource("9_nih03")

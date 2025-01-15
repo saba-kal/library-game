@@ -43,7 +43,7 @@ shadow_mesh = SubResource("ArrayMesh_e4u33")
 [sub_resource type="BoxShape3D" id="BoxShape3D_liodh"]
 size = Vector3(0.31974, 0.770588, 0.32685)
 
-[node name="Lantern" type="MeshInstance3D"]
+[node name="Lantern" type="MeshInstance3D" groups=["nav_mesh_group"]]
 transform = Transform3D(1, 0.000321228, -2.15868e-06, 0.000321222, -0.999977, 0.00672201, 1.71271e-11, -0.00672201, -0.999977, 0, 0.409736, 0)
 mesh = SubResource("ArrayMesh_atwl4")
 skeleton = NodePath("")
