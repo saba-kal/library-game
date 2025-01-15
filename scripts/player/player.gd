@@ -82,8 +82,8 @@ func take_damage(damage: int) -> void:
 func heal(heal_amount: int) -> void:
 	self.health.heal(heal_amount)
 
-func health_changed(new_health:int, delta:int) -> void:
-	if(delta < 0):
+func health_changed(new_health:int, damage:int, damage_sender) -> void:
+	if(damage > 0):
 		if new_health <= 0:
 			_transition_to_next_state(death_state.get_path())
 			died.emit()

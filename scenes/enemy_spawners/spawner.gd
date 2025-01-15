@@ -12,6 +12,7 @@ const WITCH_ENEMY = preload("res://scenes/enemies/enemy_types/witch_enemy.tscn")
 var enemy_instance : EnemyBase
 
 func initialize_probabilities() -> void:
+	self.rotation.y = 0
 	# Iterate through the objects
 	for choice in choices:
 		# Take current object weight and accumulate it

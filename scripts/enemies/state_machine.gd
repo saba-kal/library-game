@@ -5,6 +5,7 @@ class_name StateMachine extends Node
 @export var anim_player:AnimationPlayer = null
 @export var nav_agent:NavigationAgent3D = null
 @export var intial_state:State = null
+@export var aggro_state:State = null
 @export var aggro_timeout:Timer = null
 @export var aggro_timeout_duration:float = 3
 @export var detection_type:Area3D = null
@@ -94,6 +95,7 @@ func player_exited_range(body:Node3D):
 		print("Left Range")
 		self.player_inside_detection_area = false
 		aggro_timeout.start(aggro_timeout_duration)
+		print("Player de-aggro'd")
 
 ## Raycasts for players while they are in the cone every 0.1 seconds.
 func line_of_sight_check():
@@ -111,14 +113,18 @@ func line_of_sight_check():
 					aggro_timeout.stop()
 		await get_tree().create_timer(0.05).timeout
 
-## Causes the enemy to disengage the player. Exact behavior of of what happens depends on the enemy's current state.
+## Causes the enemy to disengage the player. Exact behavior of what happens depends on the enemy's current state.
 func disengage() -> void:
 	print("Disengaging!")
 	engaged = false
 	player_target = null
 	current_state.SetTarget(null)
 
-func on_health_changed(health: int, _delta: int) -> void:
+func on_health_changed(health:int, damage_amount:int, damage_sender:CharacterBody3D = null) -> void:
+	if current_state == intial_state:
+		if is_instance_valid(self):
+			on_child_transitioned(current_state, aggro_state.name.to_lower())
+			print("Damage Sender: " + str(damage_sender))
 	if(health <= 0):
 		on_child_transitioned(current_state, "Death")
 		if self.sound_effect:

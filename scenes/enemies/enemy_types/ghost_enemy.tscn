@@ -3200,13 +3200,14 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38857, 0)
 shape = SubResource("CapsuleShape3D_a1eye")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "mesh", "anim_player", "nav_agent", "intial_state", "aggro_timeout", "detection_type", "health", "collision_shape")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "mesh", "anim_player", "nav_agent", "intial_state", "aggro_state", "aggro_timeout", "detection_type", "health", "collision_shape")]
 script = ExtResource("3_3nw8y")
 enemy_body = NodePath("..")
 mesh = NodePath("../Ghost")
 anim_player = NodePath("../Ghost/AnimationPlayer")
 nav_agent = NodePath("../NavigationAgent3D")
 intial_state = NodePath("Wander")
+aggro_state = NodePath("Death")
 aggro_timeout = NodePath("../AggroTimeout")
 detection_type = NodePath("../Ghost/ConeDetection")
 health = NodePath("../Health")

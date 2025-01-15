@@ -33,8 +33,9 @@ func init_health(current_hp: int, max_hp: int) -> void:
 		self.images_container.add_child(health_icon)
 
 
-func update_health(_health: int, health_delta: int) -> void:
-	self.current_health += health_delta
+func update_health(_health:int, damage_amount:int, damage_sender:CharacterBody3D) -> void:
+	print("updating health")
+	self.current_health = _health
 	var clamped_health: int = clamp(self.current_health, 0, self.max_health)
 
 	for i in range(0, clamped_health):
