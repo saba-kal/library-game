@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dmtrnvihyrtdi"]
+[gd_scene load_steps=65 format=3 uid="uid://dmtrnvihyrtdi"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f2x5"]
 [ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2_23lc7"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="8_yyof3"]
 [ext_resource type="PackedScene" uid="uid://x7inf5bnoarf" path="res://core/audio/scenes/footstep_sounds.tscn" id="9_rb7uo"]
 [ext_resource type="Script" path="res://scripts/player/hurt.gd" id="9_tbwpv"]
+[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="13_688dn"]
 
 [sub_resource type="Animation" id="Animation_8r8q2"]
 resource_name = "Attack1"
@@ -6325,10 +6326,11 @@ unfold_anim = "UmbrellaUnfold"
 [node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state")]
 script = ExtResource("9_tbwpv")
 movement_state = NodePath("../Movement")
-hurt_time = 0.5
+hurt_time = 0.05
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("damage_flicker")]
 script = ExtResource("6_gp4iy")
+damage_flicker = NodePath("../DamageFlicker")
 
 [node name="Interact" type="Node" parent="."]
 script = ExtResource("8_ve6hn")
@@ -6352,6 +6354,10 @@ parameters/Transition/current_index = 1
 [node name="FootstepSounds" parent="." instance=ExtResource("9_rb7uo")]
 pitch_randomness = 1.0
 play_on_ready = false
+
+[node name="DamageFlicker" type="Node" parent="." node_paths=PackedStringArray("mesh_array")]
+script = ExtResource("13_688dn")
+mesh_array = [NodePath("../LibrarianPlayer/LibrarianArmature/Skeleton3D/Hair/Hair"), NodePath("../LibrarianPlayer/LibrarianArmature/Skeleton3D/Body"), NodePath("../LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D/Umbrella/Model/UmbrellaArmature/Skeleton3D/Umbrella"), NodePath("../LibrarianPlayer/LibrarianArmature/Skeleton3D/Cylinder_001/Cylinder_001")]
 
 [editable path="LibrarianPlayer"]
 [editable path="LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D/Umbrella"]

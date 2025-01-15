@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://7yehwqmtemgc"]
+[gd_scene load_steps=25 format=3 uid="uid://7yehwqmtemgc"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_cerqe"]
 [ext_resource type="PackedScene" uid="uid://b1k280sk13w1h" path="res://assets/models/enemies/witch/Witch.glb" id="2_hanny"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://3symoni7x23e" path="res://scenes/effects/WitchGroundSpellEffect.tscn" id="10_xqd0x"]
 [ext_resource type="PackedScene" uid="uid://x7inf5bnoarf" path="res://core/audio/scenes/footstep_sounds.tscn" id="14_rdgpp"]
 [ext_resource type="PackedScene" uid="uid://hghcty7xxqww" path="res://core/audio/scenes/random_interval_sounds.tscn" id="15_if0gs"]
+[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="16_31icd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
 height = 2.5
@@ -1941,8 +1942,9 @@ one_shot = true
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("damage_flicker")]
 script = ExtResource("9_gh56d")
+damage_flicker = NodePath("../DamageFlicker")
 
 [node name="HeathBar3D" parent="." node_paths=PackedStringArray("health") instance=ExtResource("10_7sgkp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -1960,5 +1962,9 @@ interval_min = 5.0
 interval_max = 8.0
 sound_name = "witch_whisper"
 play_on_ready = true
+
+[node name="DamageFlicker" type="Node" parent="." node_paths=PackedStringArray("mesh_array")]
+script = ExtResource("16_31icd")
+mesh_array = [NodePath("../Witch/Armature/Skeleton3D/Staff/Staff"), NodePath("../Witch/Armature/Skeleton3D/Belt"), NodePath("../Witch/Armature/Skeleton3D/Body"), NodePath("../Witch/Armature/Skeleton3D/Book"), NodePath("../Witch/Armature/Skeleton3D/Cowl"), NodePath("../Witch/Armature/Skeleton3D/Eyeball"), NodePath("../Witch/Armature/Skeleton3D/Hair"), NodePath("../Witch/Armature/Skeleton3D/Teeth")]
 
 [editable path="Witch"]

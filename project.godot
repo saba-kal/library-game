@@ -43,6 +43,7 @@ player=""
 enemy=""
 map_tile=""
 nav_mesh_group=""
+health_node=""
 
 [importer_defaults]
 

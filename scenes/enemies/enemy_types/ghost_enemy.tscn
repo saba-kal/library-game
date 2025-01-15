@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cfc78am47py6r"]
+[gd_scene load_steps=30 format=4 uid="uid://cfc78am47py6r"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_tw3fx"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="2_uux3s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/states/EnemySelfProjectile.gd" id="9_nih03"]
 [ext_resource type="PackedScene" uid="uid://wv5gttcsiscx" path="res://core/audio/scenes/attached_sound_3d.tscn" id="10_u0ilw"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="10_vrihc"]
+[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="11_7kppa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx4au"]
 resource_name = "GhostClothes"
@@ -3246,9 +3247,14 @@ one_shot = true
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("damage_flicker")]
 script = ExtResource("9_g6cmd")
 maximum = 1
+damage_flicker = NodePath("../DamageFlicker")
+
+[node name="DamageFlicker" type="Node" parent="." node_paths=PackedStringArray("mesh_array")]
+script = ExtResource("11_7kppa")
+mesh_array = [NodePath("../Ghost/GhostArmature/Skeleton3D/Hat/Hat"), NodePath("../Ghost/GhostArmature/Skeleton3D/Body")]
 
 [node name="HeathBar3D" parent="." node_paths=PackedStringArray("health") instance=ExtResource("10_vrihc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
