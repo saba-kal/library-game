@@ -27,6 +27,8 @@ func Enter():
 		self.attached_sound.play()
 
 func Exit():
+	if nav_agent.navigation_finished.is_connected(random_new_spot):
+		nav_agent.navigation_finished.disconnect(random_new_spot)
 	if self.attached_sound:
 		self.attached_sound.stop()
 

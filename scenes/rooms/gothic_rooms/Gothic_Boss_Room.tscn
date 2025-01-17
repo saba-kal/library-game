@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://df6iitan5aahn"]
+[gd_scene load_steps=9 format=3 uid="uid://df6iitan5aahn"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_syfi0"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_5qutj"]
@@ -8,8 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://ciklhn74hbvm0" path="res://scenes/level_components/door.tscn" id="5_n0l8u"]
 [ext_resource type="PackedScene" uid="uid://b6vvohmvqgluo" path="res://scenes/collectibles/boss_key.tscn" id="5_ui6w5"]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_tqjwh"]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_mesh_group"
+
 [node name="GothicBossRoom" node_paths=PackedStringArray("south_door") instance=ExtResource("1_syfi0")]
 south_door = NodePath("Doors/DoorBot")
+
+[node name="NavigationRegion3D" parent="." index="0"]
+navigation_mesh = SubResource("NavigationMesh_tqjwh")
 
 [node name="PlaceholderLevel" type="CSGBox3D" parent="." index="5"]
 material_override = ExtResource("3_xwymw")

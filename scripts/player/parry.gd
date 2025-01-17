@@ -40,6 +40,7 @@ func physics_update(_delta: float) -> void:
 
 func enter(previous_state_path: String, data := {}) -> void:
 	queued_attack = false
+	character.velocity = Vector3.ZERO
 	if data.has('direction'):
 		step_dir = data.direction
 		last_dir = step_dir

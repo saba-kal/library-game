@@ -14,7 +14,16 @@ var timer:Timer
 
 var dash_dir:Vector2
 
+var blend_tree : AnimationNodeBlendTree
+var transition : AnimationNodeTransition
+
 func _ready() -> void:
+	# Transition doesn't allow per-anim fade times. So I'm manually setting the fade to 0,
+	# right before the dash players, and then setting it back to 0.2 at the state exit.
+	blend_tree = animation_tree.tree_root
+	transition = blend_tree.get("nodes/Actions/node")
+	transition.xfade_time = 0
+	
 	timer = Timer.new()
 	timer.one_shot = true
 	timer.timeout.connect(done)
@@ -34,6 +43,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	animation_tree.set("parameters/Actions/transition_request", "Dash")
 
 func exit() -> void:
+	transition.xfade_time = 0.2
 	character.collision_layer = default_layer
 	character.collision_mask = default_mask
 	character.velocity.x = 0
@@ -43,6 +53,7 @@ func physics_update(_delta: float) -> void:
 	character.adjust_body_velocity(_delta, speed, 0.0)
 	character.velocity.x = character.direction.x * speed
 	character.velocity.z = character.direction.z * speed
+
 
 func done() -> void:
 	finished.emit(movement_state.get_path())

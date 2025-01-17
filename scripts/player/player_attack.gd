@@ -2,6 +2,8 @@ extends CharacterState
 
 signal started
 
+@export var player:CharacterBody3D
+
 @export_group("Target States")
 @export var movement_state:CharacterState
 @export var next_attack:CharacterState
@@ -75,16 +77,16 @@ func exit() -> void:
 
 func swing_complete() -> void:
 	add_hit_bodies()
+	character.velocity *= 0.2
 	print("hitting " + str(hit_bodies.size()) + " bodies")
-	character.constant_velocity(0)
+	#character.constant_velocity(0)
 	for body in hit_bodies:
 		if !is_instance_valid(body):
 			continue
 		for component in body.get_children():
-			if not component.has_method("take_damage"):
-				continue
-			print("damaging " + body.name)
-			component.take_damage(damage)
+			if component is Health:
+				print("damaging " + body.name)
+				component.take_damage(damage, player)
 	wind_down_timer.start(wind_down_period)
 	if queued_attack and next_attack:
 		finished.emit(next_attack.get_path(), {'direction': last_dir})
@@ -100,5 +102,6 @@ func done() -> void:
 
 func add_hit_bodies() -> void:
 	for body in hit_area.get_overlapping_bodies():
-		if body.has_meta("damageable"):
-			hit_bodies.get_or_add(body)
+		if body.is_in_group("enemy"):
+			if body.has_meta("damageable"):
+				hit_bodies.get_or_add(body)

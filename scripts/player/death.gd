@@ -4,6 +4,7 @@ extends CharacterState
 @export var drop_time: float
 var drop_timer: Timer
 var reset_timer: Timer
+@onready var player: Player = $"../.."
 
 func _ready() -> void:
 	reset_timer = Timer.new()
@@ -17,6 +18,7 @@ func _ready() -> void:
 
 
 func enter(_previous_state_path: String, _data := {}) -> void:
+	player.velocity = Vector3.ZERO
 	reset_timer.start(6.35)
 	drop_timer.start(drop_time)
 	animation_tree.set("parameters/Transition/transition_request", "Death")

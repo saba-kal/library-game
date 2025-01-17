@@ -4,3 +4,5 @@
 
 [node name="FootstepSounds" type="Node3D"]
 script = ExtResource("1_kyd2g")
+sound_name = "player_footstep"
+play_on_ready = true

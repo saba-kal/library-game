@@ -42,7 +42,7 @@ damping_max = 1.0
 scale_min = 0.7
 scale_max = 1.6
 scale_curve = SubResource("CurveTexture_pakyr")
-color = Color(0.333, 0.9, 0.4464, 1)
+color = Color(0.333333, 0.901961, 0.447059, 1)
 emission_curve = SubResource("CurveTexture_f0swr")
 
 [sub_resource type="QuadMesh" id="QuadMesh_b1fly"]

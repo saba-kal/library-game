@@ -48,7 +48,7 @@ shadow_mesh = SubResource("ArrayMesh_82jjb")
 radius = 0.28791
 height = 1.60735
 
-[node name="Vase_2" type="MeshInstance3D"]
+[node name="Vase_2" type="MeshInstance3D" groups=["nav_mesh_group"]]
 transform = Transform3D(0.923889, 0, 0.382661, 0, 1, 0, -0.382661, 0, 0.923889, 0.0133154, 0.808528, 0)
 mesh = SubResource("ArrayMesh_up7e0")
 skeleton = NodePath("")

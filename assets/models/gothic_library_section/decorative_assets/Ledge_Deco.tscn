@@ -45,7 +45,7 @@ shadow_mesh = SubResource("ArrayMesh_e886m")
 [sub_resource type="BoxShape3D" id="BoxShape3D_uulm0"]
 size = Vector3(0.279469, 0.839417, 0.303329)
 
-[node name="Ledge_Deco" type="MeshInstance3D"]
+[node name="Ledge_Deco" type="MeshInstance3D" groups=["nav_mesh_group"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0046134, 0.424846, 0)
 mesh = SubResource("ArrayMesh_4tm1u")
 skeleton = NodePath("")
