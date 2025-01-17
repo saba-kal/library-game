@@ -30,7 +30,40 @@
 [node name="RoomVariation" node_paths=PackedStringArray("south_door") instance=ExtResource("1_vxhtl")]
 south_door = NodePath("Doors/DoorBot")
 
-[node name="Decorative Assets" type="Node3D" parent="." index="5"]
+[node name="Wall_North" parent="." index="1"]
+data = {
+"cells": PackedInt32Array(65533, 65533, 1441809, 65534, 65533, 1441810, 65535, 65533, 1441810, 0, 65533, 1441809, 1, 65533, 1441810)
+}
+
+[node name="Wall_South" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(65533, 1, 1441810, 65534, 1, 1441810, 0, 1, 1441809, 1, 1, 1441809)
+}
+
+[node name="Doorways" parent="." index="3"]
+data = {
+"cells": PackedInt32Array(65535, 2, 655381, 65534, 3, 1441812, 0, 3, 20, 65535, 3, 1441809)
+}
+
+[node name="Wall_East" parent="." index="4"]
+data = {
+"cells": PackedInt32Array(1, 65533, 655377, 1, 65534, 655377, 1, 65535, 655377, 1, 0, 655377, 1, 1, 655377)
+}
+
+[node name="Wall_West" parent="." index="5"]
+data = {
+"cells": PackedInt32Array(65533, 65533, 17, 65533, 65534, 17, 65533, 65535, 17, 65533, 0, 17, 65533, 1, 17)
+}
+
+[node name="Floor" parent="." index="8"]
+data = {
+"cells": PackedInt32Array(65535, 65535, 1048576, 65535, 0, 1048577, 65534, 0, 1048576, 65535, 1, 1048578, 0, 0, 1048576, 0, 65535, 1048576, 0, 1, 655361, 65534, 1, 1048578, 65534, 65535, 1, 65534, 65534, 3, 65535, 65534, 1, 0, 65534, 1048579, 1, 65534, 655362, 1, 65535, 655361, 1, 0, 1441795, 1, 1, 1048579, 65535, 2, 1048578, 65533, 1, 2, 65533, 0, 3, 65533, 65535, 1441794, 65533, 65534, 1048576, 65533, 65533, 1441793, 65534, 65533, 1048576, 65535, 65533, 1441793, 0, 65533, 1048576, 1, 65533, 1048577)
+}
+
+[node name="DoorBot" parent="Doors" index="0" instance=ExtResource("2_cobap")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 5)
+
+[node name="Decorative Assets" type="Node3D" parent="." index="10"]
 
 [node name="Pillar_Shaft_2" parent="Decorative Assets" index="0" instance=ExtResource("3_70qda")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5805, 1.42797, -5.55211)
@@ -278,7 +311,7 @@ transform = Transform3D(0.0669621, 0.0304745, 0.99729, -0.00887368, 0.999512, -0
 [node name="Vase_5" parent="Decorative Assets" index="34" instance=ExtResource("25_6645g")]
 transform = Transform3D(0.970509, 0, -0.241065, 0, 1, 0, 0.241065, 0, 0.970509, -5.39725, 0.863337, -4.75508)
 
-[node name="Lighting" type="Node3D" parent="." index="6"]
+[node name="Lighting" type="Node3D" parent="." index="11"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26138, 1.79572, -2.77384)
@@ -315,11 +348,3 @@ transform = Transform3D(0.898591, 0.0697942, -0.4332, 0.34579, -0.720401, 0.6012
 light_color = Color(0.8955, 1, 0.81, 1)
 light_energy = 3.0
 spot_range = 8.43653
-
-[node name="Floor" parent="." index="8"]
-data = {
-"cells": PackedInt32Array(65535, 65535, 1048576, 65535, 0, 1048577, 65534, 0, 1048576, 65535, 1, 1048578, 0, 0, 1048576, 0, 65535, 1048576, 0, 1, 655361, 65534, 1, 1048578, 65534, 65535, 1, 65534, 65534, 3, 65535, 65534, 1, 0, 65534, 1048579, 1, 65534, 655362, 1, 65535, 655361, 1, 0, 1441795, 1, 1, 1048579, 65535, 2, 1048578, 65533, 1, 2, 65533, 0, 3, 65533, 65535, 1441794, 65533, 65534, 1048576, 65533, 65533, 1441793, 65534, 65533, 1048576, 65535, 65533, 1441793, 0, 65533, 1048576, 1, 65533, 1048577)
-}
-
-[node name="DoorBot" parent="Doors" index="0" instance=ExtResource("2_cobap")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 5)

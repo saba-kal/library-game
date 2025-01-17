@@ -32,7 +32,85 @@
 east_door = NodePath("Doors/DoorRight")
 west_door = NodePath("Doors/DoorLeft")
 
-[node name="Decorative Assets" type="Node3D" parent="." index="5"]
+[node name="Wall_North" parent="." index="1"]
+data = {
+"cells": PackedInt32Array(5, 65535, 1441809, 4, 65535, 1441809, 3, 65535, 1441809, 2, 65535, 1441812, 65533, 65535, 20, 65532, 65535, 1441809, 65531, 65535, 1441810, 65530, 65535, 1441810, 65529, 65535, 1441809, 65528, 65535, 1441810, 65534, 65534, 1441810, 65535, 65534, 1441810, 0, 65534, 1441809, 1, 65534, 1441810)
+}
+
+[node name="Wall_South" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(3, 1, 1441809, 4, 1, 1441810, 5, 1, 1441809, 65528, 1, 1441809, 65529, 1, 1441810, 65530, 1, 1441809, 65531, 1, 1441810, 65532, 1, 1441809, 65533, 1, 1048596, 2, 1, 655380, 1, 2, 1048594, 0, 2, 1048594, 65535, 2, 1048594, 65534, 2, 1048594)
+}
+
+[node name="Doorways" parent="." index="3"]
+data = {
+"cells": PackedInt32Array(6, 0, 1441813, 65527, 0, 1048597)
+}
+
+[node name="Wall_East" parent="." index="4"]
+data = {
+"cells": PackedInt32Array(5, 65535, 18, 5, 1, 18)
+}
+
+[node name="Wall_West" parent="." index="5"]
+data = {
+"cells": PackedInt32Array(65528, 65535, 17, 65528, 1, 17)
+}
+
+[node name="Floor" parent="." index="8"]
+data = {
+"cells": PackedInt32Array(65535, 65535, 1441792, 65535, 0, 1, 65535, 1, 1441792, 0, 1, 0, 0, 0, 0, 0, 65535, 3, 65535, 65534, 0, 0, 65534, 0, 1, 65534, 655361, 1, 65535, 0, 1, 0, 1048576, 1, 1, 1048576, 65534, 65534, 1441793, 65534, 65535, 1441792, 65534, 0, 1441792, 65534, 1, 655363, 65534, 2, 0, 65535, 2, 655360, 0, 2, 1048579, 1, 2, 655360, 65533, 65535, 0, 65533, 0, 655362, 65533, 1, 0, 65532, 1, 1441793, 65532, 0, 655360, 65531, 0, 1048578, 65531, 65535, 1441792, 65530, 65535, 1048577, 65529, 65535, 1441792, 65532, 65535, 1441795, 65528, 65535, 1441792, 65528, 0, 0, 65528, 1, 0, 65529, 1, 3, 65530, 1, 0, 65531, 1, 0, 65530, 0, 1048576, 65529, 0, 2, 2, 65535, 0, 2, 0, 2, 2, 1, 1048577, 3, 1, 0, 4, 1, 655363, 3, 0, 1441795, 3, 65535, 1441794, 4, 65535, 1048576, 5, 65535, 1048579, 5, 0, 1441792, 5, 1, 1441792, 4, 0, 1, 65527, 0, 655363, 6, 0, 2)
+}
+
+[node name="DoorLeft" parent="Doors" index="0" instance=ExtResource("2_krtvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 1)
+
+[node name="DoorRight" parent="Doors" index="1" instance=ExtResource("2_krtvd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 1)
+
+[node name="EmptyCandle_1" parent="Doors" index="2" instance=ExtResource("3_p6uyn")]
+transform = Transform3D(0.577616, 0.000483685, -0.816309, 0.00474915, 0.999981, 0.00395311, 0.816295, -0.0061602, 0.577602, -1.12945, 1.64718, 5.16624)
+
+[node name="EmptyCandle_2" parent="Doors" index="3" instance=ExtResource("4_rg20b")]
+transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, -1.086, 1.7377, 5.25538)
+
+[node name="Lantern" parent="Doors" index="4" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.865536, 0.00364473, 0.500833, 0.000321222, -0.999977, 0.00672201, 0.500846, -0.00565726, -0.865517, 0.0973087, 2.00415, 5.42766)
+
+[node name="Lantern2" parent="Doors" index="5" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.69271, -0.00462551, -0.721201, 0.000321222, -0.999977, 0.00672201, -0.721216, -0.00488808, -0.692692, -0.144014, 2.00415, 5.12054)
+
+[node name="Lantern4" parent="Doors" index="6" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.865536, 0.00364473, 0.500833, 0.000321222, -0.999977, 0.00672201, 0.500846, -0.00565726, -0.865517, -11.5868, 0.360335, -1.27089)
+
+[node name="Lantern6" parent="Doors" index="7" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.492955, 0.00600687, 0.870034, 0.000321222, -0.999977, 0.00672201, 0.870055, -0.00303416, -0.492946, -11.1062, 0.360335, -1.58397)
+
+[node name="Lantern5" parent="Doors" index="8" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.69271, -0.00462551, -0.721201, 0.000321222, -0.999977, 0.00672201, -0.721216, -0.00488808, -0.692692, -11.8281, 0.360335, -1.57801)
+
+[node name="Lantern10" parent="Doors" index="9" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.27884, 0.00654497, 0.960315, 0.000321222, -0.999977, 0.00672201, 0.960337, -0.00156588, -0.278836, 10.8192, 0.360335, -1.07132)
+
+[node name="Lantern11" parent="Doors" index="10" instance=ExtResource("5_slnyo")]
+transform = Transform3D(-0.245612, 0.00643721, 0.969347, 0.000321222, -0.999977, 0.00672201, 0.969368, 0.00196239, 0.245604, 11.3828, 0.360335, -0.965122)
+
+[node name="Lantern12" parent="Doors" index="11" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.999121, 3.92229e-05, -0.0419117, 0.000321222, -0.999977, 0.00672201, -0.0419105, -0.00672957, -0.999098, 10.8573, 0.360335, -1.46005)
+
+[node name="Lantern3" parent="Doors" index="12" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.0241428, -0.534405, -0.844883, -0.999707, -0.0147812, -0.0192175, -0.00221847, 0.845099, -0.534605, 0.633373, 1.74406, 5.27533)
+
+[node name="Lantern7" parent="Doors" index="13" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.865536, 0.00364473, 0.500833, 0.000321222, -0.999977, 0.00672201, 0.500846, -0.00565726, -0.865517, -13.9637, 0.407287, 3.47849)
+
+[node name="Lantern8" parent="Doors" index="14" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.69271, -0.00462551, -0.721201, 0.000321222, -0.999977, 0.00672201, -0.721216, -0.00488808, -0.692692, -14.205, 0.407287, 3.17136)
+
+[node name="Lantern9" parent="Doors" index="15" instance=ExtResource("5_slnyo")]
+transform = Transform3D(0.0241428, -0.534405, -0.844883, -0.999707, -0.0147812, -0.0192175, -0.00221847, 0.845099, -0.534605, -13.4277, 0.147197, 3.32615)
+
+[node name="Decorative Assets" type="Node3D" parent="." index="10"]
 
 [node name="Altar1" parent="Decorative Assets" index="0" instance=ExtResource("3_rf7jl")]
 transform = Transform3D(-0.0109604, 0, 0.99994, 0, 1, 0, -0.99994, 0, -0.0109604, -0.0758079, 0.773706, 4.87588)
@@ -355,7 +433,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7836, 1.02411, -1.35186)
 [node name="CandleFlame15" parent="Decorative Assets" index="103" instance=ExtResource("27_76rij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92104, 1.8568, -1.58148)
 
-[node name="Lighting" type="Node3D" parent="." index="6"]
+[node name="Lighting" type="Node3D" parent="." index="11"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting" index="0"]
 transform = Transform3D(1, 0, 0, 0, -0.493714, 0.869624, 0, -0.869624, -0.493714, 0.0926957, 4.0778, -3.46309)
@@ -450,56 +528,3 @@ light_energy = 0.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.49696, 1.72367, 2.49686)
 light_color = Color(0.615436, 0.861786, 0.872055, 1)
 light_energy = 0.1
-
-[node name="Floor" parent="." index="8"]
-data = {
-"cells": PackedInt32Array(65535, 65535, 1441792, 65535, 0, 1, 65535, 1, 1441792, 0, 1, 0, 0, 0, 0, 0, 65535, 3, 65535, 65534, 0, 0, 65534, 0, 1, 65534, 655361, 1, 65535, 0, 1, 0, 1048576, 1, 1, 1048576, 65534, 65534, 1441793, 65534, 65535, 1441792, 65534, 0, 1441792, 65534, 1, 655363, 65534, 2, 0, 65535, 2, 655360, 0, 2, 1048579, 1, 2, 655360, 65533, 65535, 0, 65533, 0, 655362, 65533, 1, 0, 65532, 1, 1441793, 65532, 0, 655360, 65531, 0, 1048578, 65531, 65535, 1441792, 65530, 65535, 1048577, 65529, 65535, 1441792, 65532, 65535, 1441795, 65528, 65535, 1441792, 65528, 0, 0, 65528, 1, 0, 65529, 1, 3, 65530, 1, 0, 65531, 1, 0, 65530, 0, 1048576, 65529, 0, 2, 2, 65535, 0, 2, 0, 2, 2, 1, 1048577, 3, 1, 0, 4, 1, 655363, 3, 0, 1441795, 3, 65535, 1441794, 4, 65535, 1048576, 5, 65535, 1048579, 5, 0, 1441792, 5, 1, 1441792, 4, 0, 1, 65527, 0, 655363, 6, 0, 2)
-}
-
-[node name="DoorLeft" parent="Doors" index="0" instance=ExtResource("2_krtvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 1)
-
-[node name="DoorRight" parent="Doors" index="1" instance=ExtResource("2_krtvd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 1)
-
-[node name="EmptyCandle_1" parent="Doors" index="2" instance=ExtResource("3_p6uyn")]
-transform = Transform3D(0.577616, 0.000483685, -0.816309, 0.00474915, 0.999981, 0.00395311, 0.816295, -0.0061602, 0.577602, -1.12945, 1.64718, 5.16624)
-
-[node name="EmptyCandle_2" parent="Doors" index="3" instance=ExtResource("4_rg20b")]
-transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, -1.086, 1.7377, 5.25538)
-
-[node name="Lantern" parent="Doors" index="4" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.865536, 0.00364473, 0.500833, 0.000321222, -0.999977, 0.00672201, 0.500846, -0.00565726, -0.865517, 0.0973087, 2.00415, 5.42766)
-
-[node name="Lantern2" parent="Doors" index="5" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.69271, -0.00462551, -0.721201, 0.000321222, -0.999977, 0.00672201, -0.721216, -0.00488808, -0.692692, -0.144014, 2.00415, 5.12054)
-
-[node name="Lantern4" parent="Doors" index="6" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.865536, 0.00364473, 0.500833, 0.000321222, -0.999977, 0.00672201, 0.500846, -0.00565726, -0.865517, -11.5868, 0.360335, -1.27089)
-
-[node name="Lantern6" parent="Doors" index="7" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.492955, 0.00600687, 0.870034, 0.000321222, -0.999977, 0.00672201, 0.870055, -0.00303416, -0.492946, -11.1062, 0.360335, -1.58397)
-
-[node name="Lantern5" parent="Doors" index="8" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.69271, -0.00462551, -0.721201, 0.000321222, -0.999977, 0.00672201, -0.721216, -0.00488808, -0.692692, -11.8281, 0.360335, -1.57801)
-
-[node name="Lantern10" parent="Doors" index="9" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.27884, 0.00654497, 0.960315, 0.000321222, -0.999977, 0.00672201, 0.960337, -0.00156588, -0.278836, 10.8192, 0.360335, -1.07132)
-
-[node name="Lantern11" parent="Doors" index="10" instance=ExtResource("5_slnyo")]
-transform = Transform3D(-0.245612, 0.00643721, 0.969347, 0.000321222, -0.999977, 0.00672201, 0.969368, 0.00196239, 0.245604, 11.3828, 0.360335, -0.965122)
-
-[node name="Lantern12" parent="Doors" index="11" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.999121, 3.92229e-05, -0.0419117, 0.000321222, -0.999977, 0.00672201, -0.0419105, -0.00672957, -0.999098, 10.8573, 0.360335, -1.46005)
-
-[node name="Lantern3" parent="Doors" index="12" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.0241428, -0.534405, -0.844883, -0.999707, -0.0147812, -0.0192175, -0.00221847, 0.845099, -0.534605, 0.633373, 1.74406, 5.27533)
-
-[node name="Lantern7" parent="Doors" index="13" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.865536, 0.00364473, 0.500833, 0.000321222, -0.999977, 0.00672201, 0.500846, -0.00565726, -0.865517, -13.9637, 0.407287, 3.47849)
-
-[node name="Lantern8" parent="Doors" index="14" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.69271, -0.00462551, -0.721201, 0.000321222, -0.999977, 0.00672201, -0.721216, -0.00488808, -0.692692, -14.205, 0.407287, 3.17136)
-
-[node name="Lantern9" parent="Doors" index="15" instance=ExtResource("5_slnyo")]
-transform = Transform3D(0.0241428, -0.534405, -0.844883, -0.999707, -0.0147812, -0.0192175, -0.00221847, 0.845099, -0.534605, -13.4277, 0.147197, 3.32615)
