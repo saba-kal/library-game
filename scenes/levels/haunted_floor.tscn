@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c51xioq25wr6d"]
+[gd_scene load_steps=15 format=3 uid="uid://c51xioq25wr6d"]
 
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="1_a0ej8"]
 [ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_generation.gd" id="1_ygjm3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bwiilqv7awr5r" path="res://scenes/rooms/gothic_rooms/Threeway_Hallway.tscn" id="6_80qif"]
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="7_8acj1"]
 [ext_resource type="PackedScene" uid="uid://df6iitan5aahn" path="res://scenes/rooms/gothic_rooms/Gothic_Boss_Room.tscn" id="7_eif7t"]
+[ext_resource type="PackedScene" uid="uid://8vtj41x3vhio" path="res://scenes/rooms/gothic_rooms/Hallway_2.tscn" id="7_x4sw0"]
 [ext_resource type="PackedScene" uid="uid://b7xo88hoefhrx" path="res://scenes/room_generation/Gen2/2d_map.tscn" id="9_1lfxk"]
 [ext_resource type="PackedScene" uid="uid://clfici1k2trp0" path="res://core/audio/scenes/set_music.tscn" id="10_tkx7q"]
 
@@ -21,7 +22,7 @@ script = ExtResource("1_ygjm3")
 corner_room_variations = Array[PackedScene]([ExtResource("2_akiji")])
 deadend_room_variations = Array[PackedScene]([ExtResource("3_6l85o")])
 fourway_room_variations = Array[PackedScene]([ExtResource("4_0lb6m"), ExtResource("5_nxqvj")])
-hallway_room_variations = Array[PackedScene]([ExtResource("5_5oego")])
+hallway_room_variations = Array[PackedScene]([ExtResource("5_5oego"), ExtResource("7_x4sw0")])
 threeway_room_variations = Array[PackedScene]([ExtResource("6_80qif")])
 boss_room_variations = Array[PackedScene]([ExtResource("7_eif7t")])
 player_scene = ExtResource("7_8acj1")
