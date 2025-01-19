@@ -12,7 +12,7 @@ albedo_color = Color(0.599057, 1.43189e-06, 4.33177e-07, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hipb8"]
 material = SubResource("StandardMaterial3D_6ytas")
 
-[node name="PlaceholderBoss" type="StaticBody3D"]
+[node name="PlaceholderBoss" type="StaticBody3D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_aim8n")
