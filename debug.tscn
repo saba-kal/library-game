@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dw66oocgjowpb"]
+[gd_scene load_steps=21 format=3 uid="uid://dw66oocgjowpb"]
 
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="1_nsyf2"]
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="3_g6erc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://7yehwqmtemgc" path="res://scenes/enemies/enemy_types/witch_enemy.tscn" id="6_o5aj5"]
 [ext_resource type="PackedScene" uid="uid://clfici1k2trp0" path="res://core/audio/scenes/set_music.tscn" id="7_56uto"]
 [ext_resource type="PackedScene" uid="uid://na3o86bibtqu" path="res://scenes/collectibles/health_collectible.tscn" id="8_jbhse"]
+[ext_resource type="PackedScene" uid="uid://6ba3lqg16cok" path="res://scenes/enemies/enemy_types/werewolf.tscn" id="9_ef8wu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oep0q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -144,5 +145,8 @@ music_name = "haunted_section"
 
 [node name="HealthCollectible" parent="." instance=ExtResource("8_jbhse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2086, 1.90735e-06, 18.1541)
+
+[node name="Werewolf" parent="." instance=ExtResource("9_ef8wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36878, 1.90735e-06, -4.19815)
 
 [connection signal="died" from="Player" to="GUI" method="show_death"]

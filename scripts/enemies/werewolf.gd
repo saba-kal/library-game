@@ -1,0 +1,3 @@
+extends EnemyBase
+
+signal  howl
