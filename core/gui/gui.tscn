@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1pi1kgma618d"]
+[gd_scene load_steps=12 format=3 uid="uid://d1pi1kgma618d"]
 
 [ext_resource type="Script" path="res://core/gui/gui.gd" id="1_ds54n"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c2eyb87rkl1af" path="res://scenes/gui/inventory/inventory.tscn" id="5_mwy2m"]
 [ext_resource type="PackedScene" uid="uid://bd7dpdh8afywi" path="res://scenes/gui/common/menu_nav_button.tscn" id="7_ube1n"]
 [ext_resource type="PackedScene" uid="uid://bgdg5y0ec727w" path="res://scenes/gui/settings_menu/settings_menu.tscn" id="8_xu1a1"]
+[ext_resource type="PackedScene" uid="uid://trdgk7ggai0g" path="res://scenes/debug/debug_console.tscn" id="9_7vfty"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yar5l"]
 bg_color = Color(0, 0, 0, 0.109804)
@@ -220,7 +221,12 @@ text = "QUIT TO MAIN MENU"
 visible = false
 layout_mode = 1
 
+[node name="DebugConsole" parent="." instance=ExtResource("9_7vfty")]
+layout_mode = 1
+
 [connection signal="pressed" from="Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME" to="." method="resume_pressed"]
 [connection signal="pressed" from="Pause/Panel/MarginContainer/VBoxContainer/Button_SETTINGS" to="." method="on_button_settings_pressed"]
 [connection signal="pressed" from="Pause/Panel/MarginContainer/VBoxContainer/Button_QUIT" to="." method="quit_pressed"]
 [connection signal="ok_pressed" from="SettingsMenu" to="." method="on_settings_menu_ok_pressed"]
+
+[editable path="DebugConsole"]

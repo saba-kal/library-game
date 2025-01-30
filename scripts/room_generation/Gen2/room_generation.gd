@@ -35,6 +35,7 @@ func on_map_generation_complete() -> void:
 	connect_room_doors()
 	remove_walls()
 	spawn_player()
+	SignalBus.scene_change_completed.emit()
 
 ## Instantiates some base created rooms that have a single parent called "map_room_base".
 ## Appends each of them to an array. "room_array"
