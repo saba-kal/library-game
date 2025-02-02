@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b5g56dw2rebww"]
+[gd_scene load_steps=30 format=3 uid="uid://b5g56dw2rebww"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_coqyr"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_krtvd"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dntvbfs61y0lq" path="res://assets/models/gothic_library_section/decorative_assets/Ladder_2.tscn" id="25_p4p2j"]
 [ext_resource type="PackedScene" uid="uid://cmepbn2gyxqt1" path="res://assets/VFX/Candle_Flame_2.tscn" id="26_mxgw0"]
 [ext_resource type="PackedScene" uid="uid://t3rh2l4jxp8r" path="res://assets/VFX/Candle_Flame_1.tscn" id="27_76rij"]
+[ext_resource type="PackedScene" uid="uid://ct6c113whbe47" path="res://scenes/enemy_spawners/spawner.tscn" id="28_luo1i"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2eckx"]
 vertices = PackedVector3Array(-0.00634956, 0.400375, -2.14294, -0.50635, 0.400375, -3.14294, -1.00635, 0.400375, -2.39294, -8.50635, 0.400375, 2.85706, -8.50635, 0.400375, 3.60706, -7.75635, 0.400375, 3.60706, -7.50635, 0.400375, 2.10706, -9.25635, 0.400375, 1.85706, 10.2437, 0.400375, 2.10706, 10.7437, 0.400375, 2.85706, 11.7437, 0.400375, 2.60706, 11.9937, 0.400375, 0.357055, 11.7437, 0.400375, -0.642945, 10.7437, 0.400375, -0.642945, 11.9937, 0.400375, 1.60706, -15.7563, 0.400375, 1.60706, -15.5063, 0.400375, 2.60706, -14.5063, 0.400375, 2.85706, -13.7563, 0.400375, 0.107055, 3.24365, 0.400375, 2.85706, 5.99365, 0.400375, 3.10706, 6.24365, 0.400375, 2.60706, 4.99365, 0.400375, -0.392945, 2.99365, 0.400375, -1.14294, 7.74365, 0.400375, 2.60706, 7.99365, 0.400375, 2.10706, 6.74365, 0.400375, -0.392945, 2.99365, 0.400375, -2.39294, -6.50635, 0.400375, -1.14294, -7.75635, 0.400375, -1.14294, -8.25635, 0.400375, -0.392945, -6.00635, 0.400375, -0.142945, 13.4937, 0.400375, 1.60706, 13.4937, 0.400375, 0.357055, -10.5063, 0.400375, 1.85706, -9.75635, 0.400375, -0.392945, -10.0063, 0.400375, -1.14294, -13.5063, 0.400375, -1.14294, -3.00635, 0.400375, -1.14294, -4.50635, 0.400375, -0.642945, -4.75635, 0.400375, -0.142945, -17.5063, 0.400375, 0.357055, -17.5063, 0.400375, 1.60706, -4.75635, 0.400375, 1.85706, -4.25635, 0.400375, 2.85706, -3.00635, 0.400375, 3.10706, -3.00635, 0.400375, -2.39294, 10.4937, 0.400375, -1.14294, 7.24365, 0.400375, -1.14294, -3.00635, 0.400375, 5.35706, 3.24365, 0.400375, 5.35706, -14.5063, 0.400375, 3.60706, -11.0063, 0.400375, 3.60706)
@@ -113,6 +114,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 1)
 
 [node name="DoorRight" parent="Doors" index="1" instance=ExtResource("2_krtvd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 1)
+
+[node name="Spawner" parent="Spawners" index="0" instance=ExtResource("28_luo1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31037, 0.0548091, 1.81536)
+
+[node name="Spawner2" parent="Spawners" index="1" instance=ExtResource("28_luo1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73857, 0.0548091, 1.54397)
 
 [node name="Decorative Assets" type="Node3D" parent="." index="12"]
 

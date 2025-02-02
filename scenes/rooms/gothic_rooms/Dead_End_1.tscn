@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bprs5jbwgxchp"]
+[gd_scene load_steps=29 format=3 uid="uid://bprs5jbwgxchp"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_vxhtl"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_cobap"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://6af3eshhiklr" path="res://assets/models/gothic_library_section/decorative_assets/Vase_1.tscn" id="24_273ht"]
 [ext_resource type="PackedScene" uid="uid://wq6fty4dae5g" path="res://assets/models/gothic_library_section/decorative_assets/Vase_2.tscn" id="25_6645g"]
 [ext_resource type="PackedScene" uid="uid://cmepbn2gyxqt1" path="res://assets/VFX/Candle_Flame_2.tscn" id="26_4re4k"]
+[ext_resource type="PackedScene" uid="uid://ct6c113whbe47" path="res://scenes/enemy_spawners/spawner.tscn" id="27_f63lv"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_fc76r"]
 vertices = PackedVector3Array(-0.642945, 0.400375, -4.14294, -1.14294, 0.400375, -5.14294, -1.39294, 0.400375, -4.14294, 2.60706, 0.400375, 2.85706, 3.35706, 0.400375, 2.60706, 3.35706, 0.400375, 2.10706, 2.35706, 0.400375, 1.85706, -4.39294, 0.400375, -0.142945, -4.64294, 0.400375, 3.60706, -1.89294, 0.400375, 3.60706, 2.60706, 0.400375, -2.89294, 2.35706, 0.400375, -3.64294, 1.85706, 0.400375, -3.64294, 3.35706, 0.400375, -1.89294, 3.35706, 0.400375, -2.89294, 2.35706, 0.400375, -1.64294, 2.60706, 0.400375, 3.60706, -0.142945, 0.400375, 3.60706, -4.39294, 0.400375, -3.64294, -5.14294, 0.400375, -3.64294, -5.14294, 0.400375, -0.392945, -1.64294, 0.400375, 5.60706, -0.392945, 0.400375, 5.60706, 1.60706, 0.400375, -4.14294, -4.14294, 0.400375, -4.14294)
@@ -211,6 +212,9 @@ data = {
 
 [node name="DoorBot" parent="Doors" index="0" instance=ExtResource("2_cobap")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 5)
+
+[node name="Spawner5" parent="Spawners" index="0" instance=ExtResource("27_f63lv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00356, 0, -1.92119)
 
 [node name="Decorative Assets" type="Node3D" parent="." index="12"]
 

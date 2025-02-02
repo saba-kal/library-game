@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct6c113whbe47"]
+[gd_scene load_steps=8 format=3 uid="uid://ct6c113whbe47"]
 
 [ext_resource type="Script" path="res://scenes/enemy_spawners/spawner.gd" id="1_623fv"]
 [ext_resource type="Script" path="res://scenes/enemy_spawners/enemy_spawn_chance.gd" id="2_l434i"]
 [ext_resource type="Resource" uid="uid://dbpsqqwtwgwx6" path="res://scenes/enemy_spawners/enemies/witch.tres" id="3_wg51n"]
 [ext_resource type="Resource" uid="uid://dc1mhd42mfyf8" path="res://scenes/enemy_spawners/enemies/ghost.tres" id="4_25cev"]
+[ext_resource type="Resource" uid="uid://cotiu4gkb7cvd" path="res://scenes/enemy_spawners/enemies/werewolf.tres" id="5_5yq7b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nclu"]
 transparency = 1
@@ -14,7 +15,7 @@ material = SubResource("StandardMaterial3D_4nclu")
 
 [node name="Spawner" type="Node3D"]
 script = ExtResource("1_623fv")
-choices = Array[ExtResource("2_l434i")]([ExtResource("3_wg51n"), ExtResource("4_25cev")])
+choices = Array[ExtResource("2_l434i")]([ExtResource("3_wg51n"), ExtResource("4_25cev"), ExtResource("5_5yq7b")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_dsma6")

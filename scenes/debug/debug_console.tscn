@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://trdgk7ggai0g"]
 
 [ext_resource type="Script" path="res://scripts/debug/debug_console.gd" id="1_5ujik"]
+[ext_resource type="Script" path="res://scripts/debug/console_line_edit.gd" id="2_so3gb"]
 [ext_resource type="Script" path="res://scripts/debug/debug_commands.gd" id="3_h1nc2"]
-[ext_resource type="Script" path="res://Scripts/Debug/console_line_edit.gd" id="5_ll82f"]
 
 [node name="DebugConsole" type="Control" node_paths=PackedStringArray("line_edit", "console", "commandHolder")]
 layout_mode = 3
@@ -39,7 +39,7 @@ drag_and_drop_selection_enabled = false
 caret_blink = true
 caret_force_displayed = true
 caret_mid_grapheme = true
-script = ExtResource("5_ll82f")
+script = ExtResource("2_so3gb")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("3_h1nc2")

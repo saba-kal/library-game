@@ -1,20 +1,20 @@
 [gd_scene load_steps=28 format=3 uid="uid://6ba3lqg16cok"]
 
-[ext_resource type="Script" path="res://scripts/enemies/werewolf.gd" id="1_hxgmj"]
-[ext_resource type="PackedScene" uid="uid://pwysqj7ouw18" path="res://assets/models/enemies/werewolf/Werewolf.glb" id="2_ixudy"]
-[ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="3_rjxwc"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_3ydwt"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyDeath.gd" id="5_7ydvo"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyChase.gd" id="6_qolhf"]
-[ext_resource type="Script" path="res://scripts/enemies/states/WerewolfClawAttack.gd" id="7_j8drl"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyIdle.gd" id="8_0as3l"]
-[ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="9_2wypi"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyHowl.gd" id="9_kdgxs"]
-[ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="11_e2c5v"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="11_k2u81"]
-[ext_resource type="Script" path="res://core/audio/scripts/attached_sound_3d.gd" id="12_ny120"]
-[ext_resource type="PackedScene" uid="uid://ck8r7tqyegby4" path="res://scenes/enemies/attack_range_types/attack_area_01.tscn" id="13_h5wvc"]
-[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="15_f5d5y"]
+[ext_resource type="Script" path="res://scripts/enemies/werewolf.gd" id="1_k1tkf"]
+[ext_resource type="PackedScene" uid="uid://pwysqj7ouw18" path="res://assets/models/enemies/werewolf/Werewolf.glb" id="2_noh36"]
+[ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="3_gfymo"]
+[ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_wfy1b"]
+[ext_resource type="Script" path="res://scripts/enemies/states/EnemyDeath.gd" id="5_saij7"]
+[ext_resource type="Script" path="res://scripts/enemies/states/EnemyChase.gd" id="6_hq2us"]
+[ext_resource type="Script" path="res://scripts/enemies/states/WerewolfClawAttack.gd" id="7_ovapo"]
+[ext_resource type="Script" path="res://core/audio/scripts/attached_sound_3d.gd" id="8_gjt5a"]
+[ext_resource type="Script" path="res://scripts/enemies/states/EnemyIdle.gd" id="9_o7keu"]
+[ext_resource type="Script" path="res://scripts/enemies/states/EnemyHowl.gd" id="10_81gde"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="11_8i4lv"]
+[ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="12_4eenh"]
+[ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="13_wu4uq"]
+[ext_resource type="PackedScene" uid="uid://ck8r7tqyegby4" path="res://scenes/enemies/attack_range_types/attack_area_01.tscn" id="14_ef4bw"]
+[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="15_d15xo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jd6bd"]
 
@@ -2914,9 +2914,9 @@ height = 2.5
 [node name="Werewolf" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_hxgmj")
+script = ExtResource("1_k1tkf")
 
-[node name="Werewolf" parent="." instance=ExtResource("2_ixudy")]
+[node name="Werewolf" parent="." instance=ExtResource("2_noh36")]
 
 [node name="Skeleton3D" parent="Werewolf/WerewolfArmature" index="0"]
 bones/0/position = Vector3(1.30562e-08, 0.151974, 0.0362965)
@@ -2978,10 +2978,10 @@ bones/54/rotation = Quaternion(0.534101, 0.00667393, 0.568913, 0.625324)
 bones/55/rotation = Quaternion(0.223501, -0.000350458, 0.232575, 0.946549)
 
 [node name="Eyes" parent="Werewolf/WerewolfArmature/Skeleton3D" index="0"]
-transform = Transform3D(0.0326548, 0.000278519, -0.00421139, -0.0031294, 0.0236431, -0.0227016, 0.002832, 0.0229145, 0.0234745, -0.0897188, 0.916082, 1.04801)
+transform = Transform3D(0.0326548, 0.00027851, -0.00421139, -0.0031294, 0.0236431, -0.0227016, 0.002832, 0.0229146, 0.0234745, -0.0897188, 0.91608, 1.04801)
 
 [node name="LeftPaw" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.232165, 0.328219, -0.915626, -0.0594949, -0.944376, -0.32344, -0.970855, -0.0206165, 0.238779, 1.14621, 0.112759, 0.260786)
+transform = Transform3D(-0.232164, 0.328218, -0.915627, -0.059494, -0.944377, -0.323439, -0.970855, -0.0206167, 0.238778, 1.1462, 0.112756, 0.260786)
 bone_name = "Hand.L"
 bone_idx = 13
 
@@ -2995,7 +2995,7 @@ monitoring = false
 shape = SubResource("CapsuleShape3D_jd6bd")
 
 [node name="RightPaw" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="3"]
-transform = Transform3D(-0.386986, -0.450769, 0.804394, 0.100754, -0.887811, -0.449043, 0.916565, -0.092727, 0.388987, -1.25073, 0.323569, 0.0611384)
+transform = Transform3D(-0.386986, -0.450768, 0.804395, 0.100754, -0.887812, -0.449042, 0.916565, -0.0927265, 0.388987, -1.25072, 0.323567, 0.0611384)
 bone_name = "Hand.R"
 bone_idx = 31
 
@@ -3008,7 +3008,7 @@ monitoring = false
 shape = SubResource("CapsuleShape3D_pamq2")
 
 [node name="Bite" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="4"]
-transform = Transform3D(0.991751, -0.125704, 0.0250846, -0.0950417, -0.852432, -0.514127, 0.0860109, 0.507502, -0.857347, -0.0506664, 1.13295, 0.837347)
+transform = Transform3D(0.991751, -0.125704, 0.0250849, -0.0950417, -0.852434, -0.514125, 0.0860108, 0.507499, -0.857348, -0.0506664, 1.13294, 0.837347)
 bone_name = "Head"
 bone_idx = 6
 
@@ -3031,7 +3031,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0.5)
 shape = SubResource("CapsuleShape3D_4mjhi")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "mesh", "anim_player", "nav_agent", "intial_state", "aggro_state", "aggro_timeout", "detection_type", "melee_attack_range", "health", "collision_shape")]
-script = ExtResource("3_rjxwc")
+script = ExtResource("3_gfymo")
 enemy_body = NodePath("..")
 mesh = NodePath("../Werewolf")
 anim_player = NodePath("../Werewolf/AnimationPlayer")
@@ -3045,27 +3045,27 @@ health = NodePath("../Health")
 collision_shape = NodePath("../CollisionShape3D")
 
 [node name="Wander" type="Node" parent="StateMachine"]
-script = ExtResource("4_3ydwt")
+script = ExtResource("4_wfy1b")
 idle_anim_name = "Walk"
 move_speed = 3.0
 rotation_speed = 2.0
 state_transition_upon_player_detection = "Howl"
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("delete_timer", "body")]
-script = ExtResource("5_7ydvo")
+script = ExtResource("5_saij7")
 death_anim_name = "Die"
 death_anim_length = 1.75
 delete_timer = NodePath("../../Death_Timeout")
 body = NodePath("../..")
 
 [node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("melee_range")]
-script = ExtResource("6_qolhf")
+script = ExtResource("6_hq2us")
 move_speed = 7.0
 melee_range = NodePath("../../AttackArea01")
 state_transition_upon_target_reached = "MeleeAttack"
 
 [node name="MeleeAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("attached_sound", "left_claw", "right_claw", "jaw")]
-script = ExtResource("7_j8drl")
+script = ExtResource("7_ovapo")
 attack_animation = "Attack"
 attached_sound = NodePath("AttachedSound3D")
 damage = 1
@@ -3089,16 +3089,16 @@ one_shot = true
 one_shot = true
 
 [node name="AttachedSound3D" type="Node3D" parent="StateMachine/MeleeAttack"]
-script = ExtResource("12_ny120")
+script = ExtResource("8_gjt5a")
 sound_name = "wolf_attack"
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("8_0as3l")
+script = ExtResource("9_o7keu")
 idle_anim_name = "Sniff"
 state_transition_upon_player_detection = "Howl"
 
 [node name="Howl" type="Node" parent="StateMachine" node_paths=PackedStringArray("howl_sound")]
-script = ExtResource("9_kdgxs")
+script = ExtResource("10_81gde")
 howl_anim_name = "SpotsPlayer"
 howl_sound = NodePath("../../AttachedSound3D")
 chase_state = "Chase"
@@ -3122,27 +3122,27 @@ wait_time = 3.0
 wait_time = 1.633
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("damage_flicker")]
-script = ExtResource("11_k2u81")
+script = ExtResource("11_8i4lv")
 maximum = 6
 damage_flicker = NodePath("../DamageFlicker")
 
-[node name="HeathBar3D" parent="." node_paths=PackedStringArray("health") instance=ExtResource("11_e2c5v")]
+[node name="HeathBar3D" parent="." node_paths=PackedStringArray("health") instance=ExtResource("12_4eenh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.90696, 0)
 health = NodePath("../Health")
 
-[node name="ConeDetection" parent="." instance=ExtResource("9_2wypi")]
+[node name="ConeDetection" parent="." instance=ExtResource("13_wu4uq")]
 cone_width = 15.0
 cone_length = 10.0
 
-[node name="AttackArea01" parent="." instance=ExtResource("13_h5wvc")]
+[node name="AttackArea01" parent="." instance=ExtResource("14_ef4bw")]
 attack_width = 3.0
 attack_length = 2.5
 
 [node name="AttachedSound3D" type="Node3D" parent="."]
-script = ExtResource("12_ny120")
+script = ExtResource("8_gjt5a")
 sound_name = "howl"
 
 [node name="DamageFlicker" type="Node" parent="."]
-script = ExtResource("15_f5d5y")
+script = ExtResource("15_d15xo")
 
 [editable path="Werewolf"]
