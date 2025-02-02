@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://6af3eshhiklr"]
+[gd_scene load_steps=5 format=4 uid="uid://6af3eshhiklr"]
 
 [ext_resource type="Texture2D" uid="uid://cd0urdfu8th4l" path="res://assets/models/gothic_library_section/decorative_assets/Decorative_Props_Vase_1_Normals.png" id="1_rcax7"]
 
@@ -42,10 +42,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ghw3o")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_db3qa"]
-radius = 0.325493
-height = 0.947486
-
 [node name="Vase_1" type="MeshInstance3D" groups=["nav_mesh_group"]]
 transform = Transform3D(0.0120611, 0, 0.999927, 0, 1, 0, -0.999927, 0, 0.0120611, -0.00616455, 0.471612, 0)
 mesh = SubResource("ArrayMesh_68pjm")
@@ -54,4 +50,3 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("CapsuleShape3D_db3qa")

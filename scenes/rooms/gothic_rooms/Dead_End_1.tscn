@@ -315,32 +315,32 @@ transform = Transform3D(0.970509, 0, -0.241065, 0, 1, 0, 0.241065, 0, 0.970509, 
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26138, 1.79572, -2.77384)
-light_color = Color(0.775427, 0.906043, 0.887143, 1)
+light_color = Color(0.489598, 0.892615, 0.890091, 1)
 light_energy = 0.667
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lighting" index="1"]
 transform = Transform3D(0.886398, 0, 0.462925, 0, 1, 0, -0.462925, 0, 0.886398, -4.73621, 2.22829, 1.31251)
-light_color = Color(0.775427, 0.906043, 0.887143, 1)
+light_color = Color(0.509894, 0.92994, 0.928975, 1)
 light_energy = 0.584
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Lighting" index="2"]
 transform = Transform3D(0.886398, 0, 0.462925, 0, 1, 0, -0.462925, 0, 0.886398, 0.543905, 1.83276, 3.22675)
-light_color = Color(0.796668, 0.92207, 0.693539, 1)
+light_color = Color(0.405823, 0.932069, 0.599974, 1)
 light_energy = 0.4
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lighting" index="3"]
 transform = Transform3D(0.886398, 0, 0.462925, 0, 1, 0, -0.462925, 0, 0.886398, -2.37791, 1.83276, 3.22675)
-light_color = Color(0.760908, 0.932222, 0.703791, 1)
+light_color = Color(0.287576, 0.92433, 0.659597, 1)
 light_energy = 0.4
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lighting" index="4"]
 transform = Transform3D(0.886398, 0, 0.462925, 0, 1, 0, -0.462925, 0, 0.886398, 2.18464, 1.72897, -3.91999)
-light_color = Color(0.775427, 0.906043, 0.887143, 1)
+light_color = Color(0.439304, 0.855881, 0.88602, 1)
 light_energy = 0.584
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lighting" index="5"]
 transform = Transform3D(0.886398, 0, 0.462925, 0, 1, 0, -0.462925, 0, 0.886398, 2.51849, 1.67664, -0.206396)
-light_color = Color(0.775427, 0.906043, 0.887143, 1)
+light_color = Color(0.429962, 0.884459, 0.936009, 1)
 light_energy = 0.2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting" index="6"]

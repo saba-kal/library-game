@@ -46,6 +46,18 @@ data = {
 [node name="Bookshelf_3" parent="Wall_North" index="0" instance=ExtResource("27_7bk8x")]
 transform = Transform3D(-0.999421, 0, -0.0340274, 0, 1, 0, 0.0340274, 0, -0.999421, -18.5476, 0.0108786, 4.65746)
 
+[node name="CandleHolder4" parent="Wall_North" index="1" instance=ExtResource("21_dy87l")]
+transform = Transform3D(0.0476993, 0, -0.998862, 0, 1, 0, 0.998862, 0, 0.0476993, -9.61452, 2.09796, 4.35463)
+
+[node name="Candle_7" parent="Wall_North/CandleHolder4" index="0" instance=ExtResource("7_fb2bo")]
+transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
+
+[node name="CandleHolder5" parent="Wall_North" index="2" instance=ExtResource("21_dy87l")]
+transform = Transform3D(0.0476993, 0, -0.998862, 0, 1, 0, 0.998862, 0, 0.0476993, -20.1587, 2.09796, 4.35463)
+
+[node name="Candle_7" parent="Wall_North/CandleHolder5" index="0" instance=ExtResource("7_fb2bo")]
+transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
+
 [node name="Wall_South" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
 data = {
@@ -400,6 +412,18 @@ transform = Transform3D(-0.420077, 0.00892444, 1.34769, 0.000453459, -1.41164, 0
 [node name="Lantern5" parent="Wall_South/Bookshelf3" index="63" instance=ExtResource("10_5uky4")]
 transform = Transform3D(0.205782, 0.583076, 1.26905, 0.166079, -1.28387, 0.562954, 1.38668, 0.0672368, -0.255749, 0.297977, 5.28829, -0.0426979)
 
+[node name="CandleHolder2" parent="Wall_South" index="7" instance=ExtResource("21_dy87l")]
+transform = Transform3D(-0.0461476, 0, 0.998935, 0, 1, 0, -0.998935, 0, -0.0461476, 1.16268, 2.09796, 5.65894)
+
+[node name="Candle_7" parent="Wall_South/CandleHolder2" index="0" instance=ExtResource("7_fb2bo")]
+transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
+
+[node name="CandleHolder3" parent="Wall_South" index="8" instance=ExtResource("21_dy87l")]
+transform = Transform3D(-0.0461476, 0, 0.998935, 0, 1, 0, -0.998935, 0, -0.0461476, -9.61452, 2.09796, 5.65894)
+
+[node name="Candle_7" parent="Wall_South/CandleHolder3" index="0" instance=ExtResource("7_fb2bo")]
+transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
+
 [node name="Doorways" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
 data = {
@@ -412,11 +436,20 @@ data = {
 "cells": PackedInt32Array(1, 65532, 655377, 1, 65533, 655378, 1, 65534, 655377, 1, 65535, 655378, 1, 0, 655377, 1, 1, 655377, 1, 2, 655378, 1, 3, 655377)
 }
 
+[node name="Bookshelf_2" parent="Wall_East" index="0" instance=ExtResource("25_w74bs")]
+transform = Transform3D(0.232716, 0, 0.972545, 0, 1, 0, -0.972545, 0, 0.232716, 0.81096, 0.0548091, -2.6302)
+
 [node name="Wall_West" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
 data = {
 "cells": PackedInt32Array(65535, 65535, 655377, 65535, 65534, 655377, 65535, 65533, 655377, 65535, 65532, 655377, 65535, 0, 20)
 }
+
+[node name="CandleHolder" parent="Wall_West" index="0" instance=ExtResource("21_dy87l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34103, 2.09796, -1.60333)
+
+[node name="Candle_7" parent="Wall_West/CandleHolder" index="0" instance=ExtResource("7_fb2bo")]
+transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
 
 [node name="Edging" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
@@ -644,79 +677,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31168, 0.253777, -7.52918)
 [node name="Ladder_1" parent="Decorative Assets" index="53" instance=ExtResource("15_dsv4i")]
 transform = Transform3D(-0.774326, 0, -0.632786, 0, 1, 0, 0.632786, 0, -0.774326, -14.0412, 0.30758, 6.87475)
 
-[node name="Bookshelf_2" parent="Decorative Assets" index="54" instance=ExtResource("25_w74bs")]
-transform = Transform3D(0.232716, 0, 0.972545, 0, 1, 0, -0.972545, 0, 0.232716, 2.81096, 0.0548091, -2.6302)
-
-[node name="Ladder_2" parent="Decorative Assets" index="55" instance=ExtResource("26_hlgms")]
+[node name="Ladder_2" parent="Decorative Assets" index="54" instance=ExtResource("26_hlgms")]
 transform = Transform3D(0.821328, 0, -0.570456, 0, 1, 0, 0.570456, 0, 0.821328, 3.2728, 1.34896, -1.01755)
 
-[node name="Lantern3" parent="Decorative Assets" index="56" instance=ExtResource("10_5uky4")]
+[node name="Lantern3" parent="Decorative Assets" index="55" instance=ExtResource("10_5uky4")]
 transform = Transform3D(0.888201, 0.00337378, 0.459443, 0.000321222, -0.999977, 0.00672201, 0.459456, -0.0058229, -0.888181, -1.4691, 0.342042, 1.46261)
 
-[node name="Lantern4" parent="Decorative Assets" index="57" instance=ExtResource("10_5uky4")]
+[node name="Lantern4" parent="Decorative Assets" index="56" instance=ExtResource("10_5uky4")]
 transform = Transform3D(0.802193, -0.00375579, -0.597053, 0.000321222, -0.999977, 0.00672201, -0.597065, -0.00558414, -0.802173, -1.52726, 0.342042, 0.991243)
 
-[node name="Lantern5" parent="Decorative Assets" index="58" instance=ExtResource("10_5uky4")]
+[node name="Lantern5" parent="Decorative Assets" index="57" instance=ExtResource("10_5uky4")]
 transform = Transform3D(-0.0541486, -0.00672954, -0.99851, 0.000321221, -0.999977, 0.00672201, -0.998533, 4.32304e-05, 0.0541493, -1.03686, 0.345445, 1.27687)
 
-[node name="Lantern6" parent="Decorative Assets" index="59" instance=ExtResource("10_5uky4")]
+[node name="Lantern6" parent="Decorative Assets" index="58" instance=ExtResource("10_5uky4")]
 transform = Transform3D(0.888201, 0.00337378, 0.459443, 0.000321222, -0.999977, 0.00672201, 0.459456, -0.0058229, -0.888181, -19.7545, 0.342042, 7.55289)
 
-[node name="Lantern7" parent="Decorative Assets" index="60" instance=ExtResource("10_5uky4")]
+[node name="Lantern7" parent="Decorative Assets" index="59" instance=ExtResource("10_5uky4")]
 transform = Transform3D(0.802193, -0.00375579, -0.597053, 0.000321222, -0.999977, 0.00672201, -0.597065, -0.00558414, -0.802173, -19.8126, 0.342042, 7.08152)
 
-[node name="Lantern8" parent="Decorative Assets" index="61" instance=ExtResource("10_5uky4")]
+[node name="Lantern8" parent="Decorative Assets" index="60" instance=ExtResource("10_5uky4")]
 transform = Transform3D(-0.0541486, -0.00672954, -0.99851, 0.000321221, -0.999977, 0.00672201, -0.998533, 4.32304e-05, 0.0541493, -19.3222, 0.345445, 7.36715)
 
-[node name="CandleHolder" parent="Decorative Assets" index="62" instance=ExtResource("21_dy87l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65897, 2.09796, -1.60333)
-
-[node name="Candle_7" parent="Decorative Assets/CandleHolder" index="0" instance=ExtResource("7_fb2bo")]
-transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
-
-[node name="CandleHolder2" parent="Decorative Assets" index="63" instance=ExtResource("21_dy87l")]
-transform = Transform3D(-0.0461476, 0, 0.998935, 0, 1, 0, -0.998935, 0, -0.0461476, 1.16268, 2.09796, 7.65894)
-
-[node name="Candle_7" parent="Decorative Assets/CandleHolder2" index="0" instance=ExtResource("7_fb2bo")]
-transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
-
-[node name="CandleHolder3" parent="Decorative Assets" index="64" instance=ExtResource("21_dy87l")]
-transform = Transform3D(-0.0461476, 0, 0.998935, 0, 1, 0, -0.998935, 0, -0.0461476, -9.61452, 2.09796, 7.65894)
-
-[node name="Candle_7" parent="Decorative Assets/CandleHolder3" index="0" instance=ExtResource("7_fb2bo")]
-transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
-
-[node name="CandleHolder4" parent="Decorative Assets" index="65" instance=ExtResource("21_dy87l")]
-transform = Transform3D(0.0476993, 0, -0.998862, 0, 1, 0, 0.998862, 0, 0.0476993, -9.61452, 2.09796, 2.35463)
-
-[node name="Candle_7" parent="Decorative Assets/CandleHolder4" index="0" instance=ExtResource("7_fb2bo")]
-transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
-
-[node name="CandleHolder5" parent="Decorative Assets" index="66" instance=ExtResource("21_dy87l")]
-transform = Transform3D(0.0476993, 0, -0.998862, 0, 1, 0, 0.998862, 0, 0.0476993, -20.1587, 2.09796, 2.35463)
-
-[node name="Candle_7" parent="Decorative Assets/CandleHolder5" index="0" instance=ExtResource("7_fb2bo")]
-transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 0.0638064, 0.11669, -0.0227501)
-
-[node name="Ladder_3" parent="Decorative Assets" index="67" instance=ExtResource("26_hlgms")]
+[node name="Ladder_3" parent="Decorative Assets" index="61" instance=ExtResource("26_hlgms")]
 transform = Transform3D(0.979127, -0.00252887, 0.203232, 0.0022636, 0.999996, 0.00153776, -0.203235, -0.00104565, 0.979129, -11.7593, 1.43857, 2.74021)
 
-[node name="Ladder_4" parent="Decorative Assets" index="68" instance=ExtResource("15_dsv4i")]
+[node name="Ladder_4" parent="Decorative Assets" index="62" instance=ExtResource("15_dsv4i")]
 transform = Transform3D(0.442163, 0, 0.896935, 0, 1, 0, -0.896935, 0, 0.442163, -12.8322, 0.432344, 2.78887)
 
-[node name="Lantern9" parent="Decorative Assets" index="69" instance=ExtResource("10_5uky4")]
+[node name="Lantern9" parent="Decorative Assets" index="63" instance=ExtResource("10_5uky4")]
 transform = Transform3D(1, 0.000321228, -2.15868e-06, 0.000321222, -0.999977, 0.00672201, 1.71271e-11, -0.00672201, -0.999977, -12.894, 1.22663, 2.5362)
 
-[node name="Lantern10" parent="Decorative Assets" index="70" instance=ExtResource("10_5uky4")]
+[node name="Lantern10" parent="Decorative Assets" index="64" instance=ExtResource("10_5uky4")]
 transform = Transform3D(0.446212, -0.00488252, -0.894913, -0.000194254, -0.999985, 0.00535891, -0.894927, -0.00221737, -0.446207, -13.6635, 0.404755, 2.48315)
 
-[node name="Candle_7" parent="Decorative Assets" index="71" instance=ExtResource("7_fb2bo")]
+[node name="Candle_7" parent="Decorative Assets" index="65" instance=ExtResource("7_fb2bo")]
 transform = Transform3D(-0.457576, -0.000550914, -0.889171, 0.00491864, 0.999983, -0.00315075, 0.889158, -0.00581532, -0.457566, 3.4688, 0.111145, 1.83309)
 
-[node name="Candle_8" parent="Decorative Assets" index="72" instance=ExtResource("8_k8mfn")]
+[node name="Candle_8" parent="Decorative Assets" index="66" instance=ExtResource("8_k8mfn")]
 transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 3.59105, 0.200321, 2.02461)
 
-[node name="Candle_9" parent="Decorative Assets" index="73" instance=ExtResource("8_k8mfn")]
+[node name="Candle_9" parent="Decorative Assets" index="67" instance=ExtResource("8_k8mfn")]
 transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 3.38523, 0.200321, 2.05619)
 
 [node name="Lighting" type="Node3D" parent="." index="13"]
@@ -724,107 +724,107 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16609, 0.625881, -7.1642)
-light_color = Color(0.74016, 0.81673, 0.643074, 1)
+light_color = Color(0.435625, 0.833922, 0.609527, 1)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lighting" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80368, 1.79065, -2.98411)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.37364, 0.828762, 0.905828, 1)
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lighting" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54718, 1.42855, 3.51929)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.472216, 0.853558, 0.900893, 1)
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lighting" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.57036, 2.61104, 2.94186)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.387097, 0.866755, 0.906176, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lighting" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.57036, 2.61104, 7.25185)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.418667, 0.806595, 0.855578, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lighting" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21697, 2.57785, 6.41272)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.366053, 0.866777, 0.925087, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D9" type="OmniLight3D" parent="Lighting" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9142, 2.15919, 6.48)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.370511, 0.871709, 0.888355, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D10" type="OmniLight3D" parent="Lighting" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0173, 2.61367, 3.36699)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.463742, 0.856566, 0.89134, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D11" type="OmniLight3D" parent="Lighting" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2194, 2.57075, 2.78059)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.455491, 0.861894, 0.865079, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D12" type="OmniLight3D" parent="Lighting" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.431, 1.70814, 3.44691)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.327656, 0.877215, 0.887358, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D13" type="OmniLight3D" parent="Lighting" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1197, 2.17242, 5.95641)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.433226, 0.864342, 0.874437, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D14" type="OmniLight3D" parent="Lighting" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1779, 0.765294, 5.95641)
-light_color = Color(0.668574, 0.843315, 0.60315, 1)
+light_color = Color(0.268423, 0.844473, 0.619618, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Lighting" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96249, 2.58725, 5.95089)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.422393, 0.864438, 0.88583, 1)
 
 [node name="OmniLight3D15" type="OmniLight3D" parent="Lighting" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12157, 0.668632, 1.85864)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.434672, 0.862141, 0.887833, 1)
 light_energy = 0.6
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lighting" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05955, 2.31729, -1.61175)
-light_color = Color(0.647832, 0.823452, 0.824686, 1)
+light_color = Color(0.421397, 0.864196, 0.888556, 1)
 light_energy = 0.6
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting" index="15"]
 transform = Transform3D(1, 0, 0, 0, 0.468932, 0.883234, 0, -0.883234, 0.468932, -0.182989, 4.71878, 7.33425)
-light_color = Color(0.731295, 0.898654, 0.858452, 1)
+light_color = Color(0.422652, 0.883318, 0.913033, 1)
 light_energy = 8.0
 spot_range = 6.484
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lighting" index="16"]
 transform = Transform3D(1, 0, 0, 0, 0.468932, 0.883234, 0, -0.883234, 0.468932, -6.8886, 4.71878, 7.33425)
-light_color = Color(0.731295, 0.898654, 0.858452, 1)
+light_color = Color(0.505625, 0.941891, 0.932486, 1)
 light_energy = 8.0
 spot_range = 6.484
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lighting" index="17"]
 transform = Transform3D(1, 0, 0, 0, 0.468932, 0.883234, 0, -0.883234, 0.468932, -12.447, 4.71878, 7.33425)
-light_color = Color(0.731295, 0.898654, 0.858452, 1)
+light_color = Color(0.41488, 0.870431, 0.929999, 1)
 light_energy = 8.0
 spot_range = 6.484
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Lighting" index="18"]
 transform = Transform3D(1, 0, 0, 0, 0.468932, 0.883234, 0, -0.883234, 0.468932, -18.559, 4.71878, 7.33425)
-light_color = Color(0.731295, 0.898654, 0.858452, 1)
+light_color = Color(0.411548, 0.813749, 0.890857, 1)
 light_energy = 8.0
 spot_range = 6.484
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Lighting" index="19"]
 transform = Transform3D(1, 0, 0, 0, -0.647402, 0.762149, 0, -0.762149, -0.647402, 0.693866, 5.03107, -7.92345)
-light_color = Color(0.775745, 0.899134, 0.741444, 1)
+light_color = Color(0.398339, 0.934995, 0.642479, 1)
 light_energy = 2.0
 spot_range = 14.0
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Lighting" index="20"]
 transform = Transform3D(-0.110064, -0.757518, -0.643469, 0, -0.647402, 0.762149, -0.993925, 0.0838851, 0.0712556, -23.6687, 5.03107, 5.01736)
-light_color = Color(0.775745, 0.899134, 0.741444, 1)
+light_color = Color(0.414313, 0.916388, 0.642498, 1)
 light_energy = 2.0
 spot_range = 14.0

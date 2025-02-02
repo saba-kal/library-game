@@ -93,10 +93,19 @@ data = {
 "cells": PackedInt32Array(0, 0, 655377, 0, 65535, 655377, 0, 65534, 655378, 0, 65533, 655377, 0, 1, 1441812)
 }
 
+[node name="TornCloth_4" parent="Wall_East" index="0" instance=ExtResource("30_xkb5d")]
+transform = Transform3D(-0.0789636, 0, -0.996877, 0, 1, 0, 0.996877, 0, -0.0789636, 0.59166, 4.06074, 1.43042)
+
+[node name="TornCloth_1" parent="Wall_East" index="1" instance=ExtResource("31_ggtbd")]
+transform = Transform3D(2.01678, 0, -0.334371, 0, 2.04431, 0, 0.334371, 0, 2.01678, 0.0726199, 4.1097, -2.70667)
+
 [node name="Wall_West" parent="." index="6"]
 data = {
 "cells": PackedInt32Array(65534, 1, 20, 65534, 0, 18, 65534, 65535, 17, 65534, 65534, 18, 65534, 65533, 17)
 }
+
+[node name="TornCloth_6" parent="Wall_West" index="0" instance=ExtResource("29_w6g0k")]
+transform = Transform3D(-1.58064, 0, 0.471111, 0, 1.64936, 0, -0.471111, 0, -1.58064, -2.00537, 4.06966, -0.6516)
 
 [node name="Floor" parent="." index="9"]
 data = {
@@ -552,19 +561,10 @@ transform = Transform3D(0.739128, 0, -0.292731, 0, 0.794985, 0, 0.292731, 0, 0.7
 [node name="Bottle3" parent="Decorative Assets" index="85" instance=ExtResource("28_1fl5c")]
 transform = Transform3D(0.739128, 0, -0.292731, 0, 0.794985, 0, 0.292731, 0, 0.739128, -2.46001, 1.42251, -0.103485)
 
-[node name="TornCloth_6" parent="Decorative Assets" index="86" instance=ExtResource("29_w6g0k")]
-transform = Transform3D(-1.58064, 0, 0.471111, 0, 1.64936, 0, -0.471111, 0, -1.58064, -4.00537, 4.06966, -0.6516)
-
-[node name="TornCloth_4" parent="Decorative Assets" index="87" instance=ExtResource("30_xkb5d")]
-transform = Transform3D(-0.0789636, 0, -0.996877, 0, 1, 0, 0.996877, 0, -0.0789636, 2.59166, 4.06074, 1.43042)
-
-[node name="TornCloth_7" parent="Decorative Assets" index="88" instance=ExtResource("29_w6g0k")]
+[node name="TornCloth_7" parent="Decorative Assets" index="86" instance=ExtResource("29_w6g0k")]
 transform = Transform3D(1.44873, 0, -0.256771, 0, 1.4713, 0, 0.256771, 0, 1.44873, 12.0276, 4.05863, 11.0879)
 
-[node name="TornCloth_1" parent="Decorative Assets" index="89" instance=ExtResource("31_ggtbd")]
-transform = Transform3D(2.01678, 0, -0.334371, 0, 2.04431, 0, 0.334371, 0, 2.01678, 2.07262, 4.1097, -2.70667)
-
-[node name="TornCloth_8" parent="Decorative Assets" index="90" instance=ExtResource("30_xkb5d")]
+[node name="TornCloth_8" parent="Decorative Assets" index="87" instance=ExtResource("30_xkb5d")]
 transform = Transform3D(-0.885377, 0, -0.464873, 0, 1, 0, 0.464873, 0, -0.885377, -3.62901, 0.044926, 13.2425)
 
 [node name="Lighting" type="Node3D" parent="." index="13"]

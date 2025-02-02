@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://cg5du1rf5xld2"]
+[gd_scene load_steps=5 format=4 uid="uid://cg5du1rf5xld2"]
 
 [ext_resource type="Texture2D" uid="uid://d2gy1y7b81jwa" path="res://assets/models/gothic_library_section/decorative_assets/Decorative_Props_ColorAtlas_GothicLibrary.jpg" id="1_thvx3"]
 
@@ -40,9 +40,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e4u33")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_liodh"]
-size = Vector3(0.31974, 0.770588, 0.32685)
-
 [node name="Lantern" type="MeshInstance3D"]
 transform = Transform3D(0.828973, 0.000266289, -1.78949e-06, 0.000266284, -0.828954, 0.00557237, 1.41979e-11, -0.00557237, -0.828954, 0, 0.337908, 0)
 mesh = SubResource("ArrayMesh_atwl4")
@@ -52,4 +49,3 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(0.99997, 1.24797e-07, -2.76486e-09, -6.70051e-08, 0.99997, 7.59028e-08, 7.92524e-09, 9.54606e-08, 0.99997, 0.000225954, 0.0584215, -0.0012196)
-shape = SubResource("BoxShape3D_liodh")
