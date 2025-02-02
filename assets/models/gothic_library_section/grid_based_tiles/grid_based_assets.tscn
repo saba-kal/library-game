@@ -1332,7 +1332,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="WallTile_Pillar"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallTile_Pillar/StaticBody3D"]
-transform = Transform3D(0.999977, 0, 1.22782e-11, 0, 1, 0, -1.22782e-11, 0, 0.999977, -0.00456965, 2, -0.0193653)
+transform = Transform3D(1, 0, 1.22785e-11, 0, 1, 0, -1.22785e-11, 0, 1, -0.00456965, 2, -0.0193653)
 shape = SubResource("BoxShape3D_xo584")
 
 [node name="extra_pieces_gothic_01" type="Node3D" parent="."]

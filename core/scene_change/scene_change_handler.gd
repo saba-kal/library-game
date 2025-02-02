@@ -12,7 +12,7 @@ var known_scenes: Dictionary = {
 	"main_menu": preload("res://scenes/main_menu/main_menu.tscn"),
 	"hub": preload("res://scenes/levels/hub.tscn"),
 	"haunted_floor": preload("res://scenes/levels/haunted_floor.tscn"),
-	"debug_area": preload("res://debug.tscn"),
+	"debug_area": preload("res://scenes/debug/debug.tscn"),
 	"debug_generation": preload("res://scenes/room_generation/zoning_test.tscn"),
 	"debug_generation_2": preload("res://scenes/room_generation/Gen2/2d_map.tscn")
 }

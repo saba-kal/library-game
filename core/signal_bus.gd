@@ -1,6 +1,7 @@
 extends Node
 
 signal scene_change_initiated
+signal scene_change_completed
 signal boss_key_collected
 signal room_key_collected
 signal room_key_used

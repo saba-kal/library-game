@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b5m3b8x4vbmik"]
+[gd_scene load_steps=29 format=3 uid="uid://b5m3b8x4vbmik"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_baceq"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_u2l1s"]
@@ -26,6 +26,18 @@
 [ext_resource type="PackedScene" uid="uid://cg78jlusnpup3" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_2.tscn" id="25_w74bs"]
 [ext_resource type="PackedScene" uid="uid://dntvbfs61y0lq" path="res://assets/models/gothic_library_section/decorative_assets/Ladder_2.tscn" id="26_hlgms"]
 [ext_resource type="PackedScene" uid="uid://c0nv7jysskn3g" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_3.tscn" id="27_7bk8x"]
+[ext_resource type="PackedScene" uid="uid://ct6c113whbe47" path="res://scenes/enemy_spawners/spawner.tscn" id="27_unbd7"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_sxo2f"]
+vertices = PackedVector3Array(-16.7463, 0.400375, 3.25, -16.7463, 0.400375, 2.75, -17.2463, 0.400375, 3.75, -19.9963, 0.400375, 3.75, -20.4963, 0.400375, 2.75, -20.4963, 0.400375, 3.25, -7.74634, 0.400375, 7.5, -7.24634, 0.400375, 7.5, -7.24634, 0.400375, 6.75, -10.2463, 0.400375, 6.75, -10.2463, 0.400375, 7.25, 2.00366, 0.400375, -0.500001, 2.00366, 0.400375, -1, 1.50366, 0.400375, -1.25, -1.49634, 0.400375, -0.250001, 3.25366, 0.400375, -5.75, 3.25366, 0.400375, -6.5, 2.75366, 0.400375, -6.5, 2.00366, 0.400375, -5.5, -11.2463, 0.400375, 6, -10.9963, 0.400375, 6.5, -10.9963, 0.400375, 3.75, 1.50366, 0.400375, -2.5, -15.9963, 0.400375, 4, -21.4963, 0.400375, 4.25, 2.50366, 0.400375, -7.5, 1.75366, 0.400375, -7.75, -12.9963, 0.400375, 4, -14.2463, 0.400375, 2.75, -14.9963, 0.400375, 4, -14.7463, 0.400375, 5.75, -13.4963, 0.400375, 5.75, -25.4963, 0.400375, 4.5, -25.4963, 0.400375, 5.5, -23.7463, 0.400375, 5.5, 1.75366, 0.400375, -9.5, 0.50366, 0.400375, -9.5, -13.2463, 0.400375, 6.5, -19.7463, 0.400375, 6.5, -16.9963, 0.400375, 6.5, 0.25366, 0.400375, -6, -0.99634, 0.400375, 2.75, 1.75366, 0.400375, 5.5, 3.25366, 0.400375, 5.25, 3.25366, 0.400375, -9.53674e-07, -2.24634, 0.400375, 6.5, -1.99634, 0.400375, 7.75, -0.24634, 0.400375, 7.75, -15.2463, 0.400375, 6.5, 2.00366, 0.400375, -3.5, -1.49634, 0.400375, -5, -19.4963, 0.400375, 7.5, -17.2463, 0.400375, 7.5, -6.49634, 0.400375, 6, -5.49634, 0.400375, 2.75, -10.7463, 0.400375, 2.75, -4.99634, 0.400375, 6, -4.74634, 0.400375, 6.5, -1.99634, 0.400375, 4.25, -5.24634, 0.400375, 3.75, 1.50366, 0.400375, 7.5, -23.4963, 0.400375, 6.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 10), PackedInt32Array(8, 10, 9), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(20, 19, 9), PackedInt32Array(9, 19, 21), PackedInt32Array(14, 22, 13), PackedInt32Array(2, 0, 23), PackedInt32Array(24, 5, 3), PackedInt32Array(25, 17, 26), PackedInt32Array(26, 17, 18), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(29, 31, 30), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 24), PackedInt32Array(36, 35, 26), PackedInt32Array(37, 31, 19), PackedInt32Array(19, 31, 27), PackedInt32Array(19, 27, 21), PackedInt32Array(23, 30, 2), PackedInt32Array(2, 30, 39), PackedInt32Array(2, 39, 38), PackedInt32Array(2, 38, 3), PackedInt32Array(18, 40, 26), PackedInt32Array(26, 40, 36), PackedInt32Array(11, 44, 14), PackedInt32Array(14, 44, 41), PackedInt32Array(41, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(47, 46, 45), PackedInt32Array(39, 30, 48), PackedInt32Array(30, 23, 29), PackedInt32Array(49, 22, 18), PackedInt32Array(18, 22, 40), PackedInt32Array(40, 22, 50), PackedInt32Array(50, 22, 14), PackedInt32Array(51, 38, 52), PackedInt32Array(52, 38, 39), PackedInt32Array(8, 9, 53), PackedInt32Array(53, 9, 21), PackedInt32Array(53, 21, 55), PackedInt32Array(53, 55, 54), PackedInt32Array(56, 59, 57), PackedInt32Array(57, 59, 45), PackedInt32Array(45, 59, 58), PackedInt32Array(56, 53, 59), PackedInt32Array(59, 53, 54), PackedInt32Array(60, 47, 42), PackedInt32Array(42, 47, 45), PackedInt32Array(42, 45, 58), PackedInt32Array(42, 58, 41), PackedInt32Array(34, 24, 61), PackedInt32Array(61, 24, 3), PackedInt32Array(61, 3, 38)]
+sample_partition_type = 2
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_mesh_group"
+agent_height = 2.5
+region_min_size = 10.0
+edge_max_error = 1.0
 
 [node name="RoomVariation" node_paths=PackedStringArray("north_door", "west_door") instance=ExtResource("1_baceq")]
 north_door = NodePath("Doors/DoorTop")
@@ -33,6 +45,7 @@ west_door = NodePath("Doors/DoorLeft")
 
 [node name="NavigationRegion3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+navigation_mesh = SubResource("NavigationMesh_sxo2f")
 
 [node name="WallChecker" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
@@ -475,6 +488,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 
 
 [node name="Spawners" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+
+[node name="Spawner" parent="Spawners" index="0" instance=ExtResource("27_unbd7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
 
 [node name="Decorative Assets" type="Node3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://3symoni7x23e"]
+[gd_scene load_steps=18 format=3 uid="uid://3symoni7x23e"]
 
 [ext_resource type="Texture2D" uid="uid://dhmlqbk65sf3c" path="res://assets/textures/effects/Library_Bookstore_2D_Assets_Rune_2.png" id="1_yidgg"]
 [ext_resource type="Texture2D" uid="uid://r7ike0o3twuf" path="res://assets/textures/effects/Library_Bookstore_2D_Assets_Rune_2_emission.png" id="2_d3x8r"]
 [ext_resource type="Script" path="res://scripts/components/damage_in_area.gd" id="2_vicgi"]
 [ext_resource type="PackedScene" uid="uid://wv5gttcsiscx" path="res://core/audio/scenes/attached_sound_3d.tscn" id="4_uk0bs"]
-[ext_resource type="PackedScene" uid="uid://dua1vc386umy5" path="res://assets/VFX/Damnation.tscn" id="5_uxk8r"]
 
 [sub_resource type="Animation" id="Animation_jnoji"]
 length = 0.001
@@ -43,58 +42,10 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Damnation/Flame Pillar Center Glow:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Damnation/Flame Pillar Edge Transition:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Damnation/Particles:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Damnation/Shadow:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_jr4qs"]
 resource_name = "play_effect"
-length = 10.0
+length = 6.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,12 +76,9 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(6.63333, 10.0333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(6.53333),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"queue_free"
-}, {
 "args": [],
 "method": &"queue_free"
 }]
@@ -160,54 +108,6 @@ tracks/4/keys = {
 "args": [],
 "method": &"play"
 }]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Damnation/Flame Pillar Center Glow:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 3.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Damnation/Flame Pillar Edge Transition:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 3.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Damnation/Particles:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 3.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Damnation/Shadow:emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 3.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vdkhs"]
@@ -267,50 +167,6 @@ material = SubResource("StandardMaterial3D_gtynb")
 shape = 0
 size = 0.05
 
-[sub_resource type="Curve" id="Curve_4f453"]
-_data = [Vector2(0.744409, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_frl6h"]
-curve = SubResource("Curve_4f453")
-
-[sub_resource type="Gradient" id="Gradient_48re7"]
-offsets = PackedFloat32Array(0.0631579, 0.301754)
-colors = PackedColorArray(0.139417, 0.118347, 0.17007, 1, 0.0211568, 0.0143743, 0.0317857, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_hdfsl"]
-gradient = SubResource("Gradient_48re7")
-
-[sub_resource type="Curve" id="Curve_vr7o3"]
-max_value = 10.0
-_data = [Vector2(0.428115, 7.51592), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveTexture" id="CurveTexture_7w0kv"]
-curve = SubResource("Curve_vr7o3")
-
-[sub_resource type="Curve" id="Curve_udout"]
-_data = [Vector2(0.0159744, 0.958599), 0.0, 0.0, 0, 0, Vector2(0.220447, 0.958599), 0.630418, 0.630418, 0, 0, Vector2(0.942492, 0.975159), -0.066454, -0.066454, 0, 0, Vector2(1, 0), -8.1739, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_hhvog"]
-curve = SubResource("Curve_udout")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mcu4f"]
-resource_local_to_scene = true
-emission_shape_scale = Vector3(2, 2, 2)
-angle_min = 1.07288e-05
-angle_max = 1.07288e-05
-gravity = Vector3(0, 5, 0)
-scale_min = 5.6
-scale_max = 6.8
-scale_curve = SubResource("CurveTexture_hhvog")
-color_ramp = SubResource("GradientTexture1D_hdfsl")
-alpha_curve = SubResource("CurveTexture_frl6h")
-emission_curve = SubResource("CurveTexture_7w0kv")
-hue_variation_min = -2.23517e-08
-hue_variation_max = -2.23517e-08
-
 [sub_resource type="BoxMesh" id="BoxMesh_7kau1"]
 size = Vector3(13.54, 1, 10.11)
 
@@ -350,23 +206,6 @@ trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_jupms")
 draw_pass_1 = SubResource("RibbonTrailMesh_7j5o8")
 
-[node name="Damnation" parent="." instance=ExtResource("5_uxk8r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0450387, 3.36106, -0.216613)
-visible = false
-
-[node name="Flame Pillar Center Glow" parent="Damnation" index="0"]
-emitting = true
-
-[node name="Flame Pillar Edge Transition" parent="Damnation" index="1"]
-emitting = true
-
-[node name="Particles" parent="Damnation" index="2"]
-emitting = true
-
-[node name="Shadow" parent="Damnation" index="3"]
-emitting = true
-process_material = SubResource("ParticleProcessMaterial_mcu4f")
-
 [node name="TestSurface" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("BoxMesh_7kau1")
@@ -378,5 +217,3 @@ play_on_ready = true
 
 [node name="SpellChargeHit" parent="." instance=ExtResource("4_uk0bs")]
 sound_name = "witch_magic_circle_hit"
-
-[editable path="Damnation"]

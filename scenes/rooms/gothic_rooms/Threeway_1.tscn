@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bwiilqv7awr5r"]
+[gd_scene load_steps=34 format=3 uid="uid://bwiilqv7awr5r"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_ahq4x"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_c4xtw"]
@@ -31,11 +31,26 @@
 [ext_resource type="PackedScene" uid="uid://c55mpbfrb86gs" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_2.tscn" id="29_w6g0k"]
 [ext_resource type="PackedScene" uid="uid://bxvymvi2qhybu" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_4.tscn" id="30_xkb5d"]
 [ext_resource type="PackedScene" uid="uid://bq0xdu18joqss" path="res://assets/models/gothic_library_section/decorative_assets/Torn_Cloth_1.tscn" id="31_ggtbd"]
+[ext_resource type="PackedScene" uid="uid://ct6c113whbe47" path="res://scenes/enemy_spawners/spawner.tscn" id="32_hlm5m"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_d5be6"]
+vertices = PackedVector3Array(-3.24634, 0.400375, 2.50366, -3.24634, 0.400375, 3.25366, -2.74634, 0.400375, 3.50366, -2.24634, 0.400375, 2.25366, 10.0037, 0.400375, 10.5037, 10.5037, 0.400375, 10.2537, 10.7537, 0.400375, 9.50366, -6.24634, 0.400375, 6.25366, -7.74634, 0.400375, 6.25366, -9.74634, 0.400375, 7.00366, -11.9963, 0.400375, 10.7537, -11.9963, 0.400375, 12.2537, -4.74634, 0.400375, 12.0037, 0.50366, 0.400375, 13.5037, 1.50366, 0.400375, 13.5037, 1.50366, 0.400375, 12.5037, 0.25366, 0.400375, 12.0037, -0.24634, 0.400375, 1.00366, 0.0036602, 0.400375, -0.24634, 0.25366, 0.400375, -2.99634, -1.99634, 0.400375, 0.50366, -2.74634, 0.400375, 12.2537, -2.49634, 0.400375, 13.5037, -1.99634, 0.400375, 13.5037, -1.74634, 0.400375, 12.2537, 3.00366, 0.400375, 6.75366, 2.25366, 0.400375, 6.25366, -2.74634, 0.400375, 5.00366, -12.4963, 0.400375, 13.5037, -8.49634, 0.400375, 5.75366, -9.24634, 0.400375, 6.00366, -13.2463, 0.400375, 6.50366, -13.7463, 0.400375, 6.00366, -13.7463, 0.400375, 8.00366, 1.00366, 0.400375, 4.75366, 1.00366, 0.400375, 4.00366, 0.0036602, 0.400375, 3.50366, -4.49634, 0.400375, 5.75366, -5.99634, 0.400375, 5.75366, -4.24634, 0.400375, 5.25366, 5.75366, 0.400375, 5.50366, 4.75366, 0.400375, 5.75366, 4.25366, 0.400375, 6.75366, 9.00366, 0.400375, 6.00366, 8.00366, 0.400375, 5.25366, 2.50366, 0.400375, 5.00366, 2.25366, 0.400375, 11.7537, 3.00366, 0.400375, 11.7537, -15.4963, 0.400375, 8.25366, -15.4963, 0.400375, 9.50366, -13.7463, 0.400375, 9.50366, -13.4963, 0.400375, 10.2537, -11.4963, 0.400375, 7.00366, 1.25366, 0.400375, -0.99634, 1.25366, 0.400375, -2.49634, 8.00366, 0.400375, 4.75366, 5.75366, 0.400375, 4.75366, -1.49634, 0.400375, -4.49634, -3.24634, 0.400375, -3.74634, -3.24634, 0.400375, 0.25366, 13.5037, 0.400375, 9.75366, 13.5037, 0.400375, 8.50366, 11.5037, 0.400375, 8.25366, 11.5037, 0.400375, 6.25366, 10.0037, 0.400375, 12.2537, 3.50366, 0.400375, 12.2537, -0.49634, 0.400375, -7.49634, -1.49634, 0.400375, -7.49634)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(10, 7, 11), PackedInt32Array(11, 7, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(17, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(27, 26, 25), PackedInt32Array(11, 28, 10), PackedInt32Array(29, 8, 30), PackedInt32Array(30, 8, 9), PackedInt32Array(33, 32, 31), PackedInt32Array(34, 36, 35), PackedInt32Array(38, 37, 7), PackedInt32Array(7, 37, 12), PackedInt32Array(37, 39, 27), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 44), PackedInt32Array(42, 44, 43), PackedInt32Array(45, 26, 34), PackedInt32Array(34, 26, 27), PackedInt32Array(46, 15, 16), PackedInt32Array(46, 25, 47), PackedInt32Array(47, 25, 42), PackedInt32Array(49, 48, 50), PackedInt32Array(50, 48, 33), PackedInt32Array(46, 16, 25), PackedInt32Array(25, 16, 27), PackedInt32Array(27, 16, 37), PackedInt32Array(37, 16, 12), PackedInt32Array(51, 50, 10), PackedInt32Array(10, 50, 33), PackedInt32Array(10, 33, 52), PackedInt32Array(10, 52, 9), PackedInt32Array(54, 53, 19), PackedInt32Array(19, 53, 18), PackedInt32Array(55, 44, 56), PackedInt32Array(56, 44, 40), PackedInt32Array(57, 19, 58), PackedInt32Array(58, 19, 20), PackedInt32Array(58, 20, 59), PackedInt32Array(33, 31, 52), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 6), PackedInt32Array(20, 17, 3), PackedInt32Array(3, 17, 36), PackedInt32Array(6, 4, 62), PackedInt32Array(62, 4, 63), PackedInt32Array(63, 4, 43), PackedInt32Array(47, 42, 65), PackedInt32Array(65, 42, 43), PackedInt32Array(65, 43, 4), PackedInt32Array(65, 4, 64), PackedInt32Array(2, 3, 27), PackedInt32Array(27, 3, 36), PackedInt32Array(27, 36, 34), PackedInt32Array(21, 12, 24), PackedInt32Array(24, 12, 16), PackedInt32Array(67, 66, 57), PackedInt32Array(57, 66, 19)]
+sample_partition_type = 2
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_mesh_group"
+agent_height = 2.5
+region_min_size = 10.0
+edge_max_error = 1.0
 
 [node name="RoomVariation" node_paths=PackedStringArray("north_door", "east_door", "west_door") instance=ExtResource("1_ahq4x")]
 north_door = NodePath("Doors/DoorTop")
 east_door = NodePath("Doors/DoorRight")
 west_door = NodePath("Doors/DoorLeft")
+
+[node name="NavigationRegion3D" parent="." index="0"]
+navigation_mesh = SubResource("NavigationMesh_d5be6")
 
 [node name="Wall_North" parent="." index="2"]
 data = {
@@ -120,6 +135,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0,
 
 [node name="DoorTop" parent="Doors" index="2" instance=ExtResource("2_c4xtw")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1, 0, -7)
+
+[node name="Spawner" parent="Spawners" index="0" instance=ExtResource("32_hlm5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
 
 [node name="Decorative Assets" type="Node3D" parent="." index="12"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bprs5jbwgxchp"]
+[gd_scene load_steps=29 format=3 uid="uid://bprs5jbwgxchp"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_vxhtl"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_cobap"]
@@ -26,9 +26,24 @@
 [ext_resource type="PackedScene" uid="uid://6af3eshhiklr" path="res://assets/models/gothic_library_section/decorative_assets/Vase_1.tscn" id="24_273ht"]
 [ext_resource type="PackedScene" uid="uid://wq6fty4dae5g" path="res://assets/models/gothic_library_section/decorative_assets/Vase_2.tscn" id="25_6645g"]
 [ext_resource type="PackedScene" uid="uid://cmepbn2gyxqt1" path="res://assets/VFX/Candle_Flame_2.tscn" id="26_4re4k"]
+[ext_resource type="PackedScene" uid="uid://ct6c113whbe47" path="res://scenes/enemy_spawners/spawner.tscn" id="27_f63lv"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_fc76r"]
+vertices = PackedVector3Array(-0.642945, 0.400375, -4.14294, -1.14294, 0.400375, -5.14294, -1.39294, 0.400375, -4.14294, 2.60706, 0.400375, 2.85706, 3.35706, 0.400375, 2.60706, 3.35706, 0.400375, 2.10706, 2.35706, 0.400375, 1.85706, -4.39294, 0.400375, -0.142945, -4.64294, 0.400375, 3.60706, -1.89294, 0.400375, 3.60706, 2.60706, 0.400375, -2.89294, 2.35706, 0.400375, -3.64294, 1.85706, 0.400375, -3.64294, 3.35706, 0.400375, -1.89294, 3.35706, 0.400375, -2.89294, 2.35706, 0.400375, -1.64294, 2.60706, 0.400375, 3.60706, -0.142945, 0.400375, 3.60706, -4.39294, 0.400375, -3.64294, -5.14294, 0.400375, -3.64294, -5.14294, 0.400375, -0.392945, -1.64294, 0.400375, 5.60706, -0.392945, 0.400375, 5.60706, 1.60706, 0.400375, -4.14294, -4.14294, 0.400375, -4.14294)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(9, 8, 7), PackedInt32Array(12, 11, 10), PackedInt32Array(10, 14, 13), PackedInt32Array(13, 15, 10), PackedInt32Array(10, 15, 12), PackedInt32Array(12, 15, 0), PackedInt32Array(0, 15, 2), PackedInt32Array(3, 16, 6), PackedInt32Array(6, 16, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 7), PackedInt32Array(21, 9, 22), PackedInt32Array(22, 9, 17), PackedInt32Array(6, 17, 9), PackedInt32Array(12, 0, 23), PackedInt32Array(18, 24, 2), PackedInt32Array(18, 2, 7), PackedInt32Array(7, 2, 15), PackedInt32Array(7, 15, 6), PackedInt32Array(7, 6, 9)]
+sample_partition_type = 2
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_mesh_group"
+agent_height = 2.5
+region_min_size = 10.0
+edge_max_error = 1.0
 
 [node name="RoomVariation" node_paths=PackedStringArray("south_door") instance=ExtResource("1_vxhtl")]
 south_door = NodePath("Doors/DoorBot")
+
+[node name="NavigationRegion3D" parent="." index="0"]
+navigation_mesh = SubResource("NavigationMesh_fc76r")
 
 [node name="Wall_North" parent="." index="2"]
 data = {
@@ -197,6 +212,9 @@ data = {
 
 [node name="DoorBot" parent="Doors" index="0" instance=ExtResource("2_cobap")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 5)
+
+[node name="Spawner5" parent="Spawners" index="0" instance=ExtResource("27_f63lv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00356, 0, -1.92119)
 
 [node name="Decorative Assets" type="Node3D" parent="." index="12"]
 

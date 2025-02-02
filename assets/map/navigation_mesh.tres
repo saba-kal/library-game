@@ -1,0 +1,10 @@
+[gd_resource type="NavigationMesh" format=3 uid="uid://c71h3u53lexo3"]
+
+[resource]
+sample_partition_type = 2
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_mesh_group"
+agent_height = 2.5
+region_min_size = 10.0
+edge_max_error = 1.0

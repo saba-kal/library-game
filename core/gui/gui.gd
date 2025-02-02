@@ -9,6 +9,8 @@ extends Control
 @onready var button_resume: Button = $Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME
 @onready var minimap_container: Control = $Minimap
 @onready var minimap_viewport: SubViewport = $Minimap/SubViewportContainer/SubViewport
+@onready var degug_input = $DebugConsole/MarginContainer/VBoxContainer/Input
+@onready var debug_console = $DebugConsole
 
 func _ready() -> void:
 	minimap_container.visible = false
@@ -20,6 +22,8 @@ func _input(event: InputEvent) -> void:
 		toggle_pause()
 	if event.is_action_pressed("inventory"):
 		toggle_inventory()
+	if event.is_action_pressed("console"):
+		toggle_console()
 
 func setup_minimap():
 	map_2D.reparent(minimap_viewport)
@@ -42,6 +46,15 @@ func toggle_inventory() -> void:
 		return
 	inventory.visible = !inventory.visible
 	get_tree().paused = inventory.visible
+
+func toggle_console() -> void:
+	debug_console.visible = not debug_console.visible
+	if debug_console.visible:
+		degug_input.grab_focus()
+		get_tree().paused = true
+	else:
+		degug_input.release_focus()
+		get_tree().paused = false
 
 func resume_pressed() -> void:
 	toggle_pause()
