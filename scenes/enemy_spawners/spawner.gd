@@ -24,6 +24,7 @@ func initialize_probabilities() -> void:
 	get_parent().add_child(enemy_instance)
 	enemy_instance.rotation.y = 0
 	enemy_instance.top_level = true
+	enemy_instance.position += position
 	queue_free()
 
 func pick_enemy():
