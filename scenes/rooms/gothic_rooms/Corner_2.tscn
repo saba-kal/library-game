@@ -47,8 +47,8 @@ agent_height = 2.5
 region_min_size = 10.0
 edge_max_error = 1.0
 
-[node name="RoomVariation" node_paths=PackedStringArray("north_door", "west_door") instance=ExtResource("1_khecb")]
-north_door = NodePath("Doors/DoorTop")
+[node name="RoomVariation" node_paths=PackedStringArray("south_door", "west_door") instance=ExtResource("1_khecb")]
+south_door = NodePath("Doors/DoorBot")
 west_door = NodePath("Doors/DoorLeft")
 
 [node name="NavigationRegion3D" parent="." index="0"]
@@ -256,7 +256,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="DoorLeft" parent="Doors" index="0" instance=ExtResource("9_43l8d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9642, 0, 1.03896)
 
-[node name="DoorTop" parent="Doors" index="1" instance=ExtResource("9_43l8d")]
+[node name="DoorBot" parent="Doors" index="1" instance=ExtResource("9_43l8d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.99986, -1.7885, 40.9297)
 
 [node name="Spawner" parent="Spawners" index="0" instance=ExtResource("10_1jy4n")]
