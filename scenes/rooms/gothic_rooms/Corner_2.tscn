@@ -50,6 +50,7 @@ edge_max_error = 1.0
 [node name="RoomVariation" node_paths=PackedStringArray("south_door", "west_door") instance=ExtResource("1_khecb")]
 south_door = NodePath("Doors/DoorBot")
 west_door = NodePath("Doors/DoorLeft")
+rotation_offset = 1
 
 [node name="NavigationRegion3D" parent="." index="0"]
 navigation_mesh = SubResource("NavigationMesh_quowk")

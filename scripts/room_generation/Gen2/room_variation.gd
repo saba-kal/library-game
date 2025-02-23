@@ -12,7 +12,7 @@ enum ROOM_DIRECTION{
 @export var east_door: RoomDoor
 @export var south_door: RoomDoor
 @export var west_door: RoomDoor
-
+@export var rotation_offset: int = 0
 @onready var wall_checker: Node3D = %WallChecker
 @onready var wall_north: GridMap = %Wall_North
 @onready var wall_south: GridMap = %Wall_South

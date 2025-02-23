@@ -109,7 +109,7 @@ func instantiate_room(room_variations: Array[PackedScene], position_2d: Vector2i
 	room_instance.name = "Room (%d, %d)" % [position_2d.x, position_2d.y]
 	rooms.add_child(room_instance)
 	room_instance.global_position = Vector3(position_2d.x, 0, position_2d.y) * room_space
-	room_instance.rotate_room(rotate_count)
+	room_instance.rotate_room(rotate_count + room_instance.rotation_offset)
 	room_instance.tile_position = position_2d
 	room_dictionary[position_2d] = room_instance
 	if first_room == null:
