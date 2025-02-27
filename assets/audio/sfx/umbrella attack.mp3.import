@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c84hbiknqdeun"
+path="res://.godot/imported/umbrella attack.mp3-37ae6088afc691704d8d0bd47bbdcc07.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/umbrella attack.mp3"
+dest_files=["res://.godot/imported/umbrella attack.mp3-37ae6088afc691704d8d0bd47bbdcc07.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

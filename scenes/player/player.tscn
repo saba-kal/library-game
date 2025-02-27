@@ -6292,6 +6292,7 @@ next_attack = NodePath("../Attack2")
 distance = 0.15
 swing_duration = 0.2
 wind_down_period = 0.1
+sound_effect_name = "player_attack"
 animation_node_name = "Attack1"
 
 [node name="Attack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "movement_state", "next_attack")]
@@ -6303,6 +6304,7 @@ distance = 0.15
 wind_up_period = 0.083
 swing_duration = 0.2
 wind_down_period = 0.1
+sound_effect_name = "player_attack_2"
 animation_node_name = "Attack2"
 
 [node name="AttackBig" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "movement_state")]
@@ -6312,6 +6314,7 @@ movement_state = NodePath("../Movement")
 distance = 3.0
 swing_duration = 0.1
 wind_down_period = 0.01
+sound_effect_name = "player_attack_3"
 animation_node_name = "Attack3"
 
 [node name="Parry" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_state", "block_area", "animation_player")]

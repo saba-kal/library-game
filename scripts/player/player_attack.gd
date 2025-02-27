@@ -14,7 +14,7 @@ signal started
 @export var wind_up_period:float = 0.3
 @export var swing_duration:float = .4
 @export var wind_down_period:float = .3
-
+@export var sound_effect_name: String
 @export var animation_node_name: String
 
 
@@ -94,7 +94,7 @@ func swing_complete() -> void:
 func swing_start() -> void:
 	character.constant_velocity(distance / swing_duration)
 	swing_timer.start(swing_duration)
-	AudioManager.play_3d("player_attack", character.global_position)
+	AudioManager.play_3d(sound_effect_name, character.global_position)
 	add_hit_bodies()
 
 func done() -> void:

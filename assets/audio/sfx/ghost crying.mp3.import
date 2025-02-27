@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8l4a6ghb1cbj"
+path="res://.godot/imported/ghost crying.mp3-7e3aaf47f1156670f572161035d7f3bc.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/ghost crying.mp3"
+dest_files=["res://.godot/imported/ghost crying.mp3-7e3aaf47f1156670f572161035d7f3bc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

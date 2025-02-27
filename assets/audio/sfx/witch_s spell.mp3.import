@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bn0bisd487iyt"
+path="res://.godot/imported/witch_s spell.mp3-df9117a74dd592612f0886164bf389f3.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/witch_s spell.mp3"
+dest_files=["res://.godot/imported/witch_s spell.mp3-df9117a74dd592612f0886164bf389f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

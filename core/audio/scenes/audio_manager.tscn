@@ -1,23 +1,27 @@
-[gd_scene load_steps=34 format=3 uid="uid://bnauoxf08cgq"]
+[gd_scene load_steps=42 format=3 uid="uid://bnauoxf08cgq"]
 
 [ext_resource type="Script" path="res://core/audio/scripts/audio_manager.gd" id="1_qy2rl"]
 [ext_resource type="Script" path="res://core/audio/scripts/sound_effect.gd" id="2_87qqj"]
 [ext_resource type="Script" path="res://core/audio/scripts/sound_effect_3d.gd" id="3_gdhnl"]
-[ext_resource type="AudioStream" uid="uid://3wr52s0shc0s" path="res://assets/audio/sfx/glaneur-de-sons__sword-swing-b-strong-04.wav" id="4_rvdrn"]
-[ext_resource type="AudioStream" uid="uid://c3bgaf2mwmpml" path="res://assets/audio/sfx/vilkas_sound__vs-button-click-02.mp3" id="5_fjhui"]
-[ext_resource type="AudioStream" uid="uid://bxhj0p7ch5uus" path="res://assets/audio/sfx/eqylizer__button-hover-click.mp3" id="6_jour0"]
+[ext_resource type="AudioStream" uid="uid://c84hbiknqdeun" path="res://assets/audio/sfx/umbrella attack.mp3" id="4_ekv31"]
+[ext_resource type="AudioStream" uid="uid://3bexmvmj35jn" path="res://assets/audio/sfx/umbrella attack 2.mp3" id="5_2p1l4"]
+[ext_resource type="AudioStream" uid="uid://0vrcyy8qhvsl" path="res://assets/audio/sfx/button click.mp3" id="5_eu4nf"]
+[ext_resource type="AudioStream" uid="uid://dyr7mqx1d3gad" path="res://assets/audio/sfx/button hover.mp3" id="6_mtmr0"]
+[ext_resource type="AudioStream" uid="uid://cxi35gl0kx44v" path="res://assets/audio/sfx/umbrella attack 3.mp3" id="6_pwpms"]
 [ext_resource type="AudioStream" uid="uid://b5jtidiqw46ae" path="res://assets/audio/sfx/carrigsound__step-1.wav" id="7_vx35s"]
-[ext_resource type="AudioStream" uid="uid://dkn8gfkmjsbrr" path="res://assets/audio/sfx/sadiquecat__woosh-metal-tea-strainer-1.wav" id="8_2sbcy"]
-[ext_resource type="AudioStream" uid="uid://bjw6t0rabd55k" path="res://assets/audio/sfx/qubodup__creepy-chanting-of-muffled-wailing-women-singing.ogg" id="9_b3ek6"]
-[ext_resource type="AudioStream" uid="uid://jgpq2rjphgcl" path="res://assets/audio/sfx/bertsz__wet-spell-shoot.wav" id="10_5s756"]
-[ext_resource type="AudioStream" uid="uid://dkpys1fxdvtfq" path="res://assets/audio/sfx/longer-scream-no-effects.wav" id="11_7jll0"]
-[ext_resource type="AudioStream" uid="uid://bb3xpg1xg1k3g" path="res://assets/audio/sfx/alonsotm__firespell3.wav" id="12_e314u"]
+[ext_resource type="AudioStream" uid="uid://dporhibpekn01" path="res://assets/audio/sfx/dash.mp3" id="8_qom3e"]
+[ext_resource type="AudioStream" uid="uid://c8l4a6ghb1cbj" path="res://assets/audio/sfx/ghost crying.mp3" id="9_kniw4"]
+[ext_resource type="AudioStream" uid="uid://bfuqojke3ehyp" path="res://assets/audio/sfx/sound for closing menu_returning to game.mp3" id="9_phykf"]
+[ext_resource type="AudioStream" uid="uid://bn0bisd487iyt" path="res://assets/audio/sfx/witch_s spell.mp3" id="10_27ifu"]
+[ext_resource type="AudioStream" uid="uid://dpsc77c43ftct" path="res://assets/audio/sfx/ghost scream.mp3" id="11_xq6fo"]
+[ext_resource type="AudioStream" uid="uid://ccvd7f7o470ls" path="res://assets/audio/sfx/witch_s spell 2.mp3" id="12_i10wv"]
 [ext_resource type="AudioStream" uid="uid://duj1x64osi8nl" path="res://assets/audio/sfx/witch_magic_circle_charge.wav" id="13_xppkc"]
 [ext_resource type="AudioStream" uid="uid://bh5chahm7qw2y" path="res://assets/audio/sfx/insintesi__witchs-whisper.wav" id="14_ahix1"]
 [ext_resource type="AudioStream" uid="uid://dng224xhmbgnh" path="res://assets/audio/sfx/wolf-howl-6310.mp3" id="15_jsrxn"]
 [ext_resource type="AudioStream" uid="uid://bjqodtoy37krc" path="res://assets/audio/music/Del Rio Bravo.mp3" id="15_oudq3"]
 [ext_resource type="AudioStream" uid="uid://7jakfw5hj72m" path="res://assets/audio/music/horror section.mp3" id="15_u05ys"]
 [ext_resource type="AudioStream" uid="uid://bigh3yo0ugvyc" path="res://assets/audio/sfx/leopard-attack-193175.mp3" id="16_0yhr6"]
+[ext_resource type="AudioStream" uid="uid://bjs0kioryxq62" path="res://assets/audio/sfx/block.mp3" id="19_dx61c"]
 
 [sub_resource type="Resource" id="Resource_v2sca"]
 script = ExtResource("3_gdhnl")
@@ -26,23 +30,52 @@ unit_size = 10.0
 max_distance = 0.0
 max_db = 3.0
 name = "player_attack"
-stream = ExtResource("4_rvdrn")
+stream = ExtResource("4_ekv31")
+volume_db = 0.0
+pitch_scale = 1.0
+
+[sub_resource type="Resource" id="Resource_ffaxh"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "player_attack_2"
+stream = ExtResource("5_2p1l4")
+volume_db = 0.0
+pitch_scale = 1.0
+
+[sub_resource type="Resource" id="Resource_ko3gm"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "player_attack_3"
+stream = ExtResource("6_pwpms")
 volume_db = 0.0
 pitch_scale = 1.0
 
 [sub_resource type="Resource" id="Resource_rjfa6"]
 script = ExtResource("2_87qqj")
 name = "ui_button_pressed"
-stream = ExtResource("5_fjhui")
+stream = ExtResource("5_eu4nf")
 volume_db = 0.0
 pitch_scale = 1.0
 
 [sub_resource type="Resource" id="Resource_l05s6"]
 script = ExtResource("2_87qqj")
 name = "ui_button_hover"
-stream = ExtResource("6_jour0")
+stream = ExtResource("6_mtmr0")
 volume_db = -23.656
 pitch_scale = 0.485
+
+[sub_resource type="Resource" id="Resource_o3nbv"]
+script = ExtResource("2_87qqj")
+name = "return_to_game"
+stream = ExtResource("9_phykf")
+volume_db = 0.0
+pitch_scale = 1.0
 
 [sub_resource type="Resource" id="Resource_plhii"]
 script = ExtResource("3_gdhnl")
@@ -62,7 +95,7 @@ unit_size = 10.0
 max_distance = 0.0
 max_db = 3.0
 name = "player_dash"
-stream = ExtResource("8_2sbcy")
+stream = ExtResource("8_qom3e")
 volume_db = 0.0
 pitch_scale = 1.0
 
@@ -73,7 +106,7 @@ unit_size = 10.0
 max_distance = 0.0
 max_db = 3.0
 name = "ghost_crying"
-stream = ExtResource("9_b3ek6")
+stream = ExtResource("9_kniw4")
 volume_db = 0.0
 pitch_scale = 1.0
 
@@ -84,7 +117,7 @@ unit_size = 10.0
 max_distance = 0.0
 max_db = 3.0
 name = "witch_projectile_attack"
-stream = ExtResource("10_5s756")
+stream = ExtResource("10_27ifu")
 volume_db = 0.0
 pitch_scale = 1.0
 
@@ -95,7 +128,7 @@ unit_size = 10.0
 max_distance = 0.0
 max_db = 3.0
 name = "ghost_scream"
-stream = ExtResource("11_7jll0")
+stream = ExtResource("11_xq6fo")
 volume_db = 2.823
 pitch_scale = 1.27
 
@@ -117,7 +150,7 @@ unit_size = 10.0
 max_distance = 0.0
 max_db = 3.0
 name = "witch_magic_circle_hit"
-stream = ExtResource("12_e314u")
+stream = ExtResource("12_i10wv")
 volume_db = 0.0
 pitch_scale = 1.0
 
@@ -165,6 +198,17 @@ stream = ExtResource("16_0yhr6")
 volume_db = 0.0
 pitch_scale = 1.0
 
+[sub_resource type="Resource" id="Resource_6fqgh"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "block"
+stream = ExtResource("19_dx61c")
+volume_db = 0.0
+pitch_scale = 1.0
+
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_veow1"]
 clip_count = 2
 clip_0/name = &"main_menu"
@@ -190,7 +234,7 @@ Vector2i(0, 1): {
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_qy2rl")
-sound_effects = Array[ExtResource("2_87qqj")]([SubResource("Resource_v2sca"), SubResource("Resource_rjfa6"), SubResource("Resource_l05s6"), SubResource("Resource_plhii"), SubResource("Resource_2vlvx"), SubResource("Resource_uo8v0"), SubResource("Resource_w0ot4"), SubResource("Resource_52u8c"), SubResource("Resource_egau8"), SubResource("Resource_4eegy"), SubResource("Resource_e4ycb"), SubResource("Resource_tlenu"), SubResource("Resource_dba41"), SubResource("Resource_yifjq")])
+sound_effects = Array[ExtResource("2_87qqj")]([SubResource("Resource_v2sca"), SubResource("Resource_ffaxh"), SubResource("Resource_ko3gm"), SubResource("Resource_rjfa6"), SubResource("Resource_l05s6"), SubResource("Resource_o3nbv"), SubResource("Resource_plhii"), SubResource("Resource_2vlvx"), SubResource("Resource_uo8v0"), SubResource("Resource_w0ot4"), SubResource("Resource_52u8c"), SubResource("Resource_egau8"), SubResource("Resource_4eegy"), SubResource("Resource_e4ycb"), SubResource("Resource_tlenu"), SubResource("Resource_dba41"), SubResource("Resource_yifjq"), SubResource("Resource_6fqgh")])
 
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_veow1")

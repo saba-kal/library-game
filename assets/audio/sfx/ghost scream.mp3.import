@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpsc77c43ftct"
+path="res://.godot/imported/ghost scream.mp3-d5c7795de4c27cb5ba539ad02c31d879.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/ghost scream.mp3"
+dest_files=["res://.godot/imported/ghost scream.mp3-d5c7795de4c27cb5ba539ad02c31d879.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

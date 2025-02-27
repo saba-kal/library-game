@@ -209,6 +209,9 @@ layout_mode = 2
 layout_mode = 2
 text = "RESUME"
 
+[node name="ButtonSounds" parent="Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME" index="0"]
+pressed_sound = "return_to_game"
+
 [node name="Button_SETTINGS" parent="Pause/Panel/MarginContainer/VBoxContainer" instance=ExtResource("7_ube1n")]
 layout_mode = 2
 text = "SETTINGS"
@@ -229,4 +232,5 @@ layout_mode = 1
 [connection signal="pressed" from="Pause/Panel/MarginContainer/VBoxContainer/Button_QUIT" to="." method="quit_pressed"]
 [connection signal="ok_pressed" from="SettingsMenu" to="." method="on_settings_menu_ok_pressed"]
 
+[editable path="Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME"]
 [editable path="DebugConsole"]

@@ -46,7 +46,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 		last_dir = step_dir
 		character.set_orientation_from_top_down_vector(step_dir)
 	parry_timer.start(parry_duration)
-	AudioManager.play_3d("player_attack", character.global_position)
+	AudioManager.play_3d("block", character.global_position)
 	animation_tree.set("parameters/Actions/transition_request", "Block")
 	animation_player.play(unfold_anim)
 	detect_parry()
