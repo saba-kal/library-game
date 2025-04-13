@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://c51xioq25wr6d"]
 
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="1_a0ej8"]
-[ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_generation.gd" id="1_ygjm3"]
+[ext_resource type="Script" uid="uid://d2gcyv7iefpfb" path="res://scripts/room_generation/Gen2/room_generation.gd" id="1_ygjm3"]
 [ext_resource type="PackedScene" uid="uid://b5m3b8x4vbmik" path="res://scenes/rooms/gothic_rooms/Corner_1.tscn" id="2_akiji"]
 [ext_resource type="PackedScene" uid="uid://bprs5jbwgxchp" path="res://scenes/rooms/gothic_rooms/Dead_End_1.tscn" id="3_6l85o"]
 [ext_resource type="PackedScene" uid="uid://cyg2wqtj0ugky" path="res://scenes/rooms/gothic_rooms/Corner_2.tscn" id="3_wy5ok"]

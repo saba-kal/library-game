@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://38u6omsb5o8u"]
 
-[ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_generation.gd" id="1_r147h"]
+[ext_resource type="Script" uid="uid://d2gcyv7iefpfb" path="res://scripts/room_generation/Gen2/room_generation.gd" id="1_r147h"]
 [ext_resource type="PackedScene" uid="uid://b7xo88hoefhrx" path="res://scenes/room_generation/Gen2/2d_map.tscn" id="1_wxqy7"]
 [ext_resource type="PackedScene" uid="uid://f4kgfmiqn3gp" path="res://scenes/room_generation/Gen2/Gen2_rooms/corner.tscn" id="2_8out0"]
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="3_phssx"]

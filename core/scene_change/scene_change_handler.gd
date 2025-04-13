@@ -15,7 +15,7 @@ var known_scenes: Dictionary = {
 	"debug_area": preload("res://scenes/debug/debug.tscn"),
 	"debug_generation": preload("res://scenes/room_generation/zoning_test.tscn"),
 	"debug_generation_2": preload("res://scenes/room_generation/Gen2/2d_map.tscn")
-}
+	}
 
 func to_main_menu() -> void:
 	next_scene = known_scenes["main_menu"]

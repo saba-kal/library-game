@@ -1,20 +1,20 @@
 [gd_scene load_steps=28 format=3 uid="uid://6ba3lqg16cok"]
 
-[ext_resource type="Script" path="res://scripts/enemies/werewolf.gd" id="1_k1tkf"]
+[ext_resource type="Script" uid="uid://wx0d5gtqthg" path="res://scripts/enemies/werewolf.gd" id="1_k1tkf"]
 [ext_resource type="PackedScene" uid="uid://pwysqj7ouw18" path="res://assets/models/enemies/werewolf/Werewolf.glb" id="2_noh36"]
-[ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="3_gfymo"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_wfy1b"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyDeath.gd" id="5_saij7"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyChase.gd" id="6_hq2us"]
-[ext_resource type="Script" path="res://scripts/enemies/states/WerewolfClawAttack.gd" id="7_ovapo"]
-[ext_resource type="Script" path="res://core/audio/scripts/attached_sound_3d.gd" id="8_gjt5a"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyIdle.gd" id="9_o7keu"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyHowl.gd" id="10_81gde"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="11_8i4lv"]
+[ext_resource type="Script" uid="uid://doevx7k07bn1p" path="res://scripts/enemies/state_machine.gd" id="3_gfymo"]
+[ext_resource type="Script" uid="uid://cptih1uj7h8aw" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_wfy1b"]
+[ext_resource type="Script" uid="uid://drbdvf2k46ekh" path="res://scripts/enemies/states/EnemyDeath.gd" id="5_saij7"]
+[ext_resource type="Script" uid="uid://b2e2quqmyb1hw" path="res://scripts/enemies/states/EnemyChase.gd" id="6_hq2us"]
+[ext_resource type="Script" uid="uid://ccposc8bagi8v" path="res://scripts/enemies/states/WerewolfClawAttack.gd" id="7_ovapo"]
+[ext_resource type="Script" uid="uid://dp03flo3cehjt" path="res://core/audio/scripts/attached_sound_3d.gd" id="8_gjt5a"]
+[ext_resource type="Script" uid="uid://bc0mp16f35qie" path="res://scripts/enemies/states/EnemyIdle.gd" id="9_o7keu"]
+[ext_resource type="Script" uid="uid://d05umvrxpoela" path="res://scripts/enemies/states/EnemyHowl.gd" id="10_81gde"]
+[ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="11_8i4lv"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="12_4eenh"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="13_wu4uq"]
 [ext_resource type="PackedScene" uid="uid://ck8r7tqyegby4" path="res://scenes/enemies/attack_range_types/attack_area_01.tscn" id="14_ef4bw"]
-[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="15_d15xo"]
+[ext_resource type="Script" uid="uid://b15uemiuovvjh" path="res://scripts/general/damage_flicker.gd" id="15_d15xo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jd6bd"]
 
@@ -2898,13 +2898,13 @@ tracks/57/keys = PackedFloat32Array(0, 1, 0.223814, -0.000350935, 0.232903, 0.94
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dhtav"]
 _data = {
-"Attack": SubResource("Animation_s6h76"),
-"Default": SubResource("Animation_ush4w"),
-"Die": SubResource("Animation_wy0ae"),
-"Run": SubResource("Animation_7lovy"),
-"Sniff": SubResource("Animation_5xq0l"),
-"SpotsPlayer": SubResource("Animation_cmedn"),
-"Walk": SubResource("Animation_6yj61")
+&"Attack": SubResource("Animation_s6h76"),
+&"Default": SubResource("Animation_ush4w"),
+&"Die": SubResource("Animation_wy0ae"),
+&"Run": SubResource("Animation_7lovy"),
+&"Sniff": SubResource("Animation_5xq0l"),
+&"SpotsPlayer": SubResource("Animation_cmedn"),
+&"Walk": SubResource("Animation_6yj61")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4mjhi"]

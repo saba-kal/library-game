@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://na3o86bibtqu"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/health_collectible.gd" id="1_1t30f"]
+[ext_resource type="Script" uid="uid://207u5kkkd3d5" path="res://scripts/collectibles/health_collectible.gd" id="1_1t30f"]
 [ext_resource type="PackedScene" uid="uid://dmeimln03low1" path="res://scenes/collectibles/collectible_area.tscn" id="2_5gs58"]
 [ext_resource type="ArrayMesh" uid="uid://cprpomckx7t3q" path="res://assets/models/collectibles/low_poly_heart.obj" id="3_yekt7"]
 
@@ -68,8 +68,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tsfhh"]
 _data = {
-"RESET": SubResource("Animation_eb3ok"),
-"spin": SubResource("Animation_to0ey")
+&"RESET": SubResource("Animation_eb3ok"),
+&"spin": SubResource("Animation_to0ey")
 }
 
 [node name="HealthCollectible" type="Node3D"]

@@ -1,18 +1,18 @@
 [gd_scene load_steps=65 format=3 uid="uid://dmtrnvihyrtdi"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_2f2x5"]
-[ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2_23lc7"]
+[ext_resource type="Script" uid="uid://b2of6q8q1shii" path="res://scripts/player/player.gd" id="1_2f2x5"]
+[ext_resource type="Script" uid="uid://b67tcp8o1v24s" path="res://scripts/player/camera_controller.gd" id="2_23lc7"]
 [ext_resource type="PackedScene" uid="uid://est52k614w50" path="res://assets/models/player/librarian_player.tscn" id="2_cf5dp"]
-[ext_resource type="Script" path="res://scripts/player/movement.gd" id="4_o2lce"]
-[ext_resource type="Script" path="res://scripts/player/dash.gd" id="5_0dcju"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="6_gp4iy"]
-[ext_resource type="Script" path="res://scripts/player/death.gd" id="6_wjwua"]
-[ext_resource type="Script" path="res://scripts/player/parry.gd" id="8_isdoy"]
-[ext_resource type="Script" path="res://scripts/player/interact.gd" id="8_ve6hn"]
-[ext_resource type="Script" path="res://scripts/player/player_attack.gd" id="8_yyof3"]
+[ext_resource type="Script" uid="uid://bbd3l6wa0gptn" path="res://scripts/player/movement.gd" id="4_o2lce"]
+[ext_resource type="Script" uid="uid://bcg1etexxg0p1" path="res://scripts/player/dash.gd" id="5_0dcju"]
+[ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="6_gp4iy"]
+[ext_resource type="Script" uid="uid://byl3xrxfqqlki" path="res://scripts/player/death.gd" id="6_wjwua"]
+[ext_resource type="Script" uid="uid://y01rvetq2lvm" path="res://scripts/player/parry.gd" id="8_isdoy"]
+[ext_resource type="Script" uid="uid://cqbjxiq37yaim" path="res://scripts/player/interact.gd" id="8_ve6hn"]
+[ext_resource type="Script" uid="uid://bvu0xg2ghy8qn" path="res://scripts/player/player_attack.gd" id="8_yyof3"]
 [ext_resource type="PackedScene" uid="uid://x7inf5bnoarf" path="res://core/audio/scenes/footstep_sounds.tscn" id="9_rb7uo"]
-[ext_resource type="Script" path="res://scripts/player/hurt.gd" id="9_tbwpv"]
-[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="13_688dn"]
+[ext_resource type="Script" uid="uid://dlbkny711u164" path="res://scripts/player/hurt.gd" id="9_tbwpv"]
+[ext_resource type="Script" uid="uid://b15uemiuovvjh" path="res://scripts/general/damage_flicker.gd" id="13_688dn"]
 
 [sub_resource type="Animation" id="Animation_8r8q2"]
 resource_name = "Attack1"
@@ -5913,19 +5913,19 @@ tracks/63/keys = PackedFloat32Array(0, 1, 0.051475, -0.0294874, 0.650936, 0.7568
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_coqab"]
 _data = {
-"Attack1": SubResource("Animation_8r8q2"),
-"Attack2": SubResource("Animation_bye46"),
-"Attack3": SubResource("Animation_8rcti"),
-"Block": SubResource("Animation_nmpu2"),
-"Dash": SubResource("Animation_w2vw2"),
-"Dash_2": SubResource("Animation_p7w1g"),
-"Default": SubResource("Animation_r06og"),
-"Die": SubResource("Animation_insnu"),
-"Idle": SubResource("Animation_ko4q1"),
-"Idle2": SubResource("Animation_mlwbe"),
-"Ouchie": SubResource("Animation_rqcva"),
-"Run": SubResource("Animation_q6nw3"),
-"Walk": SubResource("Animation_wvv5i")
+&"Attack1": SubResource("Animation_8r8q2"),
+&"Attack2": SubResource("Animation_bye46"),
+&"Attack3": SubResource("Animation_8rcti"),
+&"Block": SubResource("Animation_nmpu2"),
+&"Dash": SubResource("Animation_w2vw2"),
+&"Dash_2": SubResource("Animation_p7w1g"),
+&"Default": SubResource("Animation_r06og"),
+&"Die": SubResource("Animation_insnu"),
+&"Idle": SubResource("Animation_ko4q1"),
+&"Idle2": SubResource("Animation_mlwbe"),
+&"Ouchie": SubResource("Animation_rqcva"),
+&"Run": SubResource("Animation_q6nw3"),
+&"Walk": SubResource("Animation_wvv5i")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8gvb"]
@@ -6178,7 +6178,6 @@ bones/9/rotation = Quaternion(-0.062417, 0.0270858, -0.424722, 0.902763)
 bones/10/rotation = Quaternion(0.343186, -0.03552, -0.0132562, 0.938502)
 bones/11/rotation = Quaternion(0.267546, 0.0131094, -0.183836, 0.945755)
 bones/12/rotation = Quaternion(-0.239275, -0.0673316, -0.178418, 0.95204)
-bones/13/rotation = Quaternion(0.00352417, 0.00144437, -0.0475896, 0.99886)
 bones/14/rotation = Quaternion(-0.116849, 0.00666005, -0.0611429, 0.991243)
 bones/15/rotation = Quaternion(-0.0210619, -1.39002e-09, -0.00107681, 0.999778)
 bones/16/rotation = Quaternion(-0.00767369, 1.16476e-09, -0.000392324, 0.99997)
@@ -6190,7 +6189,6 @@ bones/21/rotation = Quaternion(-0.154067, 0.00730073, -0.0602808, 0.986193)
 bones/22/rotation = Quaternion(-0.00836887, 0.000426923, -0.0471939, 0.998851)
 bones/23/rotation = Quaternion(0.016505, -9.30085e-10, 0.000243171, 0.999864)
 bones/24/rotation = Quaternion(-0.0216968, 6.69773e-10, -0.000319661, 0.999765)
-bones/25/rotation = Quaternion(-0.246312, 0.0104377, -0.0640596, 0.967015)
 bones/26/rotation = Quaternion(0.103012, -0.00438216, -0.0427663, 0.993751)
 bones/27/rotation = Quaternion(-0.0259556, -3.27528e-10, 0.000148955, 0.999663)
 bones/28/rotation = Quaternion(0.0100018, 2.54558e-10, -5.73972e-05, 0.99995)
@@ -6204,7 +6202,6 @@ bones/35/rotation = Quaternion(-0.116849, -0.00666005, 0.0611429, 0.991243)
 bones/36/rotation = Quaternion(-0.0210619, 1.39002e-09, 0.00107681, 0.999778)
 bones/37/rotation = Quaternion(-0.00767369, -1.16476e-09, 0.000392324, 0.99997)
 bones/38/position = Vector3(-0.0281093, 0.0704612, -0.0303321)
-bones/38/rotation = Quaternion(0.359806, -0.587509, -0.307623, 0.656308)
 bones/38/scale = Vector3(1, 1, 1)
 bones/39/rotation = Quaternion(-0.0694086, -0.00341139, 0.0580925, 0.99589)
 bones/40/rotation = Quaternion(-0.0868209, -0.00423225, 0.0504895, 0.994935)
@@ -6242,7 +6239,7 @@ transform = Transform3D(-2.98023e-08, 0, 1, 1, 2.38419e-07, -1.60187e-07, -8.940
 
 [node name="AnimationPlayer" parent="LibrarianPlayer" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_coqab")
+&"": SubResource("AnimationLibrary_coqab")
 }
 autoplay = "Idle"
 

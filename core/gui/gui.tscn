@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://d1pi1kgma618d"]
 
-[ext_resource type="Script" path="res://core/gui/gui.gd" id="1_ds54n"]
-[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
-[ext_resource type="Script" path="res://scripts/gui/player_health_bar.gd" id="3_6a04i"]
+[ext_resource type="Script" uid="uid://cxisi2yblv1ug" path="res://core/gui/gui.gd" id="1_ds54n"]
+[ext_resource type="Shader" uid="uid://c73v4e4ck57ri" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
+[ext_resource type="Script" uid="uid://bj6cggpoj06fc" path="res://scripts/gui/player_health_bar.gd" id="3_6a04i"]
 [ext_resource type="Texture2D" uid="uid://b33kcp1b57awf" path="res://assets/textures/GUI/player_icon_placeholder.png" id="3_eyey0"]
 [ext_resource type="PackedScene" uid="uid://cy6ic2npxa53k" path="res://scenes/gui/heart_icon.tscn" id="5_5kxef"]
 [ext_resource type="PackedScene" uid="uid://c2eyb87rkl1af" path="res://scenes/gui/inventory/inventory.tscn" id="5_mwy2m"]

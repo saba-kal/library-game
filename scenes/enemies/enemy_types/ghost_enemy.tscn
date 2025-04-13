@@ -1,16 +1,16 @@
 [gd_scene load_steps=30 format=4 uid="uid://cfc78am47py6r"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_tw3fx"]
+[ext_resource type="Script" uid="uid://b68ncw5it16w3" path="res://scripts/enemies/enemy_base.gd" id="1_tw3fx"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="2_uux3s"]
-[ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="3_3nw8y"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_6xrt1"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyIdle.gd" id="4_d4t4b"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_sjyp7"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="9_g6cmd"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemySelfProjectile.gd" id="9_nih03"]
+[ext_resource type="Script" uid="uid://doevx7k07bn1p" path="res://scripts/enemies/state_machine.gd" id="3_3nw8y"]
+[ext_resource type="Script" uid="uid://cptih1uj7h8aw" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_6xrt1"]
+[ext_resource type="Script" uid="uid://bc0mp16f35qie" path="res://scripts/enemies/states/EnemyIdle.gd" id="4_d4t4b"]
+[ext_resource type="Script" uid="uid://drbdvf2k46ekh" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_sjyp7"]
+[ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="9_g6cmd"]
+[ext_resource type="Script" uid="uid://5tsu83bp5ipl" path="res://scripts/enemies/states/EnemySelfProjectile.gd" id="9_nih03"]
 [ext_resource type="PackedScene" uid="uid://wv5gttcsiscx" path="res://core/audio/scenes/attached_sound_3d.tscn" id="10_u0ilw"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="10_vrihc"]
-[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="11_7kppa"]
+[ext_resource type="Script" uid="uid://b15uemiuovvjh" path="res://scripts/general/damage_flicker.gd" id="11_7kppa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx4au"]
 resource_name = "GhostClothes"
@@ -2854,11 +2854,11 @@ tracks/74/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_60pai"]
 _data = {
-"Default": SubResource("Animation_0h6lc"),
-"Die": SubResource("Animation_qocmp"),
-"Idle": SubResource("Animation_bcvgj"),
-"IdleToRun": SubResource("Animation_g3wmw"),
-"Run": SubResource("Animation_j8dwr")
+&"Default": SubResource("Animation_0h6lc"),
+&"Die": SubResource("Animation_qocmp"),
+&"Idle": SubResource("Animation_bcvgj"),
+&"IdleToRun": SubResource("Animation_g3wmw"),
+&"Run": SubResource("Animation_j8dwr")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
@@ -2970,8 +2970,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h01g1"]
 _data = {
-"FadeOut": SubResource("Animation_p8jyj"),
-"RESET": SubResource("Animation_y2854")
+&"FadeOut": SubResource("Animation_p8jyj"),
+&"RESET": SubResource("Animation_y2854")
 }
 
 [node name="EnemyBase" type="CharacterBody3D" groups=["enemy"]]
@@ -3194,7 +3194,7 @@ skin = SubResource("Skin_2rt2e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ghost"]
 libraries = {
-"": SubResource("AnimationLibrary_60pai")
+&"": SubResource("AnimationLibrary_60pai")
 }
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -3271,7 +3271,7 @@ shape = SubResource("CapsuleShape3D_sp0hg")
 
 [node name="FadeAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_h01g1")
+&"": SubResource("AnimationLibrary_h01g1")
 }
 autoplay = "RESET"
 

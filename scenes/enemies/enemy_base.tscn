@@ -1,14 +1,14 @@
 [gd_scene load_steps=25 format=4 uid="uid://78h1btx4mad8"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_77wm7"]
-[ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="2_j1e2k"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyFollow.gd" id="3_funnq"]
+[ext_resource type="Script" uid="uid://b68ncw5it16w3" path="res://scripts/enemies/enemy_base.gd" id="1_77wm7"]
+[ext_resource type="Script" uid="uid://doevx7k07bn1p" path="res://scripts/enemies/state_machine.gd" id="2_j1e2k"]
+[ext_resource type="Script" uid="uid://edc62ua5a226" path="res://scripts/enemies/states/EnemyFollow.gd" id="3_funnq"]
 [ext_resource type="PackedScene" uid="uid://ck8r7tqyegby4" path="res://scenes/enemies/attack_range_types/attack_area_01.tscn" id="3_jr2rb"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="3_yihnw"]
+[ext_resource type="Script" uid="uid://cptih1uj7h8aw" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="3_yihnw"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="4_lxshi"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyMeleeAttack.gd" id="6_3nl6f"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_1pqdv"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="8_may7e"]
+[ext_resource type="Script" uid="uid://ic6s2qxb1ahw" path="res://scripts/enemies/states/EnemyMeleeAttack.gd" id="6_3nl6f"]
+[ext_resource type="Script" uid="uid://drbdvf2k46ekh" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_1pqdv"]
+[ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="8_may7e"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="9_hxt3u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx4au"]
@@ -2853,11 +2853,11 @@ tracks/74/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_60pai"]
 _data = {
-"Default": SubResource("Animation_0h6lc"),
-"Die": SubResource("Animation_qocmp"),
-"Idle": SubResource("Animation_bcvgj"),
-"IdleToRun": SubResource("Animation_g3wmw"),
-"Run": SubResource("Animation_j8dwr")
+&"Default": SubResource("Animation_0h6lc"),
+&"Die": SubResource("Animation_qocmp"),
+&"Idle": SubResource("Animation_bcvgj"),
+&"IdleToRun": SubResource("Animation_g3wmw"),
+&"Run": SubResource("Animation_j8dwr")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]

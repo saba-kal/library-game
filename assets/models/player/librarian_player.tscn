@@ -5562,18 +5562,18 @@ tracks/63/keys = PackedFloat32Array(0, 1, 0.051475, -0.0294874, 0.650936, 0.7568
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7l1qs"]
 _data = {
-"Attack1": SubResource("Animation_y82am"),
-"Attack2": SubResource("Animation_ubn76"),
-"Attack3": SubResource("Animation_c43t7"),
-"Block": SubResource("Animation_p4idw"),
-"Dash": SubResource("Animation_up27b"),
-"Default": SubResource("Animation_idttf"),
-"Die": SubResource("Animation_ove4f"),
-"Idle": SubResource("Animation_fnh3m"),
-"Idle2": SubResource("Animation_mh23w"),
-"Ouchie": SubResource("Animation_d5c7i"),
-"Run": SubResource("Animation_drm8u"),
-"Walk": SubResource("Animation_hhcb4")
+&"Attack1": SubResource("Animation_y82am"),
+&"Attack2": SubResource("Animation_ubn76"),
+&"Attack3": SubResource("Animation_c43t7"),
+&"Block": SubResource("Animation_p4idw"),
+&"Dash": SubResource("Animation_up27b"),
+&"Default": SubResource("Animation_idttf"),
+&"Die": SubResource("Animation_ove4f"),
+&"Idle": SubResource("Animation_fnh3m"),
+&"Idle2": SubResource("Animation_mh23w"),
+&"Ouchie": SubResource("Animation_d5c7i"),
+&"Run": SubResource("Animation_drm8u"),
+&"Walk": SubResource("Animation_hhcb4")
 }
 
 [node name="LibrarianPlayer" instance=ExtResource("1_888de")]

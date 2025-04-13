@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dojokgkhtxgpj"]
 
-[ext_resource type="Script" path="res://scripts/enemies/bosses/placeholder_boss.gd" id="1_aim8n"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="1_r5fqv"]
+[ext_resource type="Script" uid="uid://bgqs1nu48k72q" path="res://scripts/enemies/bosses/placeholder_boss.gd" id="1_aim8n"]
+[ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="1_r5fqv"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="2_vw23e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_udix6"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c2eyb87rkl1af"]
 
-[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="1_7vmtq"]
-[ext_resource type="Script" path="res://scripts/gui/inventory/inventory.gd" id="1_p4hqu"]
+[ext_resource type="Shader" uid="uid://c73v4e4ck57ri" path="res://assets/shaders/blur.gdshader" id="1_7vmtq"]
+[ext_resource type="Script" uid="uid://bg0346msjl1mt" path="res://scripts/gui/inventory/inventory.gd" id="1_p4hqu"]
 [ext_resource type="PackedScene" uid="uid://ddf26l5qky7kq" path="res://scenes/gui/inventory/inventory_slot.tscn" id="2_t5uua"]
 [ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="3_006ll"]
 [ext_resource type="Texture2D" uid="uid://byy0xv7ddsam7" path="res://assets/textures/GUI/skull_key_icon.png" id="4_7ytl4"]

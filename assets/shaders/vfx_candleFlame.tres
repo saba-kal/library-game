@@ -78,7 +78,7 @@ uniform sampler2D Flame_Texture;
 uniform vec2 Dissolve_Tiling = vec2(0.000000, 0.000000);
 uniform vec2 Dissolve_Speed = vec2(0.000000, 0.000000);
 uniform sampler2D Dissolve_Texture;
-uniform float Dissolve_Amount : hint_range(0, 1) = 0;
+uniform float Dissolve_Amount : hint_range(0.0, 1.0) = 0.0;
 
 
 

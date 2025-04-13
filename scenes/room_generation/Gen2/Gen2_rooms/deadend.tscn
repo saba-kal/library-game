@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvgbbactdrqq3"]
 
 [ext_resource type="PackedScene" uid="uid://eq1r6t2d1w4h" path="res://scenes/room_generation/Gen2/Gen2_rooms/map_room_base.tscn" id="1_4ul5t"]
-[ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_variation.gd" id="2_3tcto"]
+[ext_resource type="Script" uid="uid://bbdelyc670i6h" path="res://scripts/room_generation/Gen2/room_variation.gd" id="2_3tcto"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_4ljm8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh4ln"]

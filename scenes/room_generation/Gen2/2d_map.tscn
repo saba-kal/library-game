@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7xo88hoefhrx"]
 
-[ext_resource type="Script" path="res://scripts/room_generation/Gen2/2d_map.gd" id="1_q4he5"]
+[ext_resource type="Script" uid="uid://cuuxnyk4l8b2p" path="res://scripts/room_generation/Gen2/2d_map.gd" id="1_q4he5"]
 [ext_resource type="Texture2D" uid="uid://dlx2eao110muy" path="res://assets/map/rooms/map_piece_sheet.png" id="2_ygdkr"]
-[ext_resource type="Script" path="res://scripts/gui/minimap/minimap_camera.gd" id="3_v8njo"]
+[ext_resource type="Script" uid="uid://c71iap5fsqlqt" path="res://scripts/gui/minimap/minimap_camera.gd" id="3_v8njo"]
 [ext_resource type="Texture2D" uid="uid://hh3mmimh03fa" path="res://assets/textures/common/circle_64x64_white.png" id="4_iyalh"]
 [ext_resource type="Texture2D" uid="uid://b26mq80nysnge" path="res://assets/textures/GUI/simple_skull_icon.png" id="5_45fh6"]
 

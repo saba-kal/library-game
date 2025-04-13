@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6vvohmvqgluo"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/boss_key.gd" id="1_l1442"]
+[ext_resource type="Script" uid="uid://vi2dhx00cocl" path="res://scripts/collectibles/boss_key.gd" id="1_l1442"]
 [ext_resource type="PackedScene" uid="uid://dmeimln03low1" path="res://scenes/collectibles/collectible_area.tscn" id="2_n4c7l"]
 [ext_resource type="PackedScene" uid="uid://dj8eus3jbld5a" path="res://scenes/collectibles/animated_key.tscn" id="3_146pk"]
 

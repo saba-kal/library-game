@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://ciklhn74hbvm0"]
 
 [ext_resource type="Material" uid="uid://d0kly60isponb" path="res://assets/materials/level_components/door_material.tres" id="1_1gbqd"]
-[ext_resource type="Script" path="res://scripts/level_components/door.gd" id="1_4gleq"]
-[ext_resource type="Script" path="res://scripts/components/interactable.gd" id="3_tlijs"]
+[ext_resource type="Script" uid="uid://ckfptl2wppfjl" path="res://scripts/level_components/door.gd" id="1_4gleq"]
+[ext_resource type="Script" uid="uid://dxebptgd3gagf" path="res://scripts/components/interactable.gd" id="3_tlijs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xqqdj"]
 size = Vector3(2, 4, 0.2)
@@ -85,8 +85,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icxb1"]
 _data = {
-"RESET": SubResource("Animation_xr48c"),
-"open_door": SubResource("Animation_4n6bc")
+&"RESET": SubResource("Animation_xr48c"),
+&"open_door": SubResource("Animation_4n6bc")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3lvr"]

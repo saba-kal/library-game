@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://x7inf5bnoarf"]
 
-[ext_resource type="Script" path="res://core/audio/scripts/footstep_sounds.gd" id="1_kyd2g"]
+[ext_resource type="Script" uid="uid://brkc3bx6nu5xj" path="res://core/audio/scripts/footstep_sounds.gd" id="1_kyd2g"]
 
 [node name="FootstepSounds" type="Node3D"]
 script = ExtResource("1_kyd2g")

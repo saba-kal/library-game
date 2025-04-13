@@ -1,21 +1,21 @@
 [gd_scene load_steps=25 format=3 uid="uid://7yehwqmtemgc"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_cerqe"]
+[ext_resource type="Script" uid="uid://b68ncw5it16w3" path="res://scripts/enemies/enemy_base.gd" id="1_cerqe"]
 [ext_resource type="PackedScene" uid="uid://b1k280sk13w1h" path="res://assets/models/enemies/witch/Witch.glb" id="2_hanny"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="2_jbiju"]
-[ext_resource type="Script" path="res://scripts/enemies/state_machine.gd" id="3_3cfia"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_mdmcg"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyProjectileAttack.gd" id="7_34df8"]
+[ext_resource type="Script" uid="uid://doevx7k07bn1p" path="res://scripts/enemies/state_machine.gd" id="3_3cfia"]
+[ext_resource type="Script" uid="uid://cptih1uj7h8aw" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_mdmcg"]
+[ext_resource type="Script" uid="uid://c5kihaxutdaqu" path="res://scripts/enemies/states/EnemyProjectileAttack.gd" id="7_34df8"]
 [ext_resource type="PackedScene" uid="uid://dtpbu0o2ok0el" path="res://scenes/projectiles/WitchAttackProjectile.tscn" id="8_b80v8"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_ierxw"]
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="9_gh56d"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemySpawnAttack.gd" id="9_jk8ff"]
-[ext_resource type="Script" path="res://scripts/enemies/states/EnemyRunAway.gd" id="9_nsdnq"]
+[ext_resource type="Script" uid="uid://drbdvf2k46ekh" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_ierxw"]
+[ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="9_gh56d"]
+[ext_resource type="Script" uid="uid://08r0tnbpulcv" path="res://scripts/enemies/states/EnemySpawnAttack.gd" id="9_jk8ff"]
+[ext_resource type="Script" uid="uid://b3gppxtk7xelt" path="res://scripts/enemies/states/EnemyRunAway.gd" id="9_nsdnq"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="10_7sgkp"]
 [ext_resource type="PackedScene" uid="uid://3symoni7x23e" path="res://scenes/effects/WitchGroundSpellEffect.tscn" id="10_xqd0x"]
 [ext_resource type="PackedScene" uid="uid://x7inf5bnoarf" path="res://core/audio/scenes/footstep_sounds.tscn" id="14_rdgpp"]
 [ext_resource type="PackedScene" uid="uid://hghcty7xxqww" path="res://core/audio/scenes/random_interval_sounds.tscn" id="15_if0gs"]
-[ext_resource type="Script" path="res://scripts/general/damage_flicker.gd" id="16_31icd"]
+[ext_resource type="Script" uid="uid://b15uemiuovvjh" path="res://scripts/general/damage_flicker.gd" id="16_31icd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
 height = 2.5
@@ -1811,12 +1811,12 @@ tracks/41/keys = PackedFloat32Array(0, 1, -0.086117, 0.0236013, -0.0257449, 0.99
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uqasu"]
 _data = {
-"Attack1": SubResource("Animation_tyyd1"),
-"Attack2": SubResource("Animation_87ugp"),
-"Death": SubResource("Animation_37gha"),
-"Default": SubResource("Animation_2xv5s"),
-"Stand_Idle": SubResource("Animation_t57pg"),
-"Walk": SubResource("Animation_0fckd")
+&"Attack1": SubResource("Animation_tyyd1"),
+&"Attack2": SubResource("Animation_87ugp"),
+&"Death": SubResource("Animation_37gha"),
+&"Default": SubResource("Animation_2xv5s"),
+&"Stand_Idle": SubResource("Animation_t57pg"),
+&"Walk": SubResource("Animation_0fckd")
 }
 
 [node name="WitchEnemy" type="CharacterBody3D" groups=["enemy"]]

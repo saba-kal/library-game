@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfl24oxfwtyci"]
 
-[ext_resource type="Script" path="res://scripts/enemies/detection_types/cone_detector.gd" id="1_i6ik6"]
+[ext_resource type="Script" uid="uid://cle6hu504bv33" path="res://scripts/enemies/detection_types/cone_detector.gd" id="1_i6ik6"]
 
 [node name="ConeDetection" type="Area3D"]
 collision_layer = 0

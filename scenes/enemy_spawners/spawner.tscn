@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ct6c113whbe47"]
 
-[ext_resource type="Script" path="res://scenes/enemy_spawners/spawner.gd" id="1_623fv"]
-[ext_resource type="Script" path="res://scenes/enemy_spawners/enemy_spawn_chance.gd" id="2_l434i"]
+[ext_resource type="Script" uid="uid://g0ck57v3cfqq" path="res://scenes/enemy_spawners/spawner.gd" id="1_623fv"]
+[ext_resource type="Script" uid="uid://cchpqcfbboast" path="res://scenes/enemy_spawners/enemy_spawn_chance.gd" id="2_l434i"]
 [ext_resource type="Resource" uid="uid://dbpsqqwtwgwx6" path="res://scenes/enemy_spawners/enemies/witch.tres" id="3_wg51n"]
 [ext_resource type="Resource" uid="uid://dc1mhd42mfyf8" path="res://scenes/enemy_spawners/enemies/ghost.tres" id="4_25cev"]
 [ext_resource type="Resource" uid="uid://cotiu4gkb7cvd" path="res://scenes/enemy_spawners/enemies/werewolf.tres" id="5_5yq7b"]

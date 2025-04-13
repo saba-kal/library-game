@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgdg5y0ec727w"]
 
-[ext_resource type="Script" path="res://scripts/gui/settings_menu.gd" id="1_7gm8v"]
+[ext_resource type="Script" uid="uid://3en5ckilnf7d" path="res://scripts/gui/settings_menu.gd" id="1_7gm8v"]
 [ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="2_74jfj"]
 [ext_resource type="PackedScene" uid="uid://bd7dpdh8afywi" path="res://scenes/gui/common/menu_nav_button.tscn" id="3_o3mwo"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://eq1r6t2d1w4h" path="res://scenes/room_generation/Gen2/Gen2_rooms/map_room_base.tscn" id="1_mp7q4"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="2_0x3gu"]
-[ext_resource type="Script" path="res://scripts/room_generation/Gen2/room_variation.gd" id="2_p5t1w"]
+[ext_resource type="Script" uid="uid://bbdelyc670i6h" path="res://scripts/room_generation/Gen2/room_variation.gd" id="2_p5t1w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh4ln"]
 albedo_color = Color(0.046, 0.0469, 0.1, 1)

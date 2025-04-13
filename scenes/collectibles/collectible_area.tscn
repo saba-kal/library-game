@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmeimln03low1"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/collectible.gd" id="1_kimuk"]
+[ext_resource type="Script" uid="uid://no660sh7m6vi" path="res://scripts/collectibles/collectible.gd" id="1_kimuk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6r6y0"]
 

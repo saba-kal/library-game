@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://dgr87eq5sqdxr"]
 
-[ext_resource type="Script" path="res://scripts/room_generation/zone_generator.gd" id="1_txysj"]
+[ext_resource type="Script" uid="uid://bkwwrkpptujt8" path="res://scripts/room_generation/zone_generator.gd" id="1_txysj"]
 [ext_resource type="PackedScene" uid="uid://bvyba7ar7v6y7" path="res://scenes/room_generation/startroom.tscn" id="1_wysce"]
 [ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="3_pnxei"]
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="4_t52vg"]
-[ext_resource type="Script" path="res://scripts/room_generation/room_chooser.gd" id="5_0hsy6"]
+[ext_resource type="Script" uid="uid://biy5ki3kuxbw" path="res://scripts/room_generation/room_chooser.gd" id="5_0hsy6"]
 [ext_resource type="PackedScene" uid="uid://bqvnkqggf43k2" path="res://scenes/room_generation/open_room.tscn" id="6_h28ik"]
 [ext_resource type="PackedScene" uid="uid://b4kwo11i2r5mc" path="res://scenes/room_generation/dead_end.tscn" id="7_4jkg7"]
 [ext_resource type="PackedScene" uid="uid://byx5aq0e5vjbh" path="res://scenes/room_generation/tunnel_straight.tscn" id="8_2lbai"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddf26l5qky7kq"]
 
-[ext_resource type="Script" path="res://scripts/gui/inventory/inventory_slot.gd" id="1_r2bxp"]
+[ext_resource type="Script" uid="uid://dyyrwt0a8jv64" path="res://scripts/gui/inventory/inventory_slot.gd" id="1_r2bxp"]
 [ext_resource type="Texture2D" uid="uid://dqsxsip8whjvn" path="res://assets/textures/GUI/key_icon.png" id="2_dlun0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kirx"]

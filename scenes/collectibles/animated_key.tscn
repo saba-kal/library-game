@@ -66,8 +66,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i3kmh"]
 _data = {
-"RESET": SubResource("Animation_c51jt"),
-"key_spin_anim": SubResource("Animation_cogs4")
+&"RESET": SubResource("Animation_c51jt"),
+&"key_spin_anim": SubResource("Animation_cogs4")
 }
 
 [node name="MeshInstance3D" type="MeshInstance3D"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemySpawnChance" load_steps=2 format=3 uid="uid://dbpsqqwtwgwx6"]
 
-[ext_resource type="Script" path="res://scenes/enemy_spawners/enemy_spawn_chance.gd" id="1_thvos"]
+[ext_resource type="Script" uid="uid://cchpqcfbboast" path="res://scenes/enemy_spawners/enemy_spawn_chance.gd" id="1_thvos"]
 
 [resource]
 script = ExtResource("1_thvos")

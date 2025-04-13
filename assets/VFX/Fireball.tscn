@@ -7,14 +7,14 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qepup"]
 render_priority = 0
 shader = ExtResource("1_uhj3n")
+shader_parameter/Flame_Texture = ExtResource("3_kt1u1")
 shader_parameter/Dissolve_Tiling = Vector2(0, 0)
 shader_parameter/Dissolve_Speed = Vector2(0, 0)
-shader_parameter/Dissolve_Amount = 0.0
-shader_parameter/Flame_Texture = ExtResource("3_kt1u1")
 shader_parameter/Dissolve_Texture = ExtResource("2_do42m")
+shader_parameter/Dissolve_Amount = 0.0
 
 [sub_resource type="Curve" id="Curve_j0s74"]
-max_value = 15.0
+_limits = [0.0, 15.0, 0.0, 1.0]
 _data = [Vector2(0.775424, 15), 0.0, 0.0, 0, 0]
 point_count = 1
 
@@ -48,7 +48,7 @@ emission_curve = SubResource("CurveTexture_f0swr")
 [sub_resource type="QuadMesh" id="QuadMesh_b1fly"]
 
 [sub_resource type="Curve" id="Curve_pxkga"]
-max_value = 15.0
+_limits = [0.0, 15.0, 0.0, 1.0]
 _data = [Vector2(0.510593, 9.4374), 0.0, 0.0, 0, 0]
 point_count = 1
 

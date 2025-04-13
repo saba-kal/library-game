@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hghcty7xxqww"]
 
-[ext_resource type="Script" path="res://core/audio/scripts/random_interval_sounds.gd" id="1_y6sv4"]
+[ext_resource type="Script" uid="uid://cf6hii1bfisf3" path="res://core/audio/scripts/random_interval_sounds.gd" id="1_y6sv4"]
 
 [node name="RandomIntervalSounds" type="Node3D"]
 script = ExtResource("1_y6sv4")
