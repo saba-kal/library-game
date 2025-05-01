@@ -22,6 +22,7 @@ enum ROOM_DIRECTION{
 @onready var spawners: Node = $Spawners
 
 var nav_region : NavigationRegion3D
+var room_controller: RoomController
 
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
@@ -37,6 +38,8 @@ func _ready() -> void:
 		west_door
 	]
 	update_door_directions()
+	self.room_controller = Util.get_child_node_of_type(self, RoomController)
+	SignalBus.player_moved_to_room.connect(self.on_player_moved_to_room)
 
 ## Rotates room <x amount> of times.
 func rotate_room(times:int) -> void:
@@ -80,3 +83,7 @@ func bake_nav_mesh():
 	nav_region.navigation_mesh.geometry_source_geometry_mode = NavigationMesh.SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN
 	nav_region.navigation_mesh.geometry_source_group_name = "nav_mesh_group"
 	nav_region.bake_navigation_mesh()
+
+func on_player_moved_to_room(room: RoomVariation) -> void:
+	if self.room_controller && room == self:
+		self.room_controller.initialize_on_player_enter()

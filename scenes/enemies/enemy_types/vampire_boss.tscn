@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://xp0gidy6uon3"]
+
+[ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="1_6xx03"]
+[ext_resource type="Script" uid="uid://ch3og1mwiey8d" path="res://scripts/enemies/bosses/vampire_boss.gd" id="1_gd3kv"]
+[ext_resource type="PackedScene" uid="uid://b6vvohmvqgluo" path="res://scenes/collectibles/boss_key.tscn" id="2_3fxfl"]
+[ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="2_b23x5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gd3kv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3fxfl"]
+
+[node name="VampireBoss" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_gd3kv")
+reward_on_death = ExtResource("2_3fxfl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_gd3kv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_3fxfl")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("1_6xx03")
+maximum = 20
+metadata/_custom_type_script = "uid://dkwymbe0v5ypi"
+
+[node name="HeathBar3D" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_b23x5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46456, 0)
+health = NodePath("../Health")
