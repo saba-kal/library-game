@@ -1878,7 +1878,7 @@ transform = Transform3D(0.0317051, -0.00582397, 0.0185033, 0.00204503, 0.34451, 
 
 [node name="AnimationPlayer" parent="Witch" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_uqasu")
+&"": SubResource("AnimationLibrary_uqasu")
 }
 
 [node name="ConeDetection" parent="Witch" instance=ExtResource("2_jbiju")]

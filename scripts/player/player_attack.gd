@@ -102,6 +102,7 @@ func done() -> void:
 
 func add_hit_bodies() -> void:
 	for body in hit_area.get_overlapping_bodies():
+		printt(body.name, body.is_in_group("enemy"), body.has_meta("damageable"))
 		if body.is_in_group("enemy"):
 			if body.has_meta("damageable"):
 				hit_bodies.get_or_add(body)

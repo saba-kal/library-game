@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://xp0gidy6uon3"]
+
+[ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="1_6xx03"]
+[ext_resource type="Script" uid="uid://ch3og1mwiey8d" path="res://scripts/enemies/bosses/vampire_boss/vampire_boss.gd" id="1_gd3kv"]
+[ext_resource type="PackedScene" uid="uid://b6vvohmvqgluo" path="res://scenes/collectibles/boss_key.tscn" id="2_3fxfl"]
+[ext_resource type="Script" uid="uid://c1deb1ha44csd" path="res://scripts/enemies/bosses/vampire_boss/vampire_projectile_state.gd" id="3_3fxfl"]
+[ext_resource type="PackedScene" uid="uid://c0jqrpvcb2xdk" path="res://assets/VFX/Boss_Candle_Flame.tscn" id="3_uy21t"]
+[ext_resource type="Script" uid="uid://cruvp6iaya4rv" path="res://scripts/enemies/bosses/vampire_boss/vampire_entrance_state.gd" id="4_4ps6q"]
+[ext_resource type="PackedScene" uid="uid://dtpbu0o2ok0el" path="res://scenes/projectiles/WitchAttackProjectile.tscn" id="5_4biun"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gd3kv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3fxfl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4biun"]
+albedo_color = Color(1, 0.33, 0.33, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_palif"]
+size = Vector3(0.455, 0.34, 0.395)
+
+[sub_resource type="Animation" id="Animation_4ps6q"]
+resource_name = "Run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uy21t"]
+_data = {
+&"Run": SubResource("Animation_4ps6q")
+}
+
+[node name="VampireBoss" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_gd3kv")
+boss_name = "Count Montague"
+reward_on_death = ExtResource("2_3fxfl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_gd3kv")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_3fxfl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4biun")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482321, -0.32865)
+mesh = SubResource("BoxMesh_palif")
+
+[node name="BossCandleFlame" parent="Visuals" instance=ExtResource("3_uy21t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70525, 2.00668, 0)
+
+[node name="BossCandleFlame2" parent="Visuals" instance=ExtResource("3_uy21t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.683879, 2.00668, 0)
+
+[node name="BossCandleFlame3" parent="Visuals" instance=ExtResource("3_uy21t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00427443, 2.00668, 0.73517)
+
+[node name="BossCandleFlame4" parent="Visuals" instance=ExtResource("3_uy21t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00427443, 2.00668, -0.713799)
+visible = false
+
+[node name="States" type="Node" parent="."]
+
+[node name="Projectile" type="Node" parent="States" node_paths=PackedStringArray("nav_agent", "boss", "projectile_spawn_point")]
+script = ExtResource("3_3fxfl")
+nav_agent = NodePath("../../NavigationAgent3D")
+boss = NodePath("../..")
+projectile_scene = ExtResource("5_4biun")
+projectile_spawn_point = NodePath("../../Marker3D")
+
+[node name="Entrance" type="Node" parent="States" node_paths=PackedStringArray("boss")]
+script = ExtResource("4_4ps6q")
+boss = NodePath("../..")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("1_6xx03")
+maximum = 20
+metadata/_custom_type_script = "uid://dkwymbe0v5ypi"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uy21t")
+}
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36206, -1.3825)
