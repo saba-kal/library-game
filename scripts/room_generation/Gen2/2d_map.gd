@@ -37,6 +37,7 @@ var currently_generating:bool = false
 var failsafe_activated:bool = true
 var valid_cell_count:int = 0
 var boss_cell:Vector2i
+var player_location:Vector2i
 
 func _ready() -> void:
 	player_location_sprite.visible = false
@@ -122,6 +123,7 @@ func generation_info() -> Array[RoomData]:
 func set_player_position(tile_map_pos: Vector2i):
 	player_location_sprite.position = tile_map_layer.map_to_local(tile_map_pos)
 	player_location_sprite.visible = true
+	player_location = tile_map_pos
 
 func add_deadend_room_to_tile_pos(tile_map_pos: Vector2i) -> Vector2i:
 	var north_offset: Vector2i = Vector2i(0, -1)
@@ -193,7 +195,7 @@ func add_deadend_room_to_tile_pos(tile_map_pos: Vector2i) -> Vector2i:
 
 func on_player_moved_to_room(room: RoomVariation):
 	set_player_position(room.tile_position)
-	room.activate_spawners()
+	room.enter_room_spawn()
 
 func _on_failsafe_timer_timeout() -> void:
 	failsafe_activated = true

@@ -12,4 +12,20 @@ func goto_vampire() -> String:
 	var player: Node3D = self.get_tree().get_first_node_in_group("player")
 	player.position = room.position
 	SignalBus.player_moved_to_room.emit(room)
-	return "went to vampire"
+	return "Went to vampire"
+
+func despawn_enemies() -> String:
+	var floor = get_tree().current_scene
+	if floor.has_method("spawn_rooms"):
+		var room: RoomVariation = floor.room_dictionary[floor.map.player_location]
+		room.despawn()
+		return "Despawned enemies"
+	return "Invalid location"
+
+func spawn_enemies() -> String:
+	var floor = get_tree().current_scene
+	if floor.has_method("spawn_rooms"):
+		var room: RoomVariation = floor.room_dictionary[floor.map.player_location]
+		room.activate_spawners()
+		return "Spawned Enemies"
+	return "Invalid Location"

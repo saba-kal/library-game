@@ -233,6 +233,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_74jfj")
 item_count = 1
 popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
 
 [node name="OkButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_o3mwo")]
 unique_name_in_owner = true
