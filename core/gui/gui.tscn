@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1pi1kgma618d"]
+[gd_scene load_steps=17 format=3 uid="uid://d1pi1kgma618d"]
 
 [ext_resource type="Script" uid="uid://cxisi2yblv1ug" path="res://core/gui/gui.gd" id="1_ds54n"]
 [ext_resource type="Shader" uid="uid://c73v4e4ck57ri" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b33kcp1b57awf" path="res://assets/textures/GUI/player_icon_placeholder.png" id="3_eyey0"]
 [ext_resource type="PackedScene" uid="uid://cy6ic2npxa53k" path="res://scenes/gui/heart_icon.tscn" id="5_5kxef"]
 [ext_resource type="PackedScene" uid="uid://c2eyb87rkl1af" path="res://scenes/gui/inventory/inventory.tscn" id="5_mwy2m"]
+[ext_resource type="Script" uid="uid://cm28u05ny6twb" path="res://scripts/gui/boss_health_bar.gd" id="6_a22y1"]
+[ext_resource type="PackedScene" uid="uid://cd7ku1ntwth6u" path="res://scenes/gui/health_progress_bar.tscn" id="6_ce05j"]
+[ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="7_a22y1"]
 [ext_resource type="PackedScene" uid="uid://bd7dpdh8afywi" path="res://scenes/gui/common/menu_nav_button.tscn" id="7_ube1n"]
+[ext_resource type="Texture2D" uid="uid://b26mq80nysnge" path="res://assets/textures/GUI/simple_skull_icon.png" id="8_hut4s"]
 [ext_resource type="PackedScene" uid="uid://bgdg5y0ec727w" path="res://scenes/gui/settings_menu/settings_menu.tscn" id="8_xu1a1"]
 [ext_resource type="PackedScene" uid="uid://trdgk7ggai0g" path="res://scenes/debug/debug_console.tscn" id="9_7vfty"]
 
@@ -21,6 +25,12 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_4jwg1"]
+font = ExtResource("7_a22y1")
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t76s2"]
 shader = ExtResource("1_iooxw")
@@ -130,6 +140,63 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yar5l")
 
+[node name="BossHealth" type="Control" parent="." node_paths=PackedStringArray("progress_bar", "boss_name_label")]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -86.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("6_a22y1")
+progress_bar = NodePath("HealthProgressBar")
+boss_name_label = NodePath("HealthProgressBar/Label")
+
+[node name="HealthProgressBar" parent="BossHealth" instance=ExtResource("6_ce05j")]
+layout_mode = 1
+offset_left = -266.0
+offset_top = -18.5
+offset_right = 266.0
+offset_bottom = 18.5
+
+[node name="Label" type="Label" parent="BossHealth/HealthProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -18.5
+offset_right = 81.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BOSS NAME "
+label_settings = SubResource("LabelSettings_4jwg1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BossHealth"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -22.0
+offset_right = -273.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_hut4s")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="DeathMessage" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -225,6 +292,7 @@ visible = false
 layout_mode = 1
 
 [node name="DebugConsole" parent="." instance=ExtResource("9_7vfty")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME" to="." method="resume_pressed"]

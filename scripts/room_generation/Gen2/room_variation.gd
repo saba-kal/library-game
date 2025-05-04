@@ -23,6 +23,7 @@ enum ROOM_DIRECTION{
 
 var nav_region : NavigationRegion3D
 var room_controller: RoomController
+var is_player_inside_room: bool = false
 
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
@@ -85,5 +86,10 @@ func bake_nav_mesh():
 	nav_region.bake_navigation_mesh()
 
 func on_player_moved_to_room(room: RoomVariation) -> void:
-	if self.room_controller && room == self:
-		self.room_controller.initialize_on_player_enter()
+	if self.room_controller:
+		if room == self:
+			self.is_player_inside_room = true
+			self.room_controller.on_player_enter()
+		elif self.is_player_inside_room:
+			self.is_player_inside_room = false
+			self.room_controller.on_player_exit()

@@ -25,7 +25,7 @@ func remove_elem(array: Array, elem: Variant) -> bool:
 
 func rotate_y_to_face_direction(node: Node3D, direction: Vector3, delta: float) -> void:
 	var target_rotation = atan2(direction.x, direction.z)
-	node.rotation.y = lerp_angle(node.rotation.y, target_rotation, delta)
+	node.global_rotation.y = lerp_angle(node.global_rotation.y, target_rotation, delta)
 
 
 func get_random_point_on_circle(radius: float) -> Vector2:
