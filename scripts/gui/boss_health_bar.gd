@@ -9,6 +9,7 @@ var health: Health
 func _ready() -> void:
 	self.visible = false
 	SignalBus.player_entered_boss_room.connect(on_player_entered_boss_room)
+	SignalBus.player_exited_boss_room.connect(on_player_exited_boss_room)
 
 
 func on_player_entered_boss_room(boss: Boss):

@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0jqrpvcb2xdk"]
+[gd_scene load_steps=16 format=3 uid="uid://c0jqrpvcb2xdk"]
 
 [ext_resource type="Shader" uid="uid://ltuiayryw52o" path="res://assets/shaders/vfx_candleFlame.tres" id="1_rmydb"]
+[ext_resource type="Script" uid="uid://7of54hqx0ht8" path="res://core/particles/particle_effect_player.gd" id="1_u1fcd"]
 [ext_resource type="Texture2D" uid="uid://btw14vn7ekvgl" path="res://assets/textures/effects/Dissolve_Texture_1.png" id="2_u1fcd"]
 [ext_resource type="Texture2D" uid="uid://rcyjavt0fq83" path="res://assets/textures/effects/Flame_1.png" id="3_6cesg"]
 
@@ -82,10 +83,9 @@ color = Color(0.92, 0.7084, 0.7084, 1)
 emission_curve = SubResource("CurveTexture_f0swr")
 
 [node name="BossCandleFlame" type="Node3D"]
+script = ExtResource("1_u1fcd")
 
-[node name="vfx_candleFlame_2" type="Node3D" parent="."]
-
-[node name="Dissipating_Flames_1" type="GPUParticles3D" parent="vfx_candleFlame_2"]
+[node name="Dissipating_Flames_1" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_qepup")
 cast_shadow = 0
 amount = 40
@@ -93,7 +93,7 @@ lifetime = 1.4
 process_material = SubResource("ParticleProcessMaterial_onk0q")
 draw_pass_1 = SubResource("QuadMesh_b1fly")
 
-[node name="Dissipating_Flames_2" type="GPUParticles3D" parent="vfx_candleFlame_2"]
+[node name="Dissipating_Flames_2" type="GPUParticles3D" parent="."]
 sorting_offset = -1.0
 material_override = SubResource("ShaderMaterial_qepup")
 cast_shadow = 0
@@ -102,7 +102,7 @@ lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_gps41")
 draw_pass_1 = SubResource("QuadMesh_b1fly")
 
-[node name="Dissipating_Flames_3" type="GPUParticles3D" parent="vfx_candleFlame_2"]
+[node name="Dissipating_Flames_3" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0160542, 0)
 sorting_offset = 1.0
 material_override = SubResource("ShaderMaterial_qepup")

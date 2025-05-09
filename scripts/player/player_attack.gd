@@ -90,6 +90,7 @@ func swing_complete() -> void:
 	wind_down_timer.start(wind_down_period)
 	if queued_attack and next_attack:
 		finished.emit(next_attack.get_path(), {'direction': last_dir})
+	hit_bodies = {}
 
 func swing_start() -> void:
 	character.constant_velocity(distance / swing_duration)
@@ -102,7 +103,6 @@ func done() -> void:
 
 func add_hit_bodies() -> void:
 	for body in hit_area.get_overlapping_bodies():
-		printt(body.name, body.is_in_group("enemy"), body.has_meta("damageable"))
 		if body.is_in_group("enemy"):
 			if body.has_meta("damageable"):
 				hit_bodies.get_or_add(body)

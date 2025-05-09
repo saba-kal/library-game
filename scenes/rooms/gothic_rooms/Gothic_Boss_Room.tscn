@@ -605,7 +605,7 @@ light_energy = 6.0
 spot_range = 20.0
 
 [node name="VampireBoss" parent="." index="16" instance=ExtResource("4_kdx7k")]
-transform = Transform3D(-0.999937, 0, 0.00952323, 0, 0.999987, 0, -0.00952327, 0, -0.999941, 0.249, 0, 0.269)
+transform = Transform3D(-0.999937, 0, 0.00952323, 0, 0.999987, 0, -0.00952327, 0, -0.999941, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="17"]
 libraries = {

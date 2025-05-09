@@ -13,6 +13,7 @@ extends BossState
 @export var projectile_speed: float = 10.0
 @export var angle_between_projectiles: float = 15.0
 @export var projectile_spawn_point: Marker3D
+@export var animation_tree: AnimationTree
 
 var player: Player
 var time_since_last_attack: float = 0.0
@@ -22,6 +23,7 @@ func Enter() -> void:
 	time_since_last_attack = 0
 	if !player:
 		player = self.get_tree().get_first_node_in_group("player")
+	animation_tree.set("parameters/vampire_state/transition_request", "move")
 
 
 func Update(delta: float):
