@@ -24,6 +24,7 @@ enum ROOM_DIRECTION{
 var nav_region : NavigationRegion3D
 var room_controller: RoomController
 var is_player_inside_room: bool = false
+var has_spawned: bool = false
 
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
@@ -69,11 +70,23 @@ func update_door_directions():
 		if doors[i] != null:
 			doors[i].direction = i
 
+func enter_room_spawn():
+	if(!has_spawned):
+		activate_spawners()
+
 func activate_spawners():
 	print("called spawner")
+	has_spawned = true
 	for child in spawners.get_children():
 		if child is EnemySpawner:
 			child.initialize_probabilities()
+
+func despawn():
+	print("called despawner")
+	has_spawned = false
+	for child in spawners.get_children():
+		if child is EnemyBase:
+			child.queue_free()
 
 func bake_nav_mesh():
 	print("baking mesh")
