@@ -25,6 +25,13 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Arr
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"nav_mesh_group"
 
+[sub_resource type="Curve3D" id="Curve3D_kdx7k"]
+_data = {
+"points": PackedVector3Array(-0.1, 0, -10.5, 0.1, 0, 10.5, -24.111, 16, -0.076, -16.3, 0, 0, 16.3, 0, 0, 0, 14, 23, 0, 0, 12, 0, 0, -12, 21, 12, 0, 10.8, 0, -0.3, -10.8, 0, 0.3, -0.097, 10, -16.086, -0.1, 0, -5.4, 0.1, 0, 5.4, -13, 8, 0, -7.2, 0, 0.3, 7.2, 0, -0.3, -0.097, 6, 11.931, 0, 0, 4.6, 0, 0, -4.6, 7.908, 4, 0.407, -0.3, 0, -5, 0.3, 0, 5, 0.249, 0, 0.269),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [sub_resource type="Animation" id="Animation_re8y1"]
 length = 0.001
 tracks/0/type = "value"
@@ -61,13 +68,6 @@ _data = {
 &"RESET": SubResource("Animation_re8y1"),
 &"boss_enter": SubResource("Animation_kdx7k")
 }
-
-[sub_resource type="Curve3D" id="Curve3D_kdx7k"]
-_data = {
-"points": PackedVector3Array(-0.1, 0, -10.5, 0.1, 0, 10.5, -24.111, 16, -0.076, -16.3, 0, 0, 16.3, 0, 0, 0, 14, 23, 0, 0, 12, 0, 0, -12, 21, 12, 0, 10.8, 0, -0.3, -10.8, 0, 0.3, -0.097, 10, -16.086, -0.1, 0, -5.4, 0.1, 0, 5.4, -13, 8, 0, -7.2, 0, 0.3, 7.2, 0, -0.3, -0.097, 6, 11.931, 0, 0, 4.6, 0, 0, -4.6, 7.908, 4, 0.407, -0.3, 0, -5, 0.3, 0, 5, 0.249, 0, 0.269),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 8
 
 [node name="GothicBossRoom" node_paths=PackedStringArray("south_door") instance=ExtResource("1_syfi0")]
 south_door = NodePath("Doors/DoorBot")
@@ -604,15 +604,28 @@ light_color = Color(0.684032, 0.9276, 0.923932, 1)
 light_energy = 6.0
 spot_range = 20.0
 
-[node name="VampireBoss" parent="." index="16" instance=ExtResource("4_kdx7k")]
+[node name="VampireBoss" parent="." index="16" node_paths=PackedStringArray("room_center_marker", "phase_2_minion_positions") instance=ExtResource("4_kdx7k")]
 transform = Transform3D(-0.999937, 0, 0.00952323, 0, 0.999987, 0, -0.00952327, 0, -0.999941, 0, 0, 0)
+room_center_marker = NodePath("../RoomCenterMarker")
+phase_2_minion_positions = [NodePath("../MinionSpawnMarkers/MinionSpawnMarker1"), NodePath("../MinionSpawnMarkers/MinionSpawnMarker2")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="17"]
-libraries = {
-&"": SubResource("AnimationLibrary_q7br1")
-}
+[node name="MinionSpawnMarkers" type="Node3D" parent="." index="17"]
 
-[node name="RoomController" type="Node3D" parent="." index="18" node_paths=PackedStringArray("animation_player", "boss", "path_follow")]
+[node name="MinionSpawnMarker1" type="Marker3D" parent="MinionSpawnMarkers" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="MinionSpawnMarker2" type="Marker3D" parent="MinionSpawnMarkers" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="MinionSpawnMarker3" type="Marker3D" parent="MinionSpawnMarkers" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="MinionSpawnMarker4" type="Marker3D" parent="MinionSpawnMarkers" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="RoomCenterMarker" type="Marker3D" parent="." index="18"]
+
+[node name="RoomController" type="Node3D" parent="." index="19" node_paths=PackedStringArray("animation_player", "boss", "path_follow")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("19_re8y1")
 animation_player = NodePath("../AnimationPlayer")
@@ -626,3 +639,8 @@ curve = SubResource("Curve3D_kdx7k")
 transform = Transform3D(0.999958, 0, 0, 0, 0.999959, 0, 0, 0, 0.999958, -24.111, 16, -0.076)
 rotation_mode = 0
 tilt_enabled = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="20"]
+libraries = {
+&"": SubResource("AnimationLibrary_q7br1")
+}
