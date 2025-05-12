@@ -1,5 +1,6 @@
 extends State
 
+@export var wind_up_animation: String
 @export var attack_animation: String
 @export var attached_sound: AttachedSound3D
 @export var damage: int
@@ -31,7 +32,7 @@ func _ready() -> void:
 func Enter():
 	self.nav_agent.target_position = self.enemy.global_position
 	self.enemy.velocity = Vector3.ZERO
-	anim_player.play(attack_animation)
+	anim_player.play(wind_up_animation)
 	left_claw.monitoring = false
 	right_claw.monitoring = false
 	jaw.monitoring = false
@@ -66,6 +67,8 @@ func hit_bodies(area: Area3D) -> void:
 				area.monitoring = false
 
 func attack():
+	if attack_counter == 0:
+		anim_player.play(attack_animation)
 	left_claw.monitoring = attack_parts[attack_counter] % 2 == 1
 	right_claw.monitoring = attack_parts[attack_counter] % 4 > 1
 	jaw.monitoring = attack_parts[attack_counter] > 3
@@ -74,12 +77,12 @@ func attack():
 		attack_timer.start(timings[attack_counter])
 		attack_counter += 1
 	else:
-		end_timer.start(wind_down)
+		if(end_timer.is_stopped()):
+			end_timer.start(wind_down)
 
 func jump():
 	enemy.velocity = Vector3(0, 0, 5).rotated(Vector3(0, 1, 0), enemy.rotation.y)
 	enemy.velocity += Vector3(0, 2, 0)
-	print(enemy.rotation)
 
 func  angle_to_player() -> float:
 	if player_target == null:
