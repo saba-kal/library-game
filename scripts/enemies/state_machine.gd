@@ -3,7 +3,7 @@ class_name StateMachine extends Node
 @export var enemy_body:EnemyBase = null
 @export var mesh:Node3D = null
 @export var anim_player:AnimationPlayer = null
-@export var nav_agent:NavigationAgent3D = null
+@export var nav_agent:CharacterNavAgent = null
 @export var intial_state:State = null
 @export var aggro_state:State = null
 @export var aggro_timeout:Timer = null

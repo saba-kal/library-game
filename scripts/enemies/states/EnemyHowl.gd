@@ -11,7 +11,7 @@ func _ready():
 	end_howl_timer.timeout.connect(done)
 
 func Enter():
-	self.nav_agent.target_position = self.enemy.global_position
+	self.nav_agent.is_disabled = true
 	self.enemy.velocity = Vector3.ZERO
 	anim_player.play(howl_anim_name)
 	howl_timer.start()
@@ -26,3 +26,6 @@ func done():
 	Transitioned.emit(self,chase_state)
 	if howl_sound:
 		howl_sound.stop()
+
+func Exit() -> void:
+	self.nav_agent.is_disabled = false

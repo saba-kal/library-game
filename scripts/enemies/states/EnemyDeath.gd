@@ -16,7 +16,7 @@ func Enter():
 	if is_instance_valid(body):
 		body.set_collision_mask_value(2, false)
 	anim_player.play(death_anim_name)
-	nav_agent.target_position = enemy.global_position
+	nav_agent.is_disabled = true
 	enemy.velocity = Vector3.ZERO
 	delete_timer.start()
 

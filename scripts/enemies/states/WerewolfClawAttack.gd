@@ -30,8 +30,7 @@ func _ready() -> void:
 	end_timer.timeout.connect(end)
 
 func Enter():
-	self.nav_agent.target_position = self.enemy.global_position
-	self.enemy.velocity = Vector3.ZERO
+	nav_agent.is_disabled = true
 	anim_player.play(wind_up_animation)
 	left_claw.monitoring = false
 	right_claw.monitoring = false
@@ -42,6 +41,7 @@ func Enter():
 	attached_sound.play()
 
 func Exit():
+	nav_agent.is_disabled = false
 	left_claw.monitoring = true
 	right_claw.monitoring = true
 	jaw.monitoring = true

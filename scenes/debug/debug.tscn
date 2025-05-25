@@ -127,6 +127,7 @@ shape = SubResource("ConcavePolygonShape3D_saw2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46881, 0, 11.6761)
 
 [node name="GhostEnemy" parent="." instance=ExtResource("3_mfbtj")]
+process_mode = 4
 transform = Transform3D(0.428162, 0, 0.903702, 0, 1, 0, -0.903702, 0, 0.428162, 13.4069, 0, 0)
 
 [node name="RoomKey" parent="." instance=ExtResource("4_gs0oy")]
@@ -138,6 +139,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7442, 4.76837e-07, 10.9712
 [node name="GUI" parent="." instance=ExtResource("3_g6erc")]
 
 [node name="WitchEnemy" parent="." instance=ExtResource("6_o5aj5")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.07152, -9.53674e-07, 13.2781)
 
 [node name="SetMusic" parent="." instance=ExtResource("7_56uto")]

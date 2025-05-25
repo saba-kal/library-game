@@ -13,7 +13,7 @@ var time_in_state: float = 0
 func Enter():
 	self.anim_player.play(self.idle_anim_name)
 	self.enemy.velocity = Vector3.ZERO
-	self.nav_agent.target_position = self.enemy.global_position
+	self.nav_agent.is_disabled = true
 	self.time_in_state = 0
 
 
@@ -24,3 +24,7 @@ func Physics_Update(delta: float) -> void:
 		player_target = null
 	elif self.change_state_after_timeout && self.time_in_state >= self.max_time_in_state:
 		Transitioned.emit(self,self.state_transition_on_timeout)
+
+
+func Exit() -> void:
+	self.nav_agent.is_disabled = false

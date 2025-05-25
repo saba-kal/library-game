@@ -4,7 +4,7 @@ signal Transitioned
 
 var enemy:EnemyBase = null
 var mesh:Node3D = null
-var nav_agent:NavigationAgent3D = null
+var nav_agent:CharacterNavAgent = null
 var anim_player:AnimationPlayer = null
 var player_target:CharacterBody3D
 var collision_shape:CollisionShape3D = null
@@ -15,7 +15,7 @@ func SetTarget(target):
 	else:
 		player_target = null
 
-func SetVariables(_enemy:EnemyBase, _mesh:Node3D, _nav_agent:NavigationAgent3D, _anim_player:AnimationPlayer, _collision_shape:CollisionShape3D):
+func SetVariables(_enemy:EnemyBase, _mesh:Node3D, _nav_agent:CharacterNavAgent, _anim_player:AnimationPlayer, _collision_shape:CollisionShape3D):
 	enemy = _enemy
 	mesh = _mesh
 	nav_agent = _nav_agent

@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=4 uid="uid://cfc78am47py6r"]
+[gd_scene load_steps=31 format=4 uid="uid://cfc78am47py6r"]
 
 [ext_resource type="Script" uid="uid://b68ncw5it16w3" path="res://scripts/enemies/enemy_base.gd" id="1_tw3fx"]
 [ext_resource type="PackedScene" uid="uid://bfl24oxfwtyci" path="res://scenes/enemies/detection_types/cone_detection.tscn" id="2_uux3s"]
 [ext_resource type="Script" uid="uid://doevx7k07bn1p" path="res://scripts/enemies/state_machine.gd" id="3_3nw8y"]
 [ext_resource type="Script" uid="uid://cptih1uj7h8aw" path="res://scripts/enemies/states/EnemyWanderIdle.gd" id="4_6xrt1"]
 [ext_resource type="Script" uid="uid://bc0mp16f35qie" path="res://scripts/enemies/states/EnemyIdle.gd" id="4_d4t4b"]
+[ext_resource type="PackedScene" uid="uid://bh0xhuqn1r4xu" path="res://scenes/enemies/character_nav_agent.tscn" id="8_gk014"]
 [ext_resource type="Script" uid="uid://drbdvf2k46ekh" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_sjyp7"]
 [ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="9_g6cmd"]
 [ext_resource type="Script" uid="uid://5tsu83bp5ipl" path="res://scripts/enemies/states/EnemySelfProjectile.gd" id="9_nih03"]
@@ -2862,6 +2863,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
+height = 1.84734
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sp0hg"]
 radius = 0.342313
@@ -3198,7 +3200,7 @@ libraries = {
 }
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38857, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.924657, 0)
 shape = SubResource("CapsuleShape3D_a1eye")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "mesh", "anim_player", "nav_agent", "intial_state", "aggro_state", "aggro_timeout", "detection_type", "health", "collision_shape")]
@@ -3206,7 +3208,7 @@ script = ExtResource("3_3nw8y")
 enemy_body = NodePath("..")
 mesh = NodePath("../Ghost")
 anim_player = NodePath("../Ghost/AnimationPlayer")
-nav_agent = NodePath("../NavigationAgent3D")
+nav_agent = NodePath("../CharacterNavAgent")
 intial_state = NodePath("Wander")
 aggro_state = NodePath("Death")
 aggro_timeout = NodePath("../AggroTimeout")
@@ -3244,9 +3246,7 @@ one_shot = true
 wait_time = 1.75
 one_shot = true
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-debug_enabled = true
-debug_path_custom_color = Color(1, 0, 0, 1)
+[node name="CharacterNavAgent" parent="." instance=ExtResource("8_gk014")]
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("damage_flicker")]
 script = ExtResource("9_g6cmd")

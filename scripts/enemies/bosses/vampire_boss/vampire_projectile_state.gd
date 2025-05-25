@@ -1,12 +1,13 @@
 extends BossState
 
-@export var nav_agent: NavigationAgent3D
+@export var nav_agent: CharacterNavAgent
 @export var boss: VampireBoss
 @export var move_speed: float = 5.0
 @export var rotation_speed: float = 10.0
 @export var inner_stop_distance: float = 6.0
 @export var outer_stop_distance: float = 7.0
 @export var projectile_scene: PackedScene
+@export var attack_delay: float = 1.0
 @export var attack_cooldown: float = 3.0
 @export_range(1, 10) var projectile_count: int = 3
 @export_range(1, 10) var projectile_damage: int = 1
@@ -24,15 +25,17 @@ func Enter() -> void:
 	if !player:
 		player = self.get_tree().get_first_node_in_group("player")
 	animation_tree.set("parameters/vampire_state/transition_request", "move")
+	nav_agent.movement_speed = move_speed
+	nav_agent.is_disabled = false
 
 
 func Update(delta: float):
 	var direction_to_player: Vector3 = (player.global_position - boss.global_position).normalized()
 	var distance_sqr_to_player = player.global_position.distance_squared_to(boss.global_position)
 	if distance_sqr_to_player < inner_stop_distance * inner_stop_distance:
-		nav_agent.target_position = boss.global_position - direction_to_player * 5
+		nav_agent.set_movement_target(boss.global_position - direction_to_player * 5)
 	elif distance_sqr_to_player > outer_stop_distance * outer_stop_distance:
-		nav_agent.target_position = player.global_position
+		nav_agent.set_movement_target(player.global_position)
 
 	if time_since_last_attack >= attack_cooldown:
 		time_since_last_attack = 0
@@ -48,13 +51,6 @@ func Physics_Update(delta: float) -> void:
 	if (inner_stop_distance * inner_stop_distance < distance_sqr_to_player &&
 		outer_stop_distance * outer_stop_distance > distance_sqr_to_player):
 		boss.velocity = Vector3.ZERO
-	else:
-		var destination = nav_agent.get_next_path_position()
-		var local_destination = destination - boss.global_position
-		var move_direction = local_destination.normalized()
-		boss.velocity.x = move_direction.x * move_speed
-		boss.velocity.z = move_direction.z * move_speed
-	boss.move_and_slide()
 
 	# Handle rotation
 	var direction_to_player: Vector3 = (player.global_position - boss.global_position).normalized()
@@ -65,6 +61,9 @@ func Physics_Update(delta: float) -> void:
 
 
 func fire_projectiles() -> void:
+
+	animation_tree.set("parameters/ranged_attack_shot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	await get_tree().create_timer(attack_delay).timeout
 	var total_cone_angle: float = (projectile_count - 1) * angle_between_projectiles
 	var start_angle: float = -total_cone_angle / 2.0
 

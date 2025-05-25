@@ -10,7 +10,7 @@ var player:Player
 
 func Enter():
 	print("Entering: Melee Attack State")
-	nav_agent.target_position = enemy.global_position
+	self.nav_agent.is_disabled = true
 	spawn_area_attack()
 
 func spawn_area_attack():
@@ -41,7 +41,7 @@ func perform_attack():
 	Transitioned.emit(self,"follow")
 
 func Exit():
-	pass
+	self.nav_agent.is_disabled = false
 
 func Update(_delta: float):
 	pass

@@ -1,6 +1,7 @@
 class_name VampireBoss extends Boss
 
-@export_range(0, 1, 0.05) var phase_2_health: float = 0.65
+@export_range(0, 1, 0.05) var phase_2_health: float = 0.7
+@export_range(0, 1, 0.05) var phase_3_health: float = 0.35
 @export var room_center_marker: Marker3D
 @export var phase_2_minion_positions: Array[Marker3D]
 @export var phase_3_minion_positions: Array[Marker3D]
@@ -48,6 +49,7 @@ func change_state(new_state_name: String) -> void:
 	if new_state_name not in states:
 		printerr("Unkown state name: " + new_state_name)
 		return
+	print("New boss state: " + new_state_name)
 	states[current_state].Exit()
 	current_state = new_state_name
 	states[current_state].Enter()
@@ -60,6 +62,7 @@ func set_particle_effects_emitting(emitting: bool) -> void:
 
 func on_health_changed(health_amount:int, delta:int, damage_sender:CharacterBody3D) -> void:
 	var health_percent: float = health.current / float(health.maximum)
+	print(health_percent)
 	if health.current <= 0:
 		if reward_on_death != null:
 			var reward_instance: Node3D = reward_on_death.instantiate()
@@ -68,5 +71,10 @@ func on_health_changed(health_amount:int, delta:int, damage_sender:CharacterBody
 		death.emit()
 		self.queue_free()
 	elif phase == 1 && health_percent <= phase_2_health:
+		print("Vampire boss entering phase 2")
 		phase = 2
+		change_state("SpawnMinion")
+	elif phase == 2 && health_percent <= phase_3_health:
+		print("Vampire boss entering phase 3")
+		phase = 3
 		change_state("SpawnMinion")

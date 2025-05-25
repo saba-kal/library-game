@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xp0gidy6uon3"]
+[gd_scene load_steps=27 format=3 uid="uid://xp0gidy6uon3"]
 
 [ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="1_6xx03"]
 [ext_resource type="Script" uid="uid://ch3og1mwiey8d" path="res://scripts/enemies/bosses/vampire_boss/vampire_boss.gd" id="1_gd3kv"]
@@ -11,17 +11,37 @@
 [ext_resource type="Script" uid="uid://dwxnbqdi82ue" path="res://scripts/enemies/bosses/vampire_boss/vampire_stand_state.gd" id="8_palif"]
 [ext_resource type="Script" uid="uid://rpm4puyshvlm" path="res://scripts/enemies/bosses/vampire_boss/vampire_spawn_minion_state.gd" id="9_d352k"]
 [ext_resource type="PackedScene" uid="uid://6ba3lqg16cok" path="res://scenes/enemies/enemy_types/werewolf_enemy.tscn" id="10_2rvdi"]
+[ext_resource type="Script" uid="uid://c7dmvilb16lox" path="res://scripts/enemies/bosses/vampire_boss/vampire_chase_state.gd" id="11_ipvld"]
+[ext_resource type="Script" uid="uid://4myigen4qj7c" path="res://scripts/enemies/bosses/vampire_boss/vampire_melee_state.gd" id="12_clt05"]
+[ext_resource type="PackedScene" uid="uid://bh0xhuqn1r4xu" path="res://scenes/enemies/character_nav_agent.tscn" id="14_ov3g1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gd3kv"]
 height = 2.70627
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_clt05"]
+size = Vector3(1.44922, 2.6543, 1.25052)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4biun"]
 animation = &"Intro"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_palif"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ipvld"]
+animation = &"MeleeAttack"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_clt05"]
+fadein_time = 0.2
+fadeout_time = 0.2
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_palif"]
 animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ov3g1"]
+animation = &"RangeAttack"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_63ptx"]
+fadein_time = 0.2
+fadeout_time = 0.2
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d352k"]
 animation = &"Stand"
@@ -37,19 +57,27 @@ input_1/break_loop_at_end = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ipvld"]
-graph_offset = Vector2(-315.957, 79.5498)
+graph_offset = Vector2(-214.288, 162.267)
 nodes/intro_anim/node = SubResource("AnimationNodeAnimation_4biun")
 nodes/intro_anim/position = Vector2(-200, 580)
 nodes/intro_shot/node = SubResource("AnimationNodeOneShot_palif")
-nodes/intro_shot/position = Vector2(280, 220)
+nodes/intro_shot/position = Vector2(260, 200)
+nodes/melee_attack_anim/node = SubResource("AnimationNodeAnimation_ipvld")
+nodes/melee_attack_anim/position = Vector2(300, 620)
+nodes/melee_attack_shot/node = SubResource("AnimationNodeOneShot_clt05")
+nodes/melee_attack_shot/position = Vector2(540, 300)
 nodes/move_anim/node = SubResource("AnimationNodeAnimation_palif")
 nodes/move_anim/position = Vector2(-200, 80)
-nodes/output/position = Vector2(540, 120)
+nodes/output/position = Vector2(1140, 120)
+nodes/ranged_attack_anim/node = SubResource("AnimationNodeAnimation_ov3g1")
+nodes/ranged_attack_anim/position = Vector2(580, 680)
+nodes/ranged_attack_shot/node = SubResource("AnimationNodeOneShot_63ptx")
+nodes/ranged_attack_shot/position = Vector2(840, 400)
 nodes/stand_anim/node = SubResource("AnimationNodeAnimation_d352k")
 nodes/stand_anim/position = Vector2(-200, 260)
 nodes/vampire_state/node = SubResource("AnimationNodeTransition_2rvdi")
 nodes/vampire_state/position = Vector2(40, 80)
-node_connections = [&"intro_shot", 0, &"vampire_state", &"intro_shot", 1, &"intro_anim", &"output", 0, &"intro_shot", &"vampire_state", 0, &"move_anim", &"vampire_state", 1, &"stand_anim"]
+node_connections = [&"intro_shot", 0, &"vampire_state", &"intro_shot", 1, &"intro_anim", &"melee_attack_shot", 0, &"intro_shot", &"melee_attack_shot", 1, &"melee_attack_anim", &"output", 0, &"ranged_attack_shot", &"ranged_attack_shot", 0, &"melee_attack_shot", &"ranged_attack_shot", 1, &"ranged_attack_anim", &"vampire_state", 0, &"move_anim", &"vampire_state", 1, &"stand_anim"]
 
 [node name="VampireBoss" type="CharacterBody3D" node_paths=PackedStringArray("particle_effects") groups=["enemy"]]
 collision_layer = 4
@@ -88,7 +116,7 @@ bones/19/rotation = Quaternion(0.000806049, -0.200397, -0.0455962, 0.978653)
 bones/20/rotation = Quaternion(-0.0868236, 0.0781874, -0.107455, 0.987321)
 bones/21/rotation = Quaternion(0.150927, -0.034474, -0.445248, 0.881922)
 bones/22/rotation = Quaternion(0.037316, -0.198143, -0.0501708, 0.978177)
-bones/24/rotation = Quaternion(0.0738385, 1.19029e-07, 6.54503e-09, 0.99727)
+bones/24/rotation = Quaternion(0.076645, 1.19047e-07, 6.20999e-09, 0.997059)
 bones/26/rotation = Quaternion(-1.04098e-07, 1.78366e-08, 0.872954, 0.487803)
 bones/27/rotation = Quaternion(0.235278, -0.0231885, 0.426945, 0.872826)
 bones/28/rotation = Quaternion(0.450206, -0.281802, 0.533846, 0.657959)
@@ -108,37 +136,37 @@ bones/41/rotation = Quaternion(-0.0868236, -0.0781874, 0.107455, 0.987321)
 bones/42/rotation = Quaternion(0.288757, -0.0818669, 0.695558, 0.652776)
 bones/43/rotation = Quaternion(0.21886, 0.0380568, 0.635628, 0.739343)
 bones/45/rotation = Quaternion(0.0398806, -1.19114e-07, -4.75415e-09, 0.999204)
-bones/46/rotation = Quaternion(0.00836116, 7.37971e-10, 1.22837e-08, 0.999965)
+bones/46/rotation = Quaternion(0.0272255, 9.69592e-10, 1.22676e-08, 0.999629)
 bones/47/rotation = Quaternion(0.175856, -6.66134e-15, -4.19272e-08, 0.984416)
-bones/48/rotation = Quaternion(0.123741, -5.61165e-10, -5.55775e-09, 0.992315)
+bones/48/rotation = Quaternion(0.155053, -7.366e-10, -5.53723e-09, 0.987906)
 bones/49/position = Vector3(0.164206, 0.108921, -0.172366)
 bones/49/rotation = Quaternion(0.686403, 0.208025, -0.669976, -0.191598)
 bones/50/rotation = Quaternion(-0.00786376, 0.014437, -0.0193602, 0.999677)
-bones/51/rotation = Quaternion(-0.0493714, -0.342406, -0.0484439, 0.937002)
+bones/51/rotation = Quaternion(-0.0550893, -0.340569, -0.0663142, 0.936259)
 bones/52/rotation = Quaternion(-0.158841, -0.347068, -0.0512114, 0.922871)
-bones/53/rotation = Quaternion(-0.147904, -0.310422, 0.0313516, 0.938499)
+bones/53/rotation = Quaternion(-0.177884, -0.303367, 0.0377854, 0.93536)
 bones/54/position = Vector3(0.300192, 0.0565511, -0.155942)
 bones/54/rotation = Quaternion(0.97987, 0.0226733, 0.0226732, -0.197042)
 bones/55/rotation = Quaternion(0.0342043, -0.033166, -0.00219751, 0.998862)
-bones/56/rotation = Quaternion(0.13848, 0.0381695, -0.0516455, 0.988281)
+bones/56/rotation = Quaternion(0.157027, 0.0401221, -0.0517134, 0.985423)
 bones/57/rotation = Quaternion(0.176646, 0.0241564, -0.0289391, 0.983552)
-bones/58/rotation = Quaternion(0.0866329, 0.0230644, -0.0147315, 0.995864)
+bones/58/rotation = Quaternion(0.117229, 0.0303169, -0.0148382, 0.992531)
 bones/59/rotation = Quaternion(0.686403, -0.208025, 0.669976, -0.191598)
 bones/60/rotation = Quaternion(-0.00786376, -0.014437, 0.0193602, 0.999677)
-bones/61/rotation = Quaternion(-0.0493714, 0.342406, 0.0484439, 0.937002)
+bones/61/rotation = Quaternion(-0.0550893, 0.340569, 0.0663142, 0.936259)
 bones/62/rotation = Quaternion(-0.158841, 0.347068, 0.0512114, 0.922871)
-bones/63/rotation = Quaternion(-0.147904, 0.310422, -0.0313516, 0.938499)
+bones/63/rotation = Quaternion(-0.177884, 0.303367, -0.0377854, 0.93536)
 bones/64/rotation = Quaternion(0.97987, -0.0226733, -0.0226732, -0.197042)
 bones/65/rotation = Quaternion(0.0342043, 0.033166, 0.00219751, 0.998862)
-bones/66/rotation = Quaternion(0.13848, -0.0381695, 0.0516455, 0.988281)
+bones/66/rotation = Quaternion(0.157027, -0.0401221, 0.0517134, 0.985423)
 bones/67/rotation = Quaternion(0.176646, -0.0241564, 0.0289391, 0.983552)
-bones/68/rotation = Quaternion(0.0866329, -0.0230644, 0.0147315, 0.995864)
+bones/68/rotation = Quaternion(0.117229, -0.0303169, 0.0148382, 0.992531)
 bones/69/position = Vector3(-9.93101e-16, 0.023211, -0.131289)
 bones/69/rotation = Quaternion(0.998567, 2.33929e-09, -4.36487e-08, -0.053517)
 bones/70/position = Vector3(1.86264e-08, 1.36021, 1.24345e-14)
 bones/70/rotation = Quaternion(-0.445943, -0.548757, -0.445944, 0.548757)
 bones/71/rotation = Quaternion(-0.7624, -0.0218549, 0.102217, 0.638608)
-bones/72/rotation = Quaternion(0.0050081, 0.00376607, 0.130076, 0.991484)
+bones/72/rotation = Quaternion(0.00697413, 0.00423413, 0.139916, 0.99013)
 bones/73/rotation = Quaternion(0.0219343, 0.00503684, 0.131221, 0.991098)
 bones/74/rotation = Quaternion(-5.69423e-05, -1.11771e-07, -0.629178, 0.777261)
 bones/75/position = Vector3(0.0041107, 0.215393, 0.0407832)
@@ -146,14 +174,14 @@ bones/75/rotation = Quaternion(-0.512434, -0.383018, 0.361233, 0.678395)
 bones/76/position = Vector3(-1.49012e-08, 1.36021, -5.77316e-15)
 bones/76/rotation = Quaternion(-0.445944, 0.548757, 0.445944, 0.548757)
 bones/77/rotation = Quaternion(-0.742817, 0.114218, -0.234216, 0.616701)
-bones/78/rotation = Quaternion(0.0148744, -0.00277574, -0.126417, 0.991862)
+bones/78/rotation = Quaternion(0.0199423, -0.00293246, -0.135106, 0.990626)
 bones/79/rotation = Quaternion(0.104463, -0.000749613, -0.100439, 0.989444)
 bones/80/rotation = Quaternion(-5.70035e-05, 1.58885e-07, 0.629178, 0.777261)
 bones/81/position = Vector3(-0.00411068, 0.215393, 0.0407831)
 bones/81/rotation = Quaternion(-0.512434, 0.383018, -0.361233, 0.678395)
 
 [node name="Eyes" parent="Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D" index="0"]
-transform = Transform3D(0.0183632, 8.24802e-11, 9.89031e-12, -8.22776e-11, 0.0183599, -0.000348409, -1.14548e-11, 0.000348409, 0.0183599, 0.0414608, 2.44023, 0.121384)
+transform = Transform3D(0.0183632, 1.06984e-10, 1.25233e-11, -1.06644e-10, 0.0183577, -0.000451754, -1.51528e-11, 0.000451754, 0.0183577, 0.0414608, 2.43954, 0.122249)
 
 [node name="BossCandleFlame" parent="Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D/Eyes/Eyes" index="0" instance=ExtResource("3_uy21t")]
 transform = Transform3D(-54.4567, -6.5848e-13, 4.76075e-06, -3.89602e-13, 54.4567, -6.90466e-07, -4.76075e-06, -6.90466e-07, -54.4567, 36.1478, -13.6019, -6.44973)
@@ -168,7 +196,7 @@ transform = Transform3D(-54.4567, -6.5848e-13, 4.76075e-06, -3.89602e-13, 54.456
 
 [node name="Projectile" type="Node" parent="States" node_paths=PackedStringArray("nav_agent", "boss", "projectile_spawn_point", "animation_tree")]
 script = ExtResource("3_3fxfl")
-nav_agent = NodePath("../../NavigationAgent3D")
+nav_agent = NodePath("../../CharacterNavAgent")
 boss = NodePath("../..")
 projectile_scene = ExtResource("5_4biun")
 projectile_spawn_point = NodePath("../../ProjectileSpawn")
@@ -185,21 +213,47 @@ animation_tree = NodePath("../../AnimationTree")
 
 [node name="SpawnMinion" type="Node" parent="States" node_paths=PackedStringArray("nav_agent", "boss", "animation_tree")]
 script = ExtResource("9_d352k")
-nav_agent = NodePath("../../NavigationAgent3D")
+nav_agent = NodePath("../../CharacterNavAgent")
 boss = NodePath("../..")
 minion_scene = ExtResource("10_2rvdi")
 animation_tree = NodePath("../../AnimationTree")
+
+[node name="Chase" type="Node" parent="States" node_paths=PackedStringArray("nav_agent", "boss", "animation_tree")]
+script = ExtResource("11_ipvld")
+nav_agent = NodePath("../../CharacterNavAgent")
+boss = NodePath("../..")
+animation_tree = NodePath("../../AnimationTree")
+
+[node name="Melee" type="Node" parent="States" node_paths=PackedStringArray("attack_area", "boss", "animation_tree")]
+script = ExtResource("12_clt05")
+attack_area = NodePath("../../MeleeAttackArea")
+boss = NodePath("../..")
+animation_tree = NodePath("../../AnimationTree")
+
+[node name="PreAttackDelayTimer" type="Timer" parent="States/Melee"]
+wait_time = 0.5
+one_shot = true
+
+[node name="PostAttackDelayTimer" type="Timer" parent="States/Melee"]
+wait_time = 0.5
+one_shot = true
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("1_6xx03")
 metadata/_custom_type_script = "uid://dkwymbe0v5ypi"
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-debug_enabled = true
-debug_path_custom_color = Color(1, 0, 0, 1)
-
 [node name="ProjectileSpawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69469, -1.05899)
+
+[node name="CharacterNavAgent" parent="." instance=ExtResource("14_ov3g1")]
+
+[node name="MeleeAttackArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeleeAttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43933, -0.715957)
+shape = SubResource("BoxShape3D_clt05")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Visuals/VampireWCapeAnim")
@@ -208,6 +262,12 @@ anim_player = NodePath("../Visuals/VampireWCapeAnim/AnimationPlayer")
 parameters/intro_shot/active = false
 parameters/intro_shot/internal_active = false
 parameters/intro_shot/request = 0
+parameters/melee_attack_shot/active = false
+parameters/melee_attack_shot/internal_active = false
+parameters/melee_attack_shot/request = 0
+parameters/ranged_attack_shot/active = false
+parameters/ranged_attack_shot/internal_active = false
+parameters/ranged_attack_shot/request = 0
 parameters/vampire_state/current_state = "move"
 parameters/vampire_state/transition_request = ""
 parameters/vampire_state/current_index = 0

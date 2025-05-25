@@ -11,7 +11,13 @@ extends State
 var time_in_state: float = 0
 
 
+func _ready() -> void:
+	nav_agent
+
+
 func Enter() -> void:
+	self.nav_agent.movement_speed = move_speed
+	self.nav_agent.is_disabled = false
 	self.time_in_state = 0
 	self.anim_player.play(run_anim_name, 0.2)
 	if self.attached_sound:
@@ -28,7 +34,7 @@ func Update(delta: float) -> void:
 	if self.nav_agent && self.player_target:
 		var direction_to_player: Vector3 = (self.player_target.global_position - self.enemy.global_position).normalized()
 		var distance_sqr_to_player = self.player_target.global_position.distance_squared_to(self.enemy.global_position)
-		self.nav_agent.target_position = self.player_target.global_position
+		self.nav_agent.set_movement_target(self.player_target.global_position)
 
 
 func Physics_Update(_delta: float) -> void:
@@ -41,8 +47,5 @@ func Physics_Update(_delta: float) -> void:
 		var local_destination = destination - enemy.global_position
 		var move_direction = local_destination.normalized()
 		Util.rotate_y_to_face_direction(enemy, move_direction, rotation_speed * _delta)
-		enemy.velocity.x = move_direction.x * move_speed
-		enemy.velocity.z = move_direction.z * move_speed
 	else:
-		nav_agent.target_position = Vector3.ZERO
 		Transitioned.emit(self, self.state_transition_upon_target_lost)

@@ -17,7 +17,7 @@ func Enter() -> void:
 	if !self.player:
 		self.player = get_tree().get_first_node_in_group("player")
 
-	self.nav_agent.target_position = self.enemy.global_position
+	self.nav_agent.is_disabled = true
 	self.enemy.velocity = Vector3.ZERO
 	self.anim_player.play(anime_name)
 
@@ -36,7 +36,10 @@ func Enter() -> void:
 	self.enemy.disengage()
 
 
-
 func Physics_Update(delta:float) -> void:
 	var direction: Vector3 = (self.player.global_position - self.enemy.global_position).normalized()
 	Util.rotate_y_to_face_direction(enemy, direction, rotation_speed * delta)
+
+
+func Exit() -> void:
+	self.nav_agent.is_disabled = false

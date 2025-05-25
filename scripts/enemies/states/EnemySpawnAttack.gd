@@ -18,7 +18,7 @@ func Enter() -> void:
 		self.player = get_tree().get_first_node_in_group("player")
 
 	self.time_in_state = 0
-	self.nav_agent.target_position = self.enemy.global_position
+	self.nav_agent.is_disabled = true
 	self.enemy.velocity = Vector3.ZERO
 	self.anim_player.play(anim_name)
 	
@@ -44,3 +44,7 @@ func Physics_Update(delta:float) -> void:
 		Transitioned.emit(self, self.state_transition_upon_finish)
 		self.enemy.disengage()
 	self.time_in_state += delta
+
+
+func Exit() -> void:
+	self.nav_agent.is_disabled = false

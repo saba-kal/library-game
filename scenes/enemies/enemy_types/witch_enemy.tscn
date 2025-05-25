@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://7yehwqmtemgc"]
+[gd_scene load_steps=26 format=3 uid="uid://7yehwqmtemgc"]
 
 [ext_resource type="Script" uid="uid://b68ncw5it16w3" path="res://scripts/enemies/enemy_base.gd" id="1_cerqe"]
 [ext_resource type="PackedScene" uid="uid://b1k280sk13w1h" path="res://assets/models/enemies/witch/Witch.glb" id="2_hanny"]
@@ -13,12 +13,13 @@
 [ext_resource type="Script" uid="uid://b3gppxtk7xelt" path="res://scripts/enemies/states/EnemyRunAway.gd" id="9_nsdnq"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="10_7sgkp"]
 [ext_resource type="PackedScene" uid="uid://3symoni7x23e" path="res://scenes/effects/WitchGroundSpellEffect.tscn" id="10_xqd0x"]
+[ext_resource type="PackedScene" uid="uid://bh0xhuqn1r4xu" path="res://scenes/enemies/character_nav_agent.tscn" id="12_1sr3c"]
 [ext_resource type="PackedScene" uid="uid://x7inf5bnoarf" path="res://core/audio/scenes/footstep_sounds.tscn" id="14_rdgpp"]
 [ext_resource type="PackedScene" uid="uid://hghcty7xxqww" path="res://core/audio/scenes/random_interval_sounds.tscn" id="15_if0gs"]
 [ext_resource type="Script" uid="uid://b15uemiuovvjh" path="res://scripts/general/damage_flicker.gd" id="16_31icd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
-height = 2.5
+height = 1.82556
 
 [sub_resource type="Animation" id="Animation_tyyd1"]
 resource_name = "Attack1"
@@ -1825,7 +1826,7 @@ collision_mask = 3
 script = ExtResource("1_cerqe")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.899189, 0)
 shape = SubResource("CapsuleShape3D_a1eye")
 
 [node name="Witch" parent="." instance=ExtResource("2_hanny")]
@@ -1889,7 +1890,7 @@ cone_length = 10.0
 script = ExtResource("3_3cfia")
 enemy_body = NodePath("..")
 anim_player = NodePath("../Witch/AnimationPlayer")
-nav_agent = NodePath("../NavigationAgent3D")
+nav_agent = NodePath("../CharacterNavAgent")
 intial_state = NodePath("Wander")
 aggro_state = NodePath("RunAway")
 aggro_timeout = NodePath("../AggroTimeout")
@@ -1939,9 +1940,7 @@ one_shot = true
 wait_time = 1.75
 one_shot = true
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-debug_enabled = true
-debug_path_custom_color = Color(1, 0, 0, 1)
+[node name="CharacterNavAgent" parent="." instance=ExtResource("12_1sr3c")]
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("damage_flicker")]
 script = ExtResource("9_gh56d")

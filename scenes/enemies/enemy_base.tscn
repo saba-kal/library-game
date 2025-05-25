@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://78h1btx4mad8"]
+[gd_scene load_steps=26 format=4 uid="uid://78h1btx4mad8"]
 
 [ext_resource type="Script" uid="uid://b68ncw5it16w3" path="res://scripts/enemies/enemy_base.gd" id="1_77wm7"]
 [ext_resource type="Script" uid="uid://doevx7k07bn1p" path="res://scripts/enemies/state_machine.gd" id="2_j1e2k"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ic6s2qxb1ahw" path="res://scripts/enemies/states/EnemyMeleeAttack.gd" id="6_3nl6f"]
 [ext_resource type="Script" uid="uid://drbdvf2k46ekh" path="res://scripts/enemies/states/EnemyDeath.gd" id="8_1pqdv"]
 [ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="8_may7e"]
+[ext_resource type="PackedScene" uid="uid://bh0xhuqn1r4xu" path="res://scenes/enemies/character_nav_agent.tscn" id="9_6flps"]
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="9_hxt3u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx4au"]
@@ -3068,7 +3069,7 @@ bones/26/rotation = Quaternion(-0.103382, 0.699507, -0.103381, 0.69951)
 bones/26/scale = Vector3(1, 1, 1)
 
 [node name="Hat" type="BoneAttachment3D" parent="Ghost/GhostArmature/Skeleton3D"]
-transform = Transform3D(0.129271, -4.00194e-08, -2.17855e-08, 3.68658e-08, 0.127312, -0.0332469, 2.14066e-08, 0.0224173, 0.188816, 0.0536792, 0.429132, 0.572368)
+transform = Transform3D(0.129271, -4.00195e-08, -2.17855e-08, 3.68658e-08, 0.127312, -0.0332471, 2.14066e-08, 0.0224174, 0.188816, 0.0536792, 0.429132, 0.572369)
 bone_name = "Hat"
 bone_idx = 7
 
@@ -3082,7 +3083,7 @@ skin = SubResource("Skin_2rt2e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ghost"]
 libraries = {
-"": SubResource("AnimationLibrary_60pai")
+&"": SubResource("AnimationLibrary_60pai")
 }
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -3094,7 +3095,7 @@ script = ExtResource("2_j1e2k")
 enemy_body = NodePath("..")
 mesh = NodePath("../Ghost")
 anim_player = NodePath("../Ghost/AnimationPlayer")
-nav_agent = NodePath("../NavigationAgent3D")
+nav_agent = NodePath("../CharacterNavAgent")
 intial_state = NodePath("Idle")
 aggro_timeout = NodePath("../AggroTimeout")
 detection_type = NodePath("../Ghost/ConeDetection")
@@ -3129,9 +3130,7 @@ one_shot = true
 wait_time = 1.75
 one_shot = true
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-debug_enabled = true
-debug_path_custom_color = Color(1, 0, 0, 1)
+[node name="CharacterNavAgent" parent="." instance=ExtResource("9_6flps")]
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_may7e")
