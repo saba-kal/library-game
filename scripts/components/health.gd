@@ -24,4 +24,4 @@ func take_damage(damage_amount:int, damage_sender:CharacterBody3D = null) -> voi
 
 func heal(heal_amount: int) -> void:
 	current = clamp(self.current + heal_amount, 0, self.maximum)
-	self.changed.emit(self.current, heal_amount)
+	self.changed.emit(self.current, -heal_amount, null)

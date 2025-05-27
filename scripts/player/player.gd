@@ -2,10 +2,6 @@ class_name Player extends CharacterBody3D
 
 signal died
 
-
-@export var hand_bone: BoneAttachment3D
-@export var umbrella: Node3D
-
 @export_group("Movement Settings")
 @export var move_speed:float = 5
 @export var acceleration:float = 4
@@ -33,7 +29,6 @@ func _ready() -> void:
 	state.enter("")
 	SignalBus.player_spawned.emit(self)
 	health.changed.connect(health_changed)
-	equip(umbrella)
 
 func _transition_to_next_state(target_state_path:String, data:Dictionary = {}) -> void:
 	if not state_machine.has_node(target_state_path):
@@ -89,9 +84,3 @@ func health_changed(new_health:int, damage:int, damage_sender) -> void:
 			died.emit()
 		else:
 			_transition_to_next_state(hurt_state.get_path())
-
-func equip(weapon: RigidBody3D):
-	weapon.collision_layer = 0
-	weapon.collision_mask = 0
-	weapon.freeze = true
-	weapon.reparent(hand_bone)

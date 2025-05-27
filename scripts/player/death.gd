@@ -1,6 +1,6 @@
 extends CharacterState
 
-@export var umbrella: RigidBody3D
+@export var umbrella: Node3D
 @export var drop_time: float
 var drop_timer: Timer
 var reset_timer: Timer
@@ -25,9 +25,6 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 
 func drop() -> void:
 	umbrella.reparent(character, true)
-	umbrella.collision_layer = 1
-	umbrella.collision_mask = 3
-	umbrella.freeze = false
 
 func done() -> void:
 	ChangeScene.scene_change()

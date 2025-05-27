@@ -10,9 +10,7 @@ height = 1.5
 height = 0.3
 radius = 0.825
 
-[node name="Umbrella" type="RigidBody3D"]
-collision_layer = 0
-collision_mask = 0
+[node name="Umbrella" type="Node3D"]
 
 [node name="Model" parent="." instance=ExtResource("1_8jlly")]
 

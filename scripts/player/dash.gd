@@ -18,12 +18,6 @@ var blend_tree : AnimationNodeBlendTree
 var transition : AnimationNodeTransition
 
 func _ready() -> void:
-	# Transition doesn't allow per-anim fade times. So I'm manually setting the fade to 0,
-	# right before the dash players, and then setting it back to 0.2 at the state exit.
-	blend_tree = animation_tree.tree_root
-	transition = blend_tree.get("nodes/Actions/node")
-	transition.xfade_time = 0
-	
 	timer = Timer.new()
 	timer.one_shot = true
 	timer.timeout.connect(done)
@@ -40,14 +34,15 @@ func enter(previous_state_path: String, data := {}) -> void:
 	character.collision_layer = dash_layer
 	character.collision_mask = dash_mask
 	AudioManager.play_3d("player_dash", self.character.global_position)
-	animation_tree.set("parameters/Actions/transition_request", "Dash")
+	animation_tree.set("parameters/DashShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	animation_tree.set("parameters/DashScale/scale", 0)
 
 func exit() -> void:
-	transition.xfade_time = 0.2
 	character.collision_layer = default_layer
 	character.collision_mask = default_mask
 	character.velocity.x = 0
 	character.velocity.z = 0
+	animation_tree.set("parameters/DashScale/scale", 1)
 
 func physics_update(_delta: float) -> void:
 	character.adjust_body_velocity(_delta, speed, 0.0)
