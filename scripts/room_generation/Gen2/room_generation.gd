@@ -14,10 +14,14 @@ const THREEWAY = preload("res://scenes/room_generation/Gen2/Gen2_rooms/threeway.
 @export var threeway_room_variations:Array[PackedScene]
 @export var boss_room_variations:Array[PackedScene]
 @export var player_scene:PackedScene
+@export var room_key:PackedScene
+@export var boss_door:PackedScene
 @export var map:_2DGeneration
 
 var rooms: Node3D
 var first_room: RoomVariation = null
+var boss_room: RoomVariation = null
+var key_room: RoomVariation = null
 var room_dictionary : Dictionary
 
 ## Connects the 2D Generation to transfer the coordinates for 3D Placement.
@@ -35,6 +39,8 @@ func on_map_generation_complete() -> void:
 	connect_room_doors()
 	remove_walls()
 	spawn_player()
+	spawn_key()
+	spawn_boss_door()
 	SignalBus.scene_change_completed.emit()
 
 ## Instantiates some base created rooms that have a single parent called "map_room_base".
@@ -151,3 +157,45 @@ func remove_walls():
 				room.wall_east.visible = false
 			if (room.wall_west.global_position.x > room.wall_checker.global_position.x) or (room.wall_west.global_position.z > room.wall_checker.global_position.z):
 				room.wall_west.visible = false
+
+## Spawns key
+func spawn_key() -> void:
+	var key_instance = room_key.instantiate()
+	add_child(key_instance)
+	key_instance.global_position = room_dictionary[map.key_location].global_position
+	print("Spawned key at " + str(map.key_location))
+
+func spawn_boss_door() -> void:
+	var door_instance: Node3D = boss_door.instantiate()
+	add_child(door_instance)
+	var boss_room: RoomVariation = room_dictionary[map.boss_cell]
+	var boss_door: RoomDoor = boss_room.south_door
+	var opposite_direction =  (boss_door.direction + 2) % 4
+	var pre_boss_room: RoomVariation = boss_door.connected_room
+	if(pre_boss_room.north_door and
+	 pre_boss_room.north_door.direction == opposite_direction):
+		door_instance.global_position = pre_boss_room.north_door.global_position
+	if(pre_boss_room.east_door and
+	 pre_boss_room.east_door.direction == opposite_direction):
+		door_instance.global_position = pre_boss_room.east_door.global_position
+	if(pre_boss_room.south_door and
+	 pre_boss_room.south_door.direction == opposite_direction):
+		door_instance.global_position = pre_boss_room.south_door.global_position
+	if(pre_boss_room.west_door and
+	 pre_boss_room.west_door.direction == opposite_direction):
+		door_instance.global_position = pre_boss_room.west_door.global_position
+	var tr = 1
+	match opposite_direction:
+		0:
+			door_instance.translate(Vector3(0, 0, tr))
+		1:
+			door_instance.translate(Vector3(-tr, 0, 0))
+			door_instance.rotate_y(3*PI/2)
+		2:
+			door_instance.translate(Vector3(0, 0, -tr))
+			door_instance.rotate_y(PI)
+			pass
+		3:
+			door_instance.translate(Vector3(tr, 0, 0))
+			door_instance.rotate_y(PI/2)
+			pass

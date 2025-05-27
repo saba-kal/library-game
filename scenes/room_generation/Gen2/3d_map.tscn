@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://f4kgfmiqn3gp" path="res://scenes/room_generation/Gen2/Gen2_rooms/corner.tscn" id="2_8out0"]
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="3_phssx"]
 [ext_resource type="PackedScene" uid="uid://dvgbbactdrqq3" path="res://scenes/room_generation/Gen2/Gen2_rooms/deadend.tscn" id="3_xt2jr"]
-[ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="4_e1prp"]
 [ext_resource type="PackedScene" uid="uid://dsw42s1j4j2tm" path="res://scenes/room_generation/Gen2/Gen2_rooms/fourway.tscn" id="4_qpruf"]
 [ext_resource type="PackedScene" uid="uid://b1fql55l4vhf8" path="res://scenes/room_generation/Gen2/Gen2_rooms/hallway.tscn" id="5_bvleo"]
 [ext_resource type="PackedScene" uid="uid://cx618d4m8qqp5" path="res://scenes/room_generation/Gen2/Gen2_rooms/threeway.tscn" id="6_i5xnt"]
 [ext_resource type="PackedScene" uid="uid://df6iitan5aahn" path="res://scenes/rooms/gothic_rooms/Gothic_Boss_Room.tscn" id="7_dm1cl"]
+[ext_resource type="PackedScene" uid="uid://dmtrnvihyrtdi" path="res://scenes/player/player.tscn" id="8_rsh0u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q06if"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -32,7 +32,7 @@ fourway_room_variations = Array[PackedScene]([ExtResource("4_qpruf")])
 hallway_room_variations = Array[PackedScene]([ExtResource("5_bvleo")])
 threeway_room_variations = Array[PackedScene]([ExtResource("6_i5xnt")])
 boss_room_variations = Array[PackedScene]([ExtResource("7_dm1cl")])
-player_scene = ExtResource("4_e1prp")
+player_scene = ExtResource("8_rsh0u")
 map = NodePath("2D_Map")
 
 [node name="GUI" parent="." node_paths=PackedStringArray("map_2D") instance=ExtResource("3_phssx")]
