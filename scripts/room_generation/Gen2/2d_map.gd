@@ -32,17 +32,21 @@ class RoomData:
 @onready var failsafe_timer: Timer = $FailsafeTimer
 @onready var player_location_sprite: Node2D = $PlayerLocationSprite
 @onready var boss_location_sprite: Node2D = $BossLocationSprite
+@onready var key_location_sprite: Node2D = $KeyLocationSprite
 
 var currently_generating:bool = false
 var failsafe_activated:bool = true
 var valid_cell_count:int = 0
 var boss_cell:Vector2i
 var player_location:Vector2i
+var key_location:Vector2i
 
 func _ready() -> void:
 	player_location_sprite.visible = false
 	boss_location_sprite.visible = false
+	key_location_sprite.visible = false
 	SignalBus.player_moved_to_room.connect(on_player_moved_to_room)
+	SignalBus.room_key_collected.connect(on_key_collected)
 
 func generate_rooms():
 	currently_generating = true
@@ -70,9 +74,9 @@ func generate_rooms():
 			tile_map_layer.set_cell(spot_check,0,Vector2(5,0))
 		current_position = spot_check
 	print("Done Generatoring")
-	
+
 	await get_tree().create_timer(0.5).timeout
-	
+
 	## Bulks up rooms, with small chance of dead-end created.
 	for tile in tile_map_layer.get_used_cells():
 		for sur_tile in tile_map_layer.get_surrounding_cells(tile):
@@ -81,10 +85,11 @@ func generate_rooms():
 				match chance:
 					1:
 						tile_map_layer.set_cell(sur_tile,0,Vector2(5,0))
-	
+
 	## Sets rooms to their appropriate tile-type based on their locations, and neighbors.
 	tie_up_rooms()
 	add_boss_room()
+	add_key()
 	currently_generating = false
 	generation_complete.emit()
 
@@ -109,6 +114,31 @@ func add_boss_room() -> void:
 	boss_cell = add_deadend_room_to_tile_pos(furthest_cell)
 	boss_location_sprite.position = tile_map_layer.map_to_local(boss_cell)
 	boss_location_sprite.visible = true
+
+func add_key() -> void:
+	var used_cells: Array[Vector2i] = tile_map_layer.get_used_cells()
+	var player_cell: Vector2i = used_cells.front() # First cell is where the player spawns.
+	var furthest_cell: Vector2i = used_cells.back()
+	var max_combined_distance: int = 0
+	# Find the cell with most combined distance between boss room and player spaw
+	# so the key will be out of the way
+	for cell_coord: Vector2i in used_cells:
+		var combined_distance: int = manhattan_distance(player_cell, cell_coord)
+		if combined_distance == 0:
+			continue
+		combined_distance += manhattan_distance(boss_cell, cell_coord)
+		if combined_distance > max_combined_distance:
+			max_combined_distance = combined_distance
+			furthest_cell = cell_coord
+
+	key_location = furthest_cell
+	key_location_sprite.position = tile_map_layer.map_to_local(key_location)
+	key_location_sprite.visible = true
+	print("key at " + str(key_location))
+
+func manhattan_distance(v1: Vector2i, v2: Vector2i) -> int:
+	var diff: Vector2i = v1 - v2
+	return abs(diff.x) + abs(diff.y)
 
 func generation_info() -> Array[RoomData]:
 	var generation_array_info:Array[RoomData] = []
@@ -215,6 +245,9 @@ func _on_button_clear_pressed() -> void:
 
 func _on_line_edit_text_changed(new_text: String) -> void:
 	minimum_room_amount = int(float(new_text))
+
+func on_key_collected() -> void:
+	key_location_sprite.visible = false
 
 func hide_debugging_overlay() -> void:
 	$DebuggingOverlay.visible = false
