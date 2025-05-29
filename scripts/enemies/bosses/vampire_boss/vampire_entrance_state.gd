@@ -1,6 +1,7 @@
 extends BossState
 
 @export var boss: VampireBoss
+@export var boss_health: Health
 @export var rotation_speed: float = 10.0
 @export var animation_tree: AnimationTree
 
@@ -16,6 +17,7 @@ func Enter() -> void:
 		player = self.get_tree().get_first_node_in_group("player")
 	animation_tree.set("parameters/intro_shot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	boss.position = Vector3.ZERO
+	boss_health.is_immune = true
 
 
 func Physics_Update(delta: float) -> void:
@@ -26,7 +28,11 @@ func Physics_Update(delta: float) -> void:
 		rotation_speed * delta)
 
 
+func Exit() -> void:
+	boss.set_particle_effects_emitting(true)
+	boss_health.is_immune = false
+
+
 func on_animation_finished(anim_name: String) -> void:
 	if anim_name == "Intro":
 		boss.change_state("Projectile")
-	boss.set_particle_effects_emitting(true)

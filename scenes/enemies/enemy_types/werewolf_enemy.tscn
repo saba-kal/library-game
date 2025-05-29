@@ -3391,10 +3391,10 @@ bones/54/rotation = Quaternion(0.417287, 0.00526628, 0.449139, 0.790012)
 bones/55/rotation = Quaternion(0.223814, -0.000350932, 0.232903, 0.946395)
 
 [node name="Eyes" parent="Werewolf/WerewolfArmature/Skeleton3D" index="0"]
-transform = Transform3D(0.0329262, -3.89264e-09, 0.000135654, 1.05879e-05, 0.032826, -0.00256929, -0.000135238, 0.0025693, 0.0328258, 0.0179538, 0.725846, 1.36155)
+transform = Transform3D(0.0329262, -4.47471e-09, 0.000135654, 1.05874e-05, 0.032826, -0.00256928, -0.00013524, 0.00256929, 0.0328258, 0.0179538, 0.725846, 1.36155)
 
 [node name="LeftPaw" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="2"]
-transform = Transform3D(0.627915, 0.0245027, -0.777896, 0.408577, -0.861075, 0.302679, -0.66241, -0.507887, -0.550693, 0.714023, -0.629516, 0.466678)
+transform = Transform3D(0.627915, 0.0245028, -0.777896, 0.408577, -0.861075, 0.302679, -0.66241, -0.507887, -0.550693, 0.714023, -0.629516, 0.466678)
 bone_name = "Hand.L"
 bone_idx = 13
 
@@ -3408,7 +3408,7 @@ monitoring = false
 shape = SubResource("CapsuleShape3D_jd6bd")
 
 [node name="RightPaw" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="3"]
-transform = Transform3D(0.633747, -0.0277155, 0.773044, -0.407892, -0.861103, 0.30352, 0.657259, -0.507674, -0.557026, -0.684025, -0.630275, 0.472387)
+transform = Transform3D(0.633747, -0.0277156, 0.773044, -0.407893, -0.861103, 0.30352, 0.657258, -0.507674, -0.557027, -0.684025, -0.630275, 0.472386)
 bone_name = "Hand.R"
 bone_idx = 31
 
@@ -3421,7 +3421,7 @@ monitoring = false
 shape = SubResource("CapsuleShape3D_pamq2")
 
 [node name="Bite" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="4"]
-transform = Transform3D(0.999991, 0.00397827, -0.00106976, 0.000322686, -0.334529, -0.942385, -0.00410689, 0.942377, -0.334527, 0.0166984, 0.759039, 1.05851)
+transform = Transform3D(0.999991, 0.0039783, -0.00106975, 0.000322671, -0.334529, -0.942386, -0.00410695, 0.942377, -0.334527, 0.0166984, 0.75904, 1.05851)
 bone_name = "Head"
 bone_idx = 6
 

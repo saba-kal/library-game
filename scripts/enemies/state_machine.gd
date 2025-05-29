@@ -120,12 +120,15 @@ func disengage() -> void:
 	player_target = null
 	current_state.SetTarget(null)
 
-func on_health_changed(health:int, damage_amount:int, damage_sender:CharacterBody3D = null) -> void:
+func on_health_changed(health_amount:int, damage_amount:int, damage_sender:CharacterBody3D = null) -> void:
 	if current_state == intial_state:
 		if is_instance_valid(self):
 			on_child_transitioned(current_state, aggro_state.name.to_lower())
 			print("Damage Sender: " + str(damage_sender))
-	if(health <= 0):
+	if health_amount <= 0:
 		on_child_transitioned(current_state, "Death")
 		if self.sound_effect:
 			self.sound_effect.stop()
+
+func kill() -> void:
+	health.take_damage(health.maximum)

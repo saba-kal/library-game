@@ -22,3 +22,7 @@ func _physics_process(delta: float) -> void:
 func disengage() -> void:
 	if self.state_machine:
 		self.state_machine.disengage()
+
+
+func kill() -> void:
+	state_machine.kill()

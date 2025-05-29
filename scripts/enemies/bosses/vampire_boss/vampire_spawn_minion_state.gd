@@ -4,13 +4,19 @@ extends BossState
 @export var boss: VampireBoss
 @export var move_speed: float = 5.0
 @export var rotation_speed: float = 10.0
-@export var pre_spawn_delay: float = 2.0
-@export var post_spawn_delay: float = 2.0
 @export var minion_scene: PackedScene
 @export var animation_tree: AnimationTree
 
+@onready var pre_spawn_timer: Timer = $PreSpawnDelayTimer
+@onready var post_spawn_timer: Timer = $PostSpawnDelayTimer
+
 var player: Player
 var spawn_in_progress: bool = false
+var spawned_minions: Array[EnemyBase] = []
+
+
+func _ready() -> void:
+	boss.death.connect(on_boss_death)
 
 
 func Enter() -> void:
@@ -41,17 +47,31 @@ func Physics_Update(delta: float) -> void:
 		rotation_speed * delta)
 
 
+func Exit() -> void:
+	pre_spawn_timer.stop()
+	post_spawn_timer.stop()
+
+
 func spawn_minions() -> void:
 	spawn_in_progress = true
 	animation_tree.set("parameters/vampire_state/transition_request", "stand")
-	await get_tree().create_timer(pre_spawn_delay).timeout
-	print("Spawning minions")
+	pre_spawn_timer.start()
+	await pre_spawn_timer.timeout
 	for spawn_marker: Marker3D in boss.phase_2_minion_positions:
-		var minion: Node3D = minion_scene.instantiate()
+		var minion: EnemyBase = minion_scene.instantiate()
 		boss.get_parent().add_child(minion)
 		minion.global_position = spawn_marker.global_position
-	await get_tree().create_timer(post_spawn_delay).timeout
+		spawned_minions.append(minion)
+	post_spawn_timer.start()
+	await post_spawn_timer.timeout
 	if boss.phase <= 2:
 		boss.change_state("Chase")
 	elif boss.phase == 3:
 		boss.change_state("Projectile")
+
+
+func on_boss_death() -> void:
+	for minion in spawned_minions:
+		if is_instance_valid(minion):
+			minion.kill()
+	spawned_minions = []

@@ -61,15 +61,17 @@ func set_particle_effects_emitting(emitting: bool) -> void:
 
 
 func on_health_changed(health_amount:int, delta:int, damage_sender:CharacterBody3D) -> void:
+	if current_state == "Dead":
+		return
+
 	var health_percent: float = health.current / float(health.maximum)
-	print(health_percent)
 	if health.current <= 0:
 		if reward_on_death != null:
 			var reward_instance: Node3D = reward_on_death.instantiate()
 			get_tree().root.add_child(reward_instance)
 			reward_instance.global_position = global_position
 		death.emit()
-		self.queue_free()
+		change_state("Dead")
 	elif phase == 1 && health_percent <= phase_2_health:
 		print("Vampire boss entering phase 2")
 		phase = 2
