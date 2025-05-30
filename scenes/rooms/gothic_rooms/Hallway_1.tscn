@@ -99,9 +99,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.86785, 3.72894, 1.86707)
 [node name="TornCloth_7" parent="Wall_South" index="4" instance=ExtResource("6_e5vy1")]
 transform = Transform3D(-0.258494, 0, -0.966013, 0, 1, 0, 0.966013, 0, -0.258494, -5.72861, 4.10822, 2.03406)
 
-[node name="Doorways" parent="." index="4"]
+[node name="Wall_East" parent="." index="5"]
 data = {
-"cells": PackedInt32Array(6, 0, 1441813, 65527, 0, 1048597, 6, 1, 1441812, 7, 65535, 1048596, 7, 1, 20, 6, 65535, 655380, 7, 0, 655377, 65526, 0, 655377, 65527, 65535, 1048596, 65527, 1, 20, 65526, 1, 1441812, 65526, 65535, 655380)
+"cells": PackedInt32Array(5, 0, 1441813, 5, 65535, 1441818, 5, 1, 1441818)
+}
+
+[node name="Wall_West" parent="." index="6"]
+data = {
+"cells": PackedInt32Array(65528, 0, 1048597, 65528, 1, 1048602, 65528, 65535, 1048602)
 }
 
 [node name="Floor" parent="." index="9"]

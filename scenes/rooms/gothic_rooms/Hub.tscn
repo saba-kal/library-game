@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://qscen83w47ka"]
+[gd_scene load_steps=15 format=3 uid="uid://qscen83w47ka"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_jk3g8"]
 [ext_resource type="PackedScene" uid="uid://0d1ctubyayeg" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_1.tscn" id="2_4v1hj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d0t1y1g5qnje0" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_1.tscn" id="5_lwbre"]
 [ext_resource type="PackedScene" uid="uid://cg78jlusnpup3" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_2.tscn" id="6_nkeoh"]
 [ext_resource type="PackedScene" uid="uid://c0nv7jysskn3g" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_3.tscn" id="7_1o68x"]
+[ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="7_a2plm"]
 [ext_resource type="PackedScene" uid="uid://bau4gfnvs58vy" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_4.tscn" id="8_ex8ou"]
 [ext_resource type="PackedScene" uid="uid://mpjc6wrnn8xx" path="res://assets/models/gothic_library_section/Interactible Models/Doors.glb" id="9_pf24s"]
 [ext_resource type="PackedScene" uid="uid://btcvm3c6i3tek" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Holder.tscn" id="10_nif28"]
@@ -14,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://vxorah386tra" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_2.tscn" id="12_aomk4"]
 [ext_resource type="PackedScene" uid="uid://cmepbn2gyxqt1" path="res://assets/VFX/Candle_Flame_2.tscn" id="13_q6gjw"]
 
-[node name="RoomVariation" instance=ExtResource("1_jk3g8")]
+[node name="RoomVariation" node_paths=PackedStringArray("north_door", "player_spawn_point") instance=ExtResource("1_jk3g8")]
+north_door = NodePath("Doors/DoorNorth")
+player_spawn_point = NodePath("PlayerSpawnPoint")
 
 [node name="Wall_North" parent="." index="2"]
 data = {
@@ -23,12 +26,15 @@ data = {
 
 [node name="Wall_South" parent="." index="3"]
 data = {
-"cells": PackedInt32Array(65531, 8, 1441810, 65532, 8, 1441809, 65533, 8, 1441810, 65534, 8, 1441810, 0, 8, 1441809, 1, 8, 1441810, 2, 8, 1441809, 3, 8, 1441810)
+"cells": PackedInt32Array(65531, 8, 1441810, 65532, 8, 1441809, 65533, 8, 1441810, 65534, 8, 1441810, 0, 8, 1441809, 1, 8, 1441810, 2, 8, 1441809, 3, 8, 1441810, 65535, 9, 655386, 65535, 8, 655381)
 }
+
+[node name="Doors2" parent="Wall_South" index="0" instance=ExtResource("9_pf24s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.01329, 1.45977, 16.8936)
 
 [node name="Doorways" parent="." index="4"]
 data = {
-"cells": PackedInt32Array(65535, 65532, 21, 65535, 9, 655381, 65535, 10, 1048593)
+"cells": PackedInt32Array(65535, 65532, 21)
 }
 
 [node name="Wall_East" parent="." index="5"]
@@ -85,9 +91,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.34054, 0.0153434, 0.824106
 
 [node name="Floor" parent="." index="9"]
 data = {
-"cells": PackedInt32Array(65535, 65532, 1048578, 65535, 65533, 0, 65534, 65533, 1048578, 0, 65533, 1048579, 0, 65534, 2, 65535, 65534, 1441795, 65534, 65534, 655362, 65534, 65535, 1048578, 65535, 65535, 0, 0, 65535, 1048578, 0, 0, 0, 65535, 0, 655363, 65534, 0, 0, 65534, 1, 1048578, 65535, 1, 0, 0, 1, 1048578, 0, 2, 0, 65535, 2, 0, 65534, 2, 1048579, 65534, 3, 0, 65535, 3, 655361, 0, 3, 1048577, 65533, 65535, 1441795, 65532, 65535, 1048578, 65531, 65535, 3, 1, 65535, 0, 2, 65535, 655363, 3, 65535, 1441795, 3, 0, 0, 3, 1, 655362, 3, 2, 1048577, 3, 3, 0, 2, 3, 0, 1, 3, 3, 65533, 3, 655363, 65532, 3, 1441793, 65531, 3, 0, 65531, 2, 1048579, 65531, 1, 655362, 65531, 0, 0, 65532, 0, 2, 65533, 0, 1441793, 65533, 1, 0, 65533, 2, 655362, 65532, 2, 0, 65532, 1, 1048579, 1, 1, 2, 2, 1, 0, 1, 0, 655362, 2, 0, 2, 2, 2, 3, 1, 2, 0, 65531, 4, 2, 65531, 5, 0, 65531, 6, 1048577, 65531, 7, 1048578, 65531, 8, 655363, 65532, 8, 0, 65533, 8, 1048577, 65534, 8, 0, 65535, 8, 1441795, 0, 8, 0, 1, 8, 1048578, 2, 8, 1048579, 3, 8, 2, 3, 7, 1048577, 3, 6, 0, 3, 5, 655362, 3, 4, 1048578, 2, 4, 1441795, 1, 4, 1, 0, 4, 655362, 65535, 4, 655363, 65534, 4, 655362, 65533, 4, 0, 65532, 4, 0, 65532, 5, 3, 65532, 6, 2, 65532, 7, 655362, 65533, 7, 2, 65533, 6, 655363, 65533, 5, 1048578, 65534, 5, 1441794, 65534, 6, 0, 65534, 7, 1, 65535, 7, 0, 65535, 6, 0, 0, 6, 1441795, 0, 7, 0, 1, 7, 655362, 2, 7, 0, 2, 6, 1441795, 1, 6, 0, 1, 5, 2, 2, 5, 1048578, 0, 5, 0, 65535, 5, 3, 65535, 9, 0)
+"cells": PackedInt32Array(65535, 65532, 1048578, 65535, 65533, 0, 65534, 65533, 1048578, 0, 65533, 1048579, 0, 65534, 2, 65535, 65534, 1441795, 65534, 65534, 655362, 65534, 65535, 1048578, 65535, 65535, 0, 0, 65535, 1048578, 0, 0, 0, 65535, 0, 655363, 65534, 0, 0, 65534, 1, 1048578, 65535, 1, 0, 0, 1, 1048578, 0, 2, 0, 65535, 2, 0, 65534, 2, 1048579, 65534, 3, 0, 65535, 3, 655361, 0, 3, 1048577, 65533, 65535, 1441795, 65532, 65535, 1048578, 65531, 65535, 3, 1, 65535, 0, 2, 65535, 655363, 3, 65535, 1441795, 3, 0, 0, 3, 1, 655362, 3, 2, 1048577, 3, 3, 0, 2, 3, 0, 1, 3, 3, 65533, 3, 655363, 65532, 3, 1441793, 65531, 3, 0, 65531, 2, 1048579, 65531, 1, 655362, 65531, 0, 0, 65532, 0, 2, 65533, 0, 1441793, 65533, 1, 0, 65533, 2, 655362, 65532, 2, 0, 65532, 1, 1048579, 1, 1, 2, 2, 1, 0, 1, 0, 655362, 2, 0, 2, 2, 2, 3, 1, 2, 0, 65531, 4, 2, 65531, 5, 0, 65531, 6, 1048577, 65531, 7, 1048578, 65531, 8, 655363, 65532, 8, 0, 65533, 8, 1048577, 65534, 8, 0, 65535, 8, 1441795, 0, 8, 0, 1, 8, 1048578, 2, 8, 1048579, 3, 8, 2, 3, 7, 1048577, 3, 6, 0, 3, 5, 655362, 3, 4, 1048578, 2, 4, 1441795, 1, 4, 1, 0, 4, 655362, 65535, 4, 655363, 65534, 4, 655362, 65533, 4, 0, 65532, 4, 0, 65532, 5, 3, 65532, 6, 2, 65532, 7, 655362, 65533, 7, 2, 65533, 6, 655363, 65533, 5, 1048578, 65534, 5, 1441794, 65534, 6, 0, 65534, 7, 1, 65535, 7, 0, 65535, 6, 0, 0, 6, 1441795, 0, 7, 0, 1, 7, 655362, 2, 7, 0, 2, 6, 1441795, 1, 6, 0, 1, 5, 2, 2, 5, 1048578, 0, 5, 0, 65535, 5, 3)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="DoorNorth" parent="Doors" index="0" instance=ExtResource("7_a2plm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.01214, 0, -6.52894)
 
 [node name="Decorative Assets" type="Node3D" parent="." index="12"]
 
@@ -138,9 +147,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65139, 3.53764, -5.60163)
 
 [node name="Pillar_Shaft_16" parent="Decorative Assets" index="15" instance=ExtResource("3_20tcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64333, 1.277, -5.5983)
-
-[node name="Doors2" parent="Decorative Assets" index="16" instance=ExtResource("9_pf24s")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.01329, 1.45977, 18.8936)
 
 [node name="Lightning" type="Node3D" parent="." index="13"]
 
@@ -283,3 +289,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18065, 1.87, -5.59348)
 
 [node name="CandleFlame6" parent="." index="27" instance=ExtResource("13_q6gjw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18065, 1.87, -5.47767)
+
+[node name="PlayerSpawnPoint" type="Marker3D" parent="." index="28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948005, 0, 16.3753)

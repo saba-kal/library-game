@@ -39,7 +39,6 @@ func physics_update(_delta: float) -> void:
 	last_dir = input_dir if input_dir else last_dir
 	character.set_orientation_from_top_down_vector(input_dir)
 	character.adjust_body_velocity(_delta, move_speed, acceleration)
-	#self.footstep_sounds.enabled = input_dir.length_squared() > 0.1
 	
 	# Sets proper travel path for animation start.
 	if !idle:

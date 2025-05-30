@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnhe8th4xlj6v"]
+[gd_scene load_steps=8 format=3 uid="uid://cnhe8th4xlj6v"]
 
 [ext_resource type="Script" uid="uid://lwkyefr31sek" path="res://scripts/room_generation/Gen2/room_door.gd" id="1_qfi1u"]
+[ext_resource type="ArrayMesh" uid="uid://dqjk8obi48ome" path="res://assets/models/gothic_library_section/Interactible Models/BasicDoorFrame.obj" id="2_vv2gy"]
+[ext_resource type="Shader" uid="uid://bo8nrn5q5e4xk" path="res://assets/shaders/RoomDoorEffect.gdshader" id="3_2ilaj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7oyu"]
 size = Vector3(1, 4, 3)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vv2gy"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2ilaj"]
+seamless = true
+noise = SubResource("FastNoiseLite_vv2gy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7fc7"]
+render_priority = 0
+shader = ExtResource("3_2ilaj")
+shader_parameter/color = Color(0.237612, 0.826576, 1, 1)
+shader_parameter/flow_speed = 0.2
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2ilaj")
 
 [node name="DoorDetectionSetup" type="Area3D"]
 collision_mask = 10
@@ -15,3 +31,8 @@ shape = SubResource("BoxShape3D_x7oyu")
 
 [node name="PlayerSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99778, 0, 0)
+
+[node name="BasicDoorFrame" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.80825e-08, 0, 0.324, 0, 1.1, 0, -1.1, 0, -1.41625e-08, -0.0698308, 0, 0)
+mesh = ExtResource("2_vv2gy")
+surface_material_override/0 = SubResource("ShaderMaterial_x7fc7")

@@ -58,12 +58,7 @@ transform = Transform3D(-0.999963, 0, 0.00862174, 0, 1, 0, -0.00862174, 0, -0.99
 
 [node name="Wall_South" parent="." index="3"]
 data = {
-"cells": PackedInt32Array(65533, 1, 1441810, 65534, 1, 1441810, 0, 1, 1441809, 1, 1, 1441809)
-}
-
-[node name="Doorways" parent="." index="4"]
-data = {
-"cells": PackedInt32Array(65535, 2, 655381, 65534, 3, 1441812, 0, 3, 20, 65535, 3, 1441809)
+"cells": PackedInt32Array(65533, 1, 1441810, 65534, 1, 1441810, 0, 1, 1441809, 1, 1, 1441809, 65535, 1, 655381)
 }
 
 [node name="Wall_East" parent="." index="5"]

@@ -13,6 +13,7 @@ enum ROOM_DIRECTION{
 @export var south_door: RoomDoor
 @export var west_door: RoomDoor
 @export var rotation_offset: int = 0
+@export var player_spawn_point: Marker3D
 @onready var wall_checker: Node3D = %WallChecker
 @onready var wall_north: GridMap = %Wall_North
 @onready var wall_south: GridMap = %Wall_South
@@ -25,6 +26,7 @@ var nav_region : NavigationRegion3D
 var room_controller: RoomController
 var is_player_inside_room: bool = false
 var has_spawned: bool = false
+var times_rotated: int = 0
 
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
@@ -33,6 +35,7 @@ var doors: Array[RoomDoor]
 var tile_position: Vector2i
 
 func _ready() -> void:
+	times_rotated = rotation_offset
 	doors = [
 		north_door,
 		east_door,
@@ -45,6 +48,7 @@ func _ready() -> void:
 
 ## Rotates room <x amount> of times.
 func rotate_room(times:int) -> void:
+	times_rotated = times % 4
 	for x in times:
 		rotation_degrees.y = times * -90
 
@@ -97,6 +101,11 @@ func bake_nav_mesh():
 	nav_region.navigation_mesh.geometry_source_geometry_mode = NavigationMesh.SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN
 	nav_region.navigation_mesh.geometry_source_group_name = "nav_mesh_group"
 	nav_region.bake_navigation_mesh()
+
+func get_player_spawn_position() -> Vector3:
+	if is_instance_valid(player_spawn_point):
+		return player_spawn_point.global_position
+	return global_position
 
 func on_player_moved_to_room(room: RoomVariation) -> void:
 	if self.room_controller:

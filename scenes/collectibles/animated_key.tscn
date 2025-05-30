@@ -1,38 +1,32 @@
 [gd_scene load_steps=6 format=3 uid="uid://dj8eus3jbld5a"]
 
-[ext_resource type="ArrayMesh" uid="uid://bvyx4xpooiytr" path="res://assets/models/collectibles/low_poly_key.obj" id="1_7qp3l"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pipj1"]
-albedo_color = Color(0.92, 0.92, 0, 1)
-metallic = 1.0
-roughness = 0.64
-disable_receive_shadows = true
+[ext_resource type="PackedScene" uid="uid://dm0kiwiw46jv4" path="res://assets/models/gothic_library_section/Interactible Models/Key.glb" id="1_m1xu8"]
 
 [sub_resource type="Animation" id="Animation_c51jt"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:rotation")
+tracks/0/path = NodePath("KeyModel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, -0.523599)]
+"values": [Vector3(0, 0.400268, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/path = NodePath("KeyModel:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.400268, 0)]
+"values": [Vector3(0, 0, -0.523599)]
 }
 
 [sub_resource type="Animation" id="Animation_cogs4"]
@@ -42,26 +36,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:rotation")
-tracks/0/interp = 1
+tracks/0/path = NodePath("KeyModel:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, -0.523599), Vector3(0, 6.28319, -0.523599)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0.400268, 0), Vector3(0, 0.6, 0), Vector3(0, 0.400268, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KeyModel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.523599), Vector3(0, 6.28319, -0.523599)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i3kmh"]
@@ -70,14 +64,24 @@ _data = {
 &"key_spin_anim": SubResource("Animation_cogs4")
 }
 
-[node name="MeshInstance3D" type="MeshInstance3D"]
-transform = Transform3D(-0.0425836, -0.0245857, -0.0246411, -0.0275, 0.0476314, 0, 0.0213398, 0.0123206, -0.0491713, 0, 0.58819, 0)
-mesh = ExtResource("1_7qp3l")
-surface_material_override/0 = SubResource("StandardMaterial3D_pipj1")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2xyb"]
+albedo_color = Color(0.873333, 1, 0.05, 1)
+emission_enabled = true
+emission = Color(0.69216, 0.96, 0.0672, 1)
+
+[node name="AnimatedKey" type="Node3D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_i3kmh")
+&"": SubResource("AnimationLibrary_i3kmh")
 }
 autoplay = "key_spin_anim"
+
+[node name="KeyModel" parent="." instance=ExtResource("1_m1xu8")]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0.400268, 0)
+
+[node name="Key" parent="KeyModel" index="0"]
+transform = Transform3D(1, 3.31818e-07, -2.68221e-07, 2.68221e-07, 9.9732e-14, 1, 3.13916e-07, -1, 3.82137e-15, -0.0459425, 0.0795747, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_o2xyb")
+
+[editable path="KeyModel"]

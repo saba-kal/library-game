@@ -20,6 +20,9 @@ const DEADEND_ROTATED_1 := Vector2i(2, 2)
 const DEADEND_ROTATED_2 := Vector2i(3, 2)
 const DEADEND_ROTATED_3 := Vector2i(4, 2)
 
+# This is a special temporary tile used to mark cells that need to become rooms.
+const ROOM_CANDIDATE := Vector2i(5, 0)
+
 class RoomData:
 	var room_type: Vector2i
 	var tile_map_position: Vector2i
@@ -52,26 +55,30 @@ func generate_rooms():
 	currently_generating = true
 	var starting_position:Vector2i = Vector2i(0,0)
 	var current_position:Vector2i = starting_position
-	for x in minimum_room_amount:
-		var spot_check:Vector2i = tile_map_layer.get_surrounding_cells(current_position).pick_random()
+
+	# First room is always a hub room.
+	tile_map_layer.set_cell(starting_position, 0, DEADEND_ROTATED_2)
+
+	for i in range(1, minimum_room_amount):
+		var spot_check:Vector2i = get_surrounding_cells(current_position).pick_random()
 		var data = tile_map_layer.get_cell_tile_data(spot_check)
 		if data == null:
-				tile_map_layer.set_cell(spot_check,0,Vector2(5,0))
+			tile_map_layer.set_cell(spot_check, 0, ROOM_CANDIDATE)
 		else:
 			failsafe_timer.start(1.0)
 			while data != null or spot_check.x > max_width_allowed or spot_check.y > max_height_allowed:
 				await get_tree().create_timer(0.05).timeout
-				spot_check = tile_map_layer.get_surrounding_cells(current_position).pick_random()
+				spot_check = get_surrounding_cells(current_position).pick_random()
 				data = tile_map_layer.get_cell_tile_data(spot_check)
 				if failsafe_activated:
 					failsafe_activated = false
 					for cell in tile_map_layer.get_used_cells():
-						for sur_cell in tile_map_layer.get_surrounding_cells(cell):
+						for sur_cell in get_surrounding_cells(cell):
 							if tile_map_layer.get_cell_tile_data(sur_cell) == null:
 								current_position = sur_cell
 								break
 					break
-			tile_map_layer.set_cell(spot_check,0,Vector2(5,0))
+			tile_map_layer.set_cell(spot_check, 0, ROOM_CANDIDATE)
 		current_position = spot_check
 	print("Done Generatoring")
 
@@ -79,12 +86,12 @@ func generate_rooms():
 
 	## Bulks up rooms, with small chance of dead-end created.
 	for tile in tile_map_layer.get_used_cells():
-		for sur_tile in tile_map_layer.get_surrounding_cells(tile):
+		for sur_tile in get_surrounding_cells(tile):
 			if tile_map_layer.get_cell_tile_data(sur_tile) == null:
 				var chance:int = randi_range(1,3)
 				match chance:
 					1:
-						tile_map_layer.set_cell(sur_tile,0,Vector2(5,0))
+						tile_map_layer.set_cell(sur_tile, 0, ROOM_CANDIDATE)
 
 	## Sets rooms to their appropriate tile-type based on their locations, and neighbors.
 	tie_up_rooms()
@@ -93,8 +100,30 @@ func generate_rooms():
 	currently_generating = false
 	generation_complete.emit()
 
+func get_surrounding_cells(from_cell: Vector2i) -> Array[Vector2i]:
+	# We want to make sure we do not pick cells next to or below the starting/hub room
+	# The reason we are doing this is because we want the hub room to have a single door.
+	# +---+---+---+		Legend:
+	# | O | O | O |		H: hub/starting room. Located at (0,0)
+	# +---+---+---+		O: We are okay with placing a room here.
+	# | X | H | X |		X: we do not want to place a room here.
+	# +---+---+---+
+	# | O | X | O |
+	# +---+---+---+
+	var cells: Array[Vector2i] = tile_map_layer.get_surrounding_cells(from_cell)
+	Util.remove_elem(cells, Vector2i(1, 0))
+	Util.remove_elem(cells, Vector2i(-1, 0))
+	Util.remove_elem(cells, Vector2i(0, 1))
+	return cells
+
 func tie_up_rooms():
-	print("Tidying rooms.")
+	var used_cells: Array[Vector2i] = tile_map_layer.get_used_cells()
+	Util.remove_elem(used_cells, Vector2i.ZERO)
+	#used_cells.remove_at(0)
+	# set_cells_terrain_connect is what actually generates the map.
+	# We start by placing ROOM_CANDIDATE type cells, which we want to later turn into a room.
+	# Then we utilizes godot's automatic tilemap terrain connection system to magically
+	# replace all the ROOM_CANDIDATE cells with appropriate rooms.
 	tile_map_layer.set_cells_terrain_connect(tile_map_layer.get_used_cells(), 0, 0, false)
 
 func add_boss_room() -> void:

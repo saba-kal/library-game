@@ -4,11 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dmeimln03low1" path="res://scenes/collectibles/collectible_area.tscn" id="2_n4c7l"]
 [ext_resource type="PackedScene" uid="uid://dj8eus3jbld5a" path="res://scenes/collectibles/animated_key.tscn" id="3_146pk"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l666"]
-albedo_color = Color(0.921569, 0, 0, 1)
-metallic = 1.0
-roughness = 0.64
-disable_receive_shadows = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2rig"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
 
 [node name="BossKey" type="Node3D"]
 script = ExtResource("1_l1442")
@@ -16,5 +15,9 @@ script = ExtResource("1_l1442")
 [node name="CollectibleArea" parent="." instance=ExtResource("2_n4c7l")]
 
 [node name="MeshInstance3D" parent="." instance=ExtResource("3_146pk")]
-transform = Transform3D(0.0476314, 0.0275, 0, -0.0275, 0.0476314, 0, 0, 0, 0.055, 0, 0.400268, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_3l666")
+
+[node name="Key" parent="MeshInstance3D/KeyModel" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q2rig")
+
+[editable path="MeshInstance3D"]
+[editable path="MeshInstance3D/KeyModel"]

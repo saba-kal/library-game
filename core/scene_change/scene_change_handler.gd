@@ -23,8 +23,8 @@ func to_main_menu() -> void:
 	scene_change()
 
 func to_game_start() -> void:
-	next_scene = known_scenes["hub"]
-	current_scene = known_scenes["hub"]
+	next_scene = known_scenes["haunted_floor"]
+	current_scene = known_scenes["haunted_floor"]
 	scene_change()
 
 func to_debug_area() -> void:

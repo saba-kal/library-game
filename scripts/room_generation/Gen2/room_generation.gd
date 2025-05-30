@@ -13,6 +13,7 @@ const THREEWAY = preload("res://scenes/room_generation/Gen2/Gen2_rooms/threeway.
 @export var hallway_room_variations:Array[PackedScene]
 @export var threeway_room_variations:Array[PackedScene]
 @export var boss_room_variations:Array[PackedScene]
+@export var start_room:PackedScene
 @export var player_scene:PackedScene
 @export var room_key:PackedScene
 @export var boss_door:PackedScene
@@ -48,6 +49,11 @@ func on_map_generation_complete() -> void:
 func spawn_rooms():
 	var room_array = map.generation_info()
 	for room_data: _2DGeneration.RoomData in room_array:
+
+		if room_data.tile_map_position == Vector2i.ZERO:
+			instantiate_room([start_room], room_data.tile_map_position, 0)
+			continue
+
 		match room_data.room_type:
 			_2DGeneration.FOUR_WAY:
 				instantiate_room(fourway_room_variations, room_data.tile_map_position, 0)
@@ -141,21 +147,27 @@ func connect_room_doors() -> void:
 func spawn_player():
 	var player_instance: Player = player_scene.instantiate()
 	add_child(player_instance)
-	player_instance.global_position = first_room.global_position
+	player_instance.global_position = first_room.get_player_spawn_position()
 	map.set_player_position(first_room.tile_position)
 	print("Spawned player at " + str(first_room.tile_position))
 
 ## Uses a static Node3D in center of room, and checks x/z positions to determine which walls to hide regardless of room is rotated.
 func remove_walls():
 	for room in rooms.get_children():
-		if room is RoomVariation:
-			if (room.wall_north.global_position.x > room.wall_checker.global_position.x) or (room.wall_north.global_position.z > room.wall_checker.global_position.z):
-				room.wall_north.visible = false
-			if (room.wall_south.global_position.x > room.wall_checker.global_position.x) or (room.wall_south.global_position.z > room.wall_checker.global_position.z):
+		if not room is RoomVariation:
+			continue
+		match room.times_rotated:
+			0: # Room was not rotated. Thus, eastern and southern walls will block player camera.
 				room.wall_south.visible = false
-			if (room.wall_east.global_position.x > room.wall_checker.global_position.x) or (room.wall_east.global_position.z > room.wall_checker.global_position.z):
 				room.wall_east.visible = false
-			if (room.wall_west.global_position.x > room.wall_checker.global_position.x) or (room.wall_west.global_position.z > room.wall_checker.global_position.z):
+			1: # Room was rotated once (-90 degrees). Thus, eastern and northern walls will block player camera.
+				room.wall_north.visible = false
+				room.wall_east.visible = false
+			2: # Room was rotated twice (-180 degrees). Thus, western and northern walls will block player camera.
+				room.wall_north.visible = false
+				room.wall_west.visible = false
+			3: # Room was rotated thrice (-270 degrees). Thus, western and southern walls will block player camera.
+				room.wall_south.visible = false
 				room.wall_west.visible = false
 
 ## Spawns key
