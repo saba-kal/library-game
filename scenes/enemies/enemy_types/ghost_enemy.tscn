@@ -2863,6 +2863,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
+radius = 0.303166
 height = 1.84734
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sp0hg"]
@@ -3247,6 +3248,7 @@ wait_time = 1.75
 one_shot = true
 
 [node name="CharacterNavAgent" parent="." instance=ExtResource("8_gk014")]
+debug_path_custom_color = Color(0.912271, 4.71681e-06, 6.73831e-07, 1)
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("damage_flicker")]
 script = ExtResource("9_g6cmd")

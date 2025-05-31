@@ -22,6 +22,9 @@ func SetVariables(_enemy:EnemyBase, _mesh:Node3D, _nav_agent:CharacterNavAgent, 
 	anim_player = _anim_player
 	collision_shape = _collision_shape
 
+func Init() -> void:
+	pass
+
 func Enter():
 	pass
 

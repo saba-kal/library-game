@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c6pf126f185cf" path="res://assets/models/gothic_library_section/decorative_assets/Book_3.tscn" id="9_33x56"]
 [ext_resource type="PackedScene" uid="uid://d034t5npsvheu" path="res://assets/models/gothic_library_section/decorative_assets/Book_2.tscn" id="10_fe0m6"]
 [ext_resource type="PackedScene" uid="uid://b7acvdsrwwv78" path="res://assets/models/gothic_library_section/decorative_assets/Bottle.tscn" id="11_h68qy"]
+[ext_resource type="Script" uid="uid://b2g4yvbam00pe" path="res://scripts/enemies/enemy_wander_path.gd" id="11_t3f3h"]
 [ext_resource type="PackedScene" uid="uid://c57v8yvyy7i3h" path="res://assets/models/gothic_library_section/decorative_assets/Cup.tscn" id="12_gxtm5"]
 [ext_resource type="PackedScene" uid="uid://cdykij1kwwxue" path="res://assets/models/gothic_library_section/decorative_assets/Candle_1.tscn" id="15_mgafl"]
 [ext_resource type="PackedScene" uid="uid://bvfrd0h6e4ovd" path="res://assets/models/gothic_library_section/decorative_assets/Candle_2.tscn" id="16_csl6d"]
@@ -29,23 +30,9 @@
 [ext_resource type="PackedScene" uid="uid://t3rh2l4jxp8r" path="res://assets/VFX/Candle_Flame_1.tscn" id="27_76rij"]
 [ext_resource type="PackedScene" uid="uid://ct6c113whbe47" path="res://scenes/enemy_spawners/spawner.tscn" id="28_luo1i"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_2eckx"]
-vertices = PackedVector3Array(-3.25635, 0.400375, 2.85706, -3.00635, 0.400375, 5.35706, -2.50635, 0.400375, 3.35706, -0.00634956, 0.400375, -2.14294, -0.50635, 0.400375, -3.14294, -1.00635, 0.400375, -2.39294, -14.7563, 0.400375, -0.642945, -15.5063, 0.400375, -0.642945, -15.7563, 0.400375, 0.357055, -15.7563, 0.400375, 1.60706, 11.9937, 0.400375, 0.357055, 11.7437, 0.400375, -0.642945, 10.7437, 0.400375, -0.642945, 10.4937, 0.400375, 2.85706, 11.7437, 0.400375, 2.60706, 11.9937, 0.400375, 1.60706, -6.25635, 0.400375, 3.60706, -5.00635, 0.400375, 3.35706, -4.75635, 0.400375, 2.85706, -3.25635, 0.400375, -0.892945, -7.75635, 0.400375, -1.14294, -8.25635, 0.400375, -0.392945, -15.5063, 0.400375, 2.60706, -14.5063, 0.400375, 2.85706, 10.4937, 0.400375, -1.14294, 3.24365, 0.400375, -0.892945, 3.24365, 0.400375, 2.85706, 6.24365, 0.400375, 3.10706, 13.4937, 0.400375, 1.60706, 13.4937, 0.400375, 0.357055, -17.5063, 0.400375, 0.357055, -17.5063, 0.400375, 1.60706, 2.24365, 0.400375, 3.35706, 2.49365, 0.400375, 5.35706, 3.24365, 0.400375, 5.35706, -9.75635, 0.400375, -0.392945, -14.5063, 0.400375, 3.60706, 6.49365, 0.400375, 3.60706, 10.4937, 0.400375, 3.60706, -3.00635, 0.400375, -2.39294, -14.5063, 0.400375, -1.14294, -10.0063, 0.400375, -1.14294, 2.99365, 0.400375, -2.39294)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 15), PackedInt32Array(12, 15, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 21), PackedInt32Array(18, 21, 20), PackedInt32Array(18, 20, 19), PackedInt32Array(22, 9, 23), PackedInt32Array(12, 13, 24), PackedInt32Array(24, 13, 27), PackedInt32Array(24, 27, 26), PackedInt32Array(24, 26, 25), PackedInt32Array(10, 29, 15), PackedInt32Array(15, 29, 28), PackedInt32Array(19, 0, 18), PackedInt32Array(8, 9, 30), PackedInt32Array(30, 9, 31), PackedInt32Array(25, 26, 32), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 26), PackedInt32Array(21, 16, 35), PackedInt32Array(35, 16, 23), PackedInt32Array(23, 16, 36), PackedInt32Array(0, 19, 2), PackedInt32Array(2, 19, 3), PackedInt32Array(2, 3, 25), PackedInt32Array(2, 25, 32), PackedInt32Array(38, 37, 13), PackedInt32Array(13, 37, 27), PackedInt32Array(5, 3, 39), PackedInt32Array(39, 3, 19), PackedInt32Array(6, 40, 9), PackedInt32Array(9, 40, 23), PackedInt32Array(23, 40, 41), PackedInt32Array(23, 41, 35), PackedInt32Array(3, 42, 25)]
-sample_partition_type = 2
-geometry_parsed_geometry_type = 1
-geometry_source_geometry_mode = 1
-geometry_source_group_name = &"nav_mesh_group"
-agent_height = 2.5
-region_min_size = 10.0
-edge_max_error = 1.0
-
 [node name="RoomVariation" node_paths=PackedStringArray("east_door", "west_door") instance=ExtResource("1_coqyr")]
 east_door = NodePath("Doors/DoorRight")
 west_door = NodePath("Doors/DoorLeft")
-
-[node name="NavigationRegion3D" parent="." index="0"]
-navigation_mesh = SubResource("NavigationMesh_2eckx")
 
 [node name="Wall_North" parent="." index="2"]
 data = {
@@ -120,13 +107,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 1)
 [node name="DoorRight" parent="Doors" index="1" instance=ExtResource("2_krtvd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 1)
 
-[node name="Spawner" parent="Spawners" index="0" instance=ExtResource("28_luo1i")]
+[node name="Spawner" parent="Spawners" index="0" node_paths=PackedStringArray("wander_path") instance=ExtResource("28_luo1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31037, 0.0548091, 1.81536)
+wander_path = NodePath("../../EnemyPatrolPaths/EnemyWanderPath")
 
-[node name="Spawner2" parent="Spawners" index="1" instance=ExtResource("28_luo1i")]
+[node name="Spawner2" parent="Spawners" index="1" node_paths=PackedStringArray("wander_path") instance=ExtResource("28_luo1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73857, 0.0548091, 1.54397)
+wander_path = NodePath("../../EnemyPatrolPaths/EnemyWanderPath")
 
-[node name="Decorative Assets" type="Node3D" parent="." index="12"]
+[node name="EnemyPatrolPaths" type="Node3D" parent="." index="12"]
+
+[node name="EnemyWanderPath" type="Node3D" parent="EnemyPatrolPaths" index="0"]
+script = ExtResource("11_t3f3h")
+metadata/_custom_type_script = "uid://b2g4yvbam00pe"
+
+[node name="Marker3D" type="Marker3D" parent="EnemyPatrolPaths/EnemyWanderPath" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4315, 0, 0.84059)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemyPatrolPaths/EnemyWanderPath" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39526, 0, 0.84059)
+
+[node name="Decorative Assets" type="Node3D" parent="." index="13"]
 
 [node name="Altar1" parent="Decorative Assets" index="0" instance=ExtResource("3_rf7jl")]
 transform = Transform3D(-0.0109604, 0, 0.99994, 0, 1, 0, -0.99994, 0, -0.0109604, -0.0758079, 0.773706, 4.87588)
@@ -449,7 +450,7 @@ transform = Transform3D(0.69271, -0.00462551, -0.721201, 0.000321222, -0.999977,
 [node name="Lantern9" parent="Decorative Assets" index="103" instance=ExtResource("5_slnyo")]
 transform = Transform3D(0.0241428, -0.534405, -0.844883, -0.999707, -0.0147812, -0.0192175, -0.00221847, 0.845099, -0.534605, -13.4277, 0.147197, 3.32615)
 
-[node name="Lighting" type="Node3D" parent="." index="13"]
+[node name="Lighting" type="Node3D" parent="." index="14"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting" index="0"]
 transform = Transform3D(1, 0, 0, 0, -0.493714, 0.869624, 0, -0.869624, -0.493714, 0.0926957, 4.0778, -3.46309)

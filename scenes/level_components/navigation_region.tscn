@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://sq1gdnjs8n0b"]
+
+[ext_resource type="Script" uid="uid://6fo2xbtbi3eg" path="res://scripts/level_components/navigation_region.gd" id="1_ca3tm"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_owyeo"]
+sample_partition_type = 2
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav_mesh_group"
+agent_height = 2.5
+agent_radius = 0.7
+region_min_size = 10.0
+edge_max_error = 1.0
+filter_baking_aabb = AABB(-200, -10, -200, 400, 20, 400)
+
+[node name="NavigationRegion" type="Node3D"]
+script = ExtResource("1_ca3tm")
+
+[node name="NavigationRegion" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_owyeo")

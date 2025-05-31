@@ -16,6 +16,9 @@ script = ExtResource("1_l1442")
 
 [node name="MeshInstance3D" parent="." instance=ExtResource("3_146pk")]
 
+[node name="KeyModel" parent="MeshInstance3D" index="1"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0.400268, 0)
+
 [node name="Key" parent="MeshInstance3D/KeyModel" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_q2rig")
 

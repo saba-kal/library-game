@@ -1822,7 +1822,7 @@ _data = {
 
 [node name="WitchEnemy" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_cerqe")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -1900,8 +1900,8 @@ health = NodePath("../Health")
 [node name="Wander" type="Node" parent="StateMachine"]
 script = ExtResource("4_mdmcg")
 idle_anim_name = "Walk"
-move_speed = 3.0
-rotation_speed = 2.0
+move_speed = 1.2
+rotation_speed = 10.0
 state_transition_upon_player_detection = "RunAway"
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("delete_timer", "body")]

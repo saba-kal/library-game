@@ -31,6 +31,7 @@ class RoomData:
 @export var max_width_allowed:int = 10
 @export var max_height_allowed:int = 10
 @export var minimum_room_amount:int = 10
+@export var generate_only_hallways:bool = false # used for debugging.
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
 @onready var failsafe_timer: Timer = $FailsafeTimer
 @onready var player_location_sprite: Node2D = $PlayerLocationSprite
@@ -54,11 +55,24 @@ func _ready() -> void:
 func generate_rooms():
 	currently_generating = true
 	var starting_position:Vector2i = Vector2i(0,0)
-	var current_position:Vector2i = starting_position
 
 	# First room is always a hub room.
 	tile_map_layer.set_cell(starting_position, 0, DEADEND_ROTATED_2)
+	
+	if generate_only_hallways:
+		generate_hallways_only(starting_position)
+	else:
+		generate_default_layout(starting_position)
 
+	## Sets rooms to their appropriate tile-type based on their locations, and neighbors.
+	tie_up_rooms()
+	add_boss_room()
+	add_key()
+	currently_generating = false
+	generation_complete.emit()
+
+func generate_default_layout(starting_position: Vector2i):
+	var current_position:Vector2i = starting_position
 	for i in range(1, minimum_room_amount):
 		var spot_check:Vector2i = get_surrounding_cells(current_position).pick_random()
 		var data = tile_map_layer.get_cell_tile_data(spot_check)
@@ -67,7 +81,6 @@ func generate_rooms():
 		else:
 			failsafe_timer.start(1.0)
 			while data != null or spot_check.x > max_width_allowed or spot_check.y > max_height_allowed:
-				await get_tree().create_timer(0.05).timeout
 				spot_check = get_surrounding_cells(current_position).pick_random()
 				data = tile_map_layer.get_cell_tile_data(spot_check)
 				if failsafe_activated:
@@ -80,10 +93,7 @@ func generate_rooms():
 					break
 			tile_map_layer.set_cell(spot_check, 0, ROOM_CANDIDATE)
 		current_position = spot_check
-	print("Done Generatoring")
-
-	await get_tree().create_timer(0.5).timeout
-
+	# await get_tree().create_timer(0.5).timeout
 	## Bulks up rooms, with small chance of dead-end created.
 	for tile in tile_map_layer.get_used_cells():
 		for sur_tile in get_surrounding_cells(tile):
@@ -93,12 +103,13 @@ func generate_rooms():
 					1:
 						tile_map_layer.set_cell(sur_tile, 0, ROOM_CANDIDATE)
 
-	## Sets rooms to their appropriate tile-type based on their locations, and neighbors.
-	tie_up_rooms()
-	add_boss_room()
-	add_key()
-	currently_generating = false
-	generation_complete.emit()
+
+func generate_hallways_only(starting_position: Vector2i):
+	var current_position:Vector2i = starting_position
+	for i in range(1, minimum_room_amount):
+		current_position.y -= 1
+		tile_map_layer.set_cell(current_position, 0, ROOM_CANDIDATE)
+
 
 func get_surrounding_cells(from_cell: Vector2i) -> Array[Vector2i]:
 	# We want to make sure we do not pick cells next to or below the starting/hub room

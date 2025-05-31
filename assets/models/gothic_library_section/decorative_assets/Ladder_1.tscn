@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://pvjaktfqnata"]
+[gd_scene load_steps=5 format=4 uid="uid://pvjaktfqnata"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2nj7"]
 resource_name = "Wood_1"
@@ -66,16 +66,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0a1k3")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rrijs"]
-size = Vector3(0.612028, 0.776199, 0.98251)
-
 [node name="Ladder_1" type="MeshInstance3D" groups=["nav_mesh_group"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377535, -0.0145974)
 mesh = SubResource("ArrayMesh_vfevh")
 skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0150984, -0.00354779, 0.0027256)
-shape = SubResource("BoxShape3D_rrijs")

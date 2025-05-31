@@ -699,7 +699,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_540ix")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aulu5"]
-size = Vector3(2.83279, 5.11098, 1.28811)
+size = Vector3(2.83279, 5.11098, 1)
 
 [node name="Bookshelf" type="MeshInstance3D" groups=["nav_mesh_group"]]
 transform = Transform3D(0.708381, 0, 0, 0, 0.708381, 0, 0, 0, 0.708381, 0, 0.266277, -0.0131149)

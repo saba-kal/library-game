@@ -25,6 +25,7 @@ glow_enabled = true
 
 [node name="HauntedFloor" type="Node3D" node_paths=PackedStringArray("map")]
 script = ExtResource("1_ygjm3")
+room_space = 200
 corner_room_variations = Array[PackedScene]([ExtResource("2_akiji"), ExtResource("3_wy5ok")])
 deadend_room_variations = Array[PackedScene]([ExtResource("3_6l85o"), ExtResource("5_lpdrf")])
 fourway_room_variations = Array[PackedScene]([ExtResource("4_0lb6m"), ExtResource("5_nxqvj")])

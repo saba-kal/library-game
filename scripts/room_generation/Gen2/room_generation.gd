@@ -32,8 +32,8 @@ func _ready() -> void:
 	rooms.name = "Rooms"
 	add_child(rooms)
 	map.hide_debugging_overlay()
-	map.generate_rooms()
 	map.generation_complete.connect(on_map_generation_complete)
+	map.generate_rooms()
 
 func on_map_generation_complete() -> void:
 	spawn_rooms()
@@ -121,7 +121,7 @@ func instantiate_room(room_variations: Array[PackedScene], position_2d: Vector2i
 	room_instance.name = "Room (%d, %d)" % [position_2d.x, position_2d.y]
 	rooms.add_child(room_instance)
 	room_instance.global_position = Vector3(position_2d.x, 0, position_2d.y) * room_space
-	room_instance.rotate_room(rotate_count + room_instance.rotation_offset)
+	room_instance.rotate_room(rotate_count)
 	room_instance.tile_position = position_2d
 	room_dictionary[position_2d] = room_instance
 	if first_room == null:

@@ -5,11 +5,17 @@ var acc_weight : float = 0.0
 var total_weight : float = 0.0
 
 @export var choices : Array[EnemySpawnChance]
+@export var wander_path: EnemyWanderPath
 
 const GHOST_ENEMY = preload("res://scenes/enemies/enemy_types/ghost_enemy.tscn")
 const WITCH_ENEMY = preload("res://scenes/enemies/enemy_types/witch_enemy.tscn")
 const WEREWOLF_ENEMY = preload("res://scenes/enemies/enemy_types/werewolf_enemy.tscn")
 var enemy_instance : EnemyBase
+
+func _ready() -> void:
+	var gizmo: Node3D = get_node_or_null("MeshInstance3D")
+	if gizmo:
+		gizmo.visible = false
 
 func initialize_probabilities() -> void:
 	self.rotation.y = 0
@@ -21,10 +27,12 @@ func initialize_probabilities() -> void:
 		choice.acc_weight = total_weight
 
 	enemy_instance = pick_enemy()
-	get_parent().add_child(enemy_instance)
+	if wander_path:
+		wander_path.add_child(enemy_instance)
+	else:
+		get_parent().add_child(enemy_instance)
 	enemy_instance.rotation.y = 0
 	enemy_instance.top_level = true
-	print(get_tree())
 	enemy_instance.position = global_position
 	#queue_free()
 

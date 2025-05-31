@@ -19,10 +19,10 @@ enum ROOM_DIRECTION{
 @onready var wall_south: GridMap = %Wall_South
 @onready var wall_east: GridMap = %Wall_East
 @onready var wall_west: GridMap = %Wall_West
+@onready var nav_region: NavigationRegion = $NavigationRegion
 
 @onready var spawners: Node = $Spawners
 
-var nav_region : NavigationRegion3D
 var room_controller: RoomController
 var is_player_inside_room: bool = false
 var has_spawned: bool = false
@@ -48,7 +48,7 @@ func _ready() -> void:
 
 ## Rotates room <x amount> of times.
 func rotate_room(times:int) -> void:
-	times_rotated = times % 4
+	times_rotated = (times + rotation_offset) % 4
 	for x in times:
 		rotation_degrees.y = times * -90
 
@@ -93,14 +93,8 @@ func despawn():
 			child.queue_free()
 
 func bake_nav_mesh():
-	print("baking mesh")
-	nav_region = NavigationRegion3D.new()
-	add_child(nav_region)
-	nav_region.navigation_mesh = NavigationMesh.new()
-	nav_region.navigation_mesh.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_MESH_INSTANCES
-	nav_region.navigation_mesh.geometry_source_geometry_mode = NavigationMesh.SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN
-	nav_region.navigation_mesh.geometry_source_group_name = "nav_mesh_group"
-	nav_region.bake_navigation_mesh()
+	print("Baking nav mesh")
+	nav_region.bake_nav_mesh()
 
 func get_player_spawn_position() -> Vector3:
 	if is_instance_valid(player_spawn_point):

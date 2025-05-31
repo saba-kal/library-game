@@ -3321,12 +3321,11 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4mjhi"]
-radius = 0.941769
 height = 2.08184
 
 [node name="Werewolf" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_k1tkf")
 
 [node name="Werewolf" parent="." instance=ExtResource("2_noh36")]
@@ -3440,7 +3439,7 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06118, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06118, 0.175163)
 shape = SubResource("CapsuleShape3D_4mjhi")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "anim_player", "nav_agent", "intial_state", "aggro_state", "aggro_timeout", "detection_type", "melee_attack_range", "health", "collision_shape")]
@@ -3459,7 +3458,7 @@ collision_shape = NodePath("../CollisionShape3D")
 [node name="Wander" type="Node" parent="StateMachine"]
 script = ExtResource("4_wfy1b")
 idle_anim_name = "Walk"
-move_speed = 1.5
+move_speed = 1.2
 rotation_speed = 10.0
 state_transition_upon_player_detection = "Howl"
 

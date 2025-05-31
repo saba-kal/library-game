@@ -41,6 +41,7 @@ func _ready() -> void:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transitioned)
 			child.SetVariables(enemy_body, mesh, nav_agent, anim_player, collision_shape)
+			child.Init()
 	
 	if intial_state:
 		intial_state.Enter()
