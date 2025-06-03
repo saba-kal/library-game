@@ -103,6 +103,11 @@ metadata/_edit_horizontal_guides_ = [248.0]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
+visible = false
+tile_set = SubResource("TileSet_gsrnq")
+
+[node name="VisibleTileMapLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
 tile_set = SubResource("TileSet_gsrnq")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map_generation", "tile_map")]

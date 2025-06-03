@@ -33,6 +33,7 @@ class RoomData:
 @export var minimum_room_amount:int = 10
 @export var generate_only_hallways:bool = false # used for debugging.
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
+@onready var visible_tile_map_layer: TileMapLayer = %VisibleTileMapLayer
 @onready var failsafe_timer: Timer = $FailsafeTimer
 @onready var player_location_sprite: Node2D = $PlayerLocationSprite
 @onready var boss_location_sprite: Node2D = $BossLocationSprite
@@ -44,11 +45,13 @@ var valid_cell_count:int = 0
 var boss_cell:Vector2i
 var player_location:Vector2i
 var key_location:Vector2i
+var key_collected:bool
 
 func _ready() -> void:
 	player_location_sprite.visible = false
 	boss_location_sprite.visible = false
 	key_location_sprite.visible = false
+	key_collected = false
 	SignalBus.player_moved_to_room.connect(on_player_moved_to_room)
 	SignalBus.room_key_collected.connect(on_key_collected)
 
@@ -58,7 +61,8 @@ func generate_rooms():
 
 	# First room is always a hub room.
 	tile_map_layer.set_cell(starting_position, 0, DEADEND_ROTATED_2)
-	
+	visible_tile_map_layer.set_cell(starting_position, 0, DEADEND_ROTATED_2)
+
 	if generate_only_hallways:
 		generate_hallways_only(starting_position)
 	else:
@@ -153,7 +157,6 @@ func add_boss_room() -> void:
 
 	boss_cell = add_deadend_room_to_tile_pos(furthest_cell)
 	boss_location_sprite.position = tile_map_layer.map_to_local(boss_cell)
-	boss_location_sprite.visible = true
 
 func add_key() -> void:
 	var used_cells: Array[Vector2i] = tile_map_layer.get_used_cells()
@@ -173,7 +176,6 @@ func add_key() -> void:
 
 	key_location = furthest_cell
 	key_location_sprite.position = tile_map_layer.map_to_local(key_location)
-	key_location_sprite.visible = true
 	print("key at " + str(key_location))
 
 func manhattan_distance(v1: Vector2i, v2: Vector2i) -> int:
@@ -194,6 +196,10 @@ func set_player_position(tile_map_pos: Vector2i):
 	player_location_sprite.position = tile_map_layer.map_to_local(tile_map_pos)
 	player_location_sprite.visible = true
 	player_location = tile_map_pos
+	if tile_map_pos == key_location:
+		key_location_sprite.visible =  not key_collected
+	if tile_map_pos == boss_cell:
+		boss_location_sprite.visible = true
 
 func add_deadend_room_to_tile_pos(tile_map_pos: Vector2i) -> Vector2i:
 	var north_offset: Vector2i = Vector2i(0, -1)
@@ -266,6 +272,7 @@ func add_deadend_room_to_tile_pos(tile_map_pos: Vector2i) -> Vector2i:
 func on_player_moved_to_room(room: RoomVariation):
 	set_player_position(room.tile_position)
 	room.enter_room_spawn()
+	visible_tile_map_layer.set_cell(room.tile_position, 0, tile_map_layer.get_cell_atlas_coords(room.tile_position))
 
 func _on_failsafe_timer_timeout() -> void:
 	failsafe_activated = true
@@ -288,6 +295,7 @@ func _on_line_edit_text_changed(new_text: String) -> void:
 
 func on_key_collected() -> void:
 	key_location_sprite.visible = false
+	key_collected = true
 
 func hide_debugging_overlay() -> void:
 	$DebuggingOverlay.visible = false
