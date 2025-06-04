@@ -11,9 +11,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -291.0
-offset_top = -287.0
+offset_top = -302.0
 offset_right = 291.0
-offset_bottom = 287.0
+offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7gm8v")
@@ -238,4 +238,5 @@ popup/item_0/id = 0
 [node name="OkButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_o3mwo")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 text = "OK"

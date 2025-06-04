@@ -1,13 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd7dpdh8afywi"]
+[gd_scene load_steps=9 format=3 uid="uid://bd7dpdh8afywi"]
 
 [ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="1_2svlu"]
 [ext_resource type="PackedScene" uid="uid://bj7u7eqxiljq3" path="res://core/audio/scenes/button_sounds.tscn" id="1_4r6g6"]
+[ext_resource type="Texture2D" uid="uid://di52vi7kjdtid" path="res://assets/textures/GUI/Button_Base.png" id="2_evskr"]
+[ext_resource type="Texture2D" uid="uid://dkgoynrddae8u" path="res://assets/textures/GUI/Button_Hover.png" id="2_vr7fy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ymj0"]
+texture = ExtResource("2_evskr")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+modulate_color = Color(0.509804, 0.509804, 0.509804, 0.74902)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vr7fy"]
+texture = ExtResource("2_vr7fy")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0o6bg"]
+texture = ExtResource("2_vr7fy")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+modulate_color = Color(0.687215, 0.687215, 0.687215, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_epqjl"]
+texture = ExtResource("2_evskr")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
 
 [node name="MenuNavButton" type="Button"]
-custom_minimum_size = Vector2(400, 70)
+custom_minimum_size = Vector2(200, 86)
+offset_right = 350.0
+offset_bottom = 86.0
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("1_2svlu")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/disabled = SubResource("StyleBoxTexture_8ymj0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vr7fy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0o6bg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_epqjl")
 text = "BUTTON TEXT"
 
 [node name="ButtonSounds" parent="." node_paths=PackedStringArray("button") instance=ExtResource("1_4r6g6")]

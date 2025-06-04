@@ -21,6 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://ciklhn74hbvm0" path="res://scenes/level_components/door.tscn" id="15_8mx6f"]
 
 [sub_resource type="Environment" id="Environment_tdot3"]
+background_mode = 2
+ambient_light_source = 2
+ambient_light_color = Color(0.253028, 0.557861, 0.559683, 1)
+ambient_light_energy = 0.1
+reflected_light_source = 1
 glow_enabled = true
 
 [node name="HauntedFloor" type="Node3D" node_paths=PackedStringArray("map")]
@@ -40,6 +45,14 @@ map = NodePath("2D_Map")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tdot3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+light_energy = 0.05
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+directional_shadow_mode = 0
 
 [node name="GUI" parent="." node_paths=PackedStringArray("map_2D") instance=ExtResource("1_a0ej8")]
 map_2D = NodePath("../2D_Map")

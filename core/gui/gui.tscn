@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1pi1kgma618d"]
+[gd_scene load_steps=18 format=3 uid="uid://d1pi1kgma618d"]
 
 [ext_resource type="Script" uid="uid://cxisi2yblv1ug" path="res://core/gui/gui.gd" id="1_ds54n"]
 [ext_resource type="Shader" uid="uid://c73v4e4ck57ri" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
@@ -35,6 +35,13 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t76s2"]
 shader = ExtResource("1_iooxw")
 shader_parameter/lod = 0.9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a22y1"]
+bg_color = Color(0, 0, 0, 0.207843)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="GUI" type="Control"]
 process_mode = 3
@@ -251,11 +258,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -247.0
-offset_top = -124.0
+offset_top = -168.0
 offset_right = 247.0
-offset_bottom = 124.0
+offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a22y1")
 
 [node name="MarginContainer" type="MarginContainer" parent="Pause/Panel"]
 layout_mode = 1
@@ -271,6 +279,8 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Pause/Panel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
 
 [node name="Button_RESUME" parent="Pause/Panel/MarginContainer/VBoxContainer" instance=ExtResource("7_ube1n")]
 layout_mode = 2
