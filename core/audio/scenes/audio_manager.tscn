@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bnauoxf08cgq"]
+[gd_scene load_steps=48 format=3 uid="uid://bnauoxf08cgq"]
 
 [ext_resource type="Script" uid="uid://do44n2tgh41kc" path="res://core/audio/scripts/audio_manager.gd" id="1_qy2rl"]
 [ext_resource type="Script" uid="uid://2pce8a2fguou" path="res://core/audio/scripts/sound_effect.gd" id="2_87qqj"]
@@ -22,6 +22,9 @@
 [ext_resource type="AudioStream" uid="uid://7jakfw5hj72m" path="res://assets/audio/music/horror section.mp3" id="15_u05ys"]
 [ext_resource type="AudioStream" uid="uid://bigh3yo0ugvyc" path="res://assets/audio/sfx/leopard-attack-193175.mp3" id="16_0yhr6"]
 [ext_resource type="AudioStream" uid="uid://bjs0kioryxq62" path="res://assets/audio/sfx/block.mp3" id="19_dx61c"]
+[ext_resource type="AudioStream" uid="uid://yn7fkroinasi" path="res://assets/audio/sfx/punch.wav" id="21_bvsr6"]
+[ext_resource type="AudioStream" uid="uid://c1ep7pohqi2o6" path="res://assets/audio/sfx/female-hurt.wav" id="22_2bhbj"]
+[ext_resource type="AudioStream" uid="uid://br7qfwklmggux" path="res://assets/audio/sfx/female-horror-pain-sound.wav" id="23_gf320"]
 
 [sub_resource type="Resource" id="Resource_v2sca"]
 script = ExtResource("3_gdhnl")
@@ -209,6 +212,42 @@ stream = ExtResource("19_dx61c")
 volume_db = 0.0
 pitch_scale = 1.0
 
+[sub_resource type="Resource" id="Resource_2bhbj"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "enemy_hit"
+stream = ExtResource("21_bvsr6")
+volume_db = 0.0
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://r8j66wci5kbc"
+
+[sub_resource type="Resource" id="Resource_gf320"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "player_hurt"
+stream = ExtResource("22_2bhbj")
+volume_db = 0.0
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://r8j66wci5kbc"
+
+[sub_resource type="Resource" id="Resource_jryt6"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "player_death"
+stream = ExtResource("23_gf320")
+volume_db = 0.0
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://r8j66wci5kbc"
+
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_veow1"]
 clip_count = 2
 clip_0/name = &"main_menu"
@@ -234,7 +273,7 @@ Vector2i(0, 1): {
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_qy2rl")
-sound_effects = Array[ExtResource("2_87qqj")]([SubResource("Resource_v2sca"), SubResource("Resource_ffaxh"), SubResource("Resource_ko3gm"), SubResource("Resource_rjfa6"), SubResource("Resource_l05s6"), SubResource("Resource_o3nbv"), SubResource("Resource_plhii"), SubResource("Resource_2vlvx"), SubResource("Resource_uo8v0"), SubResource("Resource_w0ot4"), SubResource("Resource_52u8c"), SubResource("Resource_egau8"), SubResource("Resource_4eegy"), SubResource("Resource_e4ycb"), SubResource("Resource_tlenu"), SubResource("Resource_dba41"), SubResource("Resource_yifjq"), SubResource("Resource_6fqgh")])
+sound_effects = Array[ExtResource("2_87qqj")]([SubResource("Resource_v2sca"), SubResource("Resource_ffaxh"), SubResource("Resource_ko3gm"), SubResource("Resource_rjfa6"), SubResource("Resource_l05s6"), SubResource("Resource_o3nbv"), SubResource("Resource_plhii"), SubResource("Resource_2vlvx"), SubResource("Resource_uo8v0"), SubResource("Resource_w0ot4"), SubResource("Resource_52u8c"), SubResource("Resource_egau8"), SubResource("Resource_4eegy"), SubResource("Resource_e4ycb"), SubResource("Resource_tlenu"), SubResource("Resource_dba41"), SubResource("Resource_yifjq"), SubResource("Resource_6fqgh"), SubResource("Resource_2bhbj"), SubResource("Resource_gf320"), SubResource("Resource_jryt6")])
 
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_veow1")

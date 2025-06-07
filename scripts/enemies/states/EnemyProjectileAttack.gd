@@ -36,7 +36,7 @@ func Enter() -> void:
 	self.enemy.disengage()
 
 
-func Physics_Update(delta:float) -> void:
+func Physics_Update(delta: float) -> void:
 	var direction: Vector3 = (self.player.global_position - self.enemy.global_position).normalized()
 	Util.rotate_y_to_face_direction(enemy, direction, rotation_speed * delta)
 

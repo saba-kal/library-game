@@ -3,7 +3,11 @@ class_name CharacterNavAgent extends NavigationAgent3D
 @export var movement_speed: float = 5.0
 
 var character: CharacterBody3D
-var is_disabled: bool = false
+var is_disabled: bool:
+	set(value):
+		is_disabled = value
+		if value:
+			set_target_position(character.global_position)
 
 
 func _ready() -> void:
@@ -15,9 +19,10 @@ func set_movement_target(movement_target: Vector3) -> void:
 	set_target_position(movement_target)
 
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	if is_disabled || is_navigation_finished():
 		velocity = Vector3.ZERO
+		set_target_position(character.global_position)
 		return
 
 	max_speed = movement_speed
@@ -30,7 +35,7 @@ func _physics_process(delta):
 		on_velocity_computed(new_velocity)
 
 
-func on_velocity_computed(safe_velocity: Vector3):
+func on_velocity_computed(safe_velocity: Vector3) -> void:
 	if is_disabled:
 		return
 	character.velocity = safe_velocity.normalized() * movement_speed

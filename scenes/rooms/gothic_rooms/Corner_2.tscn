@@ -42,7 +42,7 @@ north_door = NodePath("Doors/DoorNorth")
 west_door = NodePath("Doors/DoorWest")
 
 [node name="NavigationRegion3D#CornerNavObstacle" type="NavigationObstacle3D" parent="." index="0" groups=["nav_mesh_group"]]
-vertices = PackedVector3Array(12.5995, 0, 6.19145, 12.6096, 0, 8.06243, 11.6217, 0, 8.06435, 11.4881, 0, 6.20712)
+vertices = PackedVector3Array(12.8921, 0, 4.92323, 12.8323, 0, 8.0676, 11.392, 0, 8.12371, 11.4327, 0, 4.69522)
 affect_navigation_mesh = true
 avoidance_enabled = false
 

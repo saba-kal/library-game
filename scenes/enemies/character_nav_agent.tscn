@@ -4,6 +4,7 @@
 
 [node name="CharacterNavAgent" type="NavigationAgent3D"]
 path_height_offset = 1.0
+avoidance_enabled = true
 debug_enabled = true
 debug_path_custom_color = Color(0.912271, 4.71681e-06, 6.73831e-07, 1)
 script = ExtResource("1_e78wx")

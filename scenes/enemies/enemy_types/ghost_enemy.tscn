@@ -2863,8 +2863,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
-radius = 0.303166
-height = 1.84734
+radius = 0.541858
+height = 2.34896
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sp0hg"]
 radius = 0.342313
@@ -3201,7 +3201,7 @@ libraries = {
 }
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.924657, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26363, 0)
 shape = SubResource("CapsuleShape3D_a1eye")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy_body", "mesh", "anim_player", "nav_agent", "intial_state", "aggro_state", "aggro_timeout", "detection_type", "health", "collision_shape")]
@@ -3223,6 +3223,7 @@ script = ExtResource("4_d4t4b")
 [node name="Wander" type="Node" parent="StateMachine"]
 script = ExtResource("4_6xrt1")
 idle_anim_name = "Idle"
+move_speed = 4.0
 state_transition_upon_player_detection = "SelfProjectile"
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("delete_timer", "body")]
@@ -3248,7 +3249,6 @@ wait_time = 1.75
 one_shot = true
 
 [node name="CharacterNavAgent" parent="." instance=ExtResource("8_gk014")]
-debug_path_custom_color = Color(0.912271, 4.71681e-06, 6.73831e-07, 1)
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("damage_flicker")]
 script = ExtResource("9_g6cmd")

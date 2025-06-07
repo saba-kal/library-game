@@ -15,6 +15,7 @@ filter_baking_aabb = AABB(-200, -10, -200, 400, 20, 400)
 
 [node name="NavigationRegion" type="Node3D"]
 script = ExtResource("1_ca3tm")
+radius = 1.0
 
 [node name="NavigationRegion" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_owyeo")

@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyi5ujx1ucx5j"]
+
+[ext_resource type="Shader" uid="uid://dunwx0287xyv6" path="res://assets/shaders/chromatic_aberration.gdshader" id="1_c7xnh"]
+[ext_resource type="Script" uid="uid://umleflvgnk8b" path="res://core/post_processing/post_processing.gd" id="1_m5ce8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5ce8"]
+shader = ExtResource("1_c7xnh")
+shader_parameter/aberration = 0.5
+shader_parameter/strength = 0.0
+
+[sub_resource type="Animation" id="Animation_c7xnh"]
+resource_name = "player_hurt"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.01, -0.25, 0, 0.3, -0.011682, 0, -1.56667, 0.000829206, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+
+[sub_resource type="Animation" id="Animation_m5ce8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m5ce8"]
+_data = {
+&"RESET": SubResource("Animation_m5ce8"),
+&"player_hurt": SubResource("Animation_c7xnh")
+}
+
+[node name="PostProcessing" type="CanvasLayer"]
+script = ExtResource("1_m5ce8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_m5ce8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_m5ce8")
+}

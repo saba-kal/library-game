@@ -45,6 +45,9 @@ func Exit():
 	left_claw.monitoring = true
 	right_claw.monitoring = true
 	jaw.monitoring = true
+	attack_timer.stop()
+	jump_timer.stop()
+	end_timer.stop()
 	if self.attached_sound:
 		self.attached_sound.stop()
 
@@ -55,7 +58,7 @@ func Update(_delta: float) -> void:
 		hit_bodies(right_claw)
 	if jaw.monitoring:
 		hit_bodies(jaw)
-	if(enemy.is_on_floor()):
+	if (enemy.is_on_floor()):
 		enemy.velocity = Vector3.ZERO
 
 func hit_bodies(area: Area3D) -> void:
@@ -77,14 +80,14 @@ func attack():
 		attack_timer.start(timings[attack_counter])
 		attack_counter += 1
 	else:
-		if(end_timer.is_stopped()):
+		if (end_timer.is_stopped()):
 			end_timer.start(wind_down)
 
 func jump():
 	enemy.velocity = Vector3(0, 0, 5).rotated(Vector3(0, 1, 0), enemy.rotation.y)
 	enemy.velocity += Vector3(0, 2, 0)
 
-func  angle_to_player() -> float:
+func angle_to_player() -> float:
 	if player_target == null:
 		return 0
 	var v3: Vector3 = player_target.global_position - enemy.global_position

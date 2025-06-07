@@ -8,13 +8,14 @@ extends State
 @export var chase_distance: float = 10.0
 @export var state_transition_upon_target_lost: String = "Wander"
 @export var states_transition_upon_distance_reached: Array[String] = ["ProjectileAttack"]
-@export var attached_sound:AttachedSound3D
+@export var attached_sound: AttachedSound3D
 
 var time_in_state: float = 0
 
 
 func Enter() -> void:
 	self.nav_agent.is_disabled = false
+	self.nav_agent.movement_speed = move_speed
 	self.time_in_state = 0
 	self.anim_player.play(run_anim_name, 0.2)
 	if self.attached_sound:

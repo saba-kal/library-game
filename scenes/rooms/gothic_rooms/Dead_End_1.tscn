@@ -356,7 +356,7 @@ spot_range = 8.43653
 [node name="EnemyWanderPath" parent="EnemyPatrolPaths" index="0" instance=ExtResource("28_2qbv2")]
 
 [node name="Marker3D" type="Marker3D" parent="EnemyPatrolPaths/EnemyWanderPath" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63132, 0, -3.58014)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07604, 0, -3.38633)
 
 [node name="Marker3D2" type="Marker3D" parent="EnemyPatrolPaths/EnemyWanderPath" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20114, 0, -3.58014)

@@ -2,17 +2,17 @@ extends State
 
 @export var speed: float = 7.0
 @export var damage: int = 1
-@export var time_until_attack_start:float = 1.0
-@export var rotation_speed:float = 10.0
-@export var stop_distance:float = 7.0
-@export var teleport_distance:float = 5.0
-@export var attack_anim_name:String = "Run"
-@export var fade_anim_name:String = "FadeOut"
+@export var time_until_attack_start: float = 1.0
+@export var rotation_speed: float = 10.0
+@export var stop_distance: float = 7.0
+@export var teleport_distance: float = 5.0
+@export var attack_anim_name: String = "Run"
+@export var fade_anim_name: String = "FadeOut"
 @export var state_transition_upon_target_missed: String = "Idle"
 @export var sound_name: String
 @export var attached_sound_to_stop: AttachedSound3D
-@export var projectile_area:Area3D
-@export var fade_anim_player:AnimationPlayer
+@export var projectile_area: Area3D
+@export var fade_anim_player: AnimationPlayer
 
 var player: Player
 var end_position: Vector3
@@ -24,21 +24,20 @@ func Enter() -> void:
 	if !self.player:
 		self.player = get_tree().get_first_node_in_group("player")
 	self.anim_player.play(self.attack_anim_name)
-	self.enemy.is_disabled = true
-	self.disable_collision()
 	self.projectile_area.body_entered.connect(self.on_nody_entered)
 	# First attack delay is shorter because there is no fade in anim
 	self.start_projectile_attack(self.time_until_attack_start / 2.0)
+	self.disable_collision()
 	if self.attached_sound_to_stop:
 		self.attached_sound_to_stop.stop()
+	nav_agent.is_disabled = true
 
 
-func Update(_delta:float) -> void:
+func Update(_delta: float) -> void:
 	pass
 
 
-func Physics_Update(delta:float) -> void:
-
+func Physics_Update(delta: float) -> void:
 	var direction: Vector3 = (self.end_position - self.enemy.global_position).normalized()
 	if !self.attack_started:
 		Util.rotate_y_to_face_direction(enemy, direction, rotation_speed * delta)
@@ -58,11 +57,11 @@ func Physics_Update(delta:float) -> void:
 
 
 func Exit() -> void:
-	self.enemy.is_disabled = false
 	self.projectile_area.body_entered.disconnect(self.on_nody_entered)
 	self.enable_collision()
 	if self.attached_sound_to_stop:
 		self.attached_sound_to_stop.play()
+	nav_agent.is_disabled = false
 
 
 func start_projectile_attack(delay: float) -> void:
@@ -87,7 +86,7 @@ func teleport_to_random_location() -> void:
 	self.enemy.global_position = Vector3(
 		self.player.global_position.x + random_vector_2d.x,
 		self.enemy.global_position.y,
-		self.player.global_position.z+ random_vector_2d.y
+		self.player.global_position.z + random_vector_2d.y
 	)
 
 func disable_collision() -> void:

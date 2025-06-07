@@ -34,7 +34,7 @@ func Enter() -> void:
 		self.spawned_object.global_position = self.player.global_position
 
 
-func Physics_Update(delta:float) -> void:
+func Physics_Update(delta: float) -> void:
 	var direction: Vector3 = (self.player.global_position - self.enemy.global_position).normalized()
 	if self.time_in_state <= self.pre_attack_delay:
 		Util.rotate_y_to_face_direction(enemy, direction, rotation_speed * delta)
@@ -48,3 +48,5 @@ func Physics_Update(delta:float) -> void:
 
 func Exit() -> void:
 	self.nav_agent.is_disabled = false
+	if is_instance_valid(spawned_object):
+		spawned_object.queue_free()

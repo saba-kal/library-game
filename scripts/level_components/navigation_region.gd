@@ -44,9 +44,9 @@ class_name NavigationRegion extends Node3D
 @export_tool_button("Bake NavigationMesh") var bake_action = bake_nav_mesh
 
 var nav_mesh: NavigationMesh
-var source_geometry : NavigationMeshSourceGeometryData3D
-var callback_parsing : Callable
-var callback_baking : Callable
+var source_geometry: NavigationMeshSourceGeometryData3D
+var callback_parsing: Callable
+var callback_baking: Callable
 var region_rid: RID
 var nav_region: NavigationRegion3D
 
@@ -69,7 +69,6 @@ func delayed_nav_mesh_load():
 
 
 func bake_nav_mesh() -> void:
-
 	nav_region = $NavigationRegion
 	nav_region.navigation_mesh.clear()
 
@@ -83,6 +82,7 @@ func bake_nav_mesh() -> void:
 	nav_mesh.cell_height = cell_height
 	nav_mesh.border_size = border_size
 	nav_mesh.agent_height = height
+	nav_mesh.agent_radius = radius
 	nav_mesh.agent_max_climb = max_climb
 	nav_mesh.agent_max_slope = max_slope
 	nav_mesh.region_min_size = min_size

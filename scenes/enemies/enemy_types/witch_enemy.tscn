@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://7yehwqmtemgc"]
+[gd_scene load_steps=27 format=3 uid="uid://7yehwqmtemgc"]
 
 [ext_resource type="Script" uid="uid://b68ncw5it16w3" path="res://scripts/enemies/enemy_base.gd" id="1_cerqe"]
 [ext_resource type="PackedScene" uid="uid://b0sr0yx1kwu6j" path="res://assets/models/enemies/witch/Witch.glb" id="2_hanny"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://f8vm0nsm4vkq" path="res://scenes/gui/health_bar_3D.tscn" id="10_7sgkp"]
 [ext_resource type="PackedScene" uid="uid://3symoni7x23e" path="res://scenes/effects/WitchGroundSpellEffect.tscn" id="10_xqd0x"]
 [ext_resource type="PackedScene" uid="uid://bh0xhuqn1r4xu" path="res://scenes/enemies/character_nav_agent.tscn" id="12_1sr3c"]
+[ext_resource type="Script" uid="uid://blp8kbdq54f1e" path="res://scripts/enemies/states/EnemyKnockBack.gd" id="12_xe6xn"]
 [ext_resource type="PackedScene" uid="uid://x7inf5bnoarf" path="res://core/audio/scenes/footstep_sounds.tscn" id="14_rdgpp"]
 [ext_resource type="PackedScene" uid="uid://hghcty7xxqww" path="res://core/audio/scenes/random_interval_sounds.tscn" id="15_if0gs"]
 [ext_resource type="Script" uid="uid://b15uemiuovvjh" path="res://scripts/general/damage_flicker.gd" id="16_31icd"]
@@ -1834,51 +1835,50 @@ shape = SubResource("CapsuleShape3D_a1eye")
 [node name="Witch" parent="." instance=ExtResource("2_hanny")]
 
 [node name="Skeleton3D" parent="Witch/Armature" index="0"]
-bones/0/position = Vector3(-3.4963e-08, -0.835785, 0)
-bones/0/rotation = Quaternion(-0.778316, 7.86378e-08, -4.99223e-08, 0.627873)
-bones/1/rotation = Quaternion(0.0566284, -0.345089, -0.0531059, 0.935354)
-bones/2/rotation = Quaternion(0.00309584, -0.010415, 0.116573, 0.993123)
-bones/3/rotation = Quaternion(0.0469997, -0.00275963, 0.0151551, 0.998776)
-bones/4/rotation = Quaternion(0.0189888, 0.0474623, -0.151978, 0.987061)
-bones/5/rotation = Quaternion(-0.193816, -0.276112, -0.159583, 0.927756)
-bones/7/rotation = Quaternion(0.62532, -0.219175, 0.365195, 0.653888)
-bones/8/rotation = Quaternion(-0.216064, 0.135776, -0.776487, 0.576151)
-bones/9/rotation = Quaternion(-0.240516, -0.0513188, -0.240639, 0.938942)
-bones/10/rotation = Quaternion(0.223986, -0.0314917, -0.156673, 0.961401)
-bones/11/rotation = Quaternion(-0.131889, 0.0870984, -0.101384, 0.982212)
+bones/0/rotation = Quaternion(-0.0880713, 1.18746e-07, -1.04989e-08, 0.996114)
+bones/1/rotation = Quaternion(0.101053, -2.97026e-15, 2.4093e-08, 0.994881)
+bones/2/rotation = Quaternion(0.0152002, 1.05646e-14, 3.62402e-09, 0.999884)
+bones/3/rotation = Quaternion(-0.0972425, -3.49759e-15, -2.31844e-08, 0.995261)
+bones/4/rotation = Quaternion(0.156513, -2.46138e-15, 3.73157e-08, 0.987676)
+bones/5/rotation = Quaternion(-0.0379539, 1.40427e-14, -9.04891e-09, 0.99928)
+bones/7/rotation = Quaternion(0.730163, -1.62905e-07, -8.04399e-14, 0.683273)
+bones/8/rotation = Quaternion(-0.0580038, 0.0211823, -0.845618, 0.530204)
+bones/9/rotation = Quaternion(-0.114908, 0.0282009, -0.409289, 0.904701)
+bones/10/rotation = Quaternion(0.336705, -0.00769072, -0.0575636, 0.939818)
+bones/11/rotation = Quaternion(-0.195596, -0.00612201, -0.102782, 0.975264)
 bones/12/rotation = Quaternion(-0.0263765, 0.990853, -0.0946929, -0.0924594)
-bones/13/rotation = Quaternion(-0.00556009, 0.9108, -0.395101, -0.119618)
+bones/13/rotation = Quaternion(-0.00556008, 0.9108, -0.395101, -0.119618)
 bones/14/rotation = Quaternion(0.0252996, 0.997938, 0.0507631, -0.0300533)
-bones/15/rotation = Quaternion(0.152785, 0.140021, 0.659961, 0.722151)
-bones/16/rotation = Quaternion(-0.000163794, 0.307095, 0.151848, 0.939487)
-bones/17/rotation = Quaternion(0.393624, 0.333677, 0.0237716, 0.856244)
-bones/18/rotation = Quaternion(-0.111029, 0.00570106, -0.202097, 0.973035)
-bones/24/position = Vector3(0.114075, -0.65974, -0.130913)
-bones/24/rotation = Quaternion(0.184116, -0.0823711, 0.979366, 0.0126117)
-bones/25/rotation = Quaternion(0.966206, -0.0888373, -0.10607, -0.217491)
-bones/26/position = Vector3(0.161561, 0.00248585, -0.0478177)
-bones/26/rotation = Quaternion(-0.00964846, -0.0529336, 0.982366, -0.179059)
-bones/27/rotation = Quaternion(-0.028654, 0.0107532, -0.0413361, 0.998677)
-bones/28/position = Vector3(0.0386178, -0.0504531, 0.129667)
-bones/28/rotation = Quaternion(0.991392, 0.129903, -0.00573795, 0.0152795)
-bones/29/rotation = Quaternion(0.0752362, 0.0197261, 0.0272645, 0.996598)
-bones/30/position = Vector3(0.0365854, -0.0112742, -0.183801)
-bones/30/rotation = Quaternion(0.974273, 0.12567, 0.0267162, -0.185161)
-bones/31/rotation = Quaternion(-0.0534227, -0.0157099, 0.0257959, 0.998115)
-bones/32/position = Vector3(-0.114075, -0.543308, -0.200784)
-bones/32/rotation = Quaternion(-0.177191, -0.0898403, 0.979994, -0.011987)
-bones/33/position = Vector3(-0.161561, 0.00248597, -0.0478177)
-bones/33/rotation = Quaternion(0.00964822, -0.0529336, 0.982366, 0.179059)
-bones/34/rotation = Quaternion(-0.0355731, -0.0130401, 0.0413347, 0.998427)
-bones/35/position = Vector3(-0.0386179, -0.0504532, 0.129668)
-bones/35/rotation = Quaternion(0.991392, -0.129903, 0.00573818, 0.0152795)
-bones/36/rotation = Quaternion(0.0823074, -0.0214024, -0.0272075, 0.996006)
-bones/37/position = Vector3(-0.0365853, -0.0112742, -0.183801)
-bones/37/rotation = Quaternion(0.974273, -0.12567, -0.026716, -0.185161)
-bones/38/rotation = Quaternion(-0.0463354, 0.0140395, -0.0258239, 0.998493)
+bones/15/rotation = Quaternion(-0.058004, -0.0211825, 0.845618, 0.530204)
+bones/16/rotation = Quaternion(-0.114908, -0.0282009, 0.409289, 0.904701)
+bones/17/rotation = Quaternion(0.336705, 0.00769076, 0.0575636, 0.939818)
+bones/18/rotation = Quaternion(-0.195596, 0.00612203, 0.102782, 0.975264)
+bones/24/position = Vector3(0.114075, -0.639591, -0.226971)
+bones/24/rotation = Quaternion(0.00259095, -0.0880332, 0.995681, 0.0293761)
+bones/25/rotation = Quaternion(0.966206, -0.0888372, -0.10607, -0.217491)
+bones/26/position = Vector3(0.161561, 0.00248589, -0.0478177)
+bones/26/rotation = Quaternion(-0.015793, -0.086644, 0.979968, -0.178622)
+bones/27/rotation = Quaternion(0.00509374, -0.000402048, -0.0413117, 0.999133)
+bones/28/position = Vector3(0.0386178, -0.0625133, 0.125614)
+bones/28/rotation = Quaternion(0.991332, 0.130023, -0.00127283, -0.0187811)
+bones/29/rotation = Quaternion(0.0407114, 0.0115404, 0.0275215, 0.998725)
+bones/30/position = Vector3(0.0365854, -0.001906, -0.184425)
+bones/30/rotation = Quaternion(0.967339, 0.124678, 0.0310169, -0.218516)
+bones/31/rotation = Quaternion(-0.0879286, -0.0238406, 0.0256399, 0.995511)
+bones/32/position = Vector3(-0.114075, -0.639591, -0.226971)
+bones/32/rotation = Quaternion(-0.00259108, -0.0880332, 0.995681, -0.0293762)
+bones/33/position = Vector3(-0.161561, 0.0024859, -0.0478177)
+bones/33/rotation = Quaternion(0.0157928, -0.086644, 0.979968, 0.178622)
+bones/34/rotation = Quaternion(0.00509376, 0.000402014, 0.0413117, 0.999133)
+bones/35/position = Vector3(-0.0386179, -0.0625133, 0.125614)
+bones/35/rotation = Quaternion(0.991332, -0.130023, 0.00127306, -0.0187811)
+bones/36/rotation = Quaternion(0.0407114, -0.0115404, -0.0275215, 0.998725)
+bones/37/position = Vector3(-0.0365853, -0.00190601, -0.184425)
+bones/37/rotation = Quaternion(0.967339, -0.124678, -0.0310166, -0.218516)
+bones/38/rotation = Quaternion(-0.0879286, 0.0238406, -0.02564, 0.995511)
 
 [node name="Staff" parent="Witch/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.00759669, 0.0485182, -0.0355487, 0.0356951, 0.0280511, 0.00805974, 0.00401552, -0.341143, -0.00439309, -1.22678, -1.12914, 0.370727)
+transform = Transform3D(0.0331494, -0.0191258, 0.0156512, 0.0153982, 0.114391, -0.0310368, -0.00346169, 0.325681, 0.0118204, -0.269841, -0.379844, -0.944905)
 
 [node name="AnimationPlayer" parent="Witch" index="1"]
 libraries = {
@@ -1904,7 +1904,7 @@ health = NodePath("../Health")
 [node name="Wander" type="Node" parent="StateMachine"]
 script = ExtResource("4_mdmcg")
 idle_anim_name = "Walk"
-move_speed = 1.2
+move_speed = 2.4
 rotation_speed = 10.0
 state_transition_upon_player_detection = "RunAway"
 
@@ -1935,6 +1935,11 @@ post_attack_delay = 1.35
 object_to_spawn = ExtResource("10_xqd0x")
 spawn_immediately = true
 anim_name = "Attack2"
+
+[node name="KnockBack" type="Node" parent="StateMachine"]
+script = ExtResource("12_xe6xn")
+anim_name = "Default"
+metadata/_custom_type_script = "uid://blp8kbdq54f1e"
 
 [node name="AggroTimeout" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -1969,6 +1974,6 @@ play_on_ready = true
 
 [node name="DamageFlicker" type="Node" parent="." node_paths=PackedStringArray("mesh_array")]
 script = ExtResource("16_31icd")
-mesh_array = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+mesh_array = [null, null, null, null, null, null, null, null]
 
 [editable path="Witch"]

@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://cpwcrck2u7kjb" path="res://assets/models/player/Umbrella.glb" id="1_8jlly"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yre6n"]
-radius = 0.0993993
-height = 1.5
+radius = 0.291408
+height = 2.5214
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jq8pi"]
-height = 0.3
-radius = 0.825
+height = 0.527344
+radius = 1.02734
 
 [node name="Umbrella" type="Node3D"]
 
@@ -19,7 +19,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.2)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.715048)
 shape = SubResource("CapsuleShape3D_yre6n")
 
 [node name="UnfoldedArea" type="Area3D" parent="."]
@@ -29,9 +29,5 @@ collision_mask = 5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UnfoldedArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.75)
 shape = SubResource("CylinderShape3D_jq8pi")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.2)
-shape = SubResource("CapsuleShape3D_yre6n")
 
 [editable path="Model"]

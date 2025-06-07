@@ -1,26 +1,27 @@
 class_name StateMachine extends Node
 
-@export var enemy_body:EnemyBase = null
-@export var mesh:Node3D = null
-@export var anim_player:AnimationPlayer = null
-@export var nav_agent:CharacterNavAgent = null
-@export var intial_state:State = null
-@export var aggro_state:State = null
-@export var aggro_timeout:Timer = null
-@export var aggro_timeout_duration:float = 3
-@export var detection_type:Area3D = null
-@export var melee_attack_range:Area3D = null
+@export var enemy_body: EnemyBase = null
+@export var mesh: Node3D = null
+@export var anim_player: AnimationPlayer = null
+@export var nav_agent: CharacterNavAgent = null
+@export var intial_state: State = null
+@export var aggro_state: State = null
+@export var aggro_timeout: Timer = null
+@export var aggro_timeout_duration: float = 3
+@export var detection_type: Area3D = null
+@export var melee_attack_range: Area3D = null
 @export var health: Health
 @export var collision_shape: CollisionShape3D = null
 @export_flags_3d_physics var layers_searched
 
-var player_target:CharacterBody3D
-var engaged:bool = false
-var player_inside_detection_area:bool = false
+var player_target: CharacterBody3D
+var engaged: bool = false
+var player_inside_detection_area: bool = false
 var sound_effect: AudioStreamPlayer3D
 
-var current_state:State
-var states:Dictionary = {}
+var current_state: State
+var previous_state: State
+var states: Dictionary = {}
 
 ## Sets up export variables for use if they're assigned.
 func _ready() -> void:
@@ -46,6 +47,7 @@ func _ready() -> void:
 	if intial_state:
 		intial_state.Enter()
 		current_state = intial_state
+		previous_state = intial_state
 
 	self.health.changed.connect(self.on_health_changed)
 
@@ -60,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		current_state.Physics_Update(delta)
 
 ## Uses transition signal depending on when/how it's called in the state, and sets it to the new state.
-func on_child_transitioned(state, new_state_name):
+func on_child_transitioned(state: State, new_state_name: String):
 	if state != current_state:
 		return
 	
@@ -70,7 +72,8 @@ func on_child_transitioned(state, new_state_name):
 	
 	if current_state:
 		current_state.Exit()
-	
+	previous_state = current_state
+
 	if !engaged:
 		new_state.Enter()
 		current_state = new_state
@@ -91,18 +94,19 @@ func player_entered_range(body: Node3D):
 		line_of_sight_check()
 
 ## When player leaves range, starts a timer, if it times out, stops aggroing player.
-func player_exited_range(body:Node3D):
+func player_exited_range(body: Node3D):
 	if body.is_in_group("player"):
 		print("Left Range")
 		self.player_inside_detection_area = false
-		aggro_timeout.start(aggro_timeout_duration)
-		print("Player de-aggro'd")
+		if is_instance_valid(aggro_timeout) && aggro_timeout.is_inside_tree():
+			aggro_timeout.start(aggro_timeout_duration)
+			print("Player de-aggro'd")
 
 ## Raycasts for players while they are in the cone every 0.1 seconds.
 func line_of_sight_check():
 	var space_state = enemy_body.get_world_3d().direct_space_state
-	var origin = Vector3(enemy_body.global_position.x, enemy_body.global_position.y+1,enemy_body.global_position.z)
-	var end = Vector3(player_target.global_position.x, player_target.global_position.y+1,player_target.global_position.z)
+	var origin = Vector3(enemy_body.global_position.x, enemy_body.global_position.y + 1, enemy_body.global_position.z)
+	var end = Vector3(player_target.global_position.x, player_target.global_position.y + 1, player_target.global_position.z)
 	while (player_target != null) or (engaged == true):
 		var query = PhysicsRayQueryParameters3D.create(origin, end)
 		var result = space_state.intersect_ray(query)
@@ -121,12 +125,14 @@ func disengage() -> void:
 	player_target = null
 	current_state.SetTarget(null)
 
-func on_health_changed(health_amount:int, damage_amount:int, damage_sender:CharacterBody3D = null) -> void:
+func on_health_changed(health_amount: int, damage_amount: int, damage_sender: CharacterBody3D = null) -> void:
 	if current_state == intial_state:
 		if is_instance_valid(self):
 			on_child_transitioned(current_state, aggro_state.name.to_lower())
 			print("Damage Sender: " + str(damage_sender))
-	if health_amount <= 0:
+	if health_amount > 0:
+		on_child_transitioned(current_state, "KnockBack")
+	elif health_amount <= 0:
 		on_child_transitioned(current_state, "Death")
 		if self.sound_effect:
 			self.sound_effect.stop()
