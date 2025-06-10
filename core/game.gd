@@ -8,3 +8,11 @@ var player_has_boss_1_key: bool = false
 var player_has_boss_2_key: bool = false
 var player_has_boss_3_key: bool = false
 var player_books: Array[int] = []
+
+
+func reset_data() -> void:
+	room_key_count = 0
+	player_has_boss_1_key = false
+	player_has_boss_2_key = false
+	player_has_boss_3_key = false
+	player_books = []

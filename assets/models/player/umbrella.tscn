@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://7cfa8s16bt3f"]
+[gd_scene load_steps=5 format=3 uid="uid://7cfa8s16bt3f"]
 
 [ext_resource type="PackedScene" uid="uid://cpwcrck2u7kjb" path="res://assets/models/player/Umbrella.glb" id="1_8jlly"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yre6n"]
 radius = 0.291408
 height = 2.5214
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gm631"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jq8pi"]
 height = 0.527344
@@ -21,6 +23,10 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.715048)
 shape = SubResource("CapsuleShape3D_yre6n")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.498675)
+shape = SubResource("SphereShape3D_gm631")
 
 [node name="UnfoldedArea" type="Area3D" parent="."]
 collision_layer = 2

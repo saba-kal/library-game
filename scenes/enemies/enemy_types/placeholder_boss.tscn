@@ -27,7 +27,7 @@ mesh = SubResource("CapsuleMesh_hipb8")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("1_r5fqv")
-maximum = 5
+maximum = 50
 
 [node name="HeathBar3D" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_vw23e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55091, 0)

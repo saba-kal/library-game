@@ -3,7 +3,11 @@ extends Node
 @export var initial_button: Button
 @export var nav_menu: Control
 @export var settings_menu: Control
+@export var debug_buttons: Control
 @onready var settings_button: Button = %Button_SETTINGS
+
+func _enter_tree() -> void:
+	debug_buttons.visible = OS.is_debug_build()
 
 func _ready() -> void:
 	initial_button.grab_focus()
@@ -12,6 +16,7 @@ func _ready() -> void:
 
 func play_pressed() -> void:
 	print("Pressed Play Button")
+	Game.reset_data()
 	ChangeScene.to_game_start()
 
 func exit_pressed() -> void:

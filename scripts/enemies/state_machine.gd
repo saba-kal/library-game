@@ -88,7 +88,6 @@ func player_entered_range(body: Node3D):
 	if body.is_in_group("player"):
 		player_target = body
 		self.player_inside_detection_area = true
-		print("Player in range.")
 		if !aggro_timeout.is_stopped():
 			aggro_timeout.stop()
 		line_of_sight_check()
@@ -96,11 +95,9 @@ func player_entered_range(body: Node3D):
 ## When player leaves range, starts a timer, if it times out, stops aggroing player.
 func player_exited_range(body: Node3D):
 	if body.is_in_group("player"):
-		print("Left Range")
 		self.player_inside_detection_area = false
 		if is_instance_valid(aggro_timeout) && aggro_timeout.is_inside_tree():
 			aggro_timeout.start(aggro_timeout_duration)
-			print("Player de-aggro'd")
 
 ## Raycasts for players while they are in the cone every 0.1 seconds.
 func line_of_sight_check():
@@ -120,7 +117,6 @@ func line_of_sight_check():
 
 ## Causes the enemy to disengage the player. Exact behavior of what happens depends on the enemy's current state.
 func disengage() -> void:
-	print("Disengaging!")
 	engaged = false
 	player_target = null
 	current_state.SetTarget(null)
@@ -130,7 +126,7 @@ func on_health_changed(health_amount: int, damage_amount: int, damage_sender: Ch
 		if is_instance_valid(self):
 			on_child_transitioned(current_state, aggro_state.name.to_lower())
 			print("Damage Sender: " + str(damage_sender))
-	if health_amount > 0:
+	if health_amount > 0 && current_state.can_be_interrupted:
 		on_child_transitioned(current_state, "KnockBack")
 	elif health_amount <= 0:
 		on_child_transitioned(current_state, "Death")

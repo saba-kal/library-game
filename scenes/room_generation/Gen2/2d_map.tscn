@@ -98,7 +98,8 @@ sources/0 = SubResource("TileSetAtlasSource_8x124")
 
 [node name="2D_Map" type="Node2D"]
 script = ExtResource("1_q4he5")
-minimum_room_amount = 5
+minimum_room_amount = 8
+reveal_map = true
 metadata/_edit_horizontal_guides_ = [248.0]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

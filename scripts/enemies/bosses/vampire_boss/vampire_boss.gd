@@ -60,7 +60,7 @@ func set_particle_effects_emitting(emitting: bool) -> void:
 		effect.set_all_effects_emitting(emitting)
 
 
-func on_health_changed(health_amount:int, delta:int, damage_sender:CharacterBody3D) -> void:
+func on_health_changed(health_amount: int, delta: int, damage_sender: CharacterBody3D) -> void:
 	if current_state == "Dead":
 		return
 

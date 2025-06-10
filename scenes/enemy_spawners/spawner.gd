@@ -1,23 +1,23 @@
 class_name EnemySpawner extends Node3D
 
-var roll_weight : float = 0.0
-var acc_weight : float = 0.0
-var total_weight : float = 0.0
+var roll_weight: float = 0.0
+var acc_weight: float = 0.0
+var total_weight: float = 0.0
 
-@export var choices : Array[EnemySpawnChance]
+@export var choices: Array[EnemySpawnChance]
 @export var wander_path: EnemyWanderPath
 
 const GHOST_ENEMY = preload("res://scenes/enemies/enemy_types/ghost_enemy.tscn")
 const WITCH_ENEMY = preload("res://scenes/enemies/enemy_types/witch_enemy.tscn")
 const WEREWOLF_ENEMY = preload("res://scenes/enemies/enemy_types/werewolf_enemy.tscn")
-var enemy_instance : EnemyBase
+var enemy_instance: EnemyBase
 
 func _ready() -> void:
 	var gizmo: Node3D = get_node_or_null("MeshInstance3D")
 	if gizmo:
 		gizmo.visible = false
 
-func initialize_probabilities() -> void:
+func spawn_random_enemy() -> EnemyBase:
 	self.rotation.y = 0
 	# Iterate through the objects
 	for choice in choices:
@@ -34,7 +34,7 @@ func initialize_probabilities() -> void:
 	enemy_instance.rotation.y = 0
 	enemy_instance.top_level = true
 	enemy_instance.position = global_position
-	#queue_free()
+	return enemy_instance
 
 func pick_enemy():
 	# Roll the number

@@ -28,10 +28,11 @@ class RoomData:
 	var tile_map_position: Vector2i
 	var is_boss_room: bool
 
-@export var max_width_allowed:int = 10
-@export var max_height_allowed:int = 10
-@export var minimum_room_amount:int = 10
-@export var generate_only_hallways:bool = false # used for debugging.
+@export var max_width_allowed: int = 10
+@export var max_height_allowed: int = 10
+@export var minimum_room_amount: int = 10
+@export var generate_only_hallways: bool = false # used for debugging.
+@export var reveal_map: bool = false # used for debugging.
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
 @onready var visible_tile_map_layer: TileMapLayer = %VisibleTileMapLayer
 @onready var failsafe_timer: Timer = $FailsafeTimer
@@ -39,25 +40,27 @@ class RoomData:
 @onready var boss_location_sprite: Node2D = $BossLocationSprite
 @onready var key_location_sprite: Node2D = $KeyLocationSprite
 
-var currently_generating:bool = false
-var failsafe_activated:bool = true
-var valid_cell_count:int = 0
-var boss_cell:Vector2i
-var player_location:Vector2i
-var key_location:Vector2i
-var key_collected:bool
+var currently_generating: bool = false
+var failsafe_activated: bool = true
+var valid_cell_count: int = 0
+var boss_cell: Vector2i
+var player_location: Vector2i
+var key_location: Vector2i
+var key_collected: bool
 
 func _ready() -> void:
-	player_location_sprite.visible = false
-	boss_location_sprite.visible = false
-	key_location_sprite.visible = false
+	tile_map_layer.visible = reveal_map
+	player_location_sprite.visible = reveal_map
+	boss_location_sprite.visible = reveal_map
+	key_location_sprite.visible = reveal_map
 	key_collected = false
 	SignalBus.player_moved_to_room.connect(on_player_moved_to_room)
 	SignalBus.room_key_collected.connect(on_key_collected)
 
 func generate_rooms():
 	currently_generating = true
-	var starting_position:Vector2i = Vector2i(0,0)
+	var starting_position: Vector2i = Vector2i(0, 0)
+	player_location_sprite.position = tile_map_layer.map_to_local(starting_position)
 
 	# First room is always a hub room.
 	tile_map_layer.set_cell(starting_position, 0, DEADEND_ROTATED_2)
@@ -66,7 +69,7 @@ func generate_rooms():
 	if generate_only_hallways:
 		generate_hallways_only(starting_position)
 	else:
-		generate_default_layout(starting_position)
+		generate_map(starting_position)
 
 	## Sets rooms to their appropriate tile-type based on their locations, and neighbors.
 	tie_up_rooms()
@@ -75,41 +78,38 @@ func generate_rooms():
 	currently_generating = false
 	generation_complete.emit()
 
-func generate_default_layout(starting_position: Vector2i):
-	var current_position:Vector2i = starting_position
+
+func generate_map(starting_position: Vector2i) -> void:
+	# Dictionary is basically used like a set since Godot does not have a primitive Set type.
+	var possible_rooms: Dictionary[Vector2i, bool] = {}
+	var created_rooms: Dictionary[Vector2i, bool] = {}
+
+	# We start by adding the only possible room we can have after the starting position.
+	# The hub room (starting position) has a single door pointing north, thus the next room will be north.
+	possible_rooms[Vector2i(starting_position.x, starting_position.y - 1)] = true
+
+	# We also want to keep track of rooms we have already picked/created so that they are not picked again.
+	created_rooms[starting_position] = true
+
+	# Loop through the number of rooms we want to create (minus the one we already made above).
 	for i in range(1, minimum_room_amount):
-		var spot_check:Vector2i = get_surrounding_cells(current_position).pick_random()
-		var data = tile_map_layer.get_cell_tile_data(spot_check)
-		if data == null:
-			tile_map_layer.set_cell(spot_check, 0, ROOM_CANDIDATE)
-		else:
-			failsafe_timer.start(1.0)
-			while data != null or spot_check.x > max_width_allowed or spot_check.y > max_height_allowed:
-				spot_check = get_surrounding_cells(current_position).pick_random()
-				data = tile_map_layer.get_cell_tile_data(spot_check)
-				if failsafe_activated:
-					failsafe_activated = false
-					for cell in tile_map_layer.get_used_cells():
-						for sur_cell in get_surrounding_cells(cell):
-							if tile_map_layer.get_cell_tile_data(sur_cell) == null:
-								current_position = sur_cell
-								break
-					break
-			tile_map_layer.set_cell(spot_check, 0, ROOM_CANDIDATE)
-		current_position = spot_check
-	# await get_tree().create_timer(0.5).timeout
-	## Bulks up rooms, with small chance of dead-end created.
-	for tile in tile_map_layer.get_used_cells():
-		for sur_tile in get_surrounding_cells(tile):
-			if tile_map_layer.get_cell_tile_data(sur_tile) == null:
-				var chance:int = randi_range(1,3)
-				match chance:
-					1:
-						tile_map_layer.set_cell(sur_tile, 0, ROOM_CANDIDATE)
+		# Pick a room randomly from our set of possible rooms.
+		var room_pos: Vector2i = possible_rooms.keys()[randi() % possible_rooms.size()]
+		tile_map_layer.set_cell(room_pos, 0, ROOM_CANDIDATE)
+		created_rooms[room_pos] = true
+
+		# Remove this room from our set so that we don't pick it again.
+		possible_rooms.erase(room_pos)
+
+		# Add the neighbors of this room as our next possible rooms to pick.
+		var neighbors: Array[Vector2i] = get_surrounding_cells(room_pos)
+		for neighbor_pos in neighbors:
+			if neighbor_pos not in created_rooms && neighbor_pos:
+				possible_rooms[neighbor_pos] = true
 
 
-func generate_hallways_only(starting_position: Vector2i):
-	var current_position:Vector2i = starting_position
+func generate_hallways_only(starting_position: Vector2i) -> void:
+	var current_position: Vector2i = starting_position
 	for i in range(1, minimum_room_amount):
 		current_position.y -= 1
 		tile_map_layer.set_cell(current_position, 0, ROOM_CANDIDATE)
@@ -183,7 +183,7 @@ func manhattan_distance(v1: Vector2i, v2: Vector2i) -> int:
 	return abs(diff.x) + abs(diff.y)
 
 func generation_info() -> Array[RoomData]:
-	var generation_array_info:Array[RoomData] = []
+	var generation_array_info: Array[RoomData] = []
 	for x: Vector2i in tile_map_layer.get_used_cells():
 		var room_data: RoomData = RoomData.new()
 		room_data.room_type = tile_map_layer.get_cell_atlas_coords(x)
@@ -197,7 +197,7 @@ func set_player_position(tile_map_pos: Vector2i):
 	player_location_sprite.visible = true
 	player_location = tile_map_pos
 	if tile_map_pos == key_location:
-		key_location_sprite.visible =  not key_collected
+		key_location_sprite.visible = not key_collected
 	if tile_map_pos == boss_cell:
 		boss_location_sprite.visible = true
 
@@ -271,7 +271,6 @@ func add_deadend_room_to_tile_pos(tile_map_pos: Vector2i) -> Vector2i:
 
 func on_player_moved_to_room(room: RoomVariation):
 	set_player_position(room.tile_position)
-	room.enter_room_spawn()
 	visible_tile_map_layer.set_cell(room.tile_position, 0, tile_map_layer.get_cell_atlas_coords(room.tile_position))
 
 func _on_failsafe_timer_timeout() -> void:

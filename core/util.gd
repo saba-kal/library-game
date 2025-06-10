@@ -29,7 +29,30 @@ func rotate_y_to_face_direction(node: Node3D, direction: Vector3, delta: float) 
 
 
 func get_random_point_on_circle(radius: float) -> Vector2:
-	var angle: float =  randf_range(0, 2 * PI)
+	var angle: float = randf_range(0, 2 * PI)
 	var x: float = radius * cos(angle)
 	var y: float = radius * sin(angle)
 	return Vector2(x, y)
+
+# Returns a normalized Vector2 representing the XZ direction from `source` to `target`.
+func get_2d_direction(source: Node3D, target: Node3D) -> Vector2:
+	var source_pos := source.global_position
+	var target_pos := target.global_position
+
+	# Compute direction in XZ plane (ignore Y-axis)
+	var direction_3d := Vector3(target_pos.x - source_pos.x, 0, target_pos.z - source_pos.z)
+
+	# Convert to Vector2 (X and Z) and normalize
+	return Vector2(direction_3d.x, direction_3d.z).normalized()
+
+func print_stack_trace():
+	var stack = get_stack()
+	print("--- Stack Trace Begin ---")
+	for i in range(stack.size()):
+		print("%d: %s (%s:%d)" % [
+			i,
+			stack[i]["function"],
+			stack[i]["source"],
+			stack[i]["line"]
+		])
+	print("--- Stack Trace End ---")

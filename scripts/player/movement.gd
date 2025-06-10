@@ -40,8 +40,11 @@ func handle_input(_event: InputEvent) -> void:
 func physics_update(delta: float) -> void:
 	input_dir = Input.get_vector("left", "right", "up", "down")
 	last_dir = input_dir if input_dir else last_dir
-	character.set_orientation_from_top_down_vector(input_dir)
-	character.adjust_body_velocity(delta, move_speed, acceleration)
+	if input_dir != Vector2.ZERO:
+		character.set_orientation_from_top_down_vector(last_dir)
+		character.adjust_body_velocity(delta, move_speed, acceleration)
+	else:
+		character.stop_moving()
 	
 	# Sets proper travel path for animation start.
 	if !idle:

@@ -3391,10 +3391,10 @@ bones/54/rotation = Quaternion(0.672073, 0.00886434, 0.706716, 0.22089)
 bones/55/rotation = Quaternion(0.258326, -0.0370011, 0.237689, 0.935629)
 
 [node name="Eyes" parent="Werewolf/WerewolfArmature/Skeleton3D" index="0"]
-transform = Transform3D(0.0328738, -0.000838238, 0.0016622, 0.000741243, 0.0328625, 0.00191262, -0.00170766, -0.00187214, 0.0328288, 0.152983, 0.291009, 1.52665)
+transform = Transform3D(0.0328738, -0.000838237, 0.0016622, 0.000741243, 0.0328625, 0.00191261, -0.00170766, -0.00187214, 0.0328288, 0.152983, 0.291009, 1.52665)
 
 [node name="LeftPaw" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="2"]
-transform = Transform3D(0.763494, 0.253518, -0.593974, -0.471668, -0.409351, -0.780999, -0.441142, 0.876447, -0.192961, 0.959756, -1.12633, 1.03589)
+transform = Transform3D(0.763494, 0.253518, -0.593975, -0.471668, -0.409351, -0.781, -0.441142, 0.876447, -0.192961, 0.959756, -1.12633, 1.03589)
 bone_name = "Hand.L"
 bone_idx = 13
 
@@ -3408,7 +3408,7 @@ monitoring = false
 shape = SubResource("CapsuleShape3D_jd6bd")
 
 [node name="RightPaw" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="3"]
-transform = Transform3D(0.372086, -0.806494, 0.459476, 0.906434, 0.422286, 0.0071806, -0.199821, 0.413814, 0.888161, -1.67909, 0.74423, 1.15743)
+transform = Transform3D(0.372086, -0.806494, 0.459477, 0.906434, 0.422286, 0.00718054, -0.199821, 0.413814, 0.888161, -1.67909, 0.74423, 1.15743)
 bone_name = "Hand.R"
 bone_idx = 31
 
@@ -3421,7 +3421,7 @@ monitoring = false
 shape = SubResource("CapsuleShape3D_pamq2")
 
 [node name="Bite" type="BoneAttachment3D" parent="Werewolf/WerewolfArmature/Skeleton3D" index="4"]
-transform = Transform3D(0.9984, 0.0553648, 0.0114597, 0.0225132, -0.203378, -0.978841, -0.0518628, 0.977534, -0.204299, 0.137361, 0.282737, 1.22231)
+transform = Transform3D(0.9984, 0.0553647, 0.0114597, 0.0225132, -0.203378, -0.978841, -0.0518628, 0.977534, -0.204299, 0.137361, 0.282737, 1.22231)
 bone_name = "Head"
 bone_idx = 6
 
@@ -3515,6 +3515,7 @@ script = ExtResource("10_81gde")
 howl_anim_name = "SpotsPlayer"
 howl_sound = NodePath("../../AttachedSound3D")
 chase_state = "Chase"
+can_be_interrupted = false
 
 [node name="Howl timer" type="Timer" parent="StateMachine/Howl"]
 wait_time = 0.5

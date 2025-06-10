@@ -59,6 +59,7 @@ map_2D = NodePath("../2D_Map")
 
 [node name="2D_Map" parent="." instance=ExtResource("9_1lfxk")]
 position = Vector2(1592, 752)
+reveal_map = false
 
 [node name="SetMusic" parent="." instance=ExtResource("10_tkx7q")]
 music_name = "haunted_section"

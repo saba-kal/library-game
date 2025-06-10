@@ -1,7 +1,7 @@
 extends Node3D
 class_name RoomVariation
 
-enum ROOM_DIRECTION{
+enum ROOM_DIRECTION {
 	NORTH = 0,
 	EAST = 1,
 	SOUTH = 2,
@@ -27,6 +27,7 @@ var room_controller: RoomController
 var is_player_inside_room: bool = false
 var has_spawned: bool = false
 var times_rotated: int = 0
+var spawned_enemies: Array[EnemyBase]
 
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
@@ -47,7 +48,7 @@ func _ready() -> void:
 	SignalBus.player_moved_to_room.connect(self.on_player_moved_to_room)
 
 ## Rotates room <x amount> of times.
-func rotate_room(times:int) -> void:
+func rotate_room(times: int) -> void:
 	times_rotated = (times + rotation_offset) % 4
 	for x in times:
 		rotation_degrees.y = times * -90
@@ -74,23 +75,31 @@ func update_door_directions():
 		if doors[i] != null:
 			doors[i].direction = i
 
-func enter_room_spawn():
-	if(!has_spawned):
-		activate_spawners()
-
 func activate_spawners():
 	print("called spawner")
 	has_spawned = true
 	for child in spawners.get_children():
 		if child is EnemySpawner:
-			child.initialize_probabilities()
+			var enemy: EnemyBase = child.spawn_random_enemy()
+			spawned_enemies.append(enemy)
 
 func despawn():
 	print("called despawner")
 	has_spawned = false
-	for child in spawners.get_children():
-		if child is EnemyBase:
-			child.queue_free()
+	for enemy in spawned_enemies:
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+	spawned_enemies = []
+
+func set_enemies_enabled(is_enabled: bool):
+	for enemy: EnemyBase in spawned_enemies:
+		if is_instance_valid(enemy):
+			if is_enabled:
+				enemy.process_mode = Node.PROCESS_MODE_INHERIT
+				enemy.visible = true
+			else:
+				enemy.process_mode = Node.PROCESS_MODE_DISABLED
+				enemy.visible = false
 
 func bake_nav_mesh():
 	print("Baking nav mesh")
@@ -102,10 +111,16 @@ func get_player_spawn_position() -> Vector3:
 	return global_position
 
 func on_player_moved_to_room(room: RoomVariation) -> void:
-	if self.room_controller:
-		if room == self:
-			self.is_player_inside_room = true
-			self.room_controller.on_player_enter()
-		elif self.is_player_inside_room:
-			self.is_player_inside_room = false
-			self.room_controller.on_player_exit()
+	if room == self: # Player entered room
+		if !has_spawned:
+			activate_spawners()
+		else:
+			set_enemies_enabled(true)
+		is_player_inside_room = true
+		if room_controller:
+			room_controller.on_player_enter()
+	elif is_player_inside_room: # player exited room.
+		set_enemies_enabled(false)
+		is_player_inside_room = false
+		if room_controller:
+			room_controller.on_player_exit()

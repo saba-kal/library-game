@@ -19,7 +19,7 @@ func set_movement_target(movement_target: Vector3) -> void:
 	set_target_position(movement_target)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if is_disabled || is_navigation_finished():
 		velocity = Vector3.ZERO
 		set_target_position(character.global_position)
@@ -29,6 +29,9 @@ func _physics_process(_delta: float) -> void:
 	var next_path_position: Vector3 = get_next_path_position()
 	var current_agent_position: Vector3 = character.global_position
 	var new_velocity: Vector3 = next_path_position - current_agent_position
+	if not character.is_on_floor():
+		velocity += character.get_gravity() * delta
+
 	if avoidance_enabled:
 		set_velocity(new_velocity)
 	else:

@@ -2,7 +2,7 @@ extends CharacterState
 
 signal started
 
-@export var player: CharacterBody3D
+@export var player: Player
 
 @export_group("Target States")
 @export var movement_state: CharacterState
@@ -18,6 +18,7 @@ signal started
 @export var animation_node_name: String
 
 @onready var hit_area: Area3D = $"../../LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D/Umbrella/Area"
+@onready var nearby_enemy_tracker: NearbyEnemyTracker = $"../../LibrarianPlayer/NearbyEnemyTracker"
 @onready var movement_payback = animation_tree.get("parameters/Attack/playback")
 
 var step_dir: Vector2
@@ -51,20 +52,19 @@ func _ready() -> void:
 
 func handle_input(_event: InputEvent) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
-	last_dir = input_dir if input_dir else last_dir
+	last_dir = input_dir
 	if _event.is_action_pressed("attack"):
+		var attack_dir := orient_player_towards_attack()
+		last_dir = attack_dir
 		if next_attack and wind_up_timer.time_left + swing_timer.time_left == 0 and wind_down_timer.time_left > 0:
-			finished.emit(next_attack.get_path(), {'direction': last_dir})
+			finished.emit(next_attack.get_path(), {'direction': attack_dir})
 		else:
 			queued_attack = true
 
 
 func enter(_previous_state_path: String, data := {}) -> void:
 	queued_attack = false
-	if data.has('direction'):
-		step_dir = data.direction
-		last_dir = step_dir
-		character.set_orientation_from_top_down_vector(step_dir)
+	orient_player_towards_attack()
 	wind_up_timer.start(wind_up_period)
 	animation_tree.set("parameters/Actions/transition_request", "Attack")
 	movement_payback.travel(animation_node_name)
@@ -78,7 +78,7 @@ func exit() -> void:
 
 func swing_start() -> void:
 	hit_bodies = {}
-	character.constant_velocity(distance / swing_duration)
+	player.constant_velocity(player.body.transform.basis.z, distance / swing_duration)
 	swing_timer.start(swing_duration)
 	can_damage = true
 	AudioManager.play_3d(sound_effect_name, character.global_position)
@@ -95,6 +95,29 @@ func swing_complete() -> void:
 
 func done() -> void:
 	finished.emit(movement_state.get_path())
+
+
+func orient_player_towards_attack() -> Vector2:
+	var attack_dir: Vector2 = Vector2(player.body.transform.basis.z.x, player.body.transform.basis.z.z)
+	var closest_enemy: Node3D = null
+	var min_distance_sqr: float = 100000
+	for enemy: Node3D in nearby_enemy_tracker.get_living_enemies():
+		var distance_sqr: float = enemy.global_position.distance_squared_to(player.global_position)
+		if distance_sqr < min_distance_sqr:
+			min_distance_sqr = distance_sqr
+			closest_enemy = enemy
+
+	if !closest_enemy:
+		var input_dir := Input.get_vector("left", "right", "up", "down")
+		if input_dir != Vector2.ZERO:
+			player.set_orientation_from_top_down_vector(input_dir)
+		else:
+			player.face_global_direction(attack_dir)
+		return attack_dir
+
+	attack_dir = Util.get_2d_direction(player, closest_enemy)
+	player.face_global_direction(attack_dir)
+	return attack_dir
 
 
 func on_body_entered(body: Node3D) -> void:

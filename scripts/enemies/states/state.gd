@@ -2,6 +2,8 @@ extends Node
 class_name State
 signal Transitioned(state: State, new_state_name: String)
 
+@export var can_be_interrupted: bool = true
+
 var enemy: EnemyBase = null
 var mesh: Node3D = null
 var nav_agent: CharacterNavAgent = null
