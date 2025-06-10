@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtpbu0o2ok0el"]
+[gd_scene load_steps=11 format=3 uid="uid://dtpbu0o2ok0el"]
 
 [ext_resource type="Script" uid="uid://bej432td2nfuk" path="res://scripts/projectiles/projectile.gd" id="1_riddi"]
+[ext_resource type="PackedScene" uid="uid://xeusw6gwq0t" path="res://scenes/effects/WitchProjectileExplosionEffect.tscn" id="2_6uynd"]
 [ext_resource type="Shader" uid="uid://fhcfc8sukuxy" path="res://scenes/projectiles/WitchAttackProjectile2.gdshader" id="2_v2cyn"]
 [ext_resource type="Texture2D" uid="uid://rcyjavt0fq83" path="res://assets/textures/effects/Flame_1.png" id="4_a715m"]
 
@@ -55,7 +56,11 @@ size = 0.02
 [node name="WitchAttackProjectile" type="Area3D"]
 collision_mask = 3
 script = ExtResource("1_riddi")
+on_destroy_effect = ExtResource("2_6uynd")
 spawn_sound_name = "witch_projectile_attack"
+hit_sound_name = "magic_explode"
+default_mask = 3
+parried_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_3kitc")

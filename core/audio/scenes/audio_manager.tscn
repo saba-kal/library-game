@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bnauoxf08cgq"]
+[gd_scene load_steps=52 format=3 uid="uid://bnauoxf08cgq"]
 
 [ext_resource type="Script" uid="uid://do44n2tgh41kc" path="res://core/audio/scripts/audio_manager.gd" id="1_qy2rl"]
 [ext_resource type="Script" uid="uid://2pce8a2fguou" path="res://core/audio/scripts/sound_effect.gd" id="2_87qqj"]
@@ -18,13 +18,15 @@
 [ext_resource type="AudioStream" uid="uid://duj1x64osi8nl" path="res://assets/audio/sfx/witch_magic_circle_charge.wav" id="13_xppkc"]
 [ext_resource type="AudioStream" uid="uid://bh5chahm7qw2y" path="res://assets/audio/sfx/insintesi__witchs-whisper.wav" id="14_ahix1"]
 [ext_resource type="AudioStream" uid="uid://dng224xhmbgnh" path="res://assets/audio/sfx/wolf-howl-6310.mp3" id="15_jsrxn"]
-[ext_resource type="AudioStream" uid="uid://bjqodtoy37krc" path="res://assets/audio/music/Del Rio Bravo.mp3" id="15_oudq3"]
 [ext_resource type="AudioStream" uid="uid://7jakfw5hj72m" path="res://assets/audio/music/horror section.mp3" id="15_u05ys"]
 [ext_resource type="AudioStream" uid="uid://bigh3yo0ugvyc" path="res://assets/audio/sfx/leopard-attack-193175.mp3" id="16_0yhr6"]
 [ext_resource type="AudioStream" uid="uid://bjs0kioryxq62" path="res://assets/audio/sfx/block.mp3" id="19_dx61c"]
 [ext_resource type="AudioStream" uid="uid://yn7fkroinasi" path="res://assets/audio/sfx/punch.wav" id="21_bvsr6"]
 [ext_resource type="AudioStream" uid="uid://c1ep7pohqi2o6" path="res://assets/audio/sfx/female-hurt.wav" id="22_2bhbj"]
 [ext_resource type="AudioStream" uid="uid://br7qfwklmggux" path="res://assets/audio/sfx/female-horror-pain-sound.wav" id="23_gf320"]
+[ext_resource type="AudioStream" uid="uid://b2n07ui1yqq5g" path="res://assets/audio/sfx/thud.wav" id="24_jryt6"]
+[ext_resource type="AudioStream" uid="uid://j544do04ln2k" path="res://assets/audio/sfx/magic-impact.wav" id="25_ku0gc"]
+[ext_resource type="AudioStream" uid="uid://ds2sfpde5jtbb" path="res://assets/audio/music/departed tales title theme final FRFR.mp3" id="26_ku0gc"]
 
 [sub_resource type="Resource" id="Resource_v2sca"]
 script = ExtResource("3_gdhnl")
@@ -248,10 +250,34 @@ volume_db = 0.0
 pitch_scale = 1.0
 metadata/_custom_type_script = "uid://r8j66wci5kbc"
 
+[sub_resource type="Resource" id="Resource_ku0gc"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "parry_hit"
+stream = ExtResource("24_jryt6")
+volume_db = 0.0
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://r8j66wci5kbc"
+
+[sub_resource type="Resource" id="Resource_1eeoq"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "magic_explode"
+stream = ExtResource("25_ku0gc")
+volume_db = 0.0
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://r8j66wci5kbc"
+
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_veow1"]
 clip_count = 2
 clip_0/name = &"main_menu"
-clip_0/stream = ExtResource("15_oudq3")
+clip_0/stream = ExtResource("26_ku0gc")
 clip_0/auto_advance = 0
 clip_1/name = &"haunted_section"
 clip_1/stream = ExtResource("15_u05ys")
@@ -273,7 +299,7 @@ Vector2i(0, 1): {
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_qy2rl")
-sound_effects = Array[ExtResource("2_87qqj")]([SubResource("Resource_v2sca"), SubResource("Resource_ffaxh"), SubResource("Resource_ko3gm"), SubResource("Resource_rjfa6"), SubResource("Resource_l05s6"), SubResource("Resource_o3nbv"), SubResource("Resource_plhii"), SubResource("Resource_2vlvx"), SubResource("Resource_uo8v0"), SubResource("Resource_w0ot4"), SubResource("Resource_52u8c"), SubResource("Resource_egau8"), SubResource("Resource_4eegy"), SubResource("Resource_e4ycb"), SubResource("Resource_tlenu"), SubResource("Resource_dba41"), SubResource("Resource_yifjq"), SubResource("Resource_6fqgh"), SubResource("Resource_2bhbj"), SubResource("Resource_gf320"), SubResource("Resource_jryt6")])
+sound_effects = Array[ExtResource("2_87qqj")]([SubResource("Resource_v2sca"), SubResource("Resource_ffaxh"), SubResource("Resource_ko3gm"), SubResource("Resource_rjfa6"), SubResource("Resource_l05s6"), SubResource("Resource_o3nbv"), SubResource("Resource_plhii"), SubResource("Resource_2vlvx"), SubResource("Resource_uo8v0"), SubResource("Resource_w0ot4"), SubResource("Resource_52u8c"), SubResource("Resource_egau8"), SubResource("Resource_4eegy"), SubResource("Resource_e4ycb"), SubResource("Resource_tlenu"), SubResource("Resource_dba41"), SubResource("Resource_yifjq"), SubResource("Resource_6fqgh"), SubResource("Resource_2bhbj"), SubResource("Resource_gf320"), SubResource("Resource_jryt6"), SubResource("Resource_ku0gc"), SubResource("Resource_1eeoq")])
 
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_veow1")

@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://xeusw6gwq0t"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qm8mt"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+emission_shape = 2
+emission_sphere_radius = 0.3
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+damping_min = 2.0
+damping_max = 5.0
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evrk1"]
+transparency = 1
+emission_enabled = true
+emission = Color(2.88785e-06, 0.787485, 0.873115, 1)
+emission_energy_multiplier = 8.71
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_a0bm1"]
+material = SubResource("StandardMaterial3D_evrk1")
+shape = 0
+size = 0.02
+
+[sub_resource type="Animation" id="Animation_qm8mt"]
+resource_name = "explode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_a0bm1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whqtb"]
+_data = {
+&"RESET": SubResource("Animation_a0bm1"),
+&"explode": SubResource("Animation_qm8mt")
+}
+
+[node name="WitchProjectileExplosion" type="GPUParticles3D"]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+transform_align = 3
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_qm8mt")
+draw_pass_1 = SubResource("RibbonTrailMesh_a0bm1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_whqtb")
+}
+autoplay = "explode"

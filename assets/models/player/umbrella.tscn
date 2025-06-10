@@ -16,6 +16,16 @@ radius = 1.02734
 
 [node name="Model" parent="." instance=ExtResource("1_8jlly")]
 
+[node name="Skeleton3D" parent="Model/UmbrellaArmature" index="0"]
+bones/1/rotation = Quaternion(0.999019, 7.65056e-17, -1.00639e-16, 0.0442849)
+bones/2/rotation = Quaternion(-0.998876, 5.65053e-09, -1.19075e-07, 0.0474001)
+bones/3/rotation = Quaternion(8.86401e-06, 0.000166429, -0.999015, 0.0443689)
+bones/4/rotation = Quaternion(0, 0, 0.999131, 0.0416904)
+bones/5/rotation = Quaternion(0.382397, -0.0148049, -0.923188, 0.0357419)
+bones/6/rotation = Quaternion(-0.70644, -1.49012e-08, -0.70644, 0.0434218)
+bones/7/rotation = Quaternion(0.70678, -0.00352848, 0.706473, 0.0366694)
+bones/8/rotation = Quaternion(-0.70643, -0.00246954, 0.706656, 0.0398476)
+
 [node name="Area" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 4

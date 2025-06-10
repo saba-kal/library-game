@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://dap0n12bjtby5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1m25r"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+damping_min = 20.0
+damping_max = 50.0
+
+[sub_resource type="Curve" id="Curve_76suf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aiucr"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.129412)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.71
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_o1bhj"]
+material = SubResource("StandardMaterial3D_aiucr")
+size = 0.1
+section_length = 0.5
+curve = SubResource("Curve_76suf")
+
+[sub_resource type="Animation" id="Animation_1m25r"]
+resource_name = "play"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_76suf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aiucr"]
+_data = {
+&"RESET": SubResource("Animation_76suf"),
+&"play": SubResource("Animation_1m25r")
+}
+
+[node name="EnemyHitEffect" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_1m25r")
+draw_pass_1 = SubResource("RibbonTrailMesh_o1bhj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_aiucr")
+}
+autoplay = "play"

@@ -7,6 +7,7 @@ signal started
 @export_group("Target States")
 @export var movement_state: CharacterState
 @export var next_attack: CharacterState
+@export var parry_state: CharacterState
 
 @export_group("Attack Details")
 @export var damage: int = 1
@@ -16,6 +17,7 @@ signal started
 @export var wind_down_period: float = .3
 @export var sound_effect_name: String
 @export var animation_node_name: String
+@export var hit_particle_effect: PackedScene
 
 @onready var hit_area: Area3D = $"../../LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D/Umbrella/Area"
 @onready var nearby_enemy_tracker: NearbyEnemyTracker = $"../../LibrarianPlayer/NearbyEnemyTracker"
@@ -53,7 +55,10 @@ func _ready() -> void:
 func handle_input(_event: InputEvent) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	last_dir = input_dir
-	if _event.is_action_pressed("attack"):
+
+	if _event.is_action_pressed("parry"):
+		finished.emit(parry_state.get_path(), {'direction': last_dir})
+	elif _event.is_action_pressed("attack"):
 		var attack_dir := orient_player_towards_attack()
 		last_dir = attack_dir
 		if next_attack and wind_up_timer.time_left + swing_timer.time_left == 0 and wind_down_timer.time_left > 0:
@@ -133,4 +138,10 @@ func on_body_entered(body: Node3D) -> void:
 		health.take_damage(damage, player)
 		hit_bodies.get_or_add(body)
 		AudioManager.play_3d("enemy_hit", character.global_position)
+		var particle_effect: Node3D = hit_particle_effect.instantiate()
+		get_tree().root.add_child(particle_effect)
+		var direction: Vector3 = (body.global_position - player.global_position).normalized()
+		particle_effect.global_position = body.global_position
+		particle_effect.global_position.y += 1.5
+		particle_effect.look_at(particle_effect.global_position + direction * 0.3)
 		HitStopManager.frame_freeze(0.1, 0.2)

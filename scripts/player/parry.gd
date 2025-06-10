@@ -3,21 +3,22 @@ extends CharacterState
 signal started
 
 @export_group("Target States")
-@export var movement_state:CharacterState
+@export var movement_state: CharacterState
 
 @export_group("Parry Details")
-@export var parry_duration:float = .3
-@export var wind_down_period:float = .01
+@export var parry_duration: float = .3
+@export var wind_down_period: float = .01
+@export var anim_speed: float = 2.0
 
 @export var block_area: Area3D
 @export var animation_player: AnimationPlayer
 @export var unfold_anim: String
 
-var step_dir:Vector2
-var last_dir:Vector2
-var parry_timer:Timer
-var wind_down_timer:Timer
-var queued_attack:bool
+var step_dir: Vector2
+var last_dir: Vector2
+var parry_timer: Timer
+var wind_down_timer: Timer
+var queued_attack: bool
 
 func _ready() -> void:
 	parry_timer = Timer.new()
@@ -47,8 +48,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 		character.set_orientation_from_top_down_vector(step_dir)
 	parry_timer.start(parry_duration)
 	AudioManager.play_3d("block", character.global_position)
+	animation_tree.set("parameters/BlockTimeScale/scale", anim_speed)
 	animation_tree.set("parameters/Actions/transition_request", "Block")
-	animation_player.play(unfold_anim)
+	animation_player.play(unfold_anim, -1, anim_speed)
 	detect_parry()
 
 func exit() -> void:

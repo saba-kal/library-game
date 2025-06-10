@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvjt3f3gxp2hb"
+path="res://.godot/imported/OpenNoseCone.obj-1b4508418979312617c18ab34561cfdc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/OpenNoseCone.obj-1b4508418979312617c18ab34561cfdc.mesh"]
+
+source_file="res://assets/models/effects/OpenNoseCone.obj"
+dest_files=["res://.godot/imported/OpenNoseCone.obj-1b4508418979312617c18ab34561cfdc.mesh", "res://.godot/imported/OpenNoseCone.obj-1b4508418979312617c18ab34561cfdc.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

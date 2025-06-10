@@ -8,21 +8,6 @@ shader = ExtResource("1_c7xnh")
 shader_parameter/aberration = 0.5
 shader_parameter/strength = 0.0
 
-[sub_resource type="Animation" id="Animation_c7xnh"]
-resource_name = "player_hurt"
-length = 3.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/strength")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.01, -0.25, 0, 0.3, -0.011682, 0, -1.56667, 0.000829206, 0.25, 0),
-"times": PackedFloat32Array(0, 3)
-}
-
 [sub_resource type="Animation" id="Animation_m5ce8"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -35,6 +20,21 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_c7xnh"]
+resource_name = "player_hurt"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.03, -0.25, 0, 0.3, -0.011682, 0, -1.56667, 0.000829206, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m5ce8"]
