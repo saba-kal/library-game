@@ -42,6 +42,7 @@ func on_map_generation_complete() -> void:
 	spawn_player()
 	spawn_key()
 	spawn_boss_door()
+	first_room.north_door.open_door()
 	SignalBus.scene_change_completed.emit()
 
 ## Instantiates some base created rooms that have a single parent called "map_room_base".
@@ -187,15 +188,19 @@ func spawn_boss_door() -> void:
 	if(pre_boss_room.north_door and
 	 pre_boss_room.north_door.direction == opposite_direction):
 		door_instance.global_position = pre_boss_room.north_door.global_position
+		pre_boss_room.north_door.dissappear()
 	if(pre_boss_room.east_door and
 	 pre_boss_room.east_door.direction == opposite_direction):
 		door_instance.global_position = pre_boss_room.east_door.global_position
+		pre_boss_room.east_door.dissappear()
 	if(pre_boss_room.south_door and
 	 pre_boss_room.south_door.direction == opposite_direction):
 		door_instance.global_position = pre_boss_room.south_door.global_position
+		pre_boss_room.south_door.dissappear()
 	if(pre_boss_room.west_door and
 	 pre_boss_room.west_door.direction == opposite_direction):
 		door_instance.global_position = pre_boss_room.west_door.global_position
+		pre_boss_room.west_door.dissappear()
 	var tr = 1
 	match opposite_direction:
 		0:

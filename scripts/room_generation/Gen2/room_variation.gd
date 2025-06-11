@@ -28,6 +28,8 @@ var is_player_inside_room: bool = false
 var has_spawned: bool = false
 var times_rotated: int = 0
 var spawned_enemies: Array[EnemyBase]
+var doors_opened: bool = false
+var total_enemies: int = 0
 
 ## The doors array is always ordered such that north door is first,
 ## east door is second, south door is third, and west door is fourth.
@@ -81,7 +83,10 @@ func activate_spawners():
 	for child in spawners.get_children():
 		if child is EnemySpawner:
 			var enemy: EnemyBase = child.spawn_random_enemy()
+			enemy.death.connect(on_enemy_death)
 			spawned_enemies.append(enemy)
+	total_enemies = spawned_enemies.size()
+	SignalBus.enemy_quantity_changed.emit(total_enemies, total_enemies)
 
 func despawn():
 	print("called despawner")
@@ -90,6 +95,9 @@ func despawn():
 		if is_instance_valid(enemy):
 			enemy.queue_free()
 	spawned_enemies = []
+	total_enemies = 0
+	SignalBus.enemy_quantity_changed.emit(0, 0)
+	open_doors()
 
 func set_enemies_enabled(is_enabled: bool):
 	for enemy: EnemyBase in spawned_enemies:
@@ -124,3 +132,24 @@ func on_player_moved_to_room(room: RoomVariation) -> void:
 		is_player_inside_room = false
 		if room_controller:
 			room_controller.on_player_exit()
+
+func on_enemy_death(enemy: EnemyBase) -> void:
+	if not is_player_inside_room:
+		return
+	spawned_enemies.erase(enemy)
+	if spawned_enemies.is_empty():
+		open_doors()
+	SignalBus.enemy_quantity_changed.emit(spawned_enemies.size(), total_enemies)
+
+func open_doors() -> void:
+	if(doors_opened):
+		return
+	doors_opened = true
+	if north_door:
+		north_door.open_door()
+	if west_door:
+		west_door.open_door()
+	if south_door:
+		south_door.open_door()
+	if east_door:
+		east_door.open_door()

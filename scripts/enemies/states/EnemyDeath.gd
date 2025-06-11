@@ -10,6 +10,7 @@ func _ready() -> void:
 		delete_timer.timeout.connect(_on_delete_timer_timeout)
 
 func _on_delete_timer_timeout() -> void:
+	enemy.death.emit(enemy)
 	get_parent().get_parent().queue_free()
 
 func Enter():

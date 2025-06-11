@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1pi1kgma618d"]
+[gd_scene load_steps=20 format=3 uid="uid://d1pi1kgma618d"]
 
 [ext_resource type="Script" uid="uid://cxisi2yblv1ug" path="res://core/gui/gui.gd" id="1_ds54n"]
 [ext_resource type="Shader" uid="uid://c73v4e4ck57ri" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
 [ext_resource type="Script" uid="uid://bj6cggpoj06fc" path="res://scripts/gui/player_health_bar.gd" id="3_6a04i"]
 [ext_resource type="Texture2D" uid="uid://b33kcp1b57awf" path="res://assets/textures/GUI/player_icon_placeholder.png" id="3_eyey0"]
 [ext_resource type="PackedScene" uid="uid://cy6ic2npxa53k" path="res://scenes/gui/heart_icon.tscn" id="5_5kxef"]
+[ext_resource type="Script" uid="uid://dwtkbxk8j02vb" path="res://scripts/gui/enemy_count.gd" id="5_hut4s"]
 [ext_resource type="PackedScene" uid="uid://c2eyb87rkl1af" path="res://scenes/gui/inventory/inventory.tscn" id="5_mwy2m"]
 [ext_resource type="Script" uid="uid://cm28u05ny6twb" path="res://scripts/gui/boss_health_bar.gd" id="6_a22y1"]
 [ext_resource type="PackedScene" uid="uid://cd7ku1ntwth6u" path="res://scenes/gui/health_progress_bar.tscn" id="6_ce05j"]
@@ -13,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://b26mq80nysnge" path="res://assets/textures/GUI/simple_skull_icon.png" id="8_hut4s"]
 [ext_resource type="PackedScene" uid="uid://bgdg5y0ec727w" path="res://scenes/gui/settings_menu/settings_menu.tscn" id="8_xu1a1"]
 [ext_resource type="PackedScene" uid="uid://trdgk7ggai0g" path="res://scenes/debug/debug_console.tscn" id="9_7vfty"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a22y1"]
+font_size = 26
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yar5l"]
 bg_color = Color(0, 0, 0, 0.109804)
@@ -95,6 +99,25 @@ offset_right = 121.0
 offset_bottom = 121.0
 texture = ExtResource("3_eyey0")
 expand_mode = 1
+
+[node name="EnemyInfo" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 150.0
+offset_right = 273.0
+offset_bottom = 200.0
+
+[node name="EnemyCount" type="Label" parent="HUD/EnemyInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemies: 0 / 0"
+label_settings = SubResource("LabelSettings_a22y1")
+vertical_alignment = 1
+script = ExtResource("5_hut4s")
 
 [node name="Inventory" parent="." instance=ExtResource("5_mwy2m")]
 visible = false

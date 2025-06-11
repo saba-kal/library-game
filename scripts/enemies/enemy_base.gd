@@ -1,5 +1,7 @@
 class_name EnemyBase extends CharacterBody3D
 
+signal death
+
 var state_machine: StateMachine
 
 
