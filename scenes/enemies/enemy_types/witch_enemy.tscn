@@ -1825,7 +1825,7 @@ _data = {
 
 [node name="WitchEnemy" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("1_cerqe")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -1924,9 +1924,16 @@ attached_sound = NodePath("../../FootstepSounds")
 
 [node name="ProjectileAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("projectile_spawn_point")]
 script = ExtResource("7_34df8")
+pre_attack_delay = null
+post_attack_delay = null
+rotation_speed = null
+projectile_speed = null
+projectile_damage = null
 projectile_scene = ExtResource("8_b80v8")
 anime_name = "Attack1"
+state_transition_upon_finish = null
 projectile_spawn_point = NodePath("../../Marker3D")
+can_be_interrupted = null
 
 [node name="SpawnAttack" type="Node" parent="StateMachine"]
 script = ExtResource("9_jk8ff")

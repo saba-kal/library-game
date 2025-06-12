@@ -3326,7 +3326,7 @@ height = 2.08184
 
 [node name="Werewolf" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("1_k1tkf")
 
 [node name="Werewolf" parent="." instance=ExtResource("2_noh36")]

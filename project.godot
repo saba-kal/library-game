@@ -209,6 +209,7 @@ consoledownhistory={
 3d_physics/layer_2="player"
 3d_physics/layer_3="enemy"
 3d_physics/layer_4="dashed_player"
+3d_physics/layer_5="invisible_wall"
 
 [rendering]
 

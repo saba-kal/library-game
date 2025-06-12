@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_6ytas")
 
 [node name="PlaceholderBoss" type="StaticBody3D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 19
 script = ExtResource("1_aim8n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

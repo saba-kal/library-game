@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b15uemiuovvjh" path="res://scripts/general/damage_flicker.gd" id="11_7kppa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx4au"]
+resource_local_to_scene = true
 resource_name = "GhostClothes"
 transparency = 4
 cull_mode = 2
@@ -39,6 +40,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_idms3"]
+resource_local_to_scene = true
 resource_name = "Ghost_Cube_003"
 _surfaces = [{
 "aabb": AABB(-2.8415, -2.61682, -2.48939, 4.8525, 3.6403, 3.59739),
@@ -58,6 +60,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4lf4e")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rh5br"]
+resource_local_to_scene = true
 resource_name = "GhostSkin"
 transparency = 4
 cull_mode = 2
@@ -67,6 +70,7 @@ emission_enabled = true
 emission = Color(0.313723, 0.678432, 0.717647, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjypc"]
+resource_local_to_scene = true
 resource_name = "GhostSkullShade"
 transparency = 4
 cull_mode = 2
@@ -75,6 +79,7 @@ emission_enabled = true
 emission = Color(0.137254, 0.254902, 0.266667, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_y4eou"]
+resource_local_to_scene = true
 resource_name = "Ghost_Cube"
 _surfaces = [{
 "aabb": AABB(-0.468789, 0.354247, -0.386522, 0.950863, 1.68868, 0.66601),
@@ -2863,7 +2868,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1eye"]
-radius = 0.541858
+radius = 0.594567
 height = 2.34896
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sp0hg"]
@@ -2979,7 +2984,7 @@ _data = {
 
 [node name="EnemyBase" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 19
 script = ExtResource("1_tw3fx")
 
 [node name="Ghost" type="Node3D" parent="."]

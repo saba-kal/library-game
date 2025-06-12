@@ -83,9 +83,10 @@ func exit() -> void:
 
 func swing_start() -> void:
 	hit_bodies = {}
+	can_damage = true
+	initial_attack_area_check()
 	player.constant_velocity(player.body.transform.basis.z, distance / swing_duration)
 	swing_timer.start(swing_duration)
-	can_damage = true
 	AudioManager.play_3d(sound_effect_name, character.global_position)
 
 
@@ -123,6 +124,14 @@ func orient_player_towards_attack() -> Vector2:
 	attack_dir = Util.get_2d_direction(player, closest_enemy)
 	player.face_global_direction(attack_dir)
 	return attack_dir
+
+
+# This is needed when the attack area first activates.
+# There may already be bodies in the area. So we want to make sure they are damaged.
+func initial_attack_area_check() -> void:
+	var bodies: Array[Node3D] = hit_area.get_overlapping_bodies()
+	for body: Node3D in bodies:
+		on_body_entered(body)
 
 
 func on_body_entered(body: Node3D) -> void:

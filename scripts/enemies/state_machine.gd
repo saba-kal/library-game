@@ -42,14 +42,19 @@ func _ready() -> void:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transitioned)
 			child.SetVariables(enemy_body, mesh, nav_agent, anim_player, collision_shape)
-			child.Init()
-	
+
+	self.health.changed.connect(self.on_health_changed)
+
+	await get_tree().physics_frame
+
+	for state: State in states.values():
+		state.Init()
+
 	if intial_state:
 		intial_state.Enter()
 		current_state = intial_state
 		previous_state = intial_state
 
-	self.health.changed.connect(self.on_health_changed)
 
 ## Runs the process function of the current state.
 func _process(delta: float) -> void:

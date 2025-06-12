@@ -33,7 +33,7 @@ func spawn_random_enemy() -> EnemyBase:
 		get_parent().add_child(enemy_instance)
 	enemy_instance.rotation.y = 0
 	enemy_instance.top_level = true
-	enemy_instance.position = global_position
+	enemy_instance.global_position = global_position
 	return enemy_instance
 
 func pick_enemy():

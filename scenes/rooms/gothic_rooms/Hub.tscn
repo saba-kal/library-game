@@ -148,6 +148,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65139, 3.53764, -5.60163)
 [node name="Pillar_Shaft_16" parent="Decorative Assets" index="15" instance=ExtResource("3_20tcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64333, 1.277, -5.5983)
 
+[node name="CandleHolder" parent="Decorative Assets" index="16" instance=ExtResource("10_nif28")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.204462, 1.52331, -5.62685)
+
+[node name="EmptyCandle_1" parent="Decorative Assets" index="17" instance=ExtResource("11_i035m")]
+transform = Transform3D(-0.456542, 0.00568531, -0.889684, 0.00474915, 0.999981, 0.00395311, 0.88969, -0.00242059, -0.456561, 0.155502, 1.60693, -5.57449)
+
+[node name="EmptyCandle_2" parent="Decorative Assets" index="18" instance=ExtResource("12_aomk4")]
+transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 0.226851, 1.71906, -5.49376)
+
+[node name="EmptyCandle_3" parent="Decorative Assets" index="19" instance=ExtResource("12_aomk4")]
+transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 0.226851, 1.71906, -5.61105)
+
+[node name="CandleFlame" parent="Decorative Assets" index="20" instance=ExtResource("13_q6gjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159446, 1.70464, -5.54754)
+
+[node name="CandleFlame2" parent="Decorative Assets" index="21" instance=ExtResource("13_q6gjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238321, 1.87, -5.59348)
+
+[node name="CandleFlame3" parent="Decorative Assets" index="22" instance=ExtResource("13_q6gjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238321, 1.87, -5.47767)
+
+[node name="CandleHolder2" parent="Decorative Assets" index="23" instance=ExtResource("10_nif28")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.21451, 1.52331, -5.62685)
+
+[node name="EmptyCandle_4" parent="Decorative Assets" index="24" instance=ExtResource("11_i035m")]
+transform = Transform3D(-0.456542, 0.00568531, -0.889684, 0.00474915, 0.999981, 0.00395311, 0.88969, -0.00242059, -0.456561, -2.26347, 1.60693, -5.57449)
+
+[node name="EmptyCandle_5" parent="Decorative Assets" index="25" instance=ExtResource("12_aomk4")]
+transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, -2.19212, 1.71906, -5.49376)
+
+[node name="EmptyCandle_6" parent="Decorative Assets" index="26" instance=ExtResource("12_aomk4")]
+transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, -2.19212, 1.71906, -5.61105)
+
+[node name="CandleFlame4" parent="Decorative Assets" index="27" instance=ExtResource("13_q6gjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25953, 1.70464, -5.54754)
+
+[node name="CandleFlame5" parent="Decorative Assets" index="28" instance=ExtResource("13_q6gjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18065, 1.87, -5.59348)
+
+[node name="CandleFlame6" parent="Decorative Assets" index="29" instance=ExtResource("13_q6gjw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18065, 1.87, -5.47767)
+
 [node name="Lightning" type="Node3D" parent="." index="13"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lightning" index="0"]
@@ -248,47 +290,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.975, 2.83071, 12.479)
 light_color = Color(0.590414, 0.714049, 0.94463, 1)
 light_energy = 2.0
 
-[node name="CandleHolder" parent="." index="14" instance=ExtResource("10_nif28")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.204462, 1.52331, -5.62685)
-
-[node name="EmptyCandle_1" parent="." index="15" instance=ExtResource("11_i035m")]
-transform = Transform3D(-0.456542, 0.00568531, -0.889684, 0.00474915, 0.999981, 0.00395311, 0.88969, -0.00242059, -0.456561, 0.155502, 1.60693, -5.57449)
-
-[node name="EmptyCandle_2" parent="." index="16" instance=ExtResource("12_aomk4")]
-transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 0.226851, 1.71906, -5.49376)
-
-[node name="EmptyCandle_3" parent="." index="17" instance=ExtResource("12_aomk4")]
-transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, 0.226851, 1.71906, -5.61105)
-
-[node name="CandleFlame" parent="." index="18" instance=ExtResource("13_q6gjw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159446, 1.70464, -5.54754)
-
-[node name="CandleFlame2" parent="." index="19" instance=ExtResource("13_q6gjw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238321, 1.87, -5.59348)
-
-[node name="CandleFlame3" parent="." index="20" instance=ExtResource("13_q6gjw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238321, 1.87, -5.47767)
-
-[node name="CandleHolder2" parent="." index="21" instance=ExtResource("10_nif28")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.21451, 1.52331, -5.62685)
-
-[node name="EmptyCandle_4" parent="." index="22" instance=ExtResource("11_i035m")]
-transform = Transform3D(-0.456542, 0.00568531, -0.889684, 0.00474915, 0.999981, 0.00395311, 0.88969, -0.00242059, -0.456561, -2.26347, 1.60693, -5.57449)
-
-[node name="EmptyCandle_5" parent="." index="23" instance=ExtResource("12_aomk4")]
-transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, -2.19212, 1.71906, -5.49376)
-
-[node name="EmptyCandle_6" parent="." index="24" instance=ExtResource("12_aomk4")]
-transform = Transform3D(0.976803, 0.00316891, 0.214116, -0.00438966, 0.999977, 0.00522613, -0.214095, -0.00604479, 0.976794, -2.19212, 1.71906, -5.61105)
-
-[node name="CandleFlame4" parent="." index="25" instance=ExtResource("13_q6gjw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25953, 1.70464, -5.54754)
-
-[node name="CandleFlame5" parent="." index="26" instance=ExtResource("13_q6gjw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18065, 1.87, -5.59348)
-
-[node name="CandleFlame6" parent="." index="27" instance=ExtResource("13_q6gjw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18065, 1.87, -5.47767)
-
-[node name="PlayerSpawnPoint" type="Marker3D" parent="." index="28"]
+[node name="PlayerSpawnPoint" type="Marker3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948005, 0, 16.3753)
