@@ -18,7 +18,7 @@ func _ready() -> void:
 func enter(_previous_state_path: String, _data := {}) -> void:
 	timer.start(hurt_time)
 	animation_tree.set("parameters/Transition/transition_request", "Ouchie")
-	player_health.is_immune = true
+	player_health.set_is_immune(true)
 	character.move_speed = hurt_move_speed
 	AudioManager.play_3d("player_hurt", character.global_position)
 	PostProcessing.play_player_hurt_effect()
@@ -28,4 +28,4 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 func done() -> void:
 	finished.emit(movement_state.get_path())
 	character.move_speed = original_move_speed
-	player_health.is_immune = false
+	player_health.set_is_immune(false)

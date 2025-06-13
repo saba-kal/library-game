@@ -13,6 +13,7 @@ shader_parameter/Dissolve_Tiling = Vector2(0, 0)
 shader_parameter/Dissolve_Speed = Vector2(0, 0)
 shader_parameter/Dissolve_Texture = ExtResource("2_u1fcd")
 shader_parameter/Dissolve_Amount = 0.0
+shader_parameter/Alpha = 0.112
 
 [sub_resource type="Curve" id="Curve_j0s74"]
 _limits = [0.0, 10.0, 0.0, 1.0]

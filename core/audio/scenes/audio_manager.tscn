@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bnauoxf08cgq"]
+[gd_scene load_steps=58 format=3 uid="uid://bnauoxf08cgq"]
 
 [ext_resource type="Script" uid="uid://do44n2tgh41kc" path="res://core/audio/scripts/audio_manager.gd" id="1_qy2rl"]
 [ext_resource type="Script" uid="uid://2pce8a2fguou" path="res://core/audio/scripts/sound_effect.gd" id="2_87qqj"]
@@ -26,7 +26,10 @@
 [ext_resource type="AudioStream" uid="uid://br7qfwklmggux" path="res://assets/audio/sfx/female-horror-pain-sound.wav" id="23_gf320"]
 [ext_resource type="AudioStream" uid="uid://b2n07ui1yqq5g" path="res://assets/audio/sfx/thud.wav" id="24_jryt6"]
 [ext_resource type="AudioStream" uid="uid://j544do04ln2k" path="res://assets/audio/sfx/magic-impact.wav" id="25_ku0gc"]
+[ext_resource type="AudioStream" uid="uid://8veb71pvcd48" path="res://assets/audio/sfx/dangersound_001.wav" id="26_1eeoq"]
 [ext_resource type="AudioStream" uid="uid://ds2sfpde5jtbb" path="res://assets/audio/music/departed tales title theme final FRFR.mp3" id="26_ku0gc"]
+[ext_resource type="AudioStream" uid="uid://c32s3acf6tnje" path="res://assets/audio/sfx/woosh-ghost-arrow-pass-fast-curse-short.wav" id="27_6x3f8"]
+[ext_resource type="AudioStream" uid="uid://ktd1eh1lq565" path="res://assets/audio/sfx/sci-fimpact61_whatley_impacts.wav" id="28_kdo0f"]
 
 [sub_resource type="Resource" id="Resource_v2sca"]
 script = ExtResource("3_gdhnl")
@@ -120,10 +123,10 @@ script = ExtResource("3_gdhnl")
 attenuation_model = 0
 unit_size = 10.0
 max_distance = 0.0
-max_db = 3.0
+max_db = 6.0
 name = "witch_projectile_attack"
 stream = ExtResource("10_27ifu")
-volume_db = 0.0
+volume_db = 5.0
 pitch_scale = 1.0
 
 [sub_resource type="Resource" id="Resource_52u8c"]
@@ -274,6 +277,42 @@ volume_db = 0.0
 pitch_scale = 1.0
 metadata/_custom_type_script = "uid://r8j66wci5kbc"
 
+[sub_resource type="Resource" id="Resource_6x3f8"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "boss_attack_warning"
+stream = ExtResource("26_1eeoq")
+volume_db = -15.0
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://r8j66wci5kbc"
+
+[sub_resource type="Resource" id="Resource_kdo0f"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "boss_melee_attack"
+stream = ExtResource("27_6x3f8")
+volume_db = 5.0
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://r8j66wci5kbc"
+
+[sub_resource type="Resource" id="Resource_rykv5"]
+script = ExtResource("3_gdhnl")
+attenuation_model = 0
+unit_size = 10.0
+max_distance = 0.0
+max_db = 3.0
+name = "boss_impact"
+stream = ExtResource("28_kdo0f")
+volume_db = 5.0
+pitch_scale = 1.0
+metadata/_custom_type_script = "uid://r8j66wci5kbc"
+
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_veow1"]
 clip_count = 2
 clip_0/name = &"main_menu"
@@ -299,7 +338,7 @@ Vector2i(0, 1): {
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_qy2rl")
-sound_effects = Array[ExtResource("2_87qqj")]([SubResource("Resource_v2sca"), SubResource("Resource_ffaxh"), SubResource("Resource_ko3gm"), SubResource("Resource_rjfa6"), SubResource("Resource_l05s6"), SubResource("Resource_o3nbv"), SubResource("Resource_plhii"), SubResource("Resource_2vlvx"), SubResource("Resource_uo8v0"), SubResource("Resource_w0ot4"), SubResource("Resource_52u8c"), SubResource("Resource_egau8"), SubResource("Resource_4eegy"), SubResource("Resource_e4ycb"), SubResource("Resource_tlenu"), SubResource("Resource_dba41"), SubResource("Resource_yifjq"), SubResource("Resource_6fqgh"), SubResource("Resource_2bhbj"), SubResource("Resource_gf320"), SubResource("Resource_jryt6"), SubResource("Resource_ku0gc"), SubResource("Resource_1eeoq")])
+sound_effects = Array[ExtResource("2_87qqj")]([SubResource("Resource_v2sca"), SubResource("Resource_ffaxh"), SubResource("Resource_ko3gm"), SubResource("Resource_rjfa6"), SubResource("Resource_l05s6"), SubResource("Resource_o3nbv"), SubResource("Resource_plhii"), SubResource("Resource_2vlvx"), SubResource("Resource_uo8v0"), SubResource("Resource_w0ot4"), SubResource("Resource_52u8c"), SubResource("Resource_egau8"), SubResource("Resource_4eegy"), SubResource("Resource_e4ycb"), SubResource("Resource_tlenu"), SubResource("Resource_dba41"), SubResource("Resource_yifjq"), SubResource("Resource_6fqgh"), SubResource("Resource_2bhbj"), SubResource("Resource_gf320"), SubResource("Resource_jryt6"), SubResource("Resource_ku0gc"), SubResource("Resource_1eeoq"), SubResource("Resource_6x3f8"), SubResource("Resource_kdo0f"), SubResource("Resource_rykv5")])
 
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_veow1")

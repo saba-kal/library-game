@@ -1,6 +1,6 @@
 extends BossState
 
-@export var nav_agent: NavigationAgent3D
+@export var nav_agent: CharacterNavAgent
 @export var boss: VampireBoss
 @export var move_speed: float = 5.0
 @export var rotation_speed: float = 10.0
@@ -16,12 +16,8 @@ func Enter() -> void:
 	animation_tree.set("parameters/vampire_state/transition_request", "move")
 
 
-func Update(delta: float):
-	var direction_to_player: Vector3 = (player.global_position - boss.global_position).normalized()
-	nav_agent.target_position = player.global_position
-
-
 func Physics_Update(delta: float) -> void:
+	nav_agent.set_movement_target(player.global_position)
 
 	# When the boss gets close to player, change to attack state.
 	var distance_sqr_to_player = player.global_position.distance_squared_to(boss.global_position)
@@ -42,5 +38,5 @@ func Physics_Update(delta: float) -> void:
 	var direction_to_player: Vector3 = (player.global_position - boss.global_position).normalized()
 	Util.rotate_y_to_face_direction(
 		boss,
-		-direction_to_player,
+		- direction_to_player,
 		rotation_speed * delta)

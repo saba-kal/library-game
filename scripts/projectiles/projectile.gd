@@ -20,9 +20,10 @@ var is_parried: bool = false
 
 func _ready() -> void:
 	self.velocity = self.direction * self.speed
-	AudioManager.play_3d(self.spawn_sound_name, self.global_position)
 	self.collision_mask = default_mask
 	self.body_entered.connect(self.on_body_entered)
+	await get_tree().physics_frame
+	AudioManager.play_3d(self.spawn_sound_name, self.global_position)
 
 
 func _physics_process(delta: float) -> void:

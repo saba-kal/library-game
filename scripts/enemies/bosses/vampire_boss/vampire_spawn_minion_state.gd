@@ -25,16 +25,14 @@ func Enter() -> void:
 		player = self.get_tree().get_first_node_in_group("player")
 	nav_agent.is_disabled = false
 	nav_agent.movement_speed = move_speed
-
-
-func Update(delta: float):
-	nav_agent.set_movement_target(boss.room_center_marker.global_position)
+	boss.health.set_is_immune(true)
 
 
 func Physics_Update(delta: float) -> void:
+	nav_agent.set_movement_target(boss.room_center_marker.global_position)
 
 	var distance_to_target: float = nav_agent.distance_to_target()
-	if distance_to_target < 1  && !spawn_in_progress:
+	if distance_to_target < 1 && !spawn_in_progress:
 		spawn_minions()
 	elif distance_to_target < 1:
 		return
@@ -43,7 +41,7 @@ func Physics_Update(delta: float) -> void:
 	var direction_to_player: Vector3 = (player.global_position - boss.global_position).normalized()
 	Util.rotate_y_to_face_direction(
 		boss,
-		-direction_to_player,
+		- direction_to_player,
 		rotation_speed * delta)
 
 
@@ -63,6 +61,7 @@ func spawn_minions() -> void:
 		minion.global_position = spawn_marker.global_position
 		spawned_minions.append(minion)
 	post_spawn_timer.start()
+	boss.health.set_is_immune(false)
 	await post_spawn_timer.timeout
 	if boss.phase <= 2:
 		boss.change_state("Chase")

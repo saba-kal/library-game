@@ -9,6 +9,7 @@ class_name VampireBoss extends Boss
 
 @onready var health: Health = $Health
 @onready var states_container: Node = $States
+@onready var attack_indicator_anim_player: AnimationPlayer = $Visuals/AttackIndicator/AnimationPlayer
 
 var states: Dictionary[String, BossState]
 var current_state: String = "Stand"
@@ -49,7 +50,6 @@ func change_state(new_state_name: String) -> void:
 	if new_state_name not in states:
 		printerr("Unkown state name: " + new_state_name)
 		return
-	print("New boss state: " + new_state_name)
 	states[current_state].Exit()
 	current_state = new_state_name
 	states[current_state].Enter()
@@ -58,6 +58,15 @@ func change_state(new_state_name: String) -> void:
 func set_particle_effects_emitting(emitting: bool) -> void:
 	for effect: ParticleEffectPlayer in particle_effects:
 		effect.set_all_effects_emitting(emitting)
+
+
+func show_attack_indicator() -> void:
+	AudioManager.play("boss_attack_warning")
+	attack_indicator_anim_player.play("show_attack_indicator")
+
+
+func reset_attack_indicator() -> void:
+	attack_indicator_anim_player.play("RESET")
 
 
 func on_health_changed(health_amount: int, delta: int, damage_sender: CharacterBody3D) -> void:

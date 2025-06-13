@@ -171,7 +171,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yar5l")
 
 [node name="BossHealth" type="Control" parent="." node_paths=PackedStringArray("progress_bar", "boss_name_label")]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -184,6 +183,8 @@ grow_vertical = 0
 script = ExtResource("6_a22y1")
 progress_bar = NodePath("HealthProgressBar")
 boss_name_label = NodePath("HealthProgressBar/Label")
+main_color = Color(0.47451, 0, 0, 1)
+disabled_color = Color(0.24, 0.16608, 0.1608, 1)
 
 [node name="HealthProgressBar" parent="BossHealth" instance=ExtResource("6_ce05j")]
 layout_mode = 1

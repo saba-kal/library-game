@@ -1,13 +1,14 @@
 class_name Health extends Node
 
-signal changed(health:int, damage_amount:int, damage_sender:CharacterBody3D)
+signal changed(health: int, damage_amount: int, damage_sender: CharacterBody3D)
+signal immunity_changed(is_immune: bool)
 
-@export var maximum : int = 3
-@export var damage_flicker : DamageFlicker
+@export var maximum: int = 3
+@export var damage_flicker: DamageFlicker
 
-var current:int
+var current: int
 var health_owner
-var is_immune:bool = false
+var is_immune: bool = false
 
 
 func _ready() -> void:
@@ -17,7 +18,13 @@ func _ready() -> void:
 	owner.set_meta("damageable", true)
 
 
-func take_damage(damage_amount:int, damage_sender:CharacterBody3D = null) -> void:
+func set_is_immune(immune: bool) -> void:
+	if is_immune != immune:
+		is_immune = immune
+		immunity_changed.emit(is_immune)
+
+
+func take_damage(damage_amount: int, damage_sender: CharacterBody3D = null) -> void:
 	if is_immune:
 		return
 	if is_instance_valid(damage_flicker):

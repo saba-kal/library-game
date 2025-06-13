@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://xp0gidy6uon3"]
+[gd_scene load_steps=36 format=3 uid="uid://xp0gidy6uon3"]
 
 [ext_resource type="Script" uid="uid://dkwymbe0v5ypi" path="res://scripts/components/health.gd" id="1_6xx03"]
 [ext_resource type="Script" uid="uid://ch3og1mwiey8d" path="res://scripts/enemies/bosses/vampire_boss/vampire_boss.gd" id="1_gd3kv"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://pbe37yde1qs4" path="res://assets/models/enemies/vampire/VampireWCapeAnim.glb" id="3_4biun"]
 [ext_resource type="PackedScene" uid="uid://c0jqrpvcb2xdk" path="res://assets/VFX/Boss_Candle_Flame.tscn" id="3_uy21t"]
 [ext_resource type="Script" uid="uid://cruvp6iaya4rv" path="res://scripts/enemies/bosses/vampire_boss/vampire_entrance_state.gd" id="4_4ps6q"]
+[ext_resource type="Texture2D" uid="uid://dve5crkqhibna" path="res://assets/textures/effects/four_point_star.png" id="4_63ptx"]
 [ext_resource type="PackedScene" uid="uid://dtpbu0o2ok0el" path="res://scenes/projectiles/WitchAttackProjectile.tscn" id="5_4biun"]
+[ext_resource type="Script" uid="uid://bcq0e40jvawk1" path="res://scripts/effects/rotate_and_billboard.gd" id="5_sasit"]
 [ext_resource type="Script" uid="uid://dwxnbqdi82ue" path="res://scripts/enemies/bosses/vampire_boss/vampire_stand_state.gd" id="8_palif"]
 [ext_resource type="Script" uid="uid://rpm4puyshvlm" path="res://scripts/enemies/bosses/vampire_boss/vampire_spawn_minion_state.gd" id="9_d352k"]
 [ext_resource type="PackedScene" uid="uid://6ba3lqg16cok" path="res://scenes/enemies/enemy_types/werewolf_enemy.tscn" id="10_2rvdi"]
@@ -17,6 +19,125 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gd3kv"]
 height = 2.70627
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sasit"]
+transparency = 1
+no_depth_test = true
+albedo_color = Color(1, 0.477854, 0.410056, 1)
+albedo_texture = ExtResource("4_63ptx")
+emission_enabled = true
+emission = Color(1, 0.533612, 0.468613, 1)
+emission_energy_multiplier = 3.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_cefiy"]
+material = SubResource("StandardMaterial3D_sasit")
+
+[sub_resource type="Animation" id="Animation_dqcjc"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../OmniLight3D:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_cefiy"]
+resource_name = "show_attack_indicator"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../OmniLight3D:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8r3vy"]
+_data = {
+&"RESET": SubResource("Animation_dqcjc"),
+&"show_attack_indicator": SubResource("Animation_cefiy")
+}
+
+[sub_resource type="Curve" id="Curve_ov3g1"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, -2.24056, 0, 0, Vector2(0.279675, -0.62886), -0.118691, -0.118691, 0, 0, Vector2(0.569106, 0.0504751), 5.19977, 5.19977, 0, 0, Vector2(1, 1), -6.32015e-07, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_clt05"]
 size = Vector3(1.44922, 2.6543, 1.25052)
@@ -64,7 +185,6 @@ input_2/break_loop_at_end = false
 input_2/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ipvld"]
-graph_offset = Vector2(-528.781, -1.13013)
 nodes/death_anim/node = SubResource("AnimationNodeAnimation_sasit")
 nodes/death_anim/position = Vector2(-240, 380)
 nodes/intro_anim/node = SubResource("AnimationNodeAnimation_4biun")
@@ -90,7 +210,7 @@ node_connections = [&"intro_shot", 0, &"vampire_state", &"intro_shot", 1, &"intr
 
 [node name="VampireBoss" type="CharacterBody3D" node_paths=PackedStringArray("particle_effects") groups=["enemy"]]
 collision_layer = 4
-collision_mask = 23
+collision_mask = 21
 script = ExtResource("1_gd3kv")
 particle_effects = [NodePath("Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D/Eyes/Eyes/BossCandleFlame"), NodePath("Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D/Eyes/Eyes/BossCandleFlame2"), NodePath("Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D/Eyes/Eyes/BossCandleFlame3")]
 boss_name = "Count Montague"
@@ -124,7 +244,7 @@ bones/19/rotation = Quaternion(0.000806049, -0.200397, -0.0455962, 0.978653)
 bones/20/rotation = Quaternion(-0.0868236, 0.0781874, -0.107455, 0.987321)
 bones/21/rotation = Quaternion(0.150927, -0.034474, -0.445248, 0.881922)
 bones/22/rotation = Quaternion(0.037316, -0.198143, -0.0501708, 0.978177)
-bones/24/rotation = Quaternion(0.076645, 1.19047e-07, 6.20999e-09, 0.997059)
+bones/24/rotation = Quaternion(0.0682595, 1.18991e-07, 7.21067e-09, 0.997668)
 bones/26/rotation = Quaternion(-1.04098e-07, 1.78366e-08, 0.872954, 0.487803)
 bones/27/rotation = Quaternion(0.235278, -0.0231885, 0.426945, 0.872826)
 bones/28/rotation = Quaternion(0.450206, -0.281802, 0.533846, 0.657959)
@@ -144,37 +264,37 @@ bones/41/rotation = Quaternion(-0.0868236, -0.0781874, 0.107455, 0.987321)
 bones/42/rotation = Quaternion(0.288757, -0.0818669, 0.695558, 0.652776)
 bones/43/rotation = Quaternion(0.21886, 0.0380568, 0.635628, 0.739343)
 bones/45/rotation = Quaternion(0.0398806, -1.19114e-07, -4.75415e-09, 0.999204)
-bones/46/rotation = Quaternion(0.028698, 9.87663e-10, 1.22662e-08, 0.999588)
+bones/46/rotation = Quaternion(-0.027018, 3.02972e-10, 1.23021e-08, 0.999635)
 bones/47/rotation = Quaternion(0.175856, -6.66134e-15, -4.19272e-08, 0.984416)
-bones/48/rotation = Quaternion(0.157489, -7.50251e-10, -5.53539e-09, 0.987521)
+bones/48/rotation = Quaternion(0.0646375, -2.30386e-10, -5.58124e-09, 0.997909)
 bones/49/position = Vector3(0.164206, 0.108921, -0.172366)
 bones/49/rotation = Quaternion(0.686403, 0.208025, -0.669976, -0.191598)
 bones/50/rotation = Quaternion(-0.00786376, 0.014437, -0.0193602, 0.999677)
-bones/51/rotation = Quaternion(-0.055535, -0.34042, -0.0677086, 0.936187)
+bones/51/rotation = Quaternion(-0.0386027, -0.345524, -0.0148899, 0.937497)
 bones/52/rotation = Quaternion(-0.158841, -0.347068, -0.0512114, 0.922871)
-bones/53/rotation = Quaternion(-0.180215, -0.302804, 0.0382856, 0.935076)
+bones/53/rotation = Quaternion(-0.0912331, -0.322827, 0.0191912, 0.941855)
 bones/54/position = Vector3(0.300192, 0.0565511, -0.155942)
 bones/54/rotation = Quaternion(0.97987, 0.0226733, 0.0226732, -0.197042)
 bones/55/rotation = Quaternion(0.0342043, -0.033166, -0.00219751, 0.998862)
-bones/56/rotation = Quaternion(0.158473, 0.0402739, -0.0517179, 0.985185)
+bones/56/rotation = Quaternion(0.103571, 0.0344717, -0.0514686, 0.992691)
 bones/57/rotation = Quaternion(0.176646, 0.0241564, -0.0289391, 0.983552)
-bones/58/rotation = Quaternion(0.119611, 0.0308813, -0.0148458, 0.992229)
+bones/58/rotation = Quaternion(0.0289721, 0.00938987, -0.0144916, 0.999431)
 bones/59/rotation = Quaternion(0.686403, -0.208025, 0.669976, -0.191598)
 bones/60/rotation = Quaternion(-0.00786376, -0.014437, 0.0193602, 0.999677)
-bones/61/rotation = Quaternion(-0.055535, 0.34042, 0.0677086, 0.936187)
+bones/61/rotation = Quaternion(-0.0386027, 0.345524, 0.0148899, 0.937497)
 bones/62/rotation = Quaternion(-0.158841, 0.347068, 0.0512114, 0.922871)
-bones/63/rotation = Quaternion(-0.180215, 0.302804, -0.0382856, 0.935076)
+bones/63/rotation = Quaternion(-0.0912331, 0.322827, -0.0191912, 0.941855)
 bones/64/rotation = Quaternion(0.97987, -0.0226733, -0.0226732, -0.197042)
 bones/65/rotation = Quaternion(0.0342043, 0.033166, 0.00219751, 0.998862)
-bones/66/rotation = Quaternion(0.158473, -0.0402739, 0.0517179, 0.985185)
+bones/66/rotation = Quaternion(0.103571, -0.0344717, 0.0514686, 0.992691)
 bones/67/rotation = Quaternion(0.176646, -0.0241564, 0.0289391, 0.983552)
-bones/68/rotation = Quaternion(0.119611, -0.0308813, 0.0148458, 0.992229)
+bones/68/rotation = Quaternion(0.0289721, -0.00938987, 0.0144916, 0.999431)
 bones/69/position = Vector3(-9.93101e-16, 0.023211, -0.131289)
 bones/69/rotation = Quaternion(0.998567, 2.33929e-09, -4.36487e-08, -0.053517)
 bones/70/position = Vector3(1.86264e-08, 1.36021, 1.24345e-14)
 bones/70/rotation = Quaternion(-0.445943, -0.548757, -0.445944, 0.548757)
 bones/71/rotation = Quaternion(-0.7624, -0.0218549, 0.102217, 0.638608)
-bones/72/rotation = Quaternion(0.00712768, 0.00427068, 0.140684, 0.99002)
+bones/72/rotation = Quaternion(0.00132178, 0.00288772, 0.111598, 0.993748)
 bones/73/rotation = Quaternion(0.0219343, 0.00503684, 0.131221, 0.991098)
 bones/74/rotation = Quaternion(-5.69423e-05, -1.11771e-07, -0.629178, 0.777261)
 bones/75/position = Vector3(0.0041107, 0.215393, 0.0407832)
@@ -182,23 +302,49 @@ bones/75/rotation = Quaternion(-0.512434, -0.383018, 0.361233, 0.678395)
 bones/76/position = Vector3(-1.49012e-08, 1.36021, -5.77316e-15)
 bones/76/rotation = Quaternion(-0.445944, 0.548757, 0.445944, 0.548757)
 bones/77/rotation = Quaternion(-0.742817, 0.114218, -0.234216, 0.616701)
-bones/78/rotation = Quaternion(0.0203381, -0.0029447, -0.135784, 0.990525)
+bones/78/rotation = Quaternion(0.00537162, -0.00248121, -0.110096, 0.993903)
 bones/79/rotation = Quaternion(0.104463, -0.000749613, -0.100439, 0.989444)
 bones/80/rotation = Quaternion(-5.70035e-05, 1.58885e-07, 0.629178, 0.777261)
 bones/81/position = Vector3(-0.00411068, 0.215393, 0.0407831)
 bones/81/rotation = Quaternion(-0.512434, 0.383018, -0.361233, 0.678395)
 
 [node name="Eyes" parent="Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D" index="0"]
-transform = Transform3D(0.0183632, 1.06984e-10, 1.25233e-11, -1.06644e-10, 0.0183577, -0.000451754, -1.51528e-11, 0.000451754, 0.0183577, 0.0414608, 2.43954, 0.122249)
+transform = Transform3D(0.0183632, 3.38322e-11, 4.24905e-12, -3.3798e-11, 0.0183627, -0.000143016, -4.51283e-12, 0.000143016, 0.0183627, 0.0414608, 2.44158, 0.119652)
 
 [node name="BossCandleFlame" parent="Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D/Eyes/Eyes" index="0" instance=ExtResource("3_uy21t")]
-transform = Transform3D(-54.4567, -6.5848e-13, 4.76075e-06, -3.89602e-13, 54.4567, -6.90466e-07, -4.76075e-06, -6.90466e-07, -54.4567, 36.1478, -13.6019, -6.44973)
+transform = Transform3D(-54.4567, -6.5848e-13, 4.76075e-06, -3.89602e-13, 54.4567, -6.90466e-07, -4.76075e-06, -6.90466e-07, -54.4567, 36.1478, -27.0965, -30.3678)
 
 [node name="BossCandleFlame2" parent="Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D/Eyes/Eyes" index="1" instance=ExtResource("3_uy21t")]
-transform = Transform3D(-54.4567, -6.5848e-13, 4.76075e-06, -3.89602e-13, 54.4567, -6.90466e-07, -4.76075e-06, -6.90466e-07, -54.4567, -39.4996, -13.6019, -6.44974)
+transform = Transform3D(-54.4567, -6.5848e-13, 4.76075e-06, -3.89602e-13, 54.4567, -6.90466e-07, -4.76075e-06, -6.90466e-07, -54.4567, -39.4996, -27.0965, -30.3678)
 
 [node name="BossCandleFlame3" parent="Visuals/VampireWCapeAnim/VampireArmature/Skeleton3D/Eyes/Eyes" index="2" instance=ExtResource("3_uy21t")]
 transform = Transform3D(-54.4567, -6.5848e-13, 4.76075e-06, -3.89602e-13, 54.4567, -6.90466e-07, -4.76075e-06, -6.90466e-07, -54.4567, -2.02504, -13.6019, -46.4846)
+
+[node name="AttackIndicator" type="Node3D" parent="Visuals" node_paths=PackedStringArray("child_node_to_rotate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4756, -0.308391)
+script = ExtResource("5_sasit")
+rotation_speed = 10.0
+child_node_to_rotate = NodePath("AttackIndicatorMesh")
+
+[node name="AttackIndicatorMesh" type="MeshInstance3D" parent="Visuals/AttackIndicator"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+mesh = SubResource("QuadMesh_cefiy")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/AttackIndicator"]
+root_node = NodePath("../AttackIndicatorMesh")
+libraries = {
+&"": SubResource("AnimationLibrary_8r3vy")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Visuals/AttackIndicator"]
+light_color = Color(1, 0.3241, 0.258944, 1)
+omni_range = 1.12282
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Visuals"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.52818, 0.784165)
+light_color = Color(1, 0.0405029, 0.0223527, 1)
+omni_range = 1.46801
 
 [node name="States" type="Node" parent="."]
 
@@ -209,6 +355,9 @@ boss = NodePath("../..")
 projectile_scene = ExtResource("5_4biun")
 projectile_spawn_point = NodePath("../../ProjectileSpawn")
 animation_tree = NodePath("../../AnimationTree")
+
+[node name="WindUpDelayTimer" type="Timer" parent="States/Projectile"]
+one_shot = true
 
 [node name="Entrance" type="Node" parent="States" node_paths=PackedStringArray("boss", "boss_health", "animation_tree")]
 script = ExtResource("4_4ps6q")
@@ -243,16 +392,24 @@ animation_tree = NodePath("../../AnimationTree")
 
 [node name="Melee" type="Node" parent="States" node_paths=PackedStringArray("attack_area", "boss", "animation_tree")]
 script = ExtResource("12_clt05")
+motion_curve = SubResource("Curve_ov3g1")
 attack_area = NodePath("../../MeleeAttackArea")
 boss = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
 
 [node name="PreAttackDelayTimer" type="Timer" parent="States/Melee"]
+wait_time = 0.25
+one_shot = true
+
+[node name="WindUpDelayTimer" type="Timer" parent="States/Melee"]
+wait_time = 0.4
+one_shot = true
+
+[node name="AttackCompletedTimer" type="Timer" parent="States/Melee"]
 wait_time = 0.5
 one_shot = true
 
 [node name="PostAttackDelayTimer" type="Timer" parent="States/Melee"]
-wait_time = 0.5
 one_shot = true
 
 [node name="Dead" type="Node" parent="States" node_paths=PackedStringArray("boss", "animation_tree", "nav_agent")]
@@ -263,7 +420,7 @@ nav_agent = NodePath("../../CharacterNavAgent")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("1_6xx03")
-maximum = 12
+maximum = 48
 metadata/_custom_type_script = "uid://dkwymbe0v5ypi"
 
 [node name="ProjectileSpawn" type="Marker3D" parent="."]
