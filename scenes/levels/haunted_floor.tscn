@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c51xioq25wr6d"]
+[gd_scene load_steps=23 format=3 uid="uid://c51xioq25wr6d"]
 
 [ext_resource type="PackedScene" uid="uid://d1pi1kgma618d" path="res://core/gui/gui.tscn" id="1_a0ej8"]
 [ext_resource type="Script" uid="uid://d2gcyv7iefpfb" path="res://scripts/room_generation/Gen2/room_generation.gd" id="1_ygjm3"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://qscen83w47ka" path="res://scenes/rooms/gothic_rooms/Hub.tscn" id="13_pk06o"]
 [ext_resource type="PackedScene" uid="uid://cmrjg48d24row" path="res://scenes/collectibles/room_key.tscn" id="14_b6bjg"]
 [ext_resource type="PackedScene" uid="uid://ciklhn74hbvm0" path="res://scenes/level_components/door.tscn" id="15_8mx6f"]
+[ext_resource type="Script" uid="uid://bqykynqcpts21" path="res://scripts/general/cutscene.gd" id="19_rtf11"]
+[ext_resource type="VideoStream" uid="uid://dmoqu2ih5prom" path="res://assets/video/RECOVER_RECOVER_Library_Bookstore_2D_Intro-_1_.ogv" id="20_7dp7e"]
 
 [sub_resource type="Environment" id="Environment_tdot3"]
 background_mode = 2
@@ -54,8 +56,18 @@ light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 directional_shadow_mode = 0
 
-[node name="GUI" parent="." node_paths=PackedStringArray("map_2D") instance=ExtResource("1_a0ej8")]
+[node name="GUI" parent="." node_paths=PackedStringArray("map_2D", "opening_cutscene") instance=ExtResource("1_a0ej8")]
 map_2D = NodePath("../2D_Map")
+opening_cutscene = NodePath("OpeningCutscene")
+
+[node name="OpeningCutscene" type="VideoStreamPlayer" parent="GUI"]
+clip_contents = true
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.333, 0.333)
+stream = ExtResource("20_7dp7e")
+script = ExtResource("19_rtf11")
 
 [node name="2D_Map" parent="." instance=ExtResource("9_1lfxk")]
 position = Vector2(1592, 752)

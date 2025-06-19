@@ -1,6 +1,7 @@
 extends Control
 
 @export var map_2D: _2DGeneration
+@export var opening_cutscene: VideoStreamPlayer
 
 @onready var pause: Control = %Pause
 @onready var inventory: Control = $Inventory
@@ -16,6 +17,8 @@ func _ready() -> void:
 	minimap_container.visible = false
 	if map_2D != null:
 		map_2D.generation_complete.connect(setup_minimap)
+	if not opening_cutscene:
+		opening_cutscene = VideoStreamPlayer.new()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -30,6 +33,9 @@ func setup_minimap():
 	minimap_container.visible = true
 
 func toggle_pause():
+	if opening_cutscene.is_playing():
+		opening_cutscene.end_cutscene()
+		return
 	if !pause.visible && !inventory.visible:
 		pause.visible = true
 		button_resume.grab_focus()

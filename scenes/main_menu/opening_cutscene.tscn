@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kknqy2hagp38"]
+
+[ext_resource type="VideoStream" uid="uid://dmoqu2ih5prom" path="res://assets/video/RECOVER_RECOVER_Library_Bookstore_2D_Intro-_1_.ogv" id="1_u74df"]
+
+[node name="OpeningCutscene" type="VideoStreamPlayer"]
+stream = ExtResource("1_u74df")
