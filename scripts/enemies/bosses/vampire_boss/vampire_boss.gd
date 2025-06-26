@@ -80,6 +80,7 @@ func on_health_changed(health_amount: int, delta: int, damage_sender: CharacterB
 			get_tree().root.add_child(reward_instance)
 			reward_instance.global_position = global_position
 		death.emit()
+		SignalBus.boss_defeated.emit(self)
 		change_state("Dead")
 	elif phase == 1 && health_percent <= phase_2_health:
 		print("Vampire boss entering phase 2")

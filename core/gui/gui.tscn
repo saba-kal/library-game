@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://d1pi1kgma618d"]
+[gd_scene load_steps=21 format=3 uid="uid://d1pi1kgma618d"]
 
 [ext_resource type="Script" uid="uid://cxisi2yblv1ug" path="res://core/gui/gui.gd" id="1_ds54n"]
 [ext_resource type="Shader" uid="uid://c73v4e4ck57ri" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
 [ext_resource type="Script" uid="uid://bj6cggpoj06fc" path="res://scripts/gui/player_health_bar.gd" id="3_6a04i"]
-[ext_resource type="Texture2D" uid="uid://b33kcp1b57awf" path="res://assets/textures/GUI/player_icon_placeholder.png" id="3_eyey0"]
+[ext_resource type="Texture2D" uid="uid://d3qkcqfn275w3" path="res://assets/textures/GUI/PlayerHealthGui.png" id="4_hut4s"]
 [ext_resource type="PackedScene" uid="uid://cy6ic2npxa53k" path="res://scenes/gui/heart_icon.tscn" id="5_5kxef"]
 [ext_resource type="Script" uid="uid://dwtkbxk8j02vb" path="res://scripts/gui/enemy_count.gd" id="5_hut4s"]
 [ext_resource type="PackedScene" uid="uid://c2eyb87rkl1af" path="res://scenes/gui/inventory/inventory.tscn" id="5_mwy2m"]
@@ -11,24 +11,26 @@
 [ext_resource type="PackedScene" uid="uid://cd7ku1ntwth6u" path="res://scenes/gui/health_progress_bar.tscn" id="6_ce05j"]
 [ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="7_a22y1"]
 [ext_resource type="PackedScene" uid="uid://bd7dpdh8afywi" path="res://scenes/gui/common/menu_nav_button.tscn" id="7_ube1n"]
+[ext_resource type="Texture2D" uid="uid://cjfuekpjxk3x1" path="res://assets/textures/GUI/MiniMapBorder.png" id="8_4jwg1"]
 [ext_resource type="Texture2D" uid="uid://b26mq80nysnge" path="res://assets/textures/GUI/simple_skull_icon.png" id="8_hut4s"]
 [ext_resource type="PackedScene" uid="uid://bgdg5y0ec727w" path="res://scenes/gui/settings_menu/settings_menu.tscn" id="8_xu1a1"]
 [ext_resource type="PackedScene" uid="uid://trdgk7ggai0g" path="res://scenes/debug/debug_console.tscn" id="9_7vfty"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_a22y1"]
-font_size = 26
+[sub_resource type="LabelSettings" id="LabelSettings_hut4s"]
+line_spacing = 15.0
+font = ExtResource("7_a22y1")
+font_size = 18
+font_color = Color(0.479792, 1, 0.570656, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yar5l"]
-bg_color = Color(0, 0, 0, 0.109804)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.431373, 0.815686, 0.654902, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="LabelSettings" id="LabelSettings_a22y1"]
+line_spacing = 15.0
+font = ExtResource("7_a22y1")
+font_size = 14
+font_color = Color(0.52, 0.888, 1, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4jwg1"]
 font = ExtResource("7_a22y1")
@@ -77,9 +79,9 @@ offset_bottom = 228.0
 [node name="PlayerHealthbar" type="HBoxContainer" parent="HUD/PlayerInfo" node_paths=PackedStringArray("images_container")]
 layout_mode = 0
 offset_left = 130.0
-offset_top = 32.0
+offset_top = 70.0
 offset_right = 563.0
-offset_bottom = 96.0
+offset_bottom = 134.0
 script = ExtResource("3_6a04i")
 images_container = NodePath(".")
 single_health_icon = ExtResource("5_5kxef")
@@ -93,31 +95,49 @@ layout_mode = 2
 [node name="Heart3" parent="HUD/PlayerInfo/PlayerHealthbar" instance=ExtResource("5_5kxef")]
 layout_mode = 2
 
-[node name="PlayerIcon" type="TextureRect" parent="HUD/PlayerInfo"]
+[node name="Control" type="ColorRect" parent="HUD/PlayerInfo"]
+clip_children = 1
 layout_mode = 0
-offset_right = 121.0
-offset_bottom = 121.0
-texture = ExtResource("3_eyey0")
-expand_mode = 1
-
-[node name="EnemyInfo" type="Control" parent="HUD"]
-anchors_preset = 0
-offset_left = 20.0
-offset_top = 150.0
-offset_right = 273.0
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 132.0
 offset_bottom = 200.0
 
-[node name="EnemyCount" type="Label" parent="HUD/EnemyInfo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Enemies: 0 / 0"
+[node name="PlayerIcon" type="TextureRect" parent="HUD/PlayerInfo/Control"]
+texture_filter = 6
+layout_mode = 0
+offset_top = -2.0
+offset_right = 214.0
+offset_bottom = 215.0
+texture = ExtResource("4_hut4s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ObjectiveInfo" type="VBoxContainer" parent="HUD" node_paths=PackedStringArray("main_objective_label", "room_objective_label")]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 226.0
+offset_right = 414.0
+offset_bottom = 486.0
+theme_override_constants/separation = 30
+script = ExtResource("5_hut4s")
+main_objective_label = NodePath("MainObjective")
+room_objective_label = NodePath("RoomObjective")
+
+[node name="MainObjective" type="Label" parent="HUD/ObjectiveInfo"]
+layout_mode = 2
+text = "MAIN OBJECTIVE
+- Enter the huanted library"
+label_settings = SubResource("LabelSettings_hut4s")
+vertical_alignment = 1
+
+[node name="RoomObjective" type="Label" parent="HUD/ObjectiveInfo"]
+layout_mode = 2
+text = "ROOM OBJECTIVE
+- Defeat enemies  0 / 0
+"
 label_settings = SubResource("LabelSettings_a22y1")
 vertical_alignment = 1
-script = ExtResource("5_hut4s")
 
 [node name="Inventory" parent="." instance=ExtResource("5_mwy2m")]
 visible = false
@@ -141,6 +161,22 @@ offset_right = -35.0
 offset_bottom = -35.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="Minimap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_4jwg1")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Minimap"]
 layout_mode = 1
@@ -153,6 +189,7 @@ offset_right = -22.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Minimap/SubViewportContainer"]
@@ -160,15 +197,6 @@ transparent_bg = true
 handle_input_locally = false
 size = Vector2i(289, 289)
 render_target_update_mode = 4
-
-[node name="BackgroundPanel" type="Panel" parent="Minimap"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yar5l")
 
 [node name="BossHealth" type="Control" parent="." node_paths=PackedStringArray("progress_bar", "boss_name_label")]
 layout_mode = 1

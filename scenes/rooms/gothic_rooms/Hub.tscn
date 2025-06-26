@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://qscen83w47ka"]
+[gd_scene load_steps=20 format=3 uid="uid://qscen83w47ka"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_jk3g8"]
 [ext_resource type="PackedScene" uid="uid://0d1ctubyayeg" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_1.tscn" id="2_4v1hj"]
@@ -14,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://dyqcrv4i4axss" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_1.tscn" id="11_i035m"]
 [ext_resource type="PackedScene" uid="uid://vxorah386tra" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_2.tscn" id="12_aomk4"]
 [ext_resource type="PackedScene" uid="uid://cmepbn2gyxqt1" path="res://assets/VFX/Candle_Flame_2.tscn" id="13_q6gjw"]
+[ext_resource type="Texture2D" uid="uid://cywxx8fcubpw5" path="res://assets/textures/tutorial/MovementControls.png" id="15_egv8n"]
+[ext_resource type="Script" uid="uid://cx417edjp8etm" path="res://core/decal_keep_aspect.gd" id="16_5ryf2"]
+[ext_resource type="Texture2D" uid="uid://b7rv1q5f2w05j" path="res://assets/textures/tutorial/JumpControls.png" id="17_x38k2"]
+[ext_resource type="Texture2D" uid="uid://o2nfmkmhfnjb" path="res://assets/textures/tutorial/AttackControls.png" id="18_5kyvm"]
+[ext_resource type="Texture2D" uid="uid://bisk223ylkm3i" path="res://assets/textures/tutorial/DeflectControls.png" id="19_igtrb"]
 
 [node name="RoomVariation" node_paths=PackedStringArray("north_door", "player_spawn_point") instance=ExtResource("1_jk3g8")]
 north_door = NodePath("Doors/DoorNorth")
@@ -290,5 +295,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.975, 2.83071, 12.479)
 light_color = Color(0.590414, 0.714049, 0.94463, 1)
 light_energy = 2.0
 
-[node name="PlayerSpawnPoint" type="Marker3D" parent="." index="14"]
+[node name="Tutorial" type="Node3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.22411)
+
+[node name="MoveControls" type="Decal" parent="Tutorial" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99728, 0, 12.4739)
+size = Vector3(5, 0.351563, 3.51563)
+texture_albedo = ExtResource("15_egv8n")
+script = ExtResource("16_5ryf2")
+width = 10.0
+
+[node name="DashControls" type="Decal" parent="Tutorial" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99728, 0, 8.26817)
+size = Vector3(5, 0.351563, 3.51563)
+texture_albedo = ExtResource("17_x38k2")
+script = ExtResource("16_5ryf2")
+width = 10.0
+
+[node name="AttackControls" type="Decal" parent="Tutorial" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99728, 0, 3.92412)
+size = Vector3(5, 0.351563, 3.51563)
+texture_albedo = ExtResource("18_5kyvm")
+script = ExtResource("16_5ryf2")
+width = 10.0
+
+[node name="DeflectControls" type="Decal" parent="Tutorial" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99728, 0, -0.361708)
+size = Vector3(5, 0.351563, 3.51563)
+texture_albedo = ExtResource("19_igtrb")
+script = ExtResource("16_5ryf2")
+width = 10.0
+
+[node name="PlayerSpawnPoint" type="Marker3D" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948005, 0, 16.3753)

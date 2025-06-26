@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b33kcp1b57awf"
-path="res://.godot/imported/player_icon_placeholder.png-b9d543f15a0766b1d957ad1ee6de6c88.ctex"
+uid="uid://cjfuekpjxk3x1"
+path="res://.godot/imported/MiniMapBorder.png-00e09d01b424e95e7e2b76fdfae08b71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/GUI/player_icon_placeholder.png"
-dest_files=["res://.godot/imported/player_icon_placeholder.png-b9d543f15a0766b1d957ad1ee6de6c88.ctex"]
+source_file="res://assets/textures/GUI/MiniMapBorder.png"
+dest_files=["res://.godot/imported/MiniMapBorder.png-00e09d01b424e95e7e2b76fdfae08b71.ctex"]
 
 [params]
 

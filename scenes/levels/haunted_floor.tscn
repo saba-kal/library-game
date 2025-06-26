@@ -58,16 +58,37 @@ directional_shadow_mode = 0
 
 [node name="GUI" parent="." node_paths=PackedStringArray("map_2D", "opening_cutscene") instance=ExtResource("1_a0ej8")]
 map_2D = NodePath("../2D_Map")
-opening_cutscene = NodePath("OpeningCutscene")
+opening_cutscene = NodePath("AspectRatioContainer/OpeningCutscene")
 
-[node name="OpeningCutscene" type="VideoStreamPlayer" parent="GUI"]
+[node name="CutsceneBlackBars" type="ColorRect" parent="GUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+ratio = 1.7778
+
+[node name="OpeningCutscene" type="VideoStreamPlayer" parent="GUI/AspectRatioContainer" node_paths=PackedStringArray("cutscene_background")]
 clip_contents = true
-layout_mode = 0
-offset_right = 3840.0
-offset_bottom = 2160.0
-scale = Vector2(0.333, 0.333)
+layout_mode = 2
+mouse_filter = 2
 stream = ExtResource("20_7dp7e")
+expand = true
 script = ExtResource("19_rtf11")
+cutscene_background = NodePath("../../CutsceneBlackBars")
 
 [node name="2D_Map" parent="." instance=ExtResource("9_1lfxk")]
 position = Vector2(1592, 752)

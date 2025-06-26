@@ -36,7 +36,11 @@ func toggle_pause():
 	if opening_cutscene.is_playing():
 		opening_cutscene.end_cutscene()
 		return
-	if !pause.visible && !inventory.visible:
+	if settings_menu.visible:
+		settings_menu.visible = false
+		pause.visible = true
+		button_resume.grab_focus()
+	elif !pause.visible && !inventory.visible:
 		pause.visible = true
 		button_resume.grab_focus()
 		get_tree().paused = true
@@ -44,6 +48,7 @@ func toggle_pause():
 		toggle_inventory()
 	else:
 		pause.visible = !pause.visible
+		settings_menu.visible = false
 		get_tree().paused = false
 
 func toggle_inventory() -> void:
