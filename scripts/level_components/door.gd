@@ -2,14 +2,14 @@ extends Node
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var door_collider: StaticBody3D = $DoorCollider
-@onready var interact_area: Interactable = $InteractArea
+@onready var interact_area: Area3D = $InteractArea
 
 
 var is_opened = false
 
 
 func _ready() -> void:
-	self.interact_area.interacted.connect(self.open_door)
+	interact_area.body_entered.connect(on_body_entered)
 
 
 func open_door() -> void:
@@ -29,3 +29,10 @@ func open_door_ignore_keys() -> void:
 	self.is_opened = true
 	self.animation_player.play("open_door")
 	self.door_collider.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func on_body_entered(body: Node3D) -> void:
+	if body is Player:
+		SignalBus.player_entered_boss_door_area.emit()
+		if Game.room_key_count >= 1:
+			open_door()

@@ -19,6 +19,7 @@ signal died
 @onready var state: CharacterState = (func get_initial_state() -> CharacterState:
 	return initial_state if initial_state else state_machine.get_child(0)
 ).call()
+@onready var speech_bubble: SpeechBubble = $SpeechBubble3D
 
 var direction: Vector3
 var target_rotation: float
@@ -28,6 +29,7 @@ func _ready() -> void:
 	for state_node: CharacterState in state_machine.find_children("*", "CharacterState"):
 		state_node.finished.connect(_transition_to_next_state)
 	state.enter("")
+	SignalBus.player_entered_boss_door_area.connect(on_player_entered_boss_door_area)
 	SignalBus.player_spawned.emit(self)
 	health.changed.connect(health_changed)
 
@@ -90,3 +92,7 @@ func health_changed(new_health: int, damage: int, damage_sender) -> void:
 			died.emit()
 		else:
 			_transition_to_next_state(hurt_state.get_path())
+
+func on_player_entered_boss_door_area() -> void:
+	if Game.room_key_count <= 0:
+		speech_bubble.display_text("I need a key")

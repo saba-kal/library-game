@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bej1swjf78ghe"]
+
+[ext_resource type="PackedScene" uid="uid://bt4hhsinfops6" path="res://assets/models/npc/GhostWriter1.glb" id="1_e06jn"]
+[ext_resource type="Script" uid="uid://cd0bkk3cxco37" path="res://scripts/npc/ghost_writer.gd" id="1_iek8o"]
+[ext_resource type="PackedScene" uid="uid://t3rh2l4jxp8r" path="res://assets/VFX/Candle_Flame_1.tscn" id="2_6w6ko"]
+[ext_resource type="PackedScene" uid="uid://bm6f0hfoyhm0p" path="res://scenes/gui/speech_bubble_3d.tscn" id="3_6w6ko"]
+
+[node name="GhostWriter" type="Node3D"]
+script = ExtResource("1_iek8o")
+min_dialogue_interval = 10.0
+max_dialogue_interval = 15.0
+start_dialogue = "Behold my masterpiece, Count Montague the vampire!"
+random_dialogue_text = Array[String](["Count Montague is my favorite character.", "One day, I'll make it big.", "When have I last seen the sun?", "Montague's favorite color is red.", "Your soul will never return. Give up.", "Knock knock. Who's there? Bitter lonely death.", "The story must conclude with your death."])
+end_dialogue = "My failure never ceases to disappoint me."
+
+[node name="GhostWriter1" parent="." instance=ExtResource("1_e06jn")]
+
+[node name="Hair" parent="GhostWriter1/BaseMaleArmature/Skeleton3D" index="0"]
+transform = Transform3D(1, 8.52651e-14, -4.26326e-14, -1.42109e-14, 0.685878, 0.727716, 2.84217e-14, -0.727716, 0.685878, -0.160047, 0.57718, 1.21066)
+
+[node name="CandleFlame1" type="BoneAttachment3D" parent="GhostWriter1/BaseMaleArmature/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.583739, 1.67256, -0.39873)
+bone_name = "CandleB.r"
+bone_idx = 61
+
+[node name="CandleFlame" parent="GhostWriter1/BaseMaleArmature/Skeleton3D/CandleFlame1" instance=ExtResource("2_6w6ko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00141776, 0.216, 0.0137047)
+
+[node name="CandleFlame2" type="BoneAttachment3D" parent="GhostWriter1/BaseMaleArmature/Skeleton3D" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, -0.539685, 1.21429, 0.386216)
+bone_name = "CandleF.r"
+bone_idx = 62
+
+[node name="CandleFlame" parent="GhostWriter1/BaseMaleArmature/Skeleton3D/CandleFlame2" instance=ExtResource("2_6w6ko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00141776, 0.216, 0.0137047)
+
+[node name="CandleFlame3" type="BoneAttachment3D" parent="GhostWriter1/BaseMaleArmature/Skeleton3D" index="7"]
+transform = Transform3D(1, -7.87641e-07, 4.76837e-07, 7.87641e-07, 1, 5.96047e-08, -4.76837e-07, -5.96043e-08, 1, 0.478962, 1.11811, 0.496674)
+bone_name = "CandleF.l"
+bone_idx = 63
+
+[node name="CandleFlame" parent="GhostWriter1/BaseMaleArmature/Skeleton3D/CandleFlame3" instance=ExtResource("2_6w6ko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00141776, 0.216, 0.0137047)
+
+[node name="CandleFlame4" type="BoneAttachment3D" parent="GhostWriter1/BaseMaleArmature/Skeleton3D" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.17664e-07, 0, 2.17664e-07, 1, 0.450007, 0.84654, -0.455087)
+bone_name = "CandleB.l"
+bone_idx = 64
+
+[node name="CandleFlame" parent="GhostWriter1/BaseMaleArmature/Skeleton3D/CandleFlame4" instance=ExtResource("2_6w6ko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00141776, 0.216, 0.0137047)
+
+[node name="AnimationPlayer" parent="GhostWriter1" index="1"]
+autoplay = "IdleAnim"
+
+[node name="SpeechBubble3D" parent="." instance=ExtResource("3_6w6ko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.164925, 2.48067, 0)
+
+[editable path="GhostWriter1"]

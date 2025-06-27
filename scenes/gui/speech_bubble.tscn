@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0jcrif6oiku8"]
+
+[ext_resource type="Texture2D" uid="uid://da0sg215jqb01" path="res://assets/textures/GUI/SpeechBubble.png" id="1_bx0ei"]
+[ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="2_vxkcy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q8o7v"]
+font = ExtResource("2_vxkcy")
+font_size = 26
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpeechBubbleBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -176.0
+offset_right = 349.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bx0ei")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -159.0
+offset_right = 323.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello I'm the ghost writer and I hate talking about stuff."
+label_settings = SubResource("LabelSettings_q8o7v")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

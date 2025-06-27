@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciklhn74hbvm0"]
+[gd_scene load_steps=11 format=3 uid="uid://ciklhn74hbvm0"]
 
 [ext_resource type="Script" uid="uid://ckfptl2wppfjl" path="res://scripts/level_components/door.gd" id="1_4gleq"]
 [ext_resource type="PackedScene" uid="uid://du8hq8bj0w5vp" path="res://assets/models/gothic_library_section/Interactible Models/BossDoor.glb" id="2_glk4a"]
-[ext_resource type="Script" uid="uid://dxebptgd3gagf" path="res://scripts/components/interactable.gd" id="3_tlijs"]
 
 [sub_resource type="Animation" id="Animation_8upti"]
 resource_name = "Door_LAction"
@@ -104,7 +103,6 @@ autoplay = "RESET"
 [node name="InteractArea" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("3_tlijs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61401, 1.07935)

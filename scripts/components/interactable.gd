@@ -2,6 +2,8 @@ class_name Interactable extends Area3D
 
 signal interacted
 
+@export var interact_on_enter: bool = false
+
 
 func _ready() -> void:
 	self.body_entered.connect(self.on_body_entered)

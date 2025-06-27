@@ -10,6 +10,7 @@ offset_bottom = 64.0
 
 [node name="HeartIcon" type="TextureRect" parent="."]
 texture_filter = 6
+layout_mode = 0
 offset_left = -162.0
 offset_top = -94.0
 offset_right = 125.0
