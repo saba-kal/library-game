@@ -19,8 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://qscen83w47ka" path="res://scenes/rooms/gothic_rooms/Hub.tscn" id="13_pk06o"]
 [ext_resource type="PackedScene" uid="uid://cmrjg48d24row" path="res://scenes/collectibles/room_key.tscn" id="14_b6bjg"]
 [ext_resource type="PackedScene" uid="uid://ciklhn74hbvm0" path="res://scenes/level_components/door.tscn" id="15_8mx6f"]
+[ext_resource type="VideoStream" uid="uid://c85wkeuyswxda" path="res://assets/video/Library_Bookstore_2D_Intro_Revised.ogv" id="18_rtf11"]
 [ext_resource type="Script" uid="uid://bqykynqcpts21" path="res://scripts/general/cutscene.gd" id="19_rtf11"]
-[ext_resource type="VideoStream" uid="uid://dmoqu2ih5prom" path="res://assets/video/RECOVER_RECOVER_Library_Bookstore_2D_Intro-_1_.ogv" id="20_7dp7e"]
 
 [sub_resource type="Environment" id="Environment_tdot3"]
 background_mode = 2
@@ -85,7 +85,7 @@ ratio = 1.7778
 clip_contents = true
 layout_mode = 2
 mouse_filter = 2
-stream = ExtResource("20_7dp7e")
+stream = ExtResource("18_rtf11")
 expand = true
 script = ExtResource("19_rtf11")
 cutscene_background = NodePath("../../CutsceneBlackBars")
