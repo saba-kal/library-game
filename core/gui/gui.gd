@@ -6,7 +6,7 @@ extends Control
 @onready var pause: Control = %Pause
 @onready var inventory: Control = $Inventory
 @onready var settings_menu: Control = $SettingsMenu
-@onready var death_message: Control = %DeathMessage
+@onready var game_over_screen: GameOverScreen = $GameOver
 @onready var button_resume: Button = $Pause/Panel/MarginContainer/VBoxContainer/Button_RESUME
 @onready var minimap_container: Control = $Minimap
 @onready var minimap_viewport: SubViewport = $Minimap/SubViewportContainer/SubViewport
@@ -19,6 +19,8 @@ func _ready() -> void:
 		map_2D.generation_complete.connect(setup_minimap)
 	if not opening_cutscene:
 		opening_cutscene = VideoStreamPlayer.new()
+	SignalBus.player_died.connect(show_death)
+	SignalBus.boss_defeated.connect(show_victory)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -75,7 +77,11 @@ func quit_pressed() -> void:
 	ChangeScene.to_main_menu()
 
 func show_death() -> void:
-	death_message.visible = true
+	game_over_screen.show_defeat()
+
+func show_victory(_boss: Boss) -> void:
+	await get_tree().create_timer(2.0).timeout
+	game_over_screen.show_victory()
 
 func on_settings_menu_ok_pressed() -> void:
 	self.settings_menu.visible = false

@@ -10,7 +10,6 @@ func _ready() -> void:
 		delete_timer.timeout.connect(_on_delete_timer_timeout)
 
 func _on_delete_timer_timeout() -> void:
-	enemy.death.emit(enemy)
 	get_parent().get_parent().queue_free()
 
 func Enter():
@@ -20,6 +19,8 @@ func Enter():
 	nav_agent.is_disabled = true
 	enemy.velocity = Vector3.ZERO
 	delete_timer.start()
+	enemy.death.emit(enemy)
+	SignalBus.enemy_died.emit(enemy)
 
 func Exit():
 	pass

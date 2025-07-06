@@ -87,6 +87,7 @@ func heal(heal_amount: int) -> void:
 
 func health_changed(new_health: int, damage: int, damage_sender) -> void:
 	if (damage > 0):
+		SignalBus.player_damaged.emit(damage)
 		if new_health <= 0:
 			_transition_to_next_state(death_state.get_path())
 			died.emit()

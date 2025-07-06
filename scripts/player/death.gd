@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func enter(_previous_state_path: String, _data := {}) -> void:
 	player.velocity = Vector3.ZERO
-	reset_timer.start(6.35)
+	reset_timer.start(5.0)
 	drop_timer.start(drop_time)
 	animation_tree.set("parameters/Transition/transition_request", "Death")
 	AudioManager.play_3d("player_death", character.global_position)
@@ -29,4 +29,4 @@ func drop() -> void:
 	umbrella.reparent(character, true)
 
 func done() -> void:
-	ChangeScene.scene_change()
+	SignalBus.player_died.emit()
