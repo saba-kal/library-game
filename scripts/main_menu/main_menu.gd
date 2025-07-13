@@ -2,9 +2,12 @@ extends Node
 
 @export var initial_button: Button
 @export var nav_menu: Control
+@export var credits_menu: Control
 @export var settings_menu: Control
 @export var debug_buttons: Control
 @onready var settings_button: Button = %Button_SETTINGS
+@onready var credits_button: Button = %Button_CREDITS
+@onready var credits_ok_button: Button = %CreditsOkButton
 
 func _enter_tree() -> void:
 	debug_buttons.visible = OS.is_debug_build()
@@ -18,6 +21,16 @@ func play_pressed() -> void:
 	print("Pressed Play Button")
 	Game.reset_data()
 	ChangeScene.to_game_start()
+
+func credits_pressed() -> void:
+	credits_menu.visible = true
+	nav_menu.visible = false
+	credits_ok_button.grab_focus()
+
+func credits_ok_pressed() -> void:
+	credits_menu.visible = false
+	nav_menu.visible = true
+	credits_button.grab_focus()
 
 func exit_pressed() -> void:
 	print("Pressed Exit Button")

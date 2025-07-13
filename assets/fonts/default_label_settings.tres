@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://io0l7i4vmvha"]
+
+[ext_resource type="FontFile" uid="uid://dvbi1cshtkqcb" path="res://assets/fonts/ChailceNogginRegular.ttf" id="1_a0fck"]
+
+[resource]
+line_spacing = 15.0
+font = ExtResource("1_a0fck")
+font_size = 26
