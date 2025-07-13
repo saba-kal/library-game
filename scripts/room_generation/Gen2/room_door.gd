@@ -2,7 +2,6 @@ class_name RoomDoor extends Area3D
 
 @onready var player_spawn_point = $PlayerSpawnPoint
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var door_collider: StaticBody3D = $DoorCollider
 
 var connected_room: RoomVariation
 var direction: RoomVariation.ROOM_DIRECTION
@@ -29,8 +28,8 @@ func open_door() -> void:
 		return # Door is already open
 	self.is_opened = true
 	self.animation_player.play("open_door")
-	self.door_collider.process_mode = Node.PROCESS_MODE_DISABLED
 
 func dissappear() -> void:
 	self.visible = false
-	self.door_collider.process_mode = Node.PROCESS_MODE_DISABLED
+	var collider: StaticBody3D = $DoorCollider
+	collider.process_mode = Node.PROCESS_MODE_DISABLED

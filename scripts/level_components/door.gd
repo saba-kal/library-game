@@ -28,7 +28,6 @@ func open_door_ignore_keys() -> void:
 		return # Door is already open
 	self.is_opened = true
 	self.animation_player.play("open_door")
-	self.door_collider.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func on_body_entered(body: Node3D) -> void:
