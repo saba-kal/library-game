@@ -1,7 +1,6 @@
 extends Control
 
 @export var map_2D: _2DGeneration
-@export var opening_cutscene: VideoStreamPlayer
 
 @onready var pause: Control = %Pause
 @onready var inventory: Control = $Inventory
@@ -12,19 +11,25 @@ extends Control
 @onready var minimap_viewport: SubViewport = $Minimap/SubViewportContainer/SubViewport
 @onready var degug_input = $DebugConsole/MarginContainer/VBoxContainer/Input
 @onready var debug_console = $DebugConsole
+@onready var opening_cutscene: CutScene = %OpeningCutscene
+@onready var ending_cutscene: CutScene = %EndingCutscene
+
+var is_controls_disabled: bool = false
 
 func _ready() -> void:
 	minimap_container.visible = false
 	if map_2D != null:
 		map_2D.generation_complete.connect(setup_minimap)
-	if not opening_cutscene:
-		opening_cutscene = VideoStreamPlayer.new()
 	SignalBus.player_died.connect(show_death)
 	SignalBus.boss_defeated.connect(show_victory)
+	SignalBus.set_player_controls_disabled.connect(on_player_controls_disabled)
+	opening_cutscene.play_cutscene()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		toggle_pause()
+	if is_controls_disabled:
+		return
 	if event.is_action_pressed("inventory"):
 		toggle_inventory()
 	if event.is_action_pressed("console"):
@@ -37,6 +42,9 @@ func setup_minimap():
 func toggle_pause():
 	if opening_cutscene.is_playing():
 		opening_cutscene.end_cutscene()
+		return
+	if ending_cutscene.is_playing():
+		ending_cutscene.go_to_stop_time()
 		return
 	if settings_menu.visible:
 		settings_menu.visible = false
@@ -80,7 +88,9 @@ func show_death() -> void:
 	game_over_screen.show_defeat()
 
 func show_victory(_boss: Boss) -> void:
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(4.0).timeout
+	ending_cutscene.play_cutscene()
+	await ending_cutscene.cut_scene_finished
 	game_over_screen.show_victory()
 
 func on_settings_menu_ok_pressed() -> void:
@@ -92,3 +102,6 @@ func on_button_settings_pressed() -> void:
 	self.settings_menu.visible = true
 	self.pause.visible = false
 	settings_menu.ok_button.grab_focus()
+
+func on_player_controls_disabled(is_disabled: bool) -> void:
+	is_controls_disabled = is_disabled

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d1pi1kgma618d"]
+[gd_scene load_steps=33 format=3 uid="uid://d1pi1kgma618d"]
 
 [ext_resource type="Script" uid="uid://cxisi2yblv1ug" path="res://core/gui/gui.gd" id="1_ds54n"]
 [ext_resource type="Shader" uid="uid://c73v4e4ck57ri" path="res://assets/shaders/blur.gdshader" id="1_iooxw"]
@@ -15,8 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://b26mq80nysnge" path="res://assets/textures/GUI/simple_skull_icon.png" id="8_hut4s"]
 [ext_resource type="PackedScene" uid="uid://bgdg5y0ec727w" path="res://scenes/gui/settings_menu/settings_menu.tscn" id="8_xu1a1"]
 [ext_resource type="PackedScene" uid="uid://trdgk7ggai0g" path="res://scenes/debug/debug_console.tscn" id="9_7vfty"]
+[ext_resource type="VideoStream" uid="uid://bvd61c1mihjbr" path="res://assets/video/Library_Bookstore_2D_Intro_Revised.mp4" id="12_2i3gw"]
 [ext_resource type="Texture2D" uid="uid://dcatqanxxieh6" path="res://assets/textures/GUI/Open_Book.png" id="12_p8m64"]
 [ext_resource type="Script" uid="uid://dwh6mufbn3who" path="res://scripts/gui/game_over_screen.gd" id="12_xwonv"]
+[ext_resource type="Script" uid="uid://bqykynqcpts21" path="res://scripts/general/cutscene.gd" id="13_7rjse"]
+[ext_resource type="VideoStream" uid="uid://dg72r4ql634mc" path="res://assets/video/Library_Bookstore_2D_Ending_1.mp4" id="14_ecjf0"]
+[ext_resource type="Texture2D" uid="uid://doib58td4doip" path="res://assets/video/ending_cutscene_last_frame.png" id="17_7rjse"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hut4s"]
 line_spacing = 15.0
@@ -48,6 +52,12 @@ font_color = Color(0.717821, 0.113768, 0.172568, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_jvx8h"]
+line_spacing = 20.0
+font = ExtResource("7_a22y1")
+font_size = 36
+font_color = Color(0, 0, 0, 0.635294)
+
 [sub_resource type="LabelSettings" id="LabelSettings_p8m64"]
 line_spacing = 20.0
 font = ExtResource("7_a22y1")
@@ -55,12 +65,6 @@ font_size = 70
 font_color = Color(0.478431, 1, 0.568627, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_jvx8h"]
-line_spacing = 20.0
-font = ExtResource("7_a22y1")
-font_size = 36
-font_color = Color(0, 0, 0, 0.635294)
 
 [sub_resource type="Animation" id="Animation_jvx8h"]
 length = 0.001
@@ -316,7 +320,58 @@ texture = ExtResource("8_hut4s")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="CutScenes" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CutsceneBlackBars" type="ColorRect" parent="CutScenes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CutScenes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+ratio = 1.7778
+
+[node name="OpeningCutscene" type="VideoStreamPlayer" parent="CutScenes/AspectRatioContainer" node_paths=PackedStringArray("parent_control")]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+mouse_filter = 2
+stream = ExtResource("12_2i3gw")
+expand = true
+script = ExtResource("13_7rjse")
+parent_control = NodePath("../..")
+
+[node name="EndingCutscene" type="VideoStreamPlayer" parent="CutScenes/AspectRatioContainer" node_paths=PackedStringArray("parent_control")]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+mouse_filter = 2
+stream = ExtResource("14_ecjf0")
+expand = true
+script = ExtResource("13_7rjse")
+stop_time = 52.0
+parent_control = NodePath("../..")
+
 [node name="GameOver" type="Control" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -335,7 +390,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.313726)
 
-[node name="Book" type="TextureRect" parent="GameOver"]
+[node name="DefeatView" type="TextureRect" parent="GameOver"]
 texture_filter = 6
 layout_mode = 1
 anchors_preset = 15
@@ -348,7 +403,7 @@ texture = ExtResource("12_p8m64")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="DefeatMessage" type="Label" parent="GameOver/Book"]
+[node name="DefeatMessage" type="Label" parent="GameOver/DefeatView"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -368,28 +423,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="VictoryMessage" type="Label" parent="GameOver/Book"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -524.0
-offset_top = -331.0
-offset_right = -16.0
-offset_bottom = 167.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 100
-text = "YOUR STORY HAS ENDED IN TRIUMPH"
-label_settings = SubResource("LabelSettings_p8m64")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="ResultsLabel" type="Label" parent="GameOver/Book"]
+[node name="ResultsLabel" type="Label" parent="GameOver/DefeatView"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -411,14 +445,72 @@ rooms explored - 0"
 label_settings = SubResource("LabelSettings_jvx8h")
 autowrap_mode = 2
 
+[node name="VictoryView" type="Control" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TestBook" type="TextureRect" parent="GameOver/VictoryView"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_7rjse")
+expand_mode = 1
+
+[node name="VictoryMessage" type="Label" parent="GameOver/VictoryView"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -779.0
+offset_right = 779.0
+offset_bottom = 105.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "YOUR STORY HAS ENDED IN TRIUMPH"
+label_settings = SubResource("LabelSettings_p8m64")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ResultsLabel" type="Label" parent="GameOver/VictoryView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -390.0
+offset_right = 240.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Results:
+kills - 0
+time - 00:00:00
+damage taken - 0
+rooms explored - 0"
+label_settings = SubResource("LabelSettings_jvx8h")
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="NavButtons" type="HBoxContainer" parent="GameOver"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -168.0
-offset_bottom = -82.0
+offset_top = -112.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 50

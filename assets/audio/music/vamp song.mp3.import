@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brbq2a8jtfr3q"
+path="res://.godot/imported/vamp song.mp3-1881c006dc85a7df75d6d895d7ce56c5.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/vamp song.mp3"
+dest_files=["res://.godot/imported/vamp song.mp3-1881c006dc85a7df75d6d895d7ce56c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-extends CharacterState
+class_name PlayerAttack extends CharacterState
 
 signal started
 

@@ -18,6 +18,7 @@ func on_player_enter() -> void:
 	boss.start_boss_fight()
 	animation_player.play("boss_enter")
 	is_enter_animation_playing = true
+	AudioManager.set_music("boss")
 	SignalBus.player_entered_boss_room.emit(self.boss)
 
 

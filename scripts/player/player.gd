@@ -20,9 +20,13 @@ signal died
 	return initial_state if initial_state else state_machine.get_child(0)
 ).call()
 @onready var speech_bubble: SpeechBubble = $SpeechBubble3D
+@onready var attack1: PlayerAttack = %Attack
+@onready var attack2: PlayerAttack = %Attack2
+@onready var attack3: PlayerAttack = %AttackBig
 
 var direction: Vector3
 var target_rotation: float
+var is_controls_disabled: bool = false
 
 func _ready() -> void:
 	target_rotation = body.rotation.y
@@ -30,6 +34,7 @@ func _ready() -> void:
 		state_node.finished.connect(_transition_to_next_state)
 	state.enter("")
 	SignalBus.player_entered_boss_door_area.connect(on_player_entered_boss_door_area)
+	SignalBus.set_player_controls_disabled.connect(on_player_controls_disabled)
 	SignalBus.player_spawned.emit(self)
 	health.changed.connect(health_changed)
 
@@ -57,7 +62,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
-	state.handle_input(event)
+	if !is_controls_disabled:
+		state.handle_input(event)
 
 func set_orientation_from_top_down_vector(vector: Vector2) -> void:
 	direction = transform.basis * Vector3(vector.x, 0, vector.y).rotated(Vector3.UP, $CamRoot/SpringArm3D.rotation.y).normalized()
@@ -97,3 +103,12 @@ func health_changed(new_health: int, damage: int, damage_sender) -> void:
 func on_player_entered_boss_door_area() -> void:
 	if Game.room_key_count <= 0:
 		speech_bubble.display_text("I need a key")
+
+func set_attack_damage(damage: int) -> void:
+	attack1.damage = damage
+	attack2.damage = damage
+	attack3.damage = damage
+
+
+func on_player_controls_disabled(is_disabled: bool) -> void:
+	is_controls_disabled = is_disabled

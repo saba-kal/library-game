@@ -409,12 +409,15 @@ script = ExtResource("6_wjwua")
 umbrella = NodePath("../../LibrarianPlayer/LibrarianArmature/Skeleton3D/BoneAttachment3D/Umbrella")
 
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "movement_state", "next_attack", "parry_state")]
+unique_name_in_owner = true
 script = ExtResource("8_yyof3")
 player = NodePath("../..")
 movement_state = NodePath("../Movement")
 next_attack = NodePath("../Attack2")
 parry_state = NodePath("../Parry")
+damage = null
 distance = 0.15
+wind_up_period = null
 swing_duration = 0.2
 wind_down_period = 0.1
 sound_effect_name = "player_attack"
@@ -422,11 +425,13 @@ animation_node_name = "Attack1"
 hit_particle_effect = ExtResource("11_kvlxm")
 
 [node name="Attack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "movement_state", "next_attack", "parry_state")]
+unique_name_in_owner = true
 script = ExtResource("8_yyof3")
 player = NodePath("../..")
 movement_state = NodePath("../Movement")
 next_attack = NodePath("../AttackBig")
 parry_state = NodePath("../Parry")
+damage = null
 distance = 0.15
 wind_up_period = 0.083
 swing_duration = 0.2
@@ -436,6 +441,7 @@ animation_node_name = "Attack2"
 hit_particle_effect = ExtResource("11_kvlxm")
 
 [node name="AttackBig" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "movement_state", "parry_state")]
+unique_name_in_owner = true
 script = ExtResource("8_yyof3")
 player = NodePath("../..")
 movement_state = NodePath("../Movement")

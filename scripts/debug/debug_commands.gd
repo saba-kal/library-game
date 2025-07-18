@@ -29,3 +29,11 @@ func spawn_enemies() -> String:
 		room.activate_spawners()
 		return "Spawned Enemies"
 	return "Invalid Location"
+
+func one_punch() -> String:
+	var player: Player = self.get_tree().get_first_node_in_group("player")
+	if is_instance_valid(player):
+		player.set_attack_damage(1000)
+		return "Set player damage to 1000"
+	else:
+		return "Unable to find player"

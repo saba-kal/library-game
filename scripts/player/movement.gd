@@ -14,9 +14,13 @@ var last_dir: Vector2
 var idle: bool
 var idling: bool
 var time_since_last_dash: float = 0
+var is_controls_disabled: bool = false
 
 
 @onready var movement_payback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/Movement/playback")
+
+func _ready() -> void:
+	SignalBus.set_player_controls_disabled.connect(on_player_controls_disabled)
 
 func enter(previous_state_path: String, data := {}) -> void:
 	# Global movement input mapping that checks for all of the movement inputs combined.
@@ -38,6 +42,8 @@ func handle_input(_event: InputEvent) -> void:
 		finished.emit(parry_state.get_path(), {'direction': last_dir})
 
 func physics_update(delta: float) -> void:
+	if is_controls_disabled:
+		return
 	input_dir = Input.get_vector("left", "right", "up", "down")
 	last_dir = input_dir if input_dir else last_dir
 	if input_dir != Vector2.ZERO:
@@ -66,3 +72,8 @@ func physics_update(delta: float) -> void:
 	# Blends between walk/run based on velocity.
 	animation_tree.set("parameters/Movement/Walk/blend_position", Vector2(character.velocity.x, character.velocity.z).length())
 	time_since_last_dash += delta
+
+func on_player_controls_disabled(is_disabled: bool) -> void:
+	is_controls_disabled = is_disabled
+	animation_tree.set("parameters/Movement/Walk/blend_position", 0)
+	character.stop_moving()
