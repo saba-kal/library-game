@@ -1887,6 +1887,7 @@ libraries = {
 autoplay = "Stand_Idle"
 
 [node name="ConeDetection" parent="Witch" instance=ExtResource("2_jbiju")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 cone_width = 10.0
 cone_length = 10.0
 

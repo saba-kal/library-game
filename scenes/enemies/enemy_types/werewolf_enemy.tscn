@@ -3548,6 +3548,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.90696, 0)
 health = NodePath("../Health")
 
 [node name="ConeDetection" parent="." instance=ExtResource("13_wu4uq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 cone_width = 15.0
 cone_length = 10.0
 
