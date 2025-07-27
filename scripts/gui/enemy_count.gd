@@ -50,7 +50,7 @@ func on_room_key_collected() -> void:
 
 func on_player_entered_boss_room(boss: Boss):
 	progress = PlayerProgress.FIGHTING_BOSS
-	main_objective_label.text = "MAIN OBJECTIVE\n- Defeat Count Montgue"
+	main_objective_label.text = "MAIN OBJECTIVE\n- Defeat Count Montague"
 	room_objective_label.visible = false
 
 

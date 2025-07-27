@@ -1,4 +1,4 @@
-extends Node
+class_name Door extends Node
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var door_collider: StaticBody3D = $DoorCollider
@@ -32,6 +32,6 @@ func open_door_ignore_keys() -> void:
 
 func on_body_entered(body: Node3D) -> void:
 	if body is Player:
-		SignalBus.player_entered_boss_door_area.emit()
+		SignalBus.player_entered_boss_door_area.emit(self)
 		if Game.room_key_count >= 1:
 			open_door()

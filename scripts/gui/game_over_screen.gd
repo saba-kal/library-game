@@ -38,6 +38,7 @@ func show_defeat() -> void:
 	victory_view.visible = false
 	background.visible = true
 	defeat_results_label.text = create_results_string()
+	retry_button.grab_focus()
 	play_anim()
 
 
@@ -46,6 +47,7 @@ func show_victory() -> void:
 	victory_view.visible = true
 	background.visible = false
 	victory_results_label.text = create_results_string()
+	retry_button.grab_focus()
 	play_anim()
 
 

@@ -100,8 +100,8 @@ func health_changed(new_health: int, damage: int, damage_sender) -> void:
 		else:
 			_transition_to_next_state(hurt_state.get_path())
 
-func on_player_entered_boss_door_area() -> void:
-	if Game.room_key_count <= 0:
+func on_player_entered_boss_door_area(door: Door) -> void:
+	if Game.room_key_count <= 0 && !door.is_opened:
 		speech_bubble.display_text("I need a key")
 
 func set_attack_damage(damage: int) -> void:

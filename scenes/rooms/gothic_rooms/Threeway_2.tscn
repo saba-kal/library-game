@@ -482,7 +482,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, -1.56603, 3)
 wander_path = NodePath("../../EnemyPatrolPaths/EnemyWanderPath3")
 
 [node name="Spawner5" parent="Spawners" index="4" node_paths=PackedStringArray("wander_path") instance=ExtResource("11_g8e5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -1.70273, -26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -1.47892, -26)
 wander_path = NodePath("../../EnemyPatrolPaths/EnemyWanderPath4")
 
 [node name="Spawner6" parent="Spawners" index="5" node_paths=PackedStringArray("wander_path") instance=ExtResource("11_g8e5k")]

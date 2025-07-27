@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://qscen83w47ka"]
+[gd_scene load_steps=19 format=3 uid="uid://qscen83w47ka"]
 
 [ext_resource type="PackedScene" uid="uid://donm244c8a5wk" path="res://scenes/rooms/RoomVariation.tscn" id="1_jk3g8"]
 [ext_resource type="PackedScene" uid="uid://0d1ctubyayeg" path="res://assets/models/gothic_library_section/decorative_assets/Pillar_Shaft_1.tscn" id="2_4v1hj"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c0nv7jysskn3g" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_3.tscn" id="7_1o68x"]
 [ext_resource type="PackedScene" uid="uid://cnhe8th4xlj6v" path="res://scenes/room_generation/Gen2/door_detection_setup.tscn" id="7_a2plm"]
 [ext_resource type="PackedScene" uid="uid://bau4gfnvs58vy" path="res://assets/models/gothic_library_section/decorative_assets/Filled_Bookshelves/Bookshelf_4.tscn" id="8_ex8ou"]
-[ext_resource type="PackedScene" uid="uid://mpjc6wrnn8xx" path="res://assets/models/gothic_library_section/Interactible Models/Doors.glb" id="9_pf24s"]
 [ext_resource type="PackedScene" uid="uid://btcvm3c6i3tek" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Holder.tscn" id="10_nif28"]
 [ext_resource type="PackedScene" uid="uid://dyqcrv4i4axss" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_1.tscn" id="11_i035m"]
 [ext_resource type="PackedScene" uid="uid://vxorah386tra" path="res://assets/models/gothic_library_section/decorative_assets/Candle_Empty_2.tscn" id="12_aomk4"]
@@ -31,11 +30,8 @@ data = {
 
 [node name="Wall_South" parent="." index="3"]
 data = {
-"cells": PackedInt32Array(65531, 8, 1441810, 65532, 8, 1441809, 65533, 8, 1441810, 65534, 8, 1441810, 0, 8, 1441809, 1, 8, 1441810, 2, 8, 1441809, 3, 8, 1441810, 65535, 9, 655386, 65535, 8, 655381)
+"cells": PackedInt32Array(65531, 8, 1441810, 65532, 8, 1441809, 65533, 8, 1441810, 65534, 8, 1441810, 0, 8, 1441809, 1, 8, 1441810, 2, 8, 1441809, 3, 8, 1441810, 65535, 8, 1441810)
 }
-
-[node name="Doors2" parent="Wall_South" index="0" instance=ExtResource("9_pf24s")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.01329, 1.45977, 16.8936)
 
 [node name="Doorways" parent="." index="4"]
 data = {

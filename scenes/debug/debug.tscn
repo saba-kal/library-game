@@ -132,7 +132,6 @@ shape = SubResource("ConcavePolygonShape3D_saw2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46881, 0, 11.6761)
 
 [node name="GhostEnemy" parent="." instance=ExtResource("3_mfbtj")]
-process_mode = 4
 transform = Transform3D(0.428162, 0, 0.903702, 0, 1, 0, -0.903702, 0, 0.428162, 13.4069, 0, 0)
 
 [node name="RoomKey" parent="." instance=ExtResource("4_gs0oy")]
@@ -163,7 +162,6 @@ script = ExtResource("9_ggvi8")
 metadata/_custom_type_script = "uid://b2g4yvbam00pe"
 
 [node name="Werewolf" parent="EnemyWanderPath" instance=ExtResource("9_ef8wu")]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36878, 1.90735e-06, -4.19815)
 
 [node name="Marker3D" type="Marker3D" parent="EnemyWanderPath"]
