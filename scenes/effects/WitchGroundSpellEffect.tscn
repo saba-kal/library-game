@@ -185,7 +185,7 @@ modulate = Color(0.176471, 0.576471, 0.196078, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vdkhs")
+&"": SubResource("AnimationLibrary_vdkhs")
 }
 autoplay = "play_effect"
 
